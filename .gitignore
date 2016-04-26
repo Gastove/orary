@@ -3,3 +3,8 @@
 
 # Packaging
 .cask
+/elpa
+/projectile-bookmarks.eld
+/projectile.cache
+/recentf
+/var
