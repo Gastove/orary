@@ -4,6 +4,7 @@
 ;;  Yep.  We got code.
 ;;; Code:
 
+;; TODO: Make a unified var for saving info like place, history.
 (require 'package)
 (require 'subr-x)
 
@@ -53,7 +54,10 @@
 (setq initial-buffer-choice t)
 ;; Alerts
 
-
+;; Core behaviors
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file "~/.emacs.d/savefile/saved-places")
 ;; Packages
 (setq use-package-always-ensure t)
 
@@ -179,16 +183,21 @@
   :demand t
   :ensure t
   :commands helm
+  :config
+  (require 'helm-config)
+  (setq helm-split-window-in-side-p t
+	helm-split-window-default-side 'below)
+  (global-set-key (kbd "C-c h") 'helm-command-prefix)
+  (global-unset-key (kbd "C-x c"))
   :bind (("M-x" . helm-M-x)
 	 ("M-y" . helm-show-kill-ring)
 	 ("C-x b" . helm-mini)
-	 ("C-c f" . helm-recentf)
+	 ("C-c C-f" . helm-recentf)
 	 ("C-x C-f" . helm-find-files)
-	 ("C-c h a" . helm-apropos)
-	 ("C-c h i" . helm-semantic-or-imenu))
-  :config
-  (setq helm-split-window-in-side-p t
-	helm-split-window-default-side 'below))
+	 :map helm-map
+	 ("[tab]" . helm-execute-persistent-action)
+	 ("C-i" . helm-execute-persistent-action)
+	 ("C-z" . helm-select-action)))
 
 (use-package savehist
   :config (setq savehist-file "~/.emacs.d/savefile/savehist"))
@@ -532,7 +541,7 @@ If no region is selected and current line is not blank
 (global-set-key (kbd "C-c n") 'orary/clean-up-buffer)
 (global-set-key (kbd "C-x |") 'orary/toggle-window-split)
 (global-set-key (kbd "C-x j") 'orary/insert-iso-date)
-(global-set-key (kbd "M-;") `comment-dwim-line)
+(global-set-key (kbd "M-;") 'orary/comment-dwim-line)
 
 
 ;; Local work configs
