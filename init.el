@@ -4,14 +4,16 @@
 ;;  Yep.  We got code.
 ;;; Code:
 
+;; TODO: Electric colon for python, other modes
 ;; TODO: Make a unified var for saving info like place, history.
 ;; TODO: todo highlighting/font-lock
 ;; TODO: set custom file for customize
 ;; TODO: move multi-account Stuffz to work congifs so they don't clutter this up
 ;; TODO: start breaking things in to modules
 
+;;; Package Management
+
 (require 'package)
-(require 'subr-x)
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
@@ -19,12 +21,10 @@
 
 (package-initialize)
 
-(unless (package-installed-p 'dash) (package-install 'dash))
-(require 'dash)
-
 ;; Packages it just doesn't make sense to manage with use-package
 (defvar orary/packages '(dash
 			 exec-path-from-shell
+			 helm-ag
 			 helm-projectile
 			 org-plus-contrib
 			 org-bullets
@@ -42,6 +42,10 @@
 
 (orary/install-packages)
 
+;;; Utilities
+(require 'dash)   ;; Way better list manipulation functions
+(require 'subr-x) ;; Gets us string-join
+
 ;;; OSX
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
@@ -58,7 +62,14 @@
 (tool-bar-mode -1)
 (which-function-mode -1)
 (setq initial-buffer-choice t)
+
 ;; Alerts
+(defun orary/visible-bell ()
+  (invert-face 'mode-line)
+  (run-with-timer 0.1 nil 'invert-face 'mode-line))
+
+(setq ring-bell-function #'ignore)
+(setq visible-bell nil ring-bell-function 'orary/visible-bell)
 
 ;;; Core behaviors
 ;; Remember where we were in a file
@@ -71,6 +82,9 @@
 (setq savehist-file "~/.emacs.d/savefile/savehist")
 
 ;; Packages
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Package Loading and Configuration
 (setq use-package-always-ensure t)
 
 ;; Org
@@ -182,7 +196,6 @@
 ;; Company
 (use-package company
   :demand t
-  :ensure t
   :commands company-mode
   :config
   (global-company-mode)
@@ -193,7 +206,6 @@
 ;; Helm
 (use-package helm
   :demand t
-  :ensure t
   :commands helm
   :config
   (require 'helm-config)
@@ -212,7 +224,7 @@
 	 ("M-y" . helm-show-kill-ring)
 	 ("C-x b" . helm-mini)
 	 ("C-c C-f" . helm-recentf)
-	 ("C-x C-f" . helm-find-files)
+	 ("C-c f" . helm-find-files)
 	 :map helm-map
 	 ("[tab]" . helm-execute-persistent-action)
 	 ("C-i" . helm-execute-persistent-action)
@@ -224,16 +236,30 @@
 
 (unbind-key "s-m")
 (use-package magit
-  :ensure t
-;;  :config
+  :config
+  (setq magit-last-seen-setup-instructions "1.4.0"
+	magit-branch-read-upstream-first t
+	magit-branch-arguments nil
+	magit-push-arguments '("--set-upstream")
+	magit-push-always-verify nil
+	magit-revert-buffers t)
   :bind (("s-m m" . magit-status)
 	 ("C-x g" . magit-status)
 	 ("s-m l" . magit-log)
 	 ("s-m b" . magit-blame)
 	 ))
 
+(use-package bookmark+
+  :config
+  (setq bookmark-default-file "~/Dropbox/emacs/gifs.bmk"
+	bmkp-last-as-first-bookmark-file nil))
+
+(use-package yasnippet
+  :config
+  (yas-global-mode 1)
+  (setq yas-prompt-functions '(yas-completing-prompt)))
+
 (use-package projectile
-  :ensure t
   :demand t
   :config
   (require 'persp-projectile)
@@ -248,7 +274,6 @@
 	 ("C-c p p" . projectile-persp-switch-project)))
 
 (use-package smartparens
-  :ensure t
   :demand t
   :config
   (require 'smartparens-config)
@@ -288,7 +313,6 @@
 	 ("M-B" . sp-backward-symbol)))
 
 (use-package unicode-fonts
-  :ensure t
   :demand t
   :config (unicode-fonts-setup))
 
@@ -467,7 +491,21 @@
 
 (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
 
-;; Languages
+(use-package wgrep
+  :demand t)
+
+(use-package wgrep-helm
+  :demand t)
+
+(use-package wgrep-ag
+  :demand t
+  :config
+  (autoload 'wgrep-ag-setup "wgrep-ag")
+  (add-hook 'ag-mode-hook 'wgrep-ag-setup)
+  (add-hook 'helm-ag-mode-hook 'wgrep-ag-setup))
+
+;;; Languages
+;; Lisp
 (defun orary/elisp-defaults ()
   (eldoc-mode +1)
   (rainbow-mode +1)
@@ -475,6 +513,36 @@
   (smartparens-strict-mode +1))
 
 (add-hook 'emacs-lisp-mode-hook #'orary/elisp-defaults)
+
+;; Python
+(use-package elpy
+  :config
+  (elpy-enable)
+  (setq
+   python-shell-interpreter "ipython"
+   python-shell-interpreter-args ""
+   python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+   python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+   python-shell-completion-setup-code
+   "from IPython.core.completerlib import module_completion"
+   python-shell-completion-module-string-code
+   "';'.join(module_completion('''%s'''))\n"
+   python-shell-completion-string-code
+   "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
+
+(setq python-fill-docstring-style 'django)
+
+;; nXML
+(push 'nxml-mode sp-ignore-modes-list)
+(add-hook 'nxml-mode-hook
+	  (lambda ()
+	    (flyspell-mode-off)
+	    (define-key prelude-mode-map (kbd "C-c C-i") 'nxml-balanced-close-start-tag-inline)))
+
+;; Scala
+(use-package ensime
+  :config
+  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
 
 ;;; Core editor behaviors
 ;; With gratitude to Bozhidar Batsov
@@ -576,15 +644,3 @@ If no region is selected and current line is not blank
 (provide 'init)
 
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/Dropbox/org-docs/cotidienne.org"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
