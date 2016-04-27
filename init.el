@@ -10,6 +10,9 @@
 ;; TODO: set custom file for customize
 ;; TODO: move multi-account Stuffz to work congifs so they don't clutter this up
 ;; TODO: start breaking things in to modules
+;; TODO: Magit colors are all fucked
+;; TODO: wtf is up with M-w
+;; TODO: why don't I have persistent helm?
 
 ;;; Package Management
 
@@ -89,7 +92,7 @@
 
 ;; Org
 (defun add-pcomplete-to-capf ()
-    (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
+  (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
 
 (use-package org
   :config
@@ -120,7 +123,7 @@
 	  ("CANCELLED" . org-done)
 	  ("IMPOSSIBLE" . org-done)
 	  ("DONE" . org-done))
-;; Config org export backends
+	;; Config org export backends
 	org-export-backends
 	`(beamer
 	  ascii
@@ -223,8 +226,8 @@
   :bind (("M-x" . helm-M-x)
 	 ("M-y" . helm-show-kill-ring)
 	 ("C-x b" . helm-mini)
-	 ("C-c C-f" . helm-recentf)
-	 ("C-c f" . helm-find-files)
+	 ("C-c f" . helm-recentf)
+	 ("C-x C-f" . helm-find-files)
 	 :map helm-map
 	 ("[tab]" . helm-execute-persistent-action)
 	 ("C-i" . helm-execute-persistent-action)
@@ -268,10 +271,10 @@
   (helm-projectile-on)
   (projectile-global-mode +1)
   (setq projectile-completion-system 'helm
-	projectile-switch-project-action) 'projectile-dired
+	projectile-switch-project-action 'projectile-dired)
   :bind-keymap ("s-p" . projectile-command-map)
   :bind (:map projectile-mode-map
-	 ("C-c p p" . projectile-persp-switch-project)))
+	      ("C-c p p" . projectile-persp-switch-project)))
 
 (use-package smartparens
   :demand t
@@ -285,32 +288,32 @@
   (sp-local-pair 'org-mode "~" "~" :wrap "C-~")
   (sp-local-pair 'org-mode "*" "*" :wrap "C-*")
   :bind (:map smartparens-mode-map
-	 ("C-M-f" . sp-forward-sexp)
-	 ("C-M-b" . sp-backward-sexp)
-	 ("C-M-d" . sp-down-sexp)
-	 ("C-M-a" . sp-backward-down-sexp)
-	 ("C-S-d" . sp-beginning-of-sexp)
-	 ("C-S-a" . sp-end-of-sexp)
-	 ("C-M-e" . sp-up-sexp)
-	 ("C-M-u" . sp-backward-up-sexp)
-	 ("C-M-n" . sp-next-sexp)
-	 ("C-M-p" . sp-previous-sexp)
-	 ("C-M-k" . sp-kill-sexp)
-	 ("C-M-w" . sp-copy-sexp)
-	 ("M-s" . sp-splice-sexp)
-	 ;; ("M-<delete>" . sp-unwrap-sexp)
-	 ;; ("M-<backspace>" . sp-backward-unwrap-sexp)
-	 ("C-)" . sp-forward-slurp-sexp)
-	 ("C-}" . sp-forward-barf-sexp)
-	 ("C-(" . sp-backward-slurp-sexp)
-	 ("C-{" . sp-backward-barf-sexp)
-	 ("C-M-<delete>" . sp-splice-sexp-killing-forward)
-	 ("C-M-<backspace>" . sp-splice-sexp-killing-backward)
-	 ("C-S-<backspace>" . sp-splice-sexp-killing-around)
-	 ("C-]" . sp-select-next-thing-exchange)
-	 ("C-M-]" . sp-select-next-thing)
-	 ("M-F" . sp-forward-symbol)
-	 ("M-B" . sp-backward-symbol)))
+	      ("C-M-f" . sp-forward-sexp)
+	      ("C-M-b" . sp-backward-sexp)
+	      ("C-M-d" . sp-down-sexp)
+	      ("C-M-a" . sp-backward-down-sexp)
+	      ("C-S-d" . sp-beginning-of-sexp)
+	      ("C-S-a" . sp-end-of-sexp)
+	      ("C-M-e" . sp-up-sexp)
+	      ("C-M-u" . sp-backward-up-sexp)
+	      ("C-M-n" . sp-next-sexp)
+	      ("C-M-p" . sp-previous-sexp)
+	      ("C-M-k" . sp-kill-sexp)
+	      ("C-M-w" . sp-copy-sexp)
+	      ("M-s" . sp-splice-sexp)
+	      ;; ("M-<delete>" . sp-unwrap-sexp)
+	      ;; ("M-<backspace>" . sp-backward-unwrap-sexp)
+	      ("C-)" . sp-forward-slurp-sexp)
+	      ("C-}" . sp-forward-barf-sexp)
+	      ("C-(" . sp-backward-slurp-sexp)
+	      ("C-{" . sp-backward-barf-sexp)
+	      ("C-M-<delete>" . sp-splice-sexp-killing-forward)
+	      ("C-M-<backspace>" . sp-splice-sexp-killing-backward)
+	      ("C-S-<backspace>" . sp-splice-sexp-killing-around)
+	      ("C-]" . sp-select-next-thing-exchange)
+	      ("C-M-]" . sp-select-next-thing)
+	      ("M-F" . sp-forward-symbol)
+	      ("M-B" . sp-backward-symbol)))
 
 (use-package unicode-fonts
   :demand t
@@ -518,6 +521,7 @@
 (use-package elpy
   :config
   (elpy-enable)
+  (require 'electric)
   (setq
    python-shell-interpreter "ipython"
    python-shell-interpreter-args ""
@@ -530,7 +534,19 @@
    python-shell-completion-string-code
    "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
 
+;; Correctly fill python docstrings
 (setq python-fill-docstring-style 'django)
+
+(defun orary/python-mode-settings ()
+  (setq-local electric-layout-rules
+	      '((?: . (lambda ()
+			(and (zerop (first (syntax-ppss)))
+			     (python-info-statement-starts-block-p)
+			     'after)))))
+  (add-hook 'post-self-insert-hook
+	    #'electric-layout-post-self-insert-function nil 'local))
+
+(add-hook 'python-mode-hook #'orary/python-mode-settings)
 
 ;; nXML
 (push 'nxml-mode sp-ignore-modes-list)
@@ -579,6 +595,8 @@ point reaches the beginning or end of the buffer, stop there."
   (call-interactively 'untabify)
   (call-interactively 'indent-region)
   (whitespace-cleanup))
+
+(add-hook 'before-save-hook #'orary/clean-up-buffer)
 
 (defun orary/toggle-window-split ()
   (interactive)
