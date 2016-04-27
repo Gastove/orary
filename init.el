@@ -64,6 +64,7 @@
 (tool-bar-mode -1)
 (which-function-mode -1)
 (setq initial-buffer-choice t)
+(setq column-number-mode t)
 
 ;; Alerts
 (defun orary/visible-bell ()
