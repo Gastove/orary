@@ -7,7 +7,6 @@
 ;; TODO: Electric colon for python, other modes
 ;; TODO: Make a unified var for saving info like place, history.
 ;; TODO: todo highlighting/font-lock
-;; TODO: set custom file for customize
 ;; TODO: move multi-account Stuffz to work congifs so they don't clutter this up
 ;; TODO: start breaking things in to modules
 ;; TODO: Magit colors are all fucked
