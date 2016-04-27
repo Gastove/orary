@@ -5,6 +5,11 @@
 ;;; Code:
 
 ;; TODO: Make a unified var for saving info like place, history.
+;; TODO: todo highlighting/font-lock
+;; TODO: set custom file for customize
+;; TODO: move multi-account Stuffz to work congifs so they don't clutter this up
+;; TODO: start breaking things in to modules
+
 (require 'package)
 (require 'subr-x)
 
@@ -50,14 +55,21 @@
 (load-theme 'rhombus t)
 
 (scroll-bar-mode -1)
+(tool-bar-mode -1)
 (which-function-mode -1)
 (setq initial-buffer-choice t)
 ;; Alerts
 
-;; Core behaviors
+;;; Core behaviors
+;; Remember where we were in a file
 (require 'saveplace)
 (setq-default save-place t)
 (setq save-place-file "~/.emacs.d/savefile/saved-places")
+
+;; Remember command and file history
+(require 'savehist)
+(setq savehist-file "~/.emacs.d/savefile/savehist")
+
 ;; Packages
 (setq use-package-always-ensure t)
 
@@ -185,8 +197,15 @@
   :commands helm
   :config
   (require 'helm-config)
-  (setq helm-split-window-in-side-p t
-	helm-split-window-default-side 'below)
+  (setq helm-split-window-in-side-p           t
+	helm-split-window-default-side        'below
+	helm-split-window-in-side-p           t
+	helm-buffers-fuzzy-matching           t
+	helm-move-to-line-cycle-in-source     t
+	helm-ff-search-library-in-sexp        t
+	helm-ff-file-name-history-use-recentf t)
+  (when (executable-find "curl")
+    (setq helm-google-suggest-use-curl-p t))
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))
   :bind (("M-x" . helm-M-x)
@@ -197,10 +216,11 @@
 	 :map helm-map
 	 ("[tab]" . helm-execute-persistent-action)
 	 ("C-i" . helm-execute-persistent-action)
-	 ("C-z" . helm-select-action)))
-
-(use-package savehist
-  :config (setq savehist-file "~/.emacs.d/savefile/savehist"))
+	 ("C-z" . helm-select-action)
+	 :map helm-command-map
+	 ("o" . helm-occur)
+	 ("g" . helm-do-grep)
+	 ("SPC" . helm-all-mark-rings)))
 
 (unbind-key "s-m")
 (use-package magit
@@ -221,7 +241,8 @@
   (persp-mode)
   (helm-projectile-on)
   (projectile-global-mode +1)
-  (setq projectile-completion-system 'helm)
+  (setq projectile-completion-system 'helm
+	projectile-switch-project-action) 'projectile-dired
   :bind-keymap ("s-p" . projectile-command-map)
   :bind (:map projectile-mode-map
 	 ("C-c p p" . projectile-persp-switch-project)))
@@ -555,3 +576,15 @@ If no region is selected and current line is not blank
 (provide 'init)
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/Dropbox/org-docs/cotidienne.org"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
