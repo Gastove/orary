@@ -33,7 +33,8 @@
 		       " Helm"
 		       " company"
 		       " guru"
-		       " Pre"))
+		       " Pre"
+		       " Rbow"))
 
   (setq sml/shorten-directory t)
   (setq sml/shorten-modes t)
