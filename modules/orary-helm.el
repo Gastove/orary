@@ -4,11 +4,14 @@
 ;;
 ;;; Code:
 
+(use-package helm-descbinds)
+
 (use-package helm
   :demand t
   :commands helm
   :config
   (require 'helm-config)
+  (require 'helm-projectile)
   (setq helm-split-window-in-side-p           t
 	helm-split-window-default-side        'below
 	helm-split-window-in-side-p           t
@@ -20,6 +23,7 @@
     (setq helm-google-suggest-use-curl-p t))
   (setq projectile-completion-system 'helm)
   (helm-projectile-on)
+  (helm-descbinds-mode)
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))
   :bind (("M-x" . helm-M-x)
@@ -27,6 +31,7 @@
 	 ("C-x b" . helm-mini)
 	 ("C-c f" . helm-recentf)
 	 ("C-x C-f" . helm-find-files)
+	 ("C-h f" . helm-apropos)
 	 :map helm-map
 	 ("[tab]" . helm-execute-persistent-action)
 	 ("C-i" . helm-execute-persistent-action)

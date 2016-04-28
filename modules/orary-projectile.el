@@ -4,6 +4,7 @@
 ;; YAS
 ;;; Code:
 
+(use-package persp-projectile)
 (use-package projectile
   :demand t
   :config
