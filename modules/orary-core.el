@@ -41,6 +41,9 @@
   (setq bookmark-default-file "~/Dropbox/emacs/gifs.bmk"
 	bmkp-last-as-first-bookmark-file nil))
 
+(use-package flycheck
+  :config (global-flycheck-mode))
+
 (use-package yasnippet
   :config
   (yas-global-mode 1)
