@@ -5,16 +5,16 @@
 ;;; Code:
 
 ;; TODO: Make a unified var for saving info like place, history.
-;; TODO: todo highlighting/font-lock
 ;; TODO: move multi-account Stuffz to work congifs so they don't clutter this up
 ;; TODO: Magit colors are all fucked, but only sometimes
 ;; TODO: why don't I have persistent helm?
 ;; TODO: my version of C-c n isn't doing what I expected; fix this.
-;; TODO: flycheck
 ;; TODO: flyspell
 ;; TODO: load todos in project
 ;; TODO: ace-window
 ;; TODO: ace jump to char
+;; TODO: Emooootes!
+;; TODO: Find a way to make package load order not matter
 
 ;;; Package Management
 
@@ -33,7 +33,6 @@
 			 helm-projectile
 			 org-plus-contrib
 			 org-bullets
-			 persp-projectile
 			 rainbow-mode
 			 rainbow-delimiters
 			 use-package))
@@ -65,14 +64,19 @@
 
 (require 'orary-company)
 (require 'orary-core)
+(require 'orary-ui)
+
+(require 'orary-programming)
+(require 'orary-lisp)
+
 (require 'orary-helm)
 (require 'orary-magit)
 (require 'orary-org)
-(require 'orary-ui)
+
 (require 'orary-projectile)
 (require 'orary-smartparens)
 (require 'orary-mu4e)
-(require 'orary-lisp)
+(require 'orary-emacs-lisp)
 (require 'orary-python)
 (require 'orary-scala)
 (require 'orary-purescript)
