@@ -32,7 +32,8 @@
 			     'after)))))
   (add-hook 'post-self-insert-hook
 	    #'electric-layout-post-self-insert-function nil 'local)
-  (define-key 'python-mode-map (kbd "C-c q i") 'orary/python-make-module))
+  (define-key python-mode-map (kbd "C-c q i") 'orary/python-make-module)
+  (define-key python-mode-map (kbd "C-c q r") 'orary/replace-double-quote-with-single))
 
 (defun orary/python-make-module ()
   (interactive)
@@ -42,6 +43,9 @@
       (progn
 	(write-region "" nil target)
 	(message "Init file created for module")))))
+
+
+
 
 (add-hook 'python-mode-hook #'orary/python-mode-settings)
 
