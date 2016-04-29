@@ -10,10 +10,14 @@
   '(("Flip table: (╯°□°）╯︵ ┻━┻ " . "(╯°□°）╯︵ ┻━┻ ")
     ("Angry table flip: (ノ□益□)ノ彡┻━┻ " . "(ノ□益□)ノ彡┻━┻ ")
     ("Flip it back: ┬──┬ ﻿ノ( ゜-゜ノ)" . "┬──┬ ﻿ノ( ゜-゜ノ)")
+    ("Flip two ┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻" . "┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻")
     ("Shrug: ¯\_(ツ)_/¯" . "¯\_(ツ)_/¯")
     ("Music: ヽ(⌐■_■)ノ♪♬" . "ヽ(⌐■_■)ノ♪♬")
     ("Stuff to do: ᕕ(╯°□°)ᕗ" . "ᕕ(╯°□°)ᕗ")
-    ("Stroll ᕕ( ᐛ )ᕗ" . "ᕕ( ᐛ )ᕗ")))
+    ("Stroll ᕕ( ᐛ )ᕗ" . "ᕕ( ᐛ )ᕗ")
+    ("Love (●♡∀♡)" . "(●♡∀♡)")
+    ("wut ⊙△⊙" . "⊙△⊙")
+    ("Bring it (ง •̀_•́)ง" . "(ง •̀_•́)ง")))
 
 (defun orary/insert-emote ()
   "Allow for the selection and insertion of handy emotes."
