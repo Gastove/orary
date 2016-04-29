@@ -10,8 +10,10 @@
   :demand t
   :commands helm
   :config
+  (require 'helm)
   (require 'helm-config)
   (require 'helm-projectile)
+  (helm-mode 1)
   (setq helm-split-window-in-side-p           t
 	helm-split-window-default-side        'below
 	helm-split-window-in-side-p           t
