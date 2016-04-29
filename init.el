@@ -71,6 +71,8 @@
 (require 'orary-magit)
 (require 'orary-org)
 
+(require 'orary-emote)
+(require 'orary-jabber)
 (require 'orary-projectile)
 (require 'orary-smartparens)
 (require 'orary-mu4e)

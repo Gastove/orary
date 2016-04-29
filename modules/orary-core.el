@@ -29,6 +29,26 @@
 ;; Don't make me type "yes" all the time
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; Flyspell, for Spelling Checkings.
+(require 'flyspell)
+(setq ispell-program-name "aspell"
+      ispell-extra-args "--sug-mode=ultra")
+
+
+(defun orary/flyspell-text ()
+  "Enable flyspell for text modes."
+  (when (executable-find ispell-program-name)
+    (flyspell-mode +1)))
+
+(defun orary/flyspell-programming ()
+  "Enable flyspell for programming modes."
+  (when (executable-find ispell-program-name)
+    (flyspell-prog-mode)))
+
+(add-hook 'prog-mode-hook 'orary/flyspell-programming)
+(add-hook 'text-mode-hook 'orary/flyspell-text)
+
+;; A thousand packages
 (use-package dired+
   :init (setq diredp-hide-details-initially-flag nil))
 
@@ -61,6 +81,20 @@
   (autoload 'wgrep-ag-setup "wgrep-ag")
   (add-hook 'ag-mode-hook 'wgrep-ag-setup)
   (add-hook 'helm-ag-mode-hook 'wgrep-ag-setup))
+
+;; Navigation
+(use-package ace-window
+  :demand t
+  :bind ("s-w" . ace-window))
+
+(use-package avy
+  :config (setq avy-background t
+		avy-style 'at-full)
+  :bind ("C-c j" . avy-goto-word-or-subword-1))
+
+(use-package zop-to-char
+  :demand t
+  :bind ("M-z" . zop-to-char))
 
 (provide 'orary-core)
 ;;; orary-core.el ends here

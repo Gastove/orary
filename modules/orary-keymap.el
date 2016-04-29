@@ -13,6 +13,7 @@
 (global-set-key (kbd "C-c q t") 'orary/toggle-window-split)
 (global-set-key (kbd "C-c q d") 'orary/insert-iso-date)
 (global-set-key (kbd "C-c q e") 'orary/insert-emote)
+(global-set-key (kbd "C-;") 'flyspell-auto-correct-previous-word)
 
 (provide 'orary-keymap)
 ;;; orary-keymap.el ends here
