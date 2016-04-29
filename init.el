@@ -7,13 +7,11 @@
 ;; TODO: Make a unified var for saving info like place, history.
 ;; TODO: move multi-account Stuffz to work congifs so they don't clutter this up
 ;; TODO: Magit colors are all fucked, but only sometimes
-;; TODO: why don't I have persistent helm?
 ;; TODO: my version of C-c n isn't doing what I expected; fix this.
 ;; TODO: flyspell
 ;; TODO: load todos in project
 ;; TODO: ace-window
 ;; TODO: ace jump to char
-;; TODO: Emooootes!
 ;; TODO: Find a way to make package load order not matter
 
 ;;; Package Management

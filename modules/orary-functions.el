@@ -33,6 +33,7 @@ point reaches the beginning or end of the buffer, stop there."
   (interactive)
   (delete-indentation 1))
 
+;; TODO: this clobbers stuff in indent-sensitive modes. Goody.
 (defun orary/clean-up-buffer ()
   (interactive)
   (call-interactively 'untabify)
