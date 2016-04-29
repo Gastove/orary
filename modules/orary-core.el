@@ -32,7 +32,7 @@
 ;; Flyspell, for Spelling Checkings.
 (require 'flyspell)
 (setq ispell-program-name "aspell"
-      ispell-extra-args "--sug-mode=ultra")
+      ispell-extra-args '("--sug-mode=ultra"))
 
 
 (defun orary/flyspell-text ()
