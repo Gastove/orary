@@ -15,7 +15,7 @@
 (setq savehist-file "~/.emacs.d/savefile/savehist")
 
 ;; Custom File
-(setq custom-file "~/.emacs.d/savefile/custom.el")
+
 (load custom-file)
 
 ;; Auto-saves -- stop sticking foo~ files everywhere, jfc
