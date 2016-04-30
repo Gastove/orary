@@ -14,6 +14,13 @@
 
 (package-initialize)
 
+;; Make sure the package index has been loaded at least once before we try to
+;; do any installing. After, make a note that we don't have to do this again.
+(unless (bound-and-true-p 'orary/packages-loaded-atleast-once)
+  (progn
+    (package-refresh-contents)
+    (customize-save-variable 'orary/packages-loaded-atleast-once t)))
+
 ;; Packages it just doesn't make sense to manage with use-package
 (defvar orary/packages '(dash
 			 exec-path-from-shell
