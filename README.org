@@ -1,0 +1,32 @@
+* Oh my goodness!
+What, you ask, is this?
+
+An ~orary~ is a contraption that describes the motions of astral bodies. It's a
+mechanism -- a contrivance. It's neat as hell.
+
+This thing plots the motions of my Emacs configs. It is made with:
+
+1. Strong opinions about good ways for Emacs to behave -- like white space
+   tidying and an aversion to tabs and good spell checking.
+2. A lot of know-how inherited from wonderful smart people.
+3. A whole crap ton of gifs and emoji. ヽ(⌐■_■)ノ♪♬
+
+Should you use this? Ehhhhh maybe? Probably not? You'll probably have a vastly
+nicer time with one of the aforementioned wonderful smart people's Emacs libs:
+
+1. Bodil Stokkes' [[https://github.com/bodil/ohai-emacs][ohai-emacs]]
+2. Bozhidar Batsov's [[https://github.com/bbatsov/prelude][prelude]]
+
+Or, if you want to do Emacs on double-weird Vim mode, try [[https://github.com/syl20bnr/spacemacs][Spacemacs]].
+
+* Things What Need Getting Done What I know About (⌐■_■)
+
+** TODO Make a unified var for saving info like place, history.
+** TODO move multi-account Stuffz to work congifs so they don't clutter this up
+** DONE Magit colors are all fucked, but only sometimes
+** DONE my version of C-c n isn't doing what I expected; fix this.
+** DONE flyspell
+** TODO load todos in project
+** DONE ace-window
+** DONE ace jump to char
+** TODO Find a way to make package load order not matter
