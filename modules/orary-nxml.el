@@ -7,9 +7,11 @@
 ;; nXML
 (push 'nxml-mode sp-ignore-modes-list)
 (add-hook 'nxml-mode-hook
-	  (lambda ()
-	    (flyspell-mode-off)
-	    (define-key prelude-mode-map (kbd "C-c C-i") 'nxml-balanced-close-start-tag-inline)))
+          (lambda ()
+            (flyspell-mode-off)
+            (define-key prelude-mode-map (kbd "C-c C-i") 'nxml-balanced-close-start-tag-inline)))
+
+(setq-default nxml-child-indent 4)
 
 (provide 'orary-nxml)
 ;;; orary-nxml.el ends here

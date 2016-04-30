@@ -48,7 +48,29 @@
 (add-hook 'prog-mode-hook 'orary/flyspell-programming)
 (add-hook 'text-mode-hook 'orary/flyspell-text)
 
-;; A thousand packages
+;;; Whitespace Management and Cleanup, Tabs, Line Length, et al.
+;; Repeat after me: fuck tabs.
+(set-default 'indent-tabs-mode nil)
+(setq-default tab-width 4)
+
+;; It's 2016, Emacs.
+(setq sentence-end-double-space nil)
+
+;; When do we not want this? Never? I think never.
+(global-key-binding (kbd "RET") 'newline-and-indent)
+
+;; Default line length
+(setq-default fill-column 79)
+
+;; Prepare for the coming of ethan-wspace
+(setq mode-require-final-newline nil)
+
+(use-package ethan-wspace
+  :config (global-ethan-wspace-mode 1)
+  :bind ("C-c n" . ethan-wspace-clean-all)
+  :diminish ethan-wspace-mode)
+
+;;; A thousand packages
 (use-package dired+
   :init (setq diredp-hide-details-initially-flag nil))
 
@@ -59,7 +81,7 @@
 (use-package bookmark+
   :config
   (setq bookmark-default-file "~/Dropbox/emacs/gifs.bmk"
-	bmkp-last-as-first-bookmark-file nil))
+        bmkp-last-as-first-bookmark-file nil))
 
 (use-package flycheck
   :config (global-flycheck-mode))
@@ -89,7 +111,7 @@
 
 (use-package avy
   :config (setq avy-background t
-		avy-style 'at-full)
+                avy-style 'at-full)
   :bind ("C-c j" . avy-goto-word-or-subword-1))
 
 (use-package zop-to-char

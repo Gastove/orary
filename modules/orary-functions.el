@@ -1,7 +1,7 @@
-;;; orary-functions.el ---
+;;; orary-functions.el --- What is Life Without Functions?
 ;;
 ;;; Commentary:
-;;
+;; Utility functions and custom behaviors that don't live gracefully anywhere else.
 ;;; Code:
 
 ;; With gratitude to Bozhidar Batsov
@@ -32,15 +32,6 @@ point reaches the beginning or end of the buffer, stop there."
 (defun orary/join-below ()
   (interactive)
   (delete-indentation 1))
-
-;; TODO: this clobbers stuff in indent-sensitive modes. Goody.
-(defun orary/clean-up-buffer ()
-  (interactive)
-  (call-interactively 'untabify)
-  (call-interactively 'indent-region)
-  (whitespace-cleanup))
-
-(add-hook 'before-save-hook #'orary/clean-up-buffer)
 
 (defun orary/toggle-window-split ()
   (interactive)
