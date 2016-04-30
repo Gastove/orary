@@ -22,6 +22,10 @@ Or, if you want to do Emacs on double-weird Vim mode, try [[https://github.com/s
 * Things What Need Getting Done What I know About (⌐■_■)
 
 ** TODO Make a unified var for saving info like place, history.
+
+** TODO Start aggressively using ~diminish~
+
+** TODO ~autosave~ a lot more
 ** TODO move multi-account Stuffz to work congifs so they don't clutter this up
 ** DONE Magit colors are all fucked, but only sometimes
 ** DONE my version of C-c n isn't doing what I expected; fix this.
