@@ -1,4 +1,4 @@
-;;; rhombus-theme.el --- A black theme for Emacs 24
+;;; rhombus-theme.el --- A black theme for Emacs 24+
 
 ;; Copyright (C) 2015 Ross Donaldson
 
@@ -45,6 +45,7 @@
     ("rhombus-dark-red"       . "#9e1200")
     ("rhombus-dull-red"       . "#9e4d4a")
     ("rhombus-red"            . "#Ff2600")
+    ("rhombus-dull-orange"    . "#996011")
     ("rhombus-bronze"         . "#D79600")
     ("rhombus-orange"         . "#fa9a4b")
     ("rhombus-orange-1"       . "#D84c00")
@@ -84,7 +85,7 @@
 ;; This is seriously cool. H/T to whoever came up with it! Helpful hint: it was
 ;; not me. I got it from badger-theme.el
 (defmacro rhombus/with-color-variables (&rest body)
-  "`let' bind all colors defined in `badger-colors-alist' around BODY.
+  "`let' bind all colors defined in `rhombus-colors-alist' around BODY.
 Also bind `class' to ((class color) (min-colors 89))."
   (declare (indent 0))
   `(let ((class '((class color) (min-colors 89)))
@@ -129,7 +130,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(warning ((t (:foreground ,rhombus-warn :weight bold))))
 
    ;; This face is used for displaying an active region
-   `(region ((t (:background ,rhombus-bg+1))))
+   `(region ((t (:background ,rhombus-dull-orange :foreground ,rhombus-dull-red))))
 
    `(show-paren-match-face ((t (:background ,rhombus-orange-1 :foreground ,"black" ))))
 
