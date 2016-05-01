@@ -8,8 +8,5 @@
 /projectile.cache
 /recentf
 /var
-/savefile/custom.el
-/savefile/saved-places
-/savefile/recentf
-/ensime/classpath_2.11.7_0.9.10-SNAPSHOT
-/savefile/saveplace
+/ensime
+/savefile
