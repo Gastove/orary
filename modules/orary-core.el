@@ -1,26 +1,37 @@
 ;;; orary-core.el --- Core behaviors for Orary
 ;;
 ;;; Commentary:
-;; Saving, custom files, core behavior.
+;; Primary configuration for `orary' -- save files, libs we want everywhere.
 ;;; Code:
+
+(require 'f)
+(require 'dash)
+
+(defvar orary/save-root (f-expand "savefile" orary/orary-root-dir))
+
+;; Custom location:
+(-let [custom-file-path (f-expand "custom.el" orary/save-root)]
+  ;; `custom-file' has to exist or Emacs gets crabby
+  (unless (f-exists? custom-file-path)
+    (f-touch custom-file-path))
+  (setq custom-file custom-file-path))
+;; Seems like this never gets loaded unless I load it? Neet.
+(load custom-file)
 
 ;; Remember where we were in a file
 (require 'saveplace)
 (setq-default save-place t)
-(setq save-place-file "~/.emacs.d/savefile/saved-places")
+(setq save-place-file (f-expand "saved-places" orary/save-root))
 
 
 ;; Remember command and file history
 (require 'savehist)
-(setq savehist-file "~/.emacs.d/savefile/savehist")
+(setq savehist-file (f-expand "savehist" orary/save-root))
 
-;; Custom File
-
-(load custom-file)
-
-;; Auto-saves -- stop sticking foo~ files everywhere, jfc
+;;; auto-save
+;; Stop sticking foo~ files everywhere, jfc
 (setq backup-by-copying t
-      backup-directory-alist '(("." . "~/.emacs.d/autosave"))
+      backup-directory-alist `(("." . ,(f-expand "autosave" orary/save-root)))
       delete-old-versions t
       kept-new-versions 6
       kept-old-versions 2
@@ -29,26 +40,7 @@
 ;; Don't make me type "yes" all the time
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Flyspell, for Spelling Checkings.
-(require 'flyspell)
-(setq ispell-program-name "aspell"
-      ispell-extra-args '("--sug-mode=ultra"))
-
-
-(defun orary/flyspell-text ()
-  "Enable flyspell for text modes."
-  (when (executable-find ispell-program-name)
-    (flyspell-mode +1)))
-
-(defun orary/flyspell-programming ()
-  "Enable flyspell for programming modes."
-  (when (executable-find ispell-program-name)
-    (flyspell-prog-mode)))
-
-(add-hook 'prog-mode-hook 'orary/flyspell-programming)
-(add-hook 'text-mode-hook 'orary/flyspell-text)
-
-;;; Whitespace Management and Cleanup, Tabs, Line Length, et al.
+;;---------Whitespace Management and Cleanup, Tabs, Line Length, et al----------
 ;; Repeat after me: fuck tabs.
 (set-default 'indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -62,58 +54,35 @@
 ;; Default line length
 (setq-default fill-column 79)
 
-;; Prepare for the coming of ethan-wspace
-(setq mode-require-final-newline nil)
-
-(use-package ethan-wspace
-  :config (global-ethan-wspace-mode 1)
-  :bind ("C-c n" . ethan-wspace-clean-all)
-  :diminish ethan-wspace-mode)
-
-;;; A thousand packages
-(use-package dired+
-  :init (setq diredp-hide-details-initially-flag nil))
-
-(use-package easy-kill
-  :config
-  (global-set-key [remap kill-ring-save] 'easy-kill))
-
+;;------------------------------Core enhancements--------------------------------
+;;; Improve on built-in bookmarks, dired
+;; Enhance... enhance...
 (use-package bookmark+
   :config
   (setq bookmark-default-file "~/Dropbox/emacs/gifs.bmk"
         bmkp-last-as-first-bookmark-file nil))
 
-(use-package flycheck
-  :config (global-flycheck-mode))
+;; ...enhance
+(use-package dired+
+  :init (setq diredp-hide-details-initially-flag nil))
 
-(use-package yasnippet
-  :config
-  (yas-global-mode 1)
-  (setq yas-prompt-functions '(yas-completing-prompt)))
-
-(use-package wgrep
-  :demand t)
-
-(use-package wgrep-helm
-  :demand t)
-
-(use-package wgrep-ag
-  :demand t
-  :config
-  (autoload 'wgrep-ag-setup "wgrep-ag")
-  (add-hook 'ag-mode-hook 'wgrep-ag-setup)
-  (add-hook 'helm-ag-mode-hook 'wgrep-ag-setup))
-
-;; Navigation
+;;---------------------------------Navigation-----------------------------------
+;; Go directly to the window you want, by number.
 (use-package ace-window
   :demand t
-  :bind ("s-w" . ace-window))
+  :bind (("C-c w" . ace-window)
+         ("s-w" . ace-window)))
 
 (use-package avy
   :config (setq avy-background t
                 avy-style 'at-full)
   :bind ("C-c j" . avy-goto-word-or-subword-1))
 
+;; Window movement by arrow key
+(require 'windmove)
+(windmove-default-keybindings)
+
+;; Zopping is like zapping, but much more flexible and neat.
 (use-package zop-to-char
   :demand t
   :bind ("M-z" . zop-to-char))
