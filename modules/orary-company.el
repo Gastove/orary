@@ -11,7 +11,8 @@
   (global-company-mode)
   (setq company-idle-delay .4
 	company-minimum-prefix-length 2
-	company-tooltip-limit 20))
+	company-tooltip-limit 20)
+  :diminish company)
 
 (provide 'orary-company)
 ;;; orary-company.el ends here

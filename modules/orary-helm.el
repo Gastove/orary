@@ -4,11 +4,15 @@
 ;;
 ;;; Code:
 
+;; Add-ons to Helm
 (use-package helm-descbinds)
+(use-package helm-ag)
+(use-package helm-projectile)
 
 (use-package helm
   :demand t
   :commands helm
+  :diminish helm-mode
   :config
   (require 'helm)
   (require 'helm-config)

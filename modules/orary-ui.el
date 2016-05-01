@@ -4,7 +4,9 @@
 ;;
 ;;; Code:
 
-;; Appearance
+(use-package diminish)
+
+;; Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'rhombus t)
 
@@ -28,13 +30,7 @@
 
 (use-package smart-mode-line
   :config (sml/setup)
-  (setq rm-blacklist '(" MRev"
-		       " yas"
-		       " Helm"
-		       " company"
-		       " guru"
-		       " Pre"
-		       " Rbow"))
+  (setq rm-blacklist '(" MRev"))
 
   (setq sml/shorten-directory t)
   (setq sml/shorten-modes t)
