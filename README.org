@@ -21,7 +21,7 @@ Or, if you want to do Emacs on double-weird Vim mode, try [[https://github.com/s
 
 * Things What Need Getting Done What I know About (⌐■_■)
 
-** TODO Make a unified var for saving info like place, history.
+** DONE Make a unified var for saving info like place, history.
 
 ** TODO Start aggressively using ~diminish~
 
@@ -34,3 +34,14 @@ Or, if you want to do Emacs on double-weird Vim mode, try [[https://github.com/s
 ** DONE ace-window
 ** DONE ace jump to char
 ** TODO Find a way to make package load order not matter
+** DONE Just stop using orary/(packages/install)
+(use-package) is betterrrrrrrrr
+** TODO Dont use rainbow-mode everywhere
+It is as baffling as it can be, for instance, /inside helm-color/.
+** TODO Look in to delete-selection-mode
+** DONE undo-tree
+** DONE Undo tree history saving, auto-revert mode
+ Examples: [[file:~/Code/prelude/core/prelude-editor.el::;;%20autosave%20the%20undo-tree%20history][From prelude]]
+** TODO Auto-save possibilities
+
+ [[file:~/Code/prelude/core/prelude-editor.el::;;%20automatically%20save%20buffers%20associated%20with%20files%20on%20buffer%20switch][Prelude Autosave]]
