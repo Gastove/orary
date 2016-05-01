@@ -5,9 +5,12 @@
 ;;; Code:
 
 (require 'orary-lisp)
+(require 'orary-functions)
 
 (defun orary/elisp-defaults ()
-  (define-key lisp-mode-map (kbd "C-c C-b") 'eval-buffer))
+  "Set defaults for Emacs Lisp buffers."
+  (define-key emacs-lisp-mode-map (kbd "C-c C-u") 'orary/elisp-unbind-symbol)
+  (define-key emacs-lisp-mode-map (kbd "C-c C-b") 'eval-buffer))
 
 (add-hook 'emacs-lisp-mode-hook #'orary/lisp-defaults)
 (add-hook 'emacs-lisp-mode-hook #'orary/elisp-defaults)
