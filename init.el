@@ -41,14 +41,16 @@
 ;; Load this first in case things need executables from the path.
 (require 'orary-osx)
 
-
+;; Core
 (require 'orary-core)
 (require 'orary-ui)
 
+;; Editing
 (require 'orary-editor)
 (require 'orary-programming)
 (require 'orary-text)
 
+;; Tools
 (require 'orary-company)
 (require 'orary-emote)
 (require 'orary-functions)
@@ -62,6 +64,8 @@
 (require 'orary-smartparens)
 (require 'orary-work)
 
+;; Languages
+(require 'orary-clojure)
 (require 'orary-emacs-lisp)
 (require 'orary-nxml)
 (require 'orary-purescript)
