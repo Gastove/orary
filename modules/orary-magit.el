@@ -16,8 +16,10 @@
   :bind (("s-m m" . magit-status)
 	 ("C-x g" . magit-status)
 	 ("s-m l" . magit-log)
-	 ("s-m b" . magit-blame)
-	 ))
+	 ("s-m b" . magit-blame)))
+
+(use-package git-timemachine
+  :bind ("s-m t" . git-timemachine))
 
 (provide 'orary-magit)
 ;;; orary-magit.el ends here
