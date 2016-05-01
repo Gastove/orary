@@ -4,8 +4,9 @@
 ;; Modifiers and the path, mostly.
 ;;; Code:
 
+
 ;; The Path
-(require 'exec-path-from-shell)
+(use-package exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
 ;; OSX Modifier keys
