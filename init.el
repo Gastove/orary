@@ -15,52 +15,24 @@
 (package-initialize)
 
 ;; We're about to use this
-(setq custom-file "~/.emacs.d/savefile/custom.el")
+(defvar orary/orary-root-dir (file-name-directory
+                              (or (buffer-file-name) (file-chase-links load-file-name))))
+
+(add-to-list 'load-path (expand-file-name "modules/" orary/orary-root-dir))
 
 ;; Make sure the package index has been loaded at least once before we try to
 ;; do any installing. After, make a note that we don't have to do this again.
-(unless (and (boundp 'orary/packages-loaded-atleast-once)
-             orary/packages-loaded-atleast-once)
-  (progn
-    (package-refresh-contents)
-    (customize-save-variable 'orary/packages-loaded-atleast-once t)))
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
-;; You know what I hate? Weird stale org installs. Can we not?
-(unless (and (boundp 'orary/fresh-org-installed)
-             orary/fresh-org-installed)
-  (progn
-    (package-install 'org)
-    (customize-save-variable 'orary/fresh-org-installed t)))
+;; We use use-package absolutely everywhere. Make sure it's there.
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
-;; Packages it just doesn't make sense to manage with use-package
-(defvar orary/packages '(dash
-                         exec-path-from-shell
-                         helm-ag
-                         helm-projectile
-                         org-plus-contrib
-                         org-bullets
-                         rainbow-mode
-                         rainbow-delimiters
-                         use-package))
-
-(defun orary/install-package (package)
-  "Install PACKAGE."
-  (unless (package-installed-p package)
-    (package-install package)))
-
-(defun orary/install-packages ()
-  "Install all the packages in orary/packages."
-  (mapc #'orary/install-package orary/packages))
-
-(orary/install-packages)
-
-;; Gets us string-join
-(require 'subr-x)
-
-(defvar orary-dir (file-name-directory
-           (or (buffer-file-name) (file-chase-links load-file-name))))
-
-(add-to-list 'load-path (expand-file-name "modules/" orary-dir))
+;; New Core
+(use-package dash)                      ;; Modern FP, combiners
+(use-package s)                         ;; String manipulation
+(use-package f)                         ;; File manipulation
 
 ;; Package Loading and Configuration
 (setq use-package-always-ensure t)
@@ -71,6 +43,7 @@
 (require 'orary-company)
 (require 'orary-core)
 (require 'orary-ui)
+(require 'orary-editor)
 
 (require 'orary-programming)
 (require 'orary-lisp)
