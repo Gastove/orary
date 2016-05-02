@@ -23,7 +23,7 @@ Or, if you want to do Emacs on double-weird Vim mode, try [[https://github.com/s
 
 ** DONE Make a unified var for saving info like place, history.
 
-** TODO Start aggressively using ~diminish~
+** DONE Start aggressively using ~diminish~
 
 ** TODO ~autosave~ a lot more
 ** TODO move multi-account Stuffz to work congifs so they don't clutter this up
@@ -33,7 +33,7 @@ Or, if you want to do Emacs on double-weird Vim mode, try [[https://github.com/s
 ** TODO load todos in project
 ** DONE ace-window
 ** DONE ace jump to char
-** TODO Find a way to make package load order not matter
+** DONE Find a way to make package load order not matter
 ** DONE Just stop using orary/(packages/install)
 (use-package) is betterrrrrrrrr
 ** TODO Dont use rainbow-mode everywhere
@@ -45,3 +45,7 @@ It is as baffling as it can be, for instance, /inside helm-color/.
 ** TODO Auto-save possibilities
 
  [[file:~/Code/prelude/core/prelude-editor.el::;;%20automatically%20save%20buffers%20associated%20with%20files%20on%20buffer%20switch][Prelude Autosave]]
+** TODO ESS
+** TODO web-mode
+** TODO JavaScript configs
+** TODO Wire up GGTags
