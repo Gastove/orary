@@ -1,5 +1,23 @@
-;;; init.el --- Init file
-;;
+;;; init.el --- Init file to bootstrap Orary!
+
+;; Copyright (C) 2016 Ross Donaldson
+
+;; Author: Ross Donaldson <gastove@gmail.com>
+;; URL: https://github.com/Gastove/orary
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 ;;; Commentary:
 ;;  Yep.  We got code.
 ;;; Code:
@@ -41,36 +59,45 @@
 ;; Load this first in case things need executables from the path.
 (require 'orary-osx)
 
-;; Core
+;;------------------------------Let's Load Orary--------------------------------
+;; Core -- central behaviors and configuration
 (require 'orary-core)
 (require 'orary-ui)
+(require 'orary-functions)
 
-;; Editing
+;; Editing - global configs for editing in src and txt
 (require 'orary-editor)
+(require 'orary-keymap)
 (require 'orary-programming)
 (require 'orary-text)
 
-;; Tools
+;; Magit -- pretty much it's own thing. Double Mega.
+(require 'orary-magit)
+
+;; Minor Modes -- teamwork makes the dream work (●♡∀♡)
 (require 'orary-company)
 (require 'orary-emote)
-(require 'orary-functions)
 (require 'orary-helm)
-(require 'orary-jabber)
-(require 'orary-keymap)
-(require 'orary-magit)
-(require 'orary-mu4e)
-(require 'orary-org)
 (require 'orary-projectile)
 (require 'orary-smartparens)
-(require 'orary-work)
+
+;; Talky -- communicate with others
+(require 'orary-irc)
+(require 'orary-jabber)
+(require 'orary-mu4e)
 
 ;; Languages
 (require 'orary-clojure)
 (require 'orary-emacs-lisp)
+(require 'orary-formats)
 (require 'orary-nxml)
+(require 'orary-org)
 (require 'orary-purescript)
 (require 'orary-python)
 (require 'orary-scala)
+;; 888-748-3705 3233886
+;; Twerk
+(require 'orary-work)
 
 ;; Last but not least, click on the server
 (server-start)
