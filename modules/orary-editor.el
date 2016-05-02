@@ -38,6 +38,8 @@
 ;;----------------------------------Flyspell------------------------------------
 ;; Spelling Checkingz
 (require 'flyspell)
+(require 'diminish)
+
 (setq ispell-program-name "aspell"
       ;; The default mode is too slow, but `ultra' is too imprecise.
       ispell-extra-args '("--sug-mode=fast"))
@@ -45,12 +47,14 @@
 (defun orary/flyspell-text ()
   "Enable flyspell for text modes."
   (when (executable-find ispell-program-name)
-    (flyspell-mode +1)))
+    (flyspell-mode +1)
+    (diminish 'flyspell-mode)))
 
 (defun orary/flyspell-programming ()
   "Enable flyspell for programming modes."
   (when (executable-find ispell-program-name)
-    (flyspell-prog-mode)))
+    (flyspell-prog-mode)
+    (diminish 'flyspell-mode)))
 
 (add-hook 'prog-mode-hook 'orary/flyspell-programming)
 (add-hook 'text-mode-hook 'orary/flyspell-text)
@@ -61,6 +65,7 @@
 ;;; Undo
 (use-package undo-tree
   :demand t
+  :diminish undo-tree-mode
   :config
   (global-undo-tree-mode)
   (-let [undo-tree-dir (f-expand "undo-tree" orary/save-root)]
