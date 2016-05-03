@@ -96,7 +96,9 @@
 (require 'orary-purescript)
 (require 'orary-python)
 (require 'orary-scala)
-;; 888-748-3705 3233886
+(require 'orary-stats)
+(require 'orary-web)
+
 ;; Twerk
 (require 'orary-work)
 

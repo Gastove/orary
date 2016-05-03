@@ -26,8 +26,8 @@ Or, if you want to do Emacs on double-weird Vim mode, try [[https://github.com/s
 ** TODO Dont use rainbow-mode everywhere
 It is as baffling as it can be, for instance, /inside helm-color/.
 ** DONE Look in to delete-selection-mode
-** TODO ESS
-** TODO web-mode
+** DONE ESS
+** DONE web-mode
 ** TODO JavaScript configs
 ** TODO Look in to color-changing the cursor!
 [[https://github.com/ensime/ensime-server/issues/949][Example here]]
