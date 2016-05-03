@@ -9,12 +9,31 @@
 (require 'dash)
 (require 'f)
 
+(use-package anzu
+  :diminish anzu-mode
+  :config
+  (global-anzu-mode)
+  :bind (("M-%" . anzu-query-replace)
+         ("C-M-%" . anzu-query-replace-regexp)))
+
+(delete-selection-mode 1)
+
+(use-package diff-hl
+  :config
+  (global-diff-hl-mode +1)
+  (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
+
 (use-package easy-kill
   :config
   (global-set-key [remap kill-ring-save] 'easy-kill))
 
+(require 'ediff)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 (use-package flycheck
   :config (global-flycheck-mode))
+
+(use-package gist)
 
 (use-package yasnippet
   :diminish yas-minor-mode

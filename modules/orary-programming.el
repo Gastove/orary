@@ -26,15 +26,22 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   :config (global-ethan-wspace-mode 1)
   :diminish ethan-wspace-mode)
 
+(use-package ggtags)
+
+(defvar orary/gg-tags-modes
+  '('c-mode 'c++-mode 'java-mode))
+
 (defun orary/programming-defaults ()
   "Set defaults for programming modes."
   (hl-line-mode +1)
-  (orary/important-comments))
+  (orary/important-comments)
+  (when (apply 'derived-mode-p orary/gg-tags-modes)
+    (ggtags-mode +1)))
 
 (defvar orary/indent-sensitive-modes '())
 
 (defun orary/clean-and-indent-buffer ()
-  "Clean up the indentation of the current buffer according to major mode,
+  "Clean up the indentation of the current buffer according to its major mode,
 then clean up white space."
   (interactive)
   (unless (-contains? orary/indent-sensitive-modes major-mode)

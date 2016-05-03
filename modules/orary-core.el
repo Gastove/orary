@@ -118,5 +118,8 @@
 
 (add-hook 'mouse-leave-buffer-hook 'orary-auto-save-command)
 
+;; Clean up old buffers
+(require 'midnight)
+
 (provide 'orary-core)
 ;;; orary-core.el ends here
