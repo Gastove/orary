@@ -75,6 +75,17 @@
     (insert "- hey hey hey")
     (insert "\n")))
 
+
+
+(defvar orary/change-log-prefix)
+(define-prefix-command orary/change-log-prefix)
+
+;; Commands, somehow:
+;; Goto-or-create-change-log
+;; Insert new header
+;; Insert new subheadings: General, Addition, Deprecation, Breaking Change
+;; Insert new item under subheading
+
 (defun orary/change-log-plus-setup ()
   (rassq-delete-all 'change-log-mode auto-mode-alist))
 
