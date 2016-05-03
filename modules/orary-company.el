@@ -32,7 +32,6 @@
 	company-tooltip-limit 20)
   :diminish company)
 
-(use-package company-jedi)
 (use-package company-tern)
 
 (provide 'orary-company)

@@ -90,7 +90,6 @@
 (require 'orary-clojure)
 (require 'orary-emacs-lisp)
 (require 'orary-formats)
-(require 'orary-nxml)
 (require 'orary-org)
 (require 'orary-purescript)
 (require 'orary-python)
