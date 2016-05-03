@@ -5,6 +5,8 @@
 ;;; Code:
 
 (require 'dash)
+(require 'f)
+(require 's)
 
 ;; With gratitude to Bozhidar Batsov
 (defun orary/prelude-move-beginning-of-line (arg)
@@ -109,6 +111,21 @@ its notion of what a symbol is."
           (makunbound sym)
           (message (format "Unbound symbol '%s'" sym)))
       (message "thing-at-point is not a symbol! Ignoring."))))
+
+(defun orary/load-projectile-projects (code-root)
+  "Read every subdirectory in CODE-ROOT; if a subdirectory is a
+  valid projectile project, add it as a known project."
+  (interactive "D")
+  (-let [cnt 0]
+   (dolist (d (f-directories code-root))
+     (unless (equal 'none (projectile-project-vcs d))
+       ;; Projectile thinks project dirs end in /; f does not.
+       (projectile-add-known-project (s-append d "/"))
+       (message (format "Added %s to known projects" d))
+       (setq cnt (1+ cnt))))
+   (if (eq cnt 0)
+       (message "No projects found")
+     (message (format "Added %s projects" cnt)))))
 
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
