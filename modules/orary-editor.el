@@ -1,9 +1,29 @@
 ;;; orary-editor.el --- Configuring editor behaviors for src + txt
 ;;
+;; Copyright (C) 2016 Ross Donaldson
+
+;; Author: Ross Donaldson <gastove@gmail.com>
+;; URL: https://github.com/Gastove/orary
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 ;;; Commentary:
-;; Some behaviors should go all through `orary'. In general, thins bring in
-;; tools that could apply to many languages (e.g. FlyCheck), but per-language
-;; configuration is in the corresponding orary module.
+;; Some behaviors should permeate `orary'. In general, this module brings in
+;; tools that could apply to many languages (e.g. FlyCheck) or types of writing
+;; (e.g. Org, Markdown), but per-language configuration is in the corresponding
+;; orary module.
+
 ;;; Code:
 
 (require 'dash)
