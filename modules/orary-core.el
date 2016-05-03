@@ -87,5 +87,36 @@
   :demand t
   :bind ("M-z" . zop-to-char))
 
+;;----------------------------------Auto Save------------------------------------
+
+;; Heavily inspired by Prelude
+
+(defun orary/auto-save-command ()
+  "Auto-saves, if it should (which it usually should)."
+  (when (and buffer-file-name
+             (buffer-modified-p (current-buffer))
+             (file-writable-p buffer-file-name))
+    (save-buffer)))
+
+(defadvice switch-to-buffer (before switch-to-buffer-auto-save activate)
+  (orary/auto-save-command))
+
+(defadvice other-window (before other-window-auto-save activate)
+  (orary/auto-save-command))
+
+(defadvice windmove-up (before windmove-up-auto-save activate)
+  (orary/auto-save-command))
+
+(defadvice windmove-down (before windmove-down-auto-save activate)
+  (orary/auto-save-command))
+
+(defadvice windmove-left (before windmove-left-auto-save activate)
+  (orary/auto-save-command))
+
+(defadvice windmove-right (before windmove-right-auto-save activate)
+  (orary/auto-save-command))
+
+(add-hook 'mouse-leave-buffer-hook 'orary-auto-save-command)
+
 (provide 'orary-core)
 ;;; orary-core.el ends here
