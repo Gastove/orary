@@ -34,7 +34,7 @@
 
       ;; Signature
       mu4e-compose-signature (concat "Cheers,\n"
-				     "Ross\n")
+                                     "Ross\n")
 
       ;; ISO date format for headers
       mu4e-headers-date-format "%Y-%m-%d"
@@ -68,7 +68,7 @@
 ;; add option to view html message in a browser
 ;; `aV` in view to activate
 (add-to-list 'mu4e-view-actions
-	     '("ViewInBrowser" . mu4e-action-view-in-browser) t)
+             '("ViewInBrowser" . mu4e-action-view-in-browser) t)
 
 ;; configuration for sending mail
 (setq message-send-mail-function
@@ -83,46 +83,46 @@
 
 ;; Message Composition settings
 (add-hook 'mu4e-compose-mode-hook
-	  (lambda ()
-	    (auto-fill-mode -1)
-	    (whitespace-mode -1)))
+          (lambda ()
+            (auto-fill-mode -1)
+            (whitespace-mode -1)))
 
 ;; The mu4e interface
 ;; Single-character shortcuts
 (setq mu4e-maildir-shortcuts
       '(("/gastove@gmail.com/INBOX"               . ?i)
-	("/gastove@gmail.com/[Gmail].Important"   . ?I)
-	("/gastove@gmail.com/[Gmail].Sent Mail"   . ?s)))
+        ("/gastove@gmail.com/[Gmail].Important"   . ?I)
+        ("/gastove@gmail.com/[Gmail].Sent Mail"   . ?s)))
 
 
 ;; Tweak bookmarked queries
 (add-to-list 'mu4e-bookmarks `(,(string-join
-				 '("flag:unread"
-				   "AND date:today..now"
-				   "NOT maildir:/ross@urbanairship.com/Githubs"
-				   "NOT maildir:'/ross@urbanairship.com/Sales Deals'"
-				   "AND m:/ross@urbanairship.com/INBOX")
-				 " ")
-			       "Today's work unreads" ?i))
+                                 '("flag:unread"
+                                   "AND date:today..now"
+                                   "NOT maildir:/ross@urbanairship.com/Githubs"
+                                   "NOT maildir:'/ross@urbanairship.com/Sales Deals'"
+                                   "AND m:/ross@urbanairship.com/INBOX")
+                                 " ")
+                               "Today's work unreads" ?i))
 (add-to-list 'mu4e-bookmarks `(,(string-join
-				 '("flag:unread"
-				   "AND m:/gastove@gmail.com/INBOX"
-				   "AND date:today..now")
-				 " ") "Today's Personal Unreads" ?h))
+                                 '("flag:unread"
+                                   "AND m:/gastove@gmail.com/INBOX"
+                                   "AND date:today..now")
+                                 " ") "Today's Personal Unreads" ?h))
 (add-to-list 'mu4e-bookmarks `(,(string-join
-				 '("flag:unread"
-				   "AND m:/gastove@gmail.com/INBOX"
-				   "AND date:today..now"
-				   "OR flag:unread"
-				   "AND m:/ross@urbanairship.com/INBOX"
-				   "AND date:today..now")
-				 " ") "Today's Unreads" ?u))
+                                 '("flag:unread"
+                                   "AND m:/gastove@gmail.com/INBOX"
+                                   "AND date:today..now"
+                                   "OR flag:unread"
+                                   "AND m:/ross@urbanairship.com/INBOX"
+                                   "AND date:today..now")
+                                 " ") "Today's Unreads" ?u))
 (add-to-list 'mu4e-bookmarks `(,(string-join
-				 '("m:/gastove@gmail.com/INBOX"
-				   "AND date:10d..now"
-				   "or m:/ross@urbanairship.com/INBOX"
-				   "AND date:10d..now")
-				 " ") "Working Mail" ?w))
+                                 '("m:/gastove@gmail.com/INBOX"
+                                   "AND date:10d..now"
+                                   "or m:/ross@urbanairship.com/INBOX"
+                                   "AND date:10d..now")
+                                 " ") "Working Mail" ?w))
 
 (defvar my-mu4e-account-alist
   '(("gastove@gmail.com"
@@ -137,20 +137,20 @@
 (defun my-mu4e-set-account ()
   "Set the account for composing a message."
   (let* ((account
-	  (if mu4e-compose-parent-message
-	      (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
-		(string-match "/\\(.*?\\)/" maildir)
-		(match-string 1 maildir))
-	    (completing-read (format "Compose with account: (%s) "
-				     (mapconcat #'(lambda (var) (car var))
-						my-mu4e-account-alist "/"))
-			     (mapcar #'(lambda (var) (car var)) my-mu4e-account-alist)
-			     nil t nil nil (caar my-mu4e-account-alist))))
-	 (account-vars (cdr (assoc account my-mu4e-account-alist))))
+          (if mu4e-compose-parent-message
+              (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
+                (string-match "/\\(.*?\\)/" maildir)
+                (match-string 1 maildir))
+            (completing-read (format "Compose with account: (%s) "
+                                     (mapconcat #'(lambda (var) (car var))
+                                                my-mu4e-account-alist "/"))
+                             (mapcar #'(lambda (var) (car var)) my-mu4e-account-alist)
+                             nil t nil nil (caar my-mu4e-account-alist))))
+         (account-vars (cdr (assoc account my-mu4e-account-alist))))
     (if account-vars
-	(mapc #'(lambda (var)
-		  (set (car var) (cadr var)))
-	      account-vars)
+        (mapc #'(lambda (var)
+                  (set (car var) (cadr var)))
+              account-vars)
       (error "No email account found"))))
 
 (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
