@@ -18,6 +18,9 @@
 ;; Seems like this never gets loaded unless I load it? Neet.
 (load custom-file)
 
+;; A good place for abbrevs
+(setq abbrev-file-name (f-expand "abbrev_defs" orary/save-root))
+
 ;; Remember where we were in a file
 (require 'saveplace)
 (setq-default save-place t)
