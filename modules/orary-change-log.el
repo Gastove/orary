@@ -19,7 +19,13 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; Do you keep a change log? You should. http://keepachangelog.com/
+;; Do you keep a change log? You should. http://keepachangelog.com/ Note that
+;; this isn't actually a change log "mode"; in fact, it explicitly disables the
+;; existing GNU change log mode. Instead, `change-log-plus' takes the approach
+;; that you'll want the major mode of your change log (probably markdown, but
+;; maybe org or rst) to do the mode-heavy-lifting, and instead tries to provide
+;; sensible global functions for easily adding to your log.
+
 ;;; Code:
 
 (require 'yasnippet)
