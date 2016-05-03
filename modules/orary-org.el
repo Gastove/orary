@@ -63,7 +63,7 @@
         org-confirm-babel-evaluate nil
 
         ;; Refiling defaults
-        org-refile-targets '((org-agenda-files :maxlevel . 5))
+        org-refile-targets '((org-agenda-files . (:maxlevel . 5)))
         org-refile-allow-creating-parent-nodes 'confirm
 
         org-agenda-text-search-extra-files '(agenda-archives)
