@@ -25,7 +25,7 @@ Or, if you want to do Emacs on double-weird Vim mode, try [[https://github.com/s
 
 ** DONE Start aggressively using ~diminish~
 
-** TODO ~autosave~ a lot more
+** DONE ~autosave~ a lot more
 ** TODO move multi-account Stuffz to work congifs so they don't clutter this up
 ** DONE Magit colors are all fucked, but only sometimes
 ** DONE my version of C-c n isn't doing what I expected; fix this.
@@ -42,7 +42,7 @@ It is as baffling as it can be, for instance, /inside helm-color/.
 ** DONE undo-tree
 ** DONE Undo tree history saving, auto-revert mode
  Examples: [[file:~/Code/prelude/core/prelude-editor.el::;;%20autosave%20the%20undo-tree%20history][From prelude]]
-** TODO Auto-save possibilities
+** DONE Auto-save possibilities
 
  [[file:~/Code/prelude/core/prelude-editor.el::;;%20automatically%20save%20buffers%20associated%20with%20files%20on%20buffer%20switch][Prelude Autosave]]
 ** TODO ESS
