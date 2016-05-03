@@ -21,33 +21,40 @@ Or, if you want to do Emacs on double-weird Vim mode, try [[https://github.com/s
 
 * Things What Need Getting Done What I know About (⌐■_■)
 
+** TODO move multi-account Stuffz to work congifs so they don't clutter this up
+** TODO load todos in project
+** TODO Dont use rainbow-mode everywhere
+It is as baffling as it can be, for instance, /inside helm-color/.
+** DONE Look in to delete-selection-mode
+** TODO ESS
+** TODO web-mode
+** TODO JavaScript configs
+** TODO Look in to color-changing the cursor!
+[[https://github.com/ensime/ensime-server/issues/949][Example here]]
 ** DONE Make a unified var for saving info like place, history.
 
 ** DONE Start aggressively using ~diminish~
 
 ** DONE ~autosave~ a lot more
-** TODO move multi-account Stuffz to work congifs so they don't clutter this up
 ** DONE Magit colors are all fucked, but only sometimes
 ** DONE my version of C-c n isn't doing what I expected; fix this.
 ** DONE flyspell
-** TODO load todos in project
 ** DONE ace-window
 ** DONE ace jump to char
 ** DONE Find a way to make package load order not matter
 ** DONE Just stop using orary/(packages/install)
 (use-package) is betterrrrrrrrr
-** TODO Dont use rainbow-mode everywhere
-It is as baffling as it can be, for instance, /inside helm-color/.
-** TODO Look in to delete-selection-mode
 ** DONE undo-tree
 ** DONE Undo tree history saving, auto-revert mode
  Examples: [[file:~/Code/prelude/core/prelude-editor.el::;;%20autosave%20the%20undo-tree%20history][From prelude]]
 ** DONE Auto-save possibilities
 
  [[file:~/Code/prelude/core/prelude-editor.el::;;%20automatically%20save%20buffers%20associated%20with%20files%20on%20buffer%20switch][Prelude Autosave]]
-** TODO ESS
-** TODO web-mode
-** TODO JavaScript configs
-** TODO Wire up GGTags
-** TODO Look in to color-changing the cursor!
-[[https://github.com/ensime/ensime-server/issues/949][Example here]]
+** DONE Wire up GGTags
+** DONE Add [6/6]:
+- [X] diff-hl
+- [X] beacon
+- [X] anzu
+- [X] gist
+- [X] ediff
+- [X] midnight
