@@ -18,7 +18,8 @@
     ("Stroll ᕕ( ᐛ )ᕗ" . "ᕕ( ᐛ )ᕗ")
     ("Love (●♡∀♡)" . "(●♡∀♡)")
     ("wut ⊙△⊙" . "⊙△⊙")
-    ("Bring it (ง •̀_•́)ง" . "(ง •̀_•́)ง")))
+    ("Bring it (ง •̀_•́)ง" . "(ง •̀_•́)ง")
+    ("Serioudly? (¬_¬)" . "(¬_¬)")))
 
 (defun orary/emote-insert-emote (emotes)
   "Entertains you with messaged emotes, then copies the final
