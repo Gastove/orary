@@ -49,3 +49,5 @@ It is as baffling as it can be, for instance, /inside helm-color/.
 ** TODO web-mode
 ** TODO JavaScript configs
 ** TODO Wire up GGTags
+** TODO Look in to color-changing the cursor!
+[[https://github.com/ensime/ensime-server/issues/949][Example here]]
