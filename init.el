@@ -33,7 +33,7 @@
 
 ;; Make sure the package index has been loaded at least once before we try to
 ;; do any installing. After, make a note that we don't have to do this again.
-(when (not package-archive-contents)
+(unless package-archive-contents
   (package-refresh-contents))
 
 ;; We use use-package absolutely everywhere. Make sure it's there.
@@ -46,7 +46,9 @@
 (setq use-package-always-ensure t)
 
 ;; New Core
-(use-package dash)                      ;; Modern FP, combiners
+(use-package dash                      ;; Modern FP, combiners
+  :config
+  (dash-enable-font-lock))
 (use-package s)                         ;; String manipulation
 (use-package f)                         ;; File manipulation
 
