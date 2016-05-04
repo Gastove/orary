@@ -25,6 +25,18 @@
 ;; that you'll want the major mode of your change log (probably markdown, but
 ;; maybe org or rst) to do the mode-heavy-lifting, and instead tries to provide
 ;; sensible global functions for easily adding to your log.
+;;
+;; We'll differentiate between an `entry', e.g.:
+;;
+;; ## [0.1.0] - 2016-05-02
+;;
+;; A `heading', .e.g.:
+;;
+;; ### General
+;;
+;; And an item:
+;;
+;; - Substantial refactor for code clarity
 
 ;;; Code:
 
@@ -34,13 +46,22 @@
 
 
 (defvar orary/root-dirs
-  '(".git" ".hg" ".bzr" ".projectile"))
+  '(".git" ".hg" ".bzr" ".projectile")
+  "What do we recognize as a `project'?")
 
-(defvar orary/change-log-name "CHANGELOG.md")
+(defvar orary/change-log-name
+  "CHANGELOG.md"
+  "What is your changelog called?")
+
+(defvar orary/change-log-entry-heading "##")
 
 (defvar orary/change-log-entry-snippet
-  "## [`clp-proj-version`] - `(orary/insert-iso-date)`\n$0"
+  (format "%s [`clp-proj-version`] - `(orary/insert-iso-date)`\n$0"
+          orary/change-log-entry-heading)
   "A yasnippet snippet for adding a new change log entry.")
+
+(defvar orary/change-log-heading-snippet
+  "### ${1:`clp-header`}\n$0")
 
 (defun orary/project-root-p (dir)
   (-filter (lambda (d) (f-exists? (f-expand d dir))) orary/root-dirs))
@@ -52,6 +73,9 @@
 (defun orary/create-new-change-log (log-name)
   (create-file-buffer log-name))
 
+;; TODO: the `find' part of this should probably consider other
+;; spelling/capitalization variants -- ChangeLog, CHANGE-LOG -- and different
+;; extensions -- md, org, rst, txt at least.
 (defun orary/find-or-create-change-log ()
   (interactive)
   (-let* ((project-root (orary/clp-find-project-root))
@@ -60,13 +84,21 @@
     (set-buffer change-log-buf)
     (switch-to-buffer change-log-buf)))
 
-(defun orary/insert-change-log-heading ()
+(defun orary/change-log-insert (thing)
+  (interactive)
+  (-let (()))
+  (cond
+   ((eq thing 'entry) (yas-expand-snippet orary/change-log-entry-snippet
+                                          (point) (point)
+                                          '((clp-proj-version "0.1.0"))))))
+
+(defun orary/insert-change-log-entry ()
   (interactive)
   (yas-expand-snippet orary/change-log-entry-snippet
                       (point) (point)
                       '((clp-proj-version "0.1.0"))))
 
-(defun orary/insert-change-log-entry ()
+(defun orary/insert-change-log-heading ()
   (interactive)
   (save-excursion
     (goto-char (point-min))
