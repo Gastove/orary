@@ -11,7 +11,6 @@
 (require 'mu4e-contrib)
 (require 'org-mu4e)
 
-
 (setq mu4e-maildir "~/.Mail"
       mu4e-drafts-folder "/gastove@gmail.com/[Gmail].Drafts"
       mu4e-sent-folder   "/gastove@gmail.com/[Gmail].Sent Mail"
@@ -34,7 +33,7 @@
 
       ;; Signature
       mu4e-compose-signature (concat "Cheers,\n"
-                                     "Ross\n")
+                                     "-- Ross\n")
 
       ;; ISO date format for headers
       mu4e-headers-date-format "%Y-%m-%d"
