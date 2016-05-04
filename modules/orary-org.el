@@ -13,19 +13,19 @@
 ;; All kinds of add-ons and extensions to org, can't even remember what all is in there :P
 (use-package org-plus-contrib)
 
+(defun orrary/org-setup-fn ()
+  ;; Make sure auto-fill-mode is on. Pretty much always need it.
+  (turn-on-auto-fill)
+                                        ;
+  ;; Dramatically improve company completion in org Org uses the `pcomplete'
+  ;; system; wire it up
+  (add-pcomplete-to-capf)
+  (require 'org-bullets)
+  (org-bullets-mode 1))
+
 (use-package org
   :config
-  (add-hook 'org-mode-hook (lambda ()
-                             ;; Make sure auto-fill-mode is on. Pretty
-                             ;; much always need it.
-                             (turn-on-auto-fill)
-                                        ;
-                             ;; Dramatically improve company
-                             ;; completion in org Org uses the
-                             ;; `pcomplete' system; wire it up
-                             (add-pcomplete-to-capf)
-                             (require 'org-bullets)
-                             (org-bullets-mode 1)))
+  (add-hook 'org-mode-hook 'orary/org-setup-fn)
   ;; TODO Keyword states:
   ;; > In-Progress states: BACKLOG, TODO, DOING, BLOCKED
   ;; > Finished states:    DONE, IMPOSSIBLE, CANCELLED
@@ -113,7 +113,9 @@
      (sql . t)))
 
   :bind (("C-c a" . org-agenda)
-         ("C-c c" . org-capture)))
+         ("C-c c" . org-capture)
+         ("C-c l" . org-store-link)
+         ("C-c b" . org-iswitchb)))
 
 (provide 'orary-org)
 ;;; orary-org.el ends here
