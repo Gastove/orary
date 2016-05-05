@@ -119,7 +119,7 @@
 (defadvice windmove-right (before windmove-right-auto-save activate)
   (orary/auto-save-command))
 
-(add-hook 'mouse-leave-buffer-hook 'orary-auto-save-command)
+(add-hook 'mouse-leave-buffer-hook 'orary/auto-save-command)
 
 ;; Clean up old buffers
 (require 'midnight)
