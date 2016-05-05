@@ -120,7 +120,7 @@ its notion of what a symbol is."
    (dolist (d (f-directories code-root))
      (unless (equal 'none (projectile-project-vcs d))
        ;; Projectile thinks project dirs end in /; f does not.
-       (projectile-add-known-project (s-append d "/"))
+       (projectile-add-known-project (s-append "/" d))
        (message (format "Added %s to known projects" d))
        (setq cnt (1+ cnt))))
    (if (eq cnt 0)
