@@ -13,19 +13,18 @@
 ;; All kinds of add-ons and extensions to org, can't even remember what all is in there :P
 (use-package org-plus-contrib)
 
-(defun orrary/org-setup-fn ()
-  ;; Make sure auto-fill-mode is on. Pretty much always need it.
-  (turn-on-auto-fill)
-                                        ;
-  ;; Dramatically improve company completion in org Org uses the `pcomplete'
-  ;; system; wire it up
-  (add-pcomplete-to-capf)
-  (require 'org-bullets)
-  (org-bullets-mode 1))
-
 (use-package org
   :config
-  (add-hook 'org-mode-hook 'orary/org-setup-fn)
+  (add-hook 'org-mode-hook (lambda ()
+                             ;; Make sure auto-fill-mode is on. Pretty much always need it.
+                             (turn-on-auto-fill)
+                                        ;
+                             ;; Dramatically improve company completion in org Org uses the `pcomplete'
+                             ;; system; wire it up
+                             (add-pcomplete-to-capf)
+                             (require 'org-bullets)
+                             (org-bullets-mode 1)))
+  (require 'ox-confluence)
   ;; TODO Keyword states:
   ;; > In-Progress states: BACKLOG, TODO, DOING, BLOCKED
   ;; > Finished states:    DONE, IMPOSSIBLE, CANCELLED
@@ -42,16 +41,16 @@
           ("CANCELLED" . org-done)
           ("IMPOSSIBLE" . org-done)
           ("DONE" . org-done))
+
         ;; Config org export backends
-        org-export-backends
-        `(beamer
-          ascii
-          md
-          pandoc
-          gfm
-          deck
-          html
-          gnuplot)
+        org-export-backends `(ascii
+                              beamer
+                              confluence
+                              deck
+                              gfm
+                              gnuplot
+                              html
+                              md)
 
         ;; Export defaults: no table of contents, no numbered headers, don't convert ^
         ;; or _ to superscripts
@@ -101,16 +100,15 @@
 
   ;; Support for Babel Mode code blocks
   ;; NOTE: requires the addition of the org elpa repo!
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((python . t)
-     (emacs-lisp . t)
-     (java . t)
-     (sh . t)
-     (R . t)
-     (scala . t)
-     (scheme . t)
-     (sql . t)))
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '((python . t)
+                                 (emacs-lisp . t)
+                                 (java . t)
+                                 (sh . t)
+                                 (R . t)
+                                 (scala . t)
+                                 (scheme . t)
+                                 (sql . t)))
 
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
