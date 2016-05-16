@@ -12,6 +12,8 @@
 (use-package org-bullets)
 ;; All kinds of add-ons and extensions to org, can't even remember what all is in there :P
 (use-package org-plus-contrib)
+;; Additional exporters
+(use-package ox-gfm)
 
 (use-package org
   :config
