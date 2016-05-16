@@ -17,6 +17,8 @@
 (setq initial-buffer-choice t)
 (setq column-number-mode t)
 
+(add-to-list 'default-frame-alist '(fullscreen . fullscreen))
+
 ;; Alerts
 (defun orary/visible-bell ()
   "Replace the bell sound with a visible bell."
@@ -43,7 +45,7 @@
   (add-to-list 'sml/replacer-regexp-list '("^:CODE:\\(?:.*\\)\\{1,2\\}/src/test/java/" ":STJ:") t)
   (add-to-list 'sml/replacer-regexp-list '("^:CODE:\\(?:.*\\)\\{1,2\\}/src/main/scala/" ":SMS:") t)
   (add-to-list 'sml/replacer-regexp-list '("^:CODE:\\(?:.*\\)\\{1,2\\}/src/test/scala/" ":STS:") t)
-  
+
   ;; Make sure I notice when I'm in
   (add-to-list 'rm-text-properties '(" Sp/s" 'face 'font-lock-warning-face)))
 
