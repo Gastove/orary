@@ -469,6 +469,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(whitespace-empty ((t (:background ,rhombus-bronze))))
    `(whitespace-space-after-tab ((t (:background ,rhombus-yellow :foreground ,rhombus-red))))
 
+   ;; Ensime
+   `(ensime-implicit-highlight ((t (:underline (:color ,rhombus-charcoal) :weight normal))))
    ))
 
 ;;; Footer
