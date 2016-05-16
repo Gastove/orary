@@ -28,7 +28,8 @@
     (f-mkdir erc-log-dir))
   (setq erc-autojoin-channels-alist '(("freenode.net"
                                        "#emacs"
-                                       "#clojure"))
+                                       "#clojure"
+                                       "#purescript"))
         erc-nick "gastove"
 
         ;; Interpret mIRC-style color commands in IRC chats
