@@ -7,6 +7,8 @@
 (require 'f)
 (require 'dash)
 
+(add-to-list 'load-path (f-expand "vendor/" orary/orary-root-dir))
+
 (defvar orary/save-root (f-expand "savefile" orary/orary-root-dir))
 
 ;; Custom location:
