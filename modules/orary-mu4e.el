@@ -19,7 +19,7 @@
       mu4e-sent-messages-behavior 'delete
 
       ;; Let offlineimap's autorefresh handle getting new mail, but automatically re-index:
-      mu4e-get-mail-command "offlineimap"
+      mu4e-get-mail-command "true"
 
       ;; Make mu4e the default user agent
       mail-user-agent 'mu4e-user-agent
@@ -32,8 +32,7 @@
       user-full-name  "Ross Donaldson"
 
       ;; Signature
-      mu4e-compose-signature (concat "Cheers,\n"
-                                     "-- Ross\n")
+      mu4e-compose-signature "Ross Donaldson\nData Scientist, Urban Airship\nTechnologist, Reed College Software Design Studio\nhttp://csv.rodeo"
 
       ;; ISO date format for headers
       mu4e-headers-date-format "%Y-%m-%d"
@@ -55,10 +54,11 @@
       mu4e-hide-index-messages t
 
       ;; Filter autocomplete addresses more intelligently
-      mu4e-compose-complete-only-after "2013-01-01"
+      mu4e-compose-complete-only-after "2014-01-01"
 
       ;; Capture better
       org-mu4e-link-query-in-headers-mode nil)
+
 ;; use imagemagick, if available
 (when (fboundp 'imagemagick-register-types)
   (imagemagick-register-types))
