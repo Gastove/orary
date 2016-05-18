@@ -27,8 +27,9 @@
 
 (use-package alert
   :config
-  (setq alert-default-style 'growl))
-;;(alert "hi")
+  (if (eq system-type 'darwin)
+      (setq alert-default-style 'growl)
+    (setq alert-default-style 'libnotify)))
 
 (use-package sauron
   :config
