@@ -39,7 +39,7 @@ Currently catches: FIX(ME)?, TODO, NOTE."
 then clean up white space."
   (interactive)
   (unless (or (-contains? orary/indent-sensitive-modes major-mode)
-              'orary/disable-auto-indent)
+              orary/disable-auto-indent)
         (indent-region (point-min) (point-max)))
   (ethan-wspace-clean-all))
 
