@@ -17,7 +17,8 @@
 (setq initial-buffer-choice t)
 (setq column-number-mode t)
 
-(add-to-list 'default-frame-alist '(fullscreen . fullscreen))
+(if (eq system-type 'darwin)
+ (add-to-list 'default-frame-alist '(fullscreen . fullscreen)))
 
 ;; Alerts
 (defun orary/visible-bell ()
