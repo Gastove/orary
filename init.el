@@ -88,6 +88,7 @@
 (require 'orary-jabber)
 (require 'orary-mu4e)
 (require 'orary-notify)
+(require 'orary-twitter)
 
 ;; Languages
 (require 'orary-clojure)
