@@ -53,15 +53,33 @@
   "CHANGELOG.md"
   "What is your changelog called?")
 
-(defvar orary/change-log-entry-heading "##")
+(defvar orary/project-version nil
+  "What's the version of this project?")
 
+(make-local-variable orary/project-version)
+
+;;-----------------------------------Markers-------------------------------------
+(defvar orary/change-log-entry-marker "##")
+
+(defvar orary/change-log-heading-marker "###")
+
+;;----------------------------------Snippets------------------------------------
 (defvar orary/change-log-entry-snippet
   (format "%s [`clp-proj-version`] - `(orary/insert-iso-date)`\n$0"
-          orary/change-log-entry-heading)
+          orary/change-log-entry-marker)
   "A yasnippet snippet for adding a new change log entry.")
 
 (defvar orary/change-log-heading-snippet
-  "### ${1:`clp-header`}\n$0")
+  (format "%s ${1:`clp-header`}\n$0"
+          orary/change-log-heading-marker))
+
+;;-----------------------------------regexen-------------------------------------
+
+
+(defvar orary/change-log-header-regexp
+  "\\[0\.1\.0\\]"
+  (let ((version-string (regexp-quote orary/project-version)))))
+
 
 (defun orary/project-root-p (dir)
   (-filter (lambda (d) (f-exists? (f-expand d dir))) orary/root-dirs))
@@ -94,6 +112,8 @@
 
 (defun orary/insert-change-log-entry ()
   (interactive)
+  (goto-char 1)
+  (open-line 1)
   (yas-expand-snippet orary/change-log-entry-snippet
                       (point) (point)
                       '((clp-proj-version "0.1.0"))))
