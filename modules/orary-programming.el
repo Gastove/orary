@@ -29,7 +29,7 @@ Currently catches: FIX(ME)?, TODO, NOTE."
 (defvar orary/gg-tags-modes
   '(c-mode 'c++-mode java-mode emacs-lisp-mode))
 
-(defvar orary/indent-sensitive-modes '())
+(defvar orary/indent-sensitive-modes '(conf-mode yaml-mode))
 
 (defvar orary/disable-auto-indent nil)
 (make-variable-buffer-local 'orary/disable-auto-indent)
@@ -40,7 +40,7 @@ then clean up white space."
   (interactive)
   (unless (or (-contains? orary/indent-sensitive-modes major-mode)
               orary/disable-auto-indent)
-        (indent-region (point-min) (point-max)))
+    (indent-region (point-min) (point-max)))
   (ethan-wspace-clean-all))
 
 (defun orary/programming-defaults ()
