@@ -29,7 +29,7 @@ Currently catches: FIX(ME)?, TODO, NOTE."
 (defvar orary/gg-tags-modes
   '(c-mode 'c++-mode java-mode emacs-lisp-mode))
 
-(defvar orary/indent-sensitive-modes '(conf-mode yaml-mode))
+(defvar orary/indent-sensitive-modes '(conf-mode yaml-mode scala-mode purescript-mode))
 
 (defvar orary/disable-auto-indent nil)
 (make-variable-buffer-local 'orary/disable-auto-indent)
