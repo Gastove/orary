@@ -14,6 +14,7 @@
 (use-package org-plus-contrib)
 ;; Additional exporters
 (use-package ox-gfm)
+(use-package ox-rst)
 
 (use-package org
   :config
@@ -52,7 +53,8 @@
                               gfm
                               gnuplot
                               html
-                              md)
+                              md
+                              rst)
 
         ;; Export defaults: no table of contents, no numbered headers, don't convert ^
         ;; or _ to superscripts
