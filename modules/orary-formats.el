@@ -15,15 +15,9 @@
 (use-package json-mode
   :mode "\\.json\\'")
 
-(use-package markdown-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\\.markdown\\'". gfm-mode))
-  (add-to-list 'auto-mode-alist '("\\.mdown\\'". gfm-mode))
-  (add-to-list 'auto-mode-alist '("\\.md\\'". gfm-mode)))
-
 ;; nXML
 (with-eval-after-load "smartparens"
- (push 'nxml-mode sp-ignore-modes-list))
+  (push 'nxml-mode sp-ignore-modes-list))
 
 (add-hook 'nxml-mode-hook
           (lambda ()
