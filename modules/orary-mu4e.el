@@ -5,65 +5,59 @@
 ;;; Code:
 
 ;;; mu4e
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
 
-(require 'f)
+(require 'mu4e)
+(require 'mu4e-contrib)
+(require 'org-mu4e)
 
-;; Don't do *any* of this is mu4e isn't available
-(when (f-exists? "/usr/local/share/emacs/site-lisp/mu4e")
+(setq mu4e-maildir "~/.Mail"
+      mu4e-drafts-folder "/gastove@gmail.com/[Gmail].Drafts"
+      mu4e-sent-folder   "/gastove@gmail.com/[Gmail].Sent Mail"
 
-  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
+      ;; don't save message to Sent Messages, Gmail/IMAP/Offlineimap takes care of this
+      mu4e-sent-messages-behavior 'delete
 
-  (require 'mu4e)
-  (require 'mu4e-contrib)
-  (require 'org-mu4e)
+      ;; Let offlineimap's autorefresh handle getting new mail, but automatically re-index:
+      mu4e-get-mail-command "true"
 
-  (setq mu4e-maildir "~/.Mail"
-        mu4e-drafts-folder "/gastove@gmail.com/[Gmail].Drafts"
-        mu4e-sent-folder   "/gastove@gmail.com/[Gmail].Sent Mail"
+      ;; Make mu4e the default user agent
+      mail-user-agent 'mu4e-user-agent
 
-        ;; don't save message to Sent Messages, Gmail/IMAP/Offlineimap takes care of this
-        mu4e-sent-messages-behavior 'delete
+      ;; fetch mail every 5 mins
+      mu4e-update-interval 300
 
-        ;; Let offlineimap's autorefresh handle getting new mail, but automatically re-index:
-        mu4e-get-mail-command "true"
+      ;; Name, main email address
+      user-mail-address "gastove@gmail.com"
+      user-full-name  "Ross Donaldson"
 
-        ;; Make mu4e the default user agent
-        mail-user-agent 'mu4e-user-agent
+      ;; Signature
+      mu4e-compose-signature "Ross Donaldson\nData Scientist, Urban Airship\nTechnologist, Reed College Software Design Studio\nhttp://csv.rodeo"
 
-        ;; fetch mail every 5 mins
-        mu4e-update-interval 300
+      ;; ISO date format for headers
+      mu4e-headers-date-format "%Y-%m-%d"
 
-        ;; Name, main email address
-        user-mail-address "gastove@gmail.com"
-        user-full-name  "Ross Donaldson"
+      ;; Convert HTML emails to nicely readable text
+      mu4e-html2text-command 'mu4e-shr2text
 
-        ;; Signature
-        mu4e-compose-signature "Ross Donaldson\nData Scientist, Urban Airship\nTechnologist, Reed College Software Design Studio\nhttp://csv.rodeo"
+      ;; Technically not mu4e, but shr is hard to read:
+      shr-color-visible-luminance-min 80
 
-        ;; ISO date format for headers
-        mu4e-headers-date-format "%Y-%m-%d"
+      ;; If the same email is in two different folders, don't show it twice
+      ;; in search results
+      mu4e-headers-skip-duplicates t
 
-        ;; Convert HTML emails to nicely readable text
-        mu4e-html2text-command 'mu4e-shr2text
+      ;; Show images inline
+      mu4e-view-show-images t
 
-        ;; Technically not mu4e, but shr is hard to read:
-        shr-color-visible-luminance-min 80
+      ;; Silence the damn minibuffer updates
+      mu4e-hide-index-messages t
 
-        ;; If the same email is in two different folders, don't show it twice
-        ;; in search results
-        mu4e-headers-skip-duplicates t
+      ;; Filter autocomplete addresses more intelligently
+      mu4e-compose-complete-only-after "2014-01-01"
 
-        ;; Show images inline
-        mu4e-view-show-images t
-
-        ;; Silence the damn minibuffer updates
-        mu4e-hide-index-messages t
-
-        ;; Filter autocomplete addresses more intelligently
-        mu4e-compose-complete-only-after "2014-01-01"
-
-        ;; Capture better
-        org-mu4e-link-query-in-headers-mode nil))
+      ;; Capture better
+      org-mu4e-link-query-in-headers-mode nil)
 
 ;; use imagemagick, if available
 (when (fboundp 'imagemagick-register-types)

@@ -86,7 +86,9 @@
 ;; Talky -- communicate with others
 (require 'orary-irc)
 (require 'orary-jabber)
-(require 'orary-mu4e)
+;; Only load mu4e if it's there
+(when (f-exists? "/usr/local/share/emacs/site-lisp/mu4e")
+  (require 'orary-mu4e))
 (require 'orary-notify)
 (require 'orary-twitter)
 
