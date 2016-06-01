@@ -78,8 +78,8 @@
 
 ;; Minor Modes -- teamwork makes the dream work (●♡∀♡)
 (require 'orary-company)
-(require 'orary-emote)
 (require 'orary-helm)
+(require 'orary-emote)
 (require 'orary-projectile)
 (require 'orary-smartparens)
 
