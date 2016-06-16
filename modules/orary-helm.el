@@ -6,7 +6,7 @@
 
 ;; Add-ons to Helm
 (use-package helm-descbinds)
-(use-package helm-ag)
+(use-package helm-ag :demand t)
 (use-package helm-projectile)
 
 (use-package helm
