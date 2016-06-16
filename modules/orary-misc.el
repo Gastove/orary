@@ -5,11 +5,11 @@
 ;; module. This is for those things.
 ;;; Code:
 
-(require 'company)
-
 (use-package nim-mode
   :mode "\\.nim\\'"
   :config
+  (require 'company-nim)
+  (require 'flycheck-nim-async)
   (add-to-list 'company-backends '(company-nim :with company-nim-builtin)))
 
 (provide 'orary-misc)
