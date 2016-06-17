@@ -4,20 +4,25 @@
 ;; YAS
 ;;; Code:
 
+(require 'orary-helm)
+
 (use-package persp-projectile)
+(use-package ag)
 (use-package projectile
   :demand t
   :config
   (require 'persp-projectile)
   (require 'helm-projectile)
+  (require 'ag)
+  (require 'helm-ag)
   (persp-mode)
   (helm-projectile-on)
   (projectile-global-mode +1)
   (setq projectile-completion-system 'helm
-	projectile-switch-project-action 'projectile-dired)
+        projectile-switch-project-action 'projectile-dired)
   :bind-keymap ("s-p" . projectile-command-map)
   :bind (:map projectile-mode-map
-	      ("C-c p p" . projectile-persp-switch-project)))
+              ("C-c p p" . projectile-persp-switch-project)))
 
 (provide 'orary-projectile)
 ;;; orary-projectile.el ends here
