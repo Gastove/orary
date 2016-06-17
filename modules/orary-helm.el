@@ -26,7 +26,9 @@
         ;; Fuzzy Matching
         helm-buffers-fuzzy-matching            t
         helm-M-x-fuzzy-match                   t
-        helm-recentf-fuzzy-match               t)
+        helm-recentf-fuzzy-match               t
+        helm-ff-skip-boring-files              t)
+  (add-to-list 'helm-boring-file-regexp-list "\\.py[oc]$")
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
   (setq projectile-completion-system 'helm)
