@@ -55,11 +55,22 @@
 
 (use-package gist)
 
+(defun yas-advise-indent-function (function-symbol)
+  (eval `(defadvice ,function-symbol (around yas-try-expand-first activate)
+           ,(format
+             "Try to expand a snippet before point, then call `%s' as usual"
+             function-symbol)
+           (let ((yas-fallback-behavior nil))
+             (unless (and (interactive-p)
+                          (yas-expand))
+               ad-do-it)))))
+
 (use-package yasnippet
   :diminish yas-minor-mode
   :config
   (yas-global-mode 1)
-  (setq yas-prompt-functions '(yas-completing-prompt)))
+  (setq yas-prompt-functions '(yas-completing-prompt))
+  (yas-advise-indent-function 'indent-for-tab-command))
 
 (use-package wgrep
   :demand t)
