@@ -57,7 +57,7 @@
 (global-key-binding (kbd "RET") 'newline-and-indent)
 
 ;; Default line length
-(setq-default fill-column 79)
+(setq-default fill-column 80)
 
 ;;------------------------------Core enhancements--------------------------------
 ;;; Improve on built-in bookmarks, dired
