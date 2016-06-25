@@ -65,8 +65,7 @@
 
         ;; utf-8 always and forever
         erc-server-coding-system '(utf-8 . utf-8)
-
-        erc-autojoin-channels-alist))
+        ))
 
 ;; Functions from Prelude, praise be.
 
