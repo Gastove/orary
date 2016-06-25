@@ -102,6 +102,7 @@
 (require 'orary-scala)
 (require 'orary-stats)
 (require 'orary-web)
+(require 'orary-misc)
 
 ;; Twerk
 (require 'orary-work)
