@@ -35,5 +35,8 @@
 (use-package yaml-mode
   :mode "\\.yaml\\'")
 
+;; Thrift
+(use-package thrift)
+
 (provide 'orary-formats)
 ;;; orary-formats.el ends here
