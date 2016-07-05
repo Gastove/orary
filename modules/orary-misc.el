@@ -19,6 +19,7 @@
 
 (use-package rust-mode)
 
+;; Scheme
 (use-package geiser
   :config
   (add-hook 'scheme-mode-hook
@@ -28,6 +29,8 @@
   (setq geiser-mode-start-repl-p t
         geiser-repl-history-filename
         (expand-file-name "geiser-history" orary/save-root)))
+
+(use-package haskell-mode)
 
 (provide 'orary-misc)
 ;;; orary-misc.el ends here
