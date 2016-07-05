@@ -19,6 +19,9 @@
       ;; don't save message to Sent Messages, Gmail/IMAP/Offlineimap takes care of this
       mu4e-sent-messages-behavior 'delete
 
+      ;; Don't include me in reply-alls
+      mu4e-compose-dont-reply-to-self t
+
       ;; Let offlineimap's autorefresh handle getting new mail, but automatically re-index:
       mu4e-get-mail-command "true"
 
