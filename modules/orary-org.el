@@ -23,6 +23,7 @@
 ;;; Code:
 
 (require 'f)
+(require 's)
 
 ;; Org
 (defun add-pcomplete-to-capf ()
@@ -111,11 +112,10 @@
           ("f" "File-Todo" entry (file+headline "" "General To-Dos")
            "** TODO %?\n %i\n %A\n")
           ("e" "Email" entry (file+headline "" "General To-Dos")
-           ,(string-join '("** TODO Reply to %:from re:%?"
+           ,(s-join "\n" '("** TODO Reply to %:from re:%?"
                            "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
                            "\%i"
-                           "%a\n")
-                         "\n"))
+                           "%a\n")))
           ("g" "Log" entry (file+headline "" "Log") "** email%?\n %l")))
 
   ;; Jump and Sparse-Tree contexts

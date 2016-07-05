@@ -10,6 +10,7 @@
 (require 'mu4e)
 (require 'mu4e-contrib)
 (require 'org-mu4e)
+(require 's)
 
 (setq mu4e-maildir "~/.Mail"
       mu4e-drafts-folder "/gastove@gmail.com/[Gmail].Drafts"
@@ -95,33 +96,32 @@
 
 
 ;; Tweak bookmarked queries
-(add-to-list 'mu4e-bookmarks `(,(string-join
-                                 '("flag:unread"
-                                   "AND date:today..now"
-                                   "NOT maildir:/ross@urbanairship.com/Githubs"
-                                   "NOT maildir:'/ross@urbanairship.com/Sales Deals'"
-                                   "AND m:/ross@urbanairship.com/INBOX")
-                                 " ")
+(add-to-list 'mu4e-bookmarks `(,(s-join " "
+                                        '("flag:unread"
+                                          "AND date:today..now"
+                                          "NOT maildir:/ross@urbanairship.com/Githubs"
+                                          "NOT maildir:'/ross@urbanairship.com/Sales Deals'"
+                                          "AND m:/ross@urbanairship.com/INBOX"))
                                "Today's work unreads" ?i))
-(add-to-list 'mu4e-bookmarks `(,(string-join
-                                 '("flag:unread"
-                                   "AND m:/gastove@gmail.com/INBOX"
-                                   "AND date:today..now")
-                                 " ") "Today's Personal Unreads" ?h))
-(add-to-list 'mu4e-bookmarks `(,(string-join
-                                 '("flag:unread"
-                                   "AND m:/gastove@gmail.com/INBOX"
-                                   "AND date:today..now"
-                                   "OR flag:unread"
-                                   "AND m:/ross@urbanairship.com/INBOX"
-                                   "AND date:today..now")
-                                 " ") "Today's Unreads" ?u))
-(add-to-list 'mu4e-bookmarks `(,(string-join
-                                 '("m:/gastove@gmail.com/INBOX"
-                                   "AND date:10d..now"
-                                   "or m:/ross@urbanairship.com/INBOX"
-                                   "AND date:10d..now")
-                                 " ") "Working Mail" ?w))
+(add-to-list 'mu4e-bookmarks `(,(s-join " "
+                                        '("flag:unread"
+                                          "AND m:/gastove@gmail.com/INBOX"
+                                          "AND date:today..now"))
+                               "Today's Personal Unreads" ?h))
+(add-to-list 'mu4e-bookmarks `(,(s-join " "
+                                        '("flag:unread"
+                                          "AND m:/gastove@gmail.com/INBOX"
+                                          "AND date:today..now"
+                                          "OR flag:unread"
+                                          "AND m:/ross@urbanairship.com/INBOX"
+                                          "AND date:today..now"))
+                               "Today's Unreads" ?u))
+(add-to-list 'mu4e-bookmarks `(,(s-join " "
+                                        '("m:/gastove@gmail.com/INBOX"
+                                          "AND date:10d..now"
+                                          "or m:/ross@urbanairship.com/INBOX"
+                                          "AND date:10d..now"))
+                               "Working Mail" ?w))
 
 (defvar my-mu4e-account-alist
   '(("gastove@gmail.com"
