@@ -104,6 +104,9 @@
 (require 'orary-web)
 (require 'orary-misc)
 
+;; Reading
+(require 'orary-rss)
+
 ;; Twerk
 (require 'orary-work)
 
