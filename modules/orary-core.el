@@ -33,6 +33,7 @@
 (require 'recentf)
 (require 'savehist)
 (setq recentf-max-menu-items 50)
+(setq recentf-max-saved-items 100)
 (recentf-mode 1)
 (setq savehist-file (f-expand "savehist" orary/save-root))
 
