@@ -31,10 +31,13 @@
 
 ;; Remember command and file history
 (require 'recentf)
-(require 'savehist)
-(setq recentf-max-menu-items 50)
-(setq recentf-max-saved-items 100)
 (recentf-mode 1)
+(setq recentf-save-file (f-expand "recentf" orary/save-root)
+      recentf-max-menu-items 50
+      recentf-max-saved-items 100
+      recentf-auto-cleanup 'never)
+
+(require 'savehist)
 (setq savehist-file (f-expand "savehist" orary/save-root))
 
 ;;; auto-save
