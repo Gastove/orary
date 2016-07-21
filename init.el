@@ -96,6 +96,7 @@
 (require 'orary-clojure)
 (require 'orary-emacs-lisp)
 (require 'orary-formats)
+(require 'orary-go)
 (require 'orary-org)
 (require 'orary-purescript)
 (require 'orary-python)
