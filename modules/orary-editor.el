@@ -53,7 +53,7 @@
 (use-package flycheck
   :config (global-flycheck-mode))
 
-(use-package gist)
+;;(use-package gist)
 
 (defun yas-advise-indent-function (function-symbol)
   (eval `(defadvice ,function-symbol (around yas-try-expand-first activate)
