@@ -31,11 +31,21 @@
 
 ;; Remember command and file history
 (require 'recentf)
-(recentf-mode 1)
 (setq recentf-save-file (f-expand "recentf" orary/save-root)
       recentf-max-menu-items 50
       recentf-max-saved-items 100
       recentf-auto-cleanup 'never)
+
+;; Lifted with gratitude from Prelude
+(defun orary/recentf-exclude-p (file)
+  "A predicate to decide whether to exclude FILE from recentf."
+  (let ((file-dir (file-truename (file-name-directory file))))
+    (-any-p (lambda (dir)
+              (string-prefix-p dir file-dir))
+            (mapcar 'file-truename (list orary/save-root package-user-dir)))))
+
+(add-to-list 'recentf-exclude 'orary/recentf-exclude-p)
+(recentf-mode 1)
 
 (require 'savehist)
 (setq savehist-file (f-expand "savehist" orary/save-root))
