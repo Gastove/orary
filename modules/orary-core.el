@@ -52,6 +52,8 @@
 ;;---------Whitespace Management and Cleanup, Tabs, Line Length, et al----------
 ;; Repeat after me: fuck tabs.
 (set-default 'indent-tabs-mode nil)
+
+;; 8 is a dumb number of spaces for a tab to default to.
 (setq-default tab-width 4)
 
 ;; It's 2016, Emacs.
