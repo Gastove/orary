@@ -30,7 +30,7 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   '(c-mode 'c++-mode java-mode emacs-lisp-mode))
 
 (defvar orary/indent-sensitive-modes
-  '(conf-mode yaml-mode scala-mode purescript-mode org-mode))
+  '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode))
 
 (defvar orary/disable-auto-indent nil)
 (make-variable-buffer-local 'orary/disable-auto-indent)
@@ -39,10 +39,15 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   "Clean up the indentation of the current buffer according to its major mode,
 then clean up white space."
   (interactive)
-  (unless (or (-contains? orary/indent-sensitive-modes major-mode)
+  (unless (or (-filter #'derived-mode-p orary/indent-sensitive-modes)
               orary/disable-auto-indent)
     (indent-region (point-min) (point-max)))
   (ethan-wspace-clean-all))
+
+;; Fun special case: tabs are required in makefiles
+(defun respect-makefile-tabs ()
+  (setq ethan-wspace-errors (remove 'tabs ethan-wspace-errors)))
+(add-hook 'makefile-gmake-mode-hook #'respect-makefile-tabs)
 
 (defun orary/programming-defaults ()
   "Set defaults for programming modes."
