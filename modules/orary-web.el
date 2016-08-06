@@ -33,5 +33,10 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tmpl\\'" . web-mode))
 
+(use-package company-restclient)
+(use-package restclient
+  :config
+  (add-to-list 'company-backends #'company-restclient))
+
 (provide 'orary-web)
 ;;; orary-web.el ends here
