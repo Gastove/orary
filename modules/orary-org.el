@@ -36,6 +36,8 @@
 ;; Additional exporters
 (use-package ox-gfm)
 (use-package ox-rst)
+;; Additional org-babel bindings
+(use-package ob-restclient)
 
 (use-package org
   :config
@@ -130,6 +132,7 @@
                                  (java . t)
                                  (sh . t)
                                  (R . t)
+                                 (restclient . t)
                                  (scala . t)
                                  (scheme . t)
                                  (sql . t)))
