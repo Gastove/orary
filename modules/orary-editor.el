@@ -50,6 +50,9 @@
 (require 'ediff)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+(use-package editorconfig
+  :demand t)
+
 (use-package flycheck
   :config (global-flycheck-mode))
 
