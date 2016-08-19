@@ -11,6 +11,12 @@
 
 (require 'smartparens)
 
+;; LaTeX
+(use-package company-auctex)
+(use-package auctex
+  :ensure t
+  :commands (latex-mode LaTeX-mode plain-tex-mode))
+
 ;; JSON
 (use-package json-mode
   :mode "\\.json\\'")
