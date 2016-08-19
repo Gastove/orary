@@ -22,8 +22,15 @@
 ;; I don't JS a lot, but here's what I've got
 ;;; Code:
 
+(use-package tern)
+(use-package company-tern)
+
 (use-package js2-mode
-  :mode "\\.js\\'")
+  :mode "\\.js\\'"
+  :config
+  (add-to-list 'company-backends 'company-tern)
+  (add-to-list 'company-dabbrev-code-modes 'js2-mode)
+  (add-hook 'js2-mode-hook (lambda () (tern-mode +1) (subword-mode +1))))
 
 (provide 'orary-javascript)
 ;;; orary-javascript.el ends here
