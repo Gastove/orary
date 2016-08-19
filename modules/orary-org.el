@@ -27,6 +27,8 @@
 
 ;; Org
 (defun add-pcomplete-to-capf ()
+  "Loads pcomplete functions in to completion-at-point-functions
+so company-mode will work nicely."
   (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
 
 ;; Nice unicode bullet symbols for org
