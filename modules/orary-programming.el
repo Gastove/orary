@@ -30,7 +30,7 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   '(c-mode 'c++-mode java-mode emacs-lisp-mode))
 
 (defvar orary/indent-sensitive-modes
-  '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode))
+  '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode gfm-mode))
 
 (defvar orary/disable-auto-indent nil)
 (make-variable-buffer-local 'orary/disable-auto-indent)
