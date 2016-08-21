@@ -101,13 +101,6 @@
 ;; Tweak bookmarked queries
 (add-to-list 'mu4e-bookmarks `(,(s-join " "
                                         '("flag:unread"
-                                          "AND date:today..now"
-                                          "NOT maildir:/ross@urbanairship.com/Githubs"
-                                          "NOT maildir:'/ross@urbanairship.com/Sales Deals'"
-                                          "AND m:/ross@urbanairship.com/INBOX"))
-                               "Today's work unreads" ?i))
-(add-to-list 'mu4e-bookmarks `(,(s-join " "
-                                        '("flag:unread"
                                           "AND m:/gastove@gmail.com/INBOX"
                                           "AND date:today..now"))
                                "Today's Personal Unreads" ?h))
@@ -115,26 +108,19 @@
                                         '("flag:unread"
                                           "AND m:/gastove@gmail.com/INBOX"
                                           "AND date:today..now"
-                                          "OR flag:unread"
-                                          "AND m:/ross@urbanairship.com/INBOX"
-                                          "AND date:today..now"))
+                                          "OR flag:unread"))
                                "Today's Unreads" ?u))
 (add-to-list 'mu4e-bookmarks `(,(s-join " "
                                         '("m:/gastove@gmail.com/INBOX"
-                                          "AND date:10d..now"
-                                          "or m:/ross@urbanairship.com/INBOX"
-                                          "AND date:10d..now"))
+                                          "AND date:15d..now"))
                                "Working Mail" ?w))
 
+;; Add further email accounts here:
 (defvar my-mu4e-account-alist
   '(("gastove@gmail.com"
      (mu4e-drafts-folder "/gastove@gmail.com/[Gmail].Drafts")
      (mu4e-sent-folder   "/gastove@gmail.com/[Gmail].Sent Mail")
-     (user-mail-address "gastove@gmail.com"))
-    ("ross@urbanairship.com"
-     (mu4e-drafts-folder "/ross@urbanairship.com/[Gmail].Drafts")
-     (mu4e-sent-folder   "/ross@urbanairship.com/[Gmail].Sent Mail")
-     (user-mail-address "ross@urbanairship.com"))))
+     (user-mail-address "gastove@gmail.com"))))
 
 (defun my-mu4e-set-account ()
   "Set the account for composing a message."
