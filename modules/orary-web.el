@@ -33,7 +33,10 @@
          ("\\.tmpl\\'" . web-mode)
          ("\\.jsx\\'" . web-mode))
   :config
-  (add-to-list 'company-dabbrev-code-modes 'web-mode))
+  (add-to-list 'company-dabbrev-code-modes 'web-mode)
+  (add-hook 'web-mode-hook (lambda ()
+                             (when (equal web-mode-content-type "jsx")
+                               (flycheck-mode +1)))))
 
 (use-package company-restclient)
 (use-package restclient
