@@ -14,9 +14,6 @@
   (require 'flycheck-nim-async)
   (add-to-list 'company-backends '(company-nim :with company-nim-builtin)))
 
-(use-package fsharp-mode
-  :mode "\\.fs[iylx]?$")
-
 (use-package rust-mode)
 
 ;; Scheme
