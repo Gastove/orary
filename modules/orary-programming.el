@@ -6,6 +6,12 @@
 
 (require 'dash)
 
+;; Auto-wrap comments. Like an adult.
+(require 'newcomment)
+(auto-fill-mode +1)
+(setq comment-auto-fill-only-comments 1)
+(setq auto-fill-function #'do-auto-fill)
+
 (use-package rainbow-delimiters)
 
 (define-minor-mode orary/programming-mode "Programming behaviors for orary")
@@ -48,6 +54,7 @@ then clean up white space."
 (defun respect-makefile-tabs ()
   (setq ethan-wspace-errors (remove 'tabs ethan-wspace-errors)))
 (add-hook 'makefile-gmake-mode-hook #'respect-makefile-tabs)
+(add-hook 'makefile-mode-hook #'respect-makefile-tabs)
 
 (defun orary/programming-defaults ()
   "Set defaults for programming modes."
@@ -91,6 +98,7 @@ then clean up white space."
 
 ;;---------------------------------ANSI Colors-----------------------------------
 (require 'ansi-color)
+(setq ansi-color-for-comint-mode t)
 (defun orary/colorize-compilation-buffer ()
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
