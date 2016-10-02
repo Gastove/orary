@@ -44,8 +44,10 @@
   (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
 
 (use-package easy-kill
+  :demand t
   :config
-  (global-set-key [remap kill-ring-save] 'easy-kill))
+  (global-set-key [remap kill-ring-save] 'easy-kill)
+  (global-set-key [remap mark-sexp] 'easy-mark))
 
 (require 'ediff)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
@@ -57,6 +59,9 @@
   :config (global-flycheck-mode))
 
 (use-package gist)
+
+(require 're-builder)
+(setq reb-re-syntax 'string)
 
 (defun yas-advise-indent-function (function-symbol)
   (eval `(defadvice ,function-symbol (around yas-try-expand-first activate)
@@ -136,6 +141,9 @@
 
 ;; Always revert a buffer if the underlying file has changed on disk
 (global-auto-revert-mode t)
+
+;; make sure images revert too
+(auto-image-file-mode +1)
 
 (provide 'orary-editor)
 ;;; orary-editor.el ends here
