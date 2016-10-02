@@ -159,7 +159,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-type-face ((t (:foreground ,rhombus-pink))))
    `(font-lock-constant-face ((t (:foreground ,rhombus-purple))))
    `(font-lock-builtin-face ((t (:foreground ,rhombus-dull-red))))
-   `(Font-lock-preprocessor-face ((t (:foreground ,rhombus-bronze))))
+   `(font-lock-preprocessor-face ((t (:foreground ,rhombus-bronze))))
    `(font-lock-string-face ((t (:foreground ,rhombus-grey))))
    `(font-lock-doc-face ((t (:foreground ,rhombus-dark-brown))))
    `(font-lock-negation-char-face ((t (:foreground ,rhombus-yellow :weight bold))))
