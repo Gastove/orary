@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: untyped-quote
+# key: \uq
+# --
+<@@ $1 @@>$0

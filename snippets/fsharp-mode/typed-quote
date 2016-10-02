@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: typed-quote
+# key: \tq
+# --
+<@ $1 @>$0

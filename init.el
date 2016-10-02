@@ -95,6 +95,7 @@
 ;; Languages
 (require 'orary-clojure)
 (require 'orary-emacs-lisp)
+(require 'orary-fsharp)
 (require 'orary-formats)
 (require 'orary-go)
 (require 'orary-javascript)
