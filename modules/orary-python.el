@@ -9,7 +9,13 @@
   :config
   (elpy-enable)
   (require 'electric)
-  (elpy-use-ipython)
+  ;; IPython 5 brings in a whole slew of horrible changes that make it kinda
+  ;; worthless with Emacs now. Great? Great.
+  ;; https://emacs.stackexchange.com/questions/24453/weird-shell-output-when-using-ipython-5
+  ;; ...well fine okay lets try it
+  ;; 2016-09-18 -- Ugh, fucking nope. Keep an eye on this, in case ipython improves.
+  ;; (elpy-use-ipython)
+
   (setq python-fill-docstring-style 'django)
 
   (defun orary/python-mode-settings ()
@@ -25,7 +31,8 @@
                   #'python-imenu-create-flat-index))
     (setq fill-column 79)
     (define-key python-mode-map (kbd "C-c q i") 'orary/python-make-module)
-    (define-key python-mode-map (kbd "C-c q r") 'orary/replace-double-quote-with-single))
+    (define-key python-mode-map (kbd "C-c q q") 'orary/replace-double-quote-with-single)
+    (define-key python-mode-map (kbd "C-c q r") 'recompile))
 
   (defun orary/python-make-module ()
     (interactive)
