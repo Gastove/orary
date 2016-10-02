@@ -29,7 +29,11 @@
   (setq erc-autojoin-channels-alist '(("freenode.net"
                                        "#emacs"
                                        "#clojure"
-                                       "#purescript"))
+                                       "#purescript"
+                                       "##fsharp")
+                                      ("gimp.net"
+                                       "mono"))
+
         erc-nick "gastove"
 
         ;; Interpret mIRC-style color commands in IRC chats
