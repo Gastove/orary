@@ -110,11 +110,15 @@ so company-mode will work nicely."
         ;; Fontify inside code blocks
         org-src-fontify-natively t
 
-        org-default-notes-file (f-expand"~/Dropbox/org-docs/cotidienne.org")
+        org-default-notes-file (f-expand "~/Dropbox/org-docs/cotidienne.org")
 
         org-capture-templates
         `(("t" "Todo" entry (file+headline "" "General To-Dos")
            "** TODO %?\n")
+          ("w" "Work Todo" entry (file+headline ,(f-expand "~/Documents/work.org") "General To-Dos")
+           "** TODO %?\n")
+          ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "Captured Notes")
+           "** %T %{PROMPT}\n%?")
           ("f" "File-Todo" entry (file+headline "" "General To-Dos")
            "** TODO %?\n %i\n %A\n")
           ("e" "Email" entry (file+headline "" "General To-Dos")
@@ -122,7 +126,8 @@ so company-mode will work nicely."
                            "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
                            "\%i"
                            "%a\n")))
-          ("g" "Log" entry (file+headline "" "Log") "** email%?\n %l")))
+          ("g" "Log" entry (file+headline "" "Log")
+           "** %T\n%?")))
 
   ;; Jump and Sparse-Tree contexts
   (push  '(org-goto . local) org-show-context-detail)
