@@ -29,5 +29,7 @@
 
 (use-package haskell-mode)
 
+(add-to-list 'auto-mode-alist '("\\.hql\\'" . sql-mode))
+
 (provide 'orary-misc)
 ;;; orary-misc.el ends here
