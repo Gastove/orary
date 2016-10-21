@@ -23,7 +23,10 @@
 (erc-spelling-mode 1)
 
 ;; Let's set SO MANY DEFAULTS
-(-let [erc-log-dir (f-expand "logs" "~/.erc")]
+(-let* ((erc-dir (f-expand "~/.erc"))
+        (erc-log-dir (f-expand "logs" erc-dir)))
+  (unless (f-exists? erc-dir)
+    (f-mkdir erc-dir))
   (unless (f-exists? erc-log-dir)
     (f-mkdir erc-log-dir))
   (setq erc-autojoin-channels-alist '(("freenode.net"
