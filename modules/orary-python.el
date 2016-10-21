@@ -29,10 +29,7 @@
     (when (fboundp #'python-imenu-create-flat-index)
       (setq-local imenu-create-index-function
                   #'python-imenu-create-flat-index))
-    (setq fill-column 79)
-    (define-key python-mode-map (kbd "C-c q i") 'orary/python-make-module)
-    (define-key python-mode-map (kbd "C-c q q") 'orary/replace-double-quote-with-single)
-    (define-key python-mode-map (kbd "C-c q r") 'recompile))
+    (setq fill-column 79))
 
   (defun orary/python-make-module ()
     (interactive)
@@ -44,7 +41,12 @@
           (message "Init file created for module")))))
 
 
-  (add-hook 'python-mode-hook #'orary/python-mode-settings))
+  (add-hook 'python-mode-hook #'orary/python-mode-settings)
+  :bind (:map python-mode-map
+              ("C-c q i" . orary/python-make-module)
+              ("C-c q q" . orary/replace-double-quote-with-single)
+              ( "C-c q r" . recompile)
+              ("M-." . ggtags-find-tag-dwim)))
 
 
 (provide 'orary-python)

@@ -33,7 +33,7 @@ Currently catches: FIX(ME)?, TODO, NOTE."
 (use-package ggtags)
 
 (defvar orary/gg-tags-modes
-  '(c-mode 'c++-mode java-mode emacs-lisp-mode))
+  '(c-mode 'c++-mode java-mode emacs-lisp-mode python-mode))
 
 (defvar orary/indent-sensitive-modes
   '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode markdown-mode))
