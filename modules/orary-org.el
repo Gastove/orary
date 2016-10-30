@@ -118,7 +118,7 @@ so company-mode will work nicely."
           ("w" "Work Todo" entry (file+headline ,(f-expand "~/Documents/work.org") "General To-Dos")
            "** TODO %?\n")
           ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "Captured Notes")
-           "** %T %{PROMPT}\n%?")
+           "** %T %^{PROMPT}\n%?")
           ("f" "File-Todo" entry (file+headline "" "General To-Dos")
            "** TODO %?\n %i\n %A\n")
           ("e" "Email" entry (file+headline "" "General To-Dos")
@@ -126,8 +126,10 @@ so company-mode will work nicely."
                            "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
                            "\%i"
                            "%a\n")))
-          ("g" "Log" entry (file+headline "" "Log")
-           "** %T\n%?")))
+          ("g" "Work Log" entry (file+headline "" "Log")
+           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?""** %T\n%?")
+          ("l" "Personal Log" entry (file+headline "" "Log")
+           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?")))
 
   ;; Jump and Sparse-Tree contexts
   (push  '(org-goto . local) org-show-context-detail)
