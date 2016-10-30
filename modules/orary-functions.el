@@ -127,5 +127,23 @@ its notion of what a symbol is."
        (message "No projects found")
      (message (format "Added %s projects" cnt)))))
 
+(defun orary/pprint-json-in-new-buffer (json-start json-end)
+  "If the region delimited by JSON-START and JSON-END encompases
+valid JSON, read that JSON in to a new buffer and pretty print
+it."
+  (interactive "r")
+  (condition-case nil
+      (-let ((src-buf (current-buffer))
+         (buf (get-buffer-create "*json-pretty-print*")))
+    (with-current-buffer buf
+      (json-mode)
+      (insert-buffer-substring-no-properties src-buf
+                                             json-start
+                                             json-end)
+      (json-pretty-print-buffer)
+      (goto-char (point-min)))
+    (switch-to-buffer-other-window buf))
+    (json-readtable-error (message "Region was not on valid JSON."))))
+
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
