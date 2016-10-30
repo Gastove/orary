@@ -21,7 +21,10 @@
 (load custom-file)
 
 ;; A good place for abbrevs
-(setq abbrev-file-name (f-expand "abbrev_defs" orary/save-root))
+(setq abbrev-file-name (f-expand "abbrev_defs" orary/save-root)
+      save-abbrevs 'silently
+      )
+
 
 ;; Remember where we were in a file
 (require 'saveplace)
