@@ -14,7 +14,13 @@
   (require 'flycheck-nim-async)
   (add-to-list 'company-backends '(company-nim :with company-nim-builtin)))
 
+;; Misc languages whee
+(use-package haskell-mode)
+(use-package dockerfile-mode)
 (use-package rust-mode)
+(use-package coffee-mode)
+(use-package groovy-mode
+  :mode "\\.gradle\\'")
 
 ;; Scheme
 (use-package geiser
@@ -27,7 +33,7 @@
         geiser-repl-history-filename
         (expand-file-name "geiser-history" orary/save-root)))
 
-(use-package haskell-mode)
+
 
 (add-to-list 'auto-mode-alist '("\\.hql\\'" . sql-mode))
 
