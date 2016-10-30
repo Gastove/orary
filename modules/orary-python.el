@@ -6,19 +6,17 @@
 
 ;; Python
 (use-package elpy
+  :demand t
   :config
+
   (elpy-enable)
   (require 'electric)
-  ;; IPython 5 brings in a whole slew of horrible changes that make it kinda
-  ;; worthless with Emacs now. Great? Great.
-  ;; https://emacs.stackexchange.com/questions/24453/weird-shell-output-when-using-ipython-5
-  ;; ...well fine okay lets try it
-  ;; 2016-09-18 -- Ugh, fucking nope. Keep an eye on this, in case ipython improves.
-  ;; (elpy-use-ipython)
-
-  (setq python-fill-docstring-style 'django)
+  (elpy-use-ipython)
+  (setq python-shell-interpreter-args "--simple-prompt -i"
+        python-fill-docstring-style 'django)
 
   (defun orary/python-mode-settings ()
+    (subword-mode +1)
     (setq-local electric-layout-rules
                 '((?: . (lambda ()
                           (and (zerop (first (syntax-ppss)))
