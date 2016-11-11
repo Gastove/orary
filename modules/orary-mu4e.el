@@ -5,7 +5,7 @@
 ;;; Code:
 
 ;;; mu4e
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
 
 (require 'mu4e)
 (require 'mu4e-contrib)
@@ -23,7 +23,7 @@
       mu4e-compose-dont-reply-to-self t
 
       ;; Let offlineimap's autorefresh handle getting new mail, but automatically re-index:
-      mu4e-get-mail-command "true"
+      mu4e-get-mail-command "mbsync -a"
 
       ;; Make mu4e the default user agent
       mail-user-agent 'mu4e-user-agent
@@ -36,7 +36,7 @@
       user-full-name  "Ross Donaldson"
 
       ;; Signature
-      mu4e-compose-signature "Ross Donaldson\nTechnologist, Reed College Software Design Studio\nhttp://csv.rodeo"
+      mu4e-compose-signature "Ross Donaldson\nData Engineer, Disqus\nTechnologist, Reed College Software Design Studio\nhttp://csv.rodeo"
 
       ;; ISO date format for headers
       mu4e-headers-date-format "%Y-%m-%d"
@@ -58,7 +58,7 @@
       mu4e-hide-index-messages t
 
       ;; Filter autocomplete addresses more intelligently
-      mu4e-compose-complete-only-after "2014-01-01"
+      mu4e-compose-complete-only-after "2015-01-01"
 
       ;; Capture better
       org-mu4e-link-query-in-headers-mode nil)
@@ -101,17 +101,23 @@
 ;; Tweak bookmarked queries
 (add-to-list 'mu4e-bookmarks `(,(s-join " "
                                         '("flag:unread"
-                                          "AND m:/gastove@gmail.com/INBOX"
+                                          "AND m:/gastove@gmail.com/Inbox"
                                           "AND date:today..now"))
                                "Today's Personal Unreads" ?h))
 (add-to-list 'mu4e-bookmarks `(,(s-join " "
                                         '("flag:unread"
-                                          "AND m:/gastove@gmail.com/INBOX"
+                                          "AND m:/gastove@gmail.com/Inbox"
                                           "AND date:today..now"
-                                          "OR flag:unread"))
+                                          "OR"
+                                          "flag:unread"
+                                          "AND m:/ross@disqus.com/Inbox"
+                                          "AND date:today..now"))
                                "Today's Unreads" ?u))
 (add-to-list 'mu4e-bookmarks `(,(s-join " "
-                                        '("m:/gastove@gmail.com/INBOX"
+                                        '("m:/gastove@gmail.com/Inbox"
+                                          "AND date:15d..now"
+                                          "OR"
+                                          "m:/ross@disqus.com/Inbox"
                                           "AND date:15d..now"))
                                "Working Mail" ?w))
 
@@ -120,7 +126,11 @@
   '(("gastove@gmail.com"
      (mu4e-drafts-folder "/gastove@gmail.com/[Gmail].Drafts")
      (mu4e-sent-folder   "/gastove@gmail.com/[Gmail].Sent Mail")
-     (user-mail-address "gastove@gmail.com"))))
+     (user-mail-address "gastove@gmail.com"))
+    ("ross@disqus.com"
+     (mu4e-drafts-folder "/ross@disqus.com/[Gmail].Drafts")
+     (mu4e-sent-folder   "/ross@disqus.com/[Gmail].Sent Mail")
+     (user-mail-address "ross@disqus.com"))))
 
 (defun my-mu4e-set-account ()
   "Set the account for composing a message."
