@@ -22,8 +22,7 @@
 
 ;; A good place for abbrevs
 (setq abbrev-file-name (f-expand "abbrev_defs" orary/save-root)
-      save-abbrevs 'silently
-      )
+      save-abbrevs 'silently)
 
 
 ;; Remember where we were in a file
@@ -64,6 +63,18 @@
 
 ;; Don't make me type "yes" all the time
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Handy timezones
+(require 'time)
+(setq display-time-world-list
+      '(("America/Los_Angeles" "Pacific")
+        ("America/Denver" "Mountain")
+        ("America/Mexico_City" "Central")
+        ("America/New_York" "Eastern")
+        ("Atlantic/Reykjavik" "Iceland")
+        ("UTC" "UTC")
+        ("Europe/Paris" "Paris, France")
+        ("Asia/Irkutsk" "Baikal")))
 
 ;;---------Whitespace Management and Cleanup, Tabs, Line Length, et al----------
 ;; Repeat after me: fuck tabs.
