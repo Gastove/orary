@@ -141,7 +141,7 @@ so company-mode will work nicely."
                                '((python . t)
                                  (emacs-lisp . t)
                                  (java . t)
-                                 (sh . t)
+                                 (shell . t)
                                  (R . t)
                                  (restclient . t)
                                  (scala . t)
