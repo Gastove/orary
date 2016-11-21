@@ -5,7 +5,7 @@
 ;;; Code:
 
 ;;; mu4e
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e/")
 
 (require 'mu4e)
 (require 'mu4e-contrib)
@@ -88,7 +88,8 @@
 (add-hook 'mu4e-compose-mode-hook
           (lambda ()
             (auto-fill-mode -1)
-            (whitespace-mode -1)))
+            (whitespace-mode -1)
+            (toggle-word-wrap +1)))
 
 ;; The mu4e interface
 ;; Single-character shortcuts
