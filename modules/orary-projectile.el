@@ -13,8 +13,8 @@
   :config
   (require 'persp-projectile)
   (require 'helm-projectile)
-  (require 'ag)
-  (require 'helm-ag)
+  (require 'ag)                         ; I sincerely cannot remember why this is here
+  (require 'helm-ag)                    ; This either. Uh. Hrm.
   (persp-mode)
   (helm-projectile-on)
   (projectile-global-mode +1)
