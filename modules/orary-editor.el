@@ -106,7 +106,8 @@
   "Enable flyspell for text modes."
   (when (executable-find ispell-program-name)
     (flyspell-mode +1)
-    (diminish 'flyspell-mode)))
+    (diminish 'flyspell-mode)
+    (toggle-word-wrap +1)))
 
 (defun orary/flyspell-programming ()
   "Enable flyspell for programming modes."
