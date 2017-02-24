@@ -91,6 +91,7 @@
   (require 'orary-mu4e))
 (require 'orary-notify)
 (require 'orary-twitter)
+(require 'orary-floobits)
 
 ;; Languages
 (require 'orary-clojure)
