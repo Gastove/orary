@@ -40,10 +40,12 @@ so company-mode will work nicely."
 ;; Additional exporters
 (use-package ox-gfm)
 (use-package ox-rst)
+(use-package ox-pandoc)
 ;; Additional org-babel bindings
 (use-package ob-restclient)
 
 (use-package org
+  :ensure org-plus-contrib
   :config
   (add-hook 'org-mode-hook (lambda ()
                              ;; Make sure auto-fill-mode is on. Pretty much always need it.
@@ -55,6 +57,7 @@ so company-mode will work nicely."
                              (require 'org-bullets)
                              (org-bullets-mode 1)))
   (require 'ox-confluence)
+
   ;; TODO Keyword states:
   ;; > In-Progress states: BACKLOG, TODO, DOING, BLOCKED
   ;; > Finished states:    DONE, IMPOSSIBLE, CANCELLED
@@ -81,6 +84,7 @@ so company-mode will work nicely."
                               gnuplot
                               html
                               md
+                              pandoc
                               rst)
 
         ;; Export defaults: no table of contents, no numbered headers, don't convert ^
