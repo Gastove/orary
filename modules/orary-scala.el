@@ -23,11 +23,10 @@
 ;;; Code:
 
 (use-package ensime
+  :ensure t
   :config
-  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-  (add-hook 'scala-mode-hook (lambda ()
-                               (setq tab-width 2)
-                               (subword-mode +1))))
+  (setq ensime-startup-notification nil)
+  )
 
 (provide 'orary-scala)
 ;;; orary-scala.el ends here
