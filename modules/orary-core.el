@@ -159,5 +159,11 @@
 ;; Clean up old buffers
 (require 'midnight)
 
+;;--------------------------------------Tramp----------------------------------------
+(require 'tramp)
+(setq tramp-default-method "ssh")
+(setq tramp-default-user "gastove")
+(setq tramp-verbose 6)
+
 (provide 'orary-core)
 ;;; orary-core.el ends here
