@@ -63,22 +63,25 @@
 (require 're-builder)
 (setq reb-re-syntax 'string)
 
-(defun yas-advise-indent-function (function-symbol)
-  (eval `(defadvice ,function-symbol (around yas-try-expand-first activate)
-           ,(format
-             "Try to expand a snippet before point, then call `%s' as usual"
-             function-symbol)
-           (let ((yas-fallback-behavior nil))
-             (unless (and (interactive-p)
-                          (yas-expand))
-               ad-do-it)))))
+;; This might be unneeded now? Could be nice. Let's test.
+;; If not, yas-fallback-behavior is deprecated, so will have to find something else.
+;; (defun yas-advise-indent-function (function-symbol)
+;;   (eval `(defadvice ,function-symbol (around yas-try-expand-first activate)
+;;            ,(format
+;;              "Try to expand a snippet before point, then call `%s' as usual"
+;;              function-symbol)
+;;            (let ((yas-fallback-behavior nil))
+;;              (unless (and (interactive-p)
+;;                           (yas-expand))
+;;                ad-do-it)))))
 
 (use-package yasnippet
   :diminish yas-minor-mode
   :config
   (yas-global-mode 1)
   (setq yas-prompt-functions '(yas-completing-prompt))
-  (yas-advise-indent-function 'indent-for-tab-command))
+  ;; (yas-advise-indent-function 'indent-for-tab-command)
+  )
 
 (use-package wgrep
   :demand t)
