@@ -22,12 +22,28 @@
   :mode "\\.json\\'")
 
 ;; nXML
+(require 'hideshow)
+(require 'nxml-mode)
+
+(add-to-list 'hs-special-modes-alist
+             '(nxml-mode
+               "<!--\\|<[^/>]*[^/]>"
+               "-->\\|</[^/>]*[^/]>"
+
+               "<!--"
+               sgml-skip-tag-forward
+               nil))
+
+(add-hook 'nxml-mode-hook 'hs-minor-mode)
+(define-key nxml-mode-map (kbd "M-F") 'hs-toggle-hiding)
+
 (with-eval-after-load "smartparens"
   (push 'nxml-mode sp-ignore-modes-list))
 
 (add-hook 'nxml-mode-hook
           (lambda ()
             (flyspell-mode-off)
+            (setq nxml-sexp-element-flag 't)
             ;; (define-key prelude-mode-map (kbd "C-c C-i") 'nxml-balanced-close-start-tag-inline)
             ))
 
