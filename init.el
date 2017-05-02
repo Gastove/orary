@@ -59,7 +59,8 @@
 (add-to-list 'load-path (f-expand "modules/" orary/orary-root-dir))
 
 ;; Load this first in case things need executables from the path.
-(require 'orary-osx)
+(if (eq system-type 'darwin)
+    (require 'orary-osx))
 
 ;;------------------------------Let's Load Orary--------------------------------
 ;; Core -- central behaviors and configuration
