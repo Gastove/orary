@@ -30,7 +30,7 @@
     ("Flip it back: ┬──┬ ﻿ノ( ゜-゜ノ)" . ("┻━━┻    ( -.-  )" "┻━━┻  ノ( ゜-゜ノ)" "┬──┬    (  ^_^  )" "┬──┬ ﻿ノ( ゜-゜ノ)"))
     ("Flip two ┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻" . "┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻")
     ("Shades: (⌐■_■)" . ("( •_•)" "( •_•)>⌐■-■" "(⌐■_■)"))
-    ("Shrug: ¯\_(ツ)_/¯" . "¯\_(ツ)_/¯")
+    ("Shrug: ¯\\_(ツ)_/¯" . "¯\\_(ツ)_/¯")
     ("Music: ヽ(⌐■_■)ノ♪♬" . "ヽ(⌐■_■)ノ♪♬")
     ("Stuff to do: ᕕ(╯°□°)ᕗ" . "ᕕ(╯°□°)ᕗ")
     ("Stroll ᕕ( ᐛ )ᕗ" . "ᕕ( ᐛ )ᕗ")
@@ -45,14 +45,14 @@ emote from EMOTES to the kill ring and inserts it."
   (if (listp emotes)
       (progn
         (dolist (emote emotes)
-         (message emote)
-         (sleep-for 0 500))
-       (let ((final (car (last emotes))))
-         (kill-new final)
-         (insert final)))
+          (message emote)
+          (sleep-for 0 500))
+        (let ((final (car (last emotes))))
+          (kill-new final)
+          (insert final)))
     (progn
-     (kill-new emotes)
-     (insert emotes))))
+      (kill-new emotes)
+      (insert emotes))))
 
 (defvar orary/emote-actions
   (helm-make-actions "Insert + copy to kill ring" 'orary/emote-insert-emote
