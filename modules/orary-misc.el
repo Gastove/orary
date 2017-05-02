@@ -21,6 +21,7 @@
 (use-package coffee-mode)
 (use-package groovy-mode
   :mode "\\.gradle\\'")
+(use-package php-mode)
 
 ;; Scheme
 (use-package geiser
