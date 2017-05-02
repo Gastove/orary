@@ -43,6 +43,8 @@ so company-mode will work nicely."
 (use-package ox-pandoc)
 ;; Additional org-babel bindings
 (use-package ob-restclient)
+(require 'ob-clojure)
+(require 'cider) ;; for ob-clojure config
 
 (use-package org
   :ensure org-plus-contrib
@@ -142,15 +144,18 @@ so company-mode will work nicely."
   ;; Support for Babel Mode code blocks
   ;; NOTE: requires the addition of the org elpa repo!
   (org-babel-do-load-languages 'org-babel-load-languages
-                               '((python . t)
+                               '((clojure .t)
                                  (emacs-lisp . t)
                                  (java . t)
-                                 (shell . t)
-                                 (R . t)
                                  (restclient . t)
+                                 (R . t)
                                  (scala . t)
                                  (scheme . t)
-                                 (sql . t)))
+                                 (shell . t)
+                                 (sql . t)
+                                 (python . t)))
+
+  (setq org-babel-clojure-backend 'cider)
 
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
