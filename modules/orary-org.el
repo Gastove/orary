@@ -45,6 +45,7 @@ so company-mode will work nicely."
 (use-package ob-restclient)
 (require 'ob-clojure)
 (require 'cider) ;; for ob-clojure config
+(use-package ob-async)
 
 (use-package org
   :ensure org-plus-contrib
@@ -136,6 +137,7 @@ so company-mode will work nicely."
            "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?""** %T\n%?")
           ("l" "Personal Log" entry (file+headline "" "Log")
            "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?")))
+  (add-hook 'org-ctrl-c-ctrl-c-hook 'ob-async-org-babel-execute-src-block)
 
   ;; Jump and Sparse-Tree contexts
   (push  '(org-goto . local) org-show-context-detail)
