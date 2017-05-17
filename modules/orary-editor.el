@@ -76,6 +76,7 @@
 ;;                ad-do-it)))))
 
 (use-package yasnippet
+  :demand t
   :diminish yas-minor-mode
   :config
   (yas-global-mode 1)
