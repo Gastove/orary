@@ -4,12 +4,21 @@
 # Packaging
 .cask
 /elpa
-/projectile-bookmarks.eld
-/projectile.cache
+
+# Save Files
 /recentf
 /var
-/ensime
 /savefile
+
+# Tools and etc
+.trello
 /tramp
 /anaconda-mode
-.trello
+/ensime
+/projectile-bookmarks.eld
+/projectile.cache
+/eshell
+/request
+/url
+/network-security.data
+.org-id-locations
