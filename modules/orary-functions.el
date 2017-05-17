@@ -117,15 +117,15 @@ its notion of what a symbol is."
   valid projectile project, add it as a known project."
   (interactive "D")
   (-let [cnt 0]
-   (dolist (d (f-directories code-root))
-     (unless (equal 'none (projectile-project-vcs d))
-       ;; Projectile thinks project dirs end in /; f does not.
-       (projectile-add-known-project (s-append "/" d))
-       (message (format "Added %s to known projects" d))
-       (setq cnt (1+ cnt))))
-   (if (eq cnt 0)
-       (message "No projects found")
-     (message (format "Added %s projects" cnt)))))
+    (dolist (d (f-directories code-root))
+      (unless (equal 'none (projectile-project-vcs d))
+        ;; Projectile thinks project dirs end in /; f does not.
+        (projectile-add-known-project (s-append "/" d))
+        (message (format "Added %s to known projects" d))
+        (setq cnt (1+ cnt))))
+    (if (eq cnt 0)
+        (message "No projects found")
+      (message (format "Added %s projects" cnt)))))
 
 (defun orary/pprint-json-in-new-buffer (json-start json-end)
   "If the region delimited by JSON-START and JSON-END encompases
@@ -134,16 +134,22 @@ it."
   (interactive "r")
   (condition-case nil
       (-let ((src-buf (current-buffer))
-         (buf (get-buffer-create "*json-pretty-print*")))
-    (with-current-buffer buf
-      (json-mode)
-      (insert-buffer-substring-no-properties src-buf
-                                             json-start
-                                             json-end)
-      (json-pretty-print-buffer)
-      (goto-char (point-min)))
-    (switch-to-buffer-other-window buf))
+             (buf (get-buffer-create "*json-pretty-print*")))
+        (with-current-buffer buf
+          (json-mode)
+          (insert-buffer-substring-no-properties src-buf
+                                                 json-start
+                                                 json-end)
+          (json-pretty-print-buffer)
+          (goto-char (point-min)))
+        (switch-to-buffer-other-window buf))
     (json-readtable-error (message "Region was not on valid JSON."))))
+
+(defun orary/toggle-auto-indent ()
+  "Toggle the current value of orary/disable-auto-indent."
+  (interactive)
+  (setq orary/disable-auto-indent (not orary/disable-auto-indent))
+  (message "Auto-indent now %s" (if orary/disable-auto-indent "disabled" "enabled")))
 
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
