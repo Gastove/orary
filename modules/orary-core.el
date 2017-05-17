@@ -24,6 +24,8 @@
 (setq abbrev-file-name (f-expand "abbrev_defs" orary/save-root)
       save-abbrevs 'silently)
 
+;; Enable narrow-to-region
+(put 'narrow-to-region 'disabled nil)
 
 ;; Remember where we were in a file
 (require 'saveplace)
