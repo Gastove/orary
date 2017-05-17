@@ -18,7 +18,7 @@
 (setq column-number-mode t)
 
 (if (eq system-type 'darwin)
- (add-to-list 'default-frame-alist '(fullscreen . fullscreen)))
+    (add-to-list 'default-frame-alist '(fullscreen . fullscreen)))
 
 ;; Alerts
 (defun orary/visible-bell ()
@@ -51,7 +51,9 @@
   (add-to-list 'rm-text-properties '(" Sp/s" 'face 'font-lock-warning-face)))
 
 (use-package beacon
+  :demand t
   :config
+  (beacon-mode 1)
   (setq beacon-blink-when-focused t))
 
 (provide 'orary-ui)
