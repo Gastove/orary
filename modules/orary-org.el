@@ -139,6 +139,12 @@ so company-mode will work nicely."
            "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?")))
   (add-hook 'org-ctrl-c-ctrl-c-hook 'ob-async-org-babel-execute-src-block)
 
+  ;; Structural templates
+  (add-to-list 'org-structure-template-alist
+               '(("ep" "#+BEGIN_EXAMPLE python\n?\n#+END_EXAMPLE")
+                 ("sp" "#+BEGIN_SRC python\n?\n#+END_SRC")
+                 ("ss" "#+BEGIN_SRC sh\n?\n#+END_SRC")))
+
   ;; Jump and Sparse-Tree contexts
   (push  '(org-goto . local) org-show-context-detail)
   (push '(tags-tree . local) org-show-context-detail)
