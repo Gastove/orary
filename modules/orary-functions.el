@@ -151,5 +151,38 @@ it."
   (setq orary/disable-auto-indent (not orary/disable-auto-indent))
   (message "Auto-indent now %s" (if orary/disable-auto-indent "disabled" "enabled")))
 
+(defun orary/clone (uri name dir)
+  (-let ((default-directory (f-expand dir))
+         (buf (get-buffer-create "*Git Clone*")))
+    (call-process "git" nil buf nil "clone" uri name)))
+
+(defun orary/clone-and-recall (repo dir)
+  (-let* ((name (alist-get 'name repo))
+          (uri (alist-get 'ssh_url repo))
+          (projectile-name (concat (f-join dir name) "/")))
+    (message "Cloning %s to %s" name projectile-name)
+    (orary/clone uri name dir)
+    (message "Adding to projectile...")
+    (projectile-add-known-project projectile-name)
+    (message "Done!")))
+
+(defun orary/clone-from-github ()
+  (interactive)
+  (-let* ((dir "~/Code")
+          (repos (request "https://api.github.com/user/repos"
+                          :parser 'json-read
+                          :error #'phab/query-error-fn
+                          :sync 't
+                          :headers '(("Authorization" . (concat "token " orary/github-oauth-token)))))
+          (name-repo-mapping (-map (lambda (repo)
+                                     (list (alist-get 'name repo) repo))
+                                   (request-response-data repos))))
+    (helm :sources (helm-build-sync-source "Available Repos"
+                     :candidates name-repo-mapping
+                     :action (lambda (repo)
+                               (orary/clone-and-recall (car repo) dir)))
+          :buffer "*Git Clone")))
+
+
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
