@@ -7,6 +7,7 @@
 (require 'dash)
 (require 'f)
 (require 's)
+(require 'request)
 
 ;; With gratitude to Bozhidar Batsov
 (defun orary/prelude-move-beginning-of-line (arg)
@@ -166,14 +167,16 @@ it."
     (projectile-add-known-project projectile-name)
     (message "Done!")))
 
-(defun orary/clone-from-github ()
-  (interactive)
-  (-let* ((dir "~/Code")
+(defun orary/clone-from-github (prompt-for-dir)
+  (interactive "P")
+  (-let* ((dir (if prompt-for-dir
+                   (read-directory-name "Clone in to dir: ")
+                 "~/Code"))
           (repos (request "https://api.github.com/user/repos"
                           :parser 'json-read
-                          :error #'phab/query-error-fn
+                          ;; :error #'phab/query-error-fn
                           :sync 't
-                          :headers '(("Authorization" . (concat "token " orary/github-oauth-token)))))
+                          :headers `(("Authorization" . ,(concat "token " orary/github-oauth-token)))))
           (name-repo-mapping (-map (lambda (repo)
                                      (list (alist-get 'name repo) repo))
                                    (request-response-data repos))))
