@@ -9,14 +9,11 @@
 ;; clojure-mode comes with clojurescript-mode baked in
 (use-package clojure-mode
   :config
-  (add-hook 'clojure-mode-hook 'orary/lisp-defaults)
-  ;; (add-hook 'clojure-mode-hook 'cider-mode)
-  )
+  (add-hook 'clojure-mode-hook 'orary/lisp-defaults))
 
 (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
 (add-hook 'clojurescript-mode-hook 'orary/lisp-defaults)
 (add-hook 'clojurescript-mode-hook 'cider-mode)
-(setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
 
 (use-package cider
   :defer t
