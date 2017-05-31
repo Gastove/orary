@@ -136,7 +136,11 @@ so company-mode will work nicely."
           ("g" "Work Log" entry (file+headline "" "Log")
            "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?""** %T\n%?")
           ("l" "Personal Log" entry (file+headline "" "Log")
-           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?")))
+           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?"))
+
+        ;; The Agenda
+        ;; Show me a 10 day view by default
+        org-agenda-span 10)
   (add-hook 'org-ctrl-c-ctrl-c-hook 'ob-async-org-babel-execute-src-block)
 
   ;; Structural templates
