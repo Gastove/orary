@@ -174,7 +174,7 @@ it."
                  "~/Code"))
           (repos (request "https://api.github.com/user/repos"
                           :parser 'json-read
-                          ;; :error #'phab/query-error-fn
+                          :params '(("per_page" . "100"))
                           :sync 't
                           :headers `(("Authorization" . ,(concat "token " orary/github-oauth-token)))))
           (name-repo-mapping (-map (lambda (repo)
