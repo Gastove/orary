@@ -18,6 +18,7 @@
 (global-set-key (kbd "C-c q w") 'helm-world-time)
 (global-set-key (kbd "C-c q m") 'mu4e)
 (global-set-key (kbd "C-;") 'flyspell-auto-correct-previous-word)
+(global-set-key (kbd "C-M-?") 'sauron-toggle-hide-show)
 
 (provide 'orary-keymap)
 ;;; orary-keymap.el ends here
