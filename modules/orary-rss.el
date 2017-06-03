@@ -25,13 +25,15 @@
 (use-package elfeed
   :config
   (setq elfeed-feeds
-        '("http://feed43.com/2023102361452841.xml"     ;; Riceboy
-          "http://limbero.org/jl8/rss/"                ;; JL8
-          "http://sssscomic.com/ssss-feed.xml"         ;; Stand still, stay silent
-          "http://www.girlgeniusonline.com/ggmain.rss" ;; Girl Genius
-          "http://deadwinter.cc/dwrss.xml"             ;; Dead Winter
-          "http://www.giantitp.com/comics/oots.rss"    ;; OOTS
-          "http://www.lutherlevy.com/?feed=rss2"       ;; Family man
+        '(("http://feed43.com/2023102361452841.xml" comics)     ;; Riceboy
+          ("http://limbero.org/jl8/rss/" comics)                ;; JL8
+          ("http://sssscomic.com/ssss-feed.xml" comics)         ;; Stand still, stay silent
+          ("http://www.girlgeniusonline.com/ggmain.rss" comics) ;; Girl Genius
+          ("http://deadwinter.cc/dwrss.xml" comics)             ;; Dead Winter
+          ("http://www.giantitp.com/comics/oots.rss" comics)    ;; OOTS
+          ("http://www.lutherlevy.com/?feed=rss2" comics)       ;; Family man
+          ("https://jvns.ca/atom.xml" blog programming ops)     ;; b0rk's blog
+          ("http://oglaf.com/feeds/rss/" comics)                ;; Oglaf
           ))
   :bind ("C-c q f" . elfeed))
 
