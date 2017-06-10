@@ -25,15 +25,20 @@
 (use-package elfeed
   :config
   (setq elfeed-feeds
-        '(("http://feed43.com/2023102361452841.xml" comics)     ;; Riceboy
-          ("http://limbero.org/jl8/rss/" comics)                ;; JL8
-          ("http://sssscomic.com/ssss-feed.xml" comics)         ;; Stand still, stay silent
-          ("http://www.girlgeniusonline.com/ggmain.rss" comics) ;; Girl Genius
-          ("http://deadwinter.cc/dwrss.xml" comics)             ;; Dead Winter
-          ("http://www.giantitp.com/comics/oots.rss" comics)    ;; OOTS
-          ("http://www.lutherlevy.com/?feed=rss2" comics)       ;; Family man
-          ("https://jvns.ca/atom.xml" blog programming ops)     ;; b0rk's blog
-          ("http://oglaf.com/feeds/rss/" comics)                ;; Oglaf
+        '(("http://feed43.com/2023102361452841.xml" comics)           ;; Riceboy
+          ("http://limbero.org/jl8/rss/" comics)                      ;; JL8
+          ("http://sssscomic.com/ssss-feed.xml" comics)               ;; Stand still, stay silent
+          ("http://www.girlgeniusonline.com/ggmain.rss" comics)       ;; Girl Genius
+          ("http://deadwinter.cc/dwrss.xml" comics)                   ;; Dead Winter
+          ("http://www.giantitp.com/comics/oots.rss" comics)          ;; OOTS
+          ("http://www.threepanelsoul.com/rss.php" comics)            ;; Three-Panel Soul
+          ("http://www.lutherlevy.com/?feed=rss2" comics)             ;; Family man
+          ("https://jvns.ca/atom.xml" blog programming ops)           ;; b0rk's blog
+          ("http://oglaf.com/feeds/rss/" comics)                      ;; Oglaf
+          ("http://ohumanstar.com/feed/" comics)                      ;; O Human Star
+          ("http://www.smbc-comics.com/rss.php" comics)               ;; Saturday Morning Breakfast Cereal
+          ("http://dtrace.org/blogs/feed/" blog programming ops perf) ;; Brendan Gregg's dtrace blog
+          ("http://www.c.urvy.org/curvy_rss2.xml" comics)             ;; Curvy
           ))
   :bind ("C-c q f" . elfeed))
 
