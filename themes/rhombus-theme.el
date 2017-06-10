@@ -250,8 +250,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mu4e-trashed-face ((t (:foreground ,rhombus-dull-red :strike-through t))))
    `(mu4e-header-highlight-face ((t (:background ,rhombus-hl :underline t))))
 
+   ;; >>>>> highlight-column-mode
+   `(highlight-indentation-face ((t (:background ,rhombus-bg+1))))
+   `(highlight-indentation-current-column-face ((t (:foreground ,rhombus-bronze))))
+
    ;; >>>>> elpy and ipython
-   `(highlight-indentation-face ((t (:background ,rhombus-bg))))
    `(comint-highlight-prompt ((t (:inherit eshell-prompt))))
 
    ;; >>>>> auto-complete and popup
