@@ -54,8 +54,13 @@
   :mode "\\.proto\\'")
 
 ;; YAML
+(use-package highlight-indentation-mode)
 (use-package yaml-mode
-  :mode "\\.yaml\\'")
+  :mode "\\.ya?ml\\'"
+  :config
+  (add-hook 'yaml-mode-hook
+            (lambda ()
+              (highlight-indentation-mode 1))))
 
 ;; Thrift
 (use-package thrift)
