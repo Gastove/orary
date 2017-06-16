@@ -103,6 +103,10 @@ so company-mode will work nicely."
         org-refile-targets '((org-agenda-files . (:maxlevel . 5)))
         org-refile-allow-creating-parent-nodes 'confirm
 
+        ;; Let me refile via the full outline path of a header
+        org-refile-use-outline-path 't
+        org-outline-path-complete-in-steps nil
+
         org-agenda-text-search-extra-files '(agenda-archives)
 
         ;; Hide org emphasis marks
