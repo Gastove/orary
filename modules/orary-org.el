@@ -127,7 +127,7 @@ so company-mode will work nicely."
         `(("t" "Todo" entry (file+headline "" "General To-Dos")
            "** TODO %?\n")
           ("w" "Work Todo" entry (file+headline ,(f-expand "~/Documents/work.org") "General To-Dos")
-           "** TODO %?\n")
+           "** TODO %?\nDEADLINE: <%(org-read-date nil nil \"+1d\")>\n%^{trello_ticket}p" :empty-lines 1)
           ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "Captured Notes")
            "** %T %^{PROMPT}\n%?")
           ("f" "File-Todo" entry (file+headline "" "General To-Dos")
