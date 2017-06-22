@@ -31,7 +31,8 @@
          ("\\.mustache\\'" . web-mode)
          ("\\.djhtml\\'" . web-mode)
          ("\\.tmpl\\'" . web-mode)
-         ("\\.jsx\\'" . web-mode))
+         ("\\.jsx\\'" . web-mode)
+         ("\\.html\\'" . web-mode))
   :config
   (add-to-list 'company-dabbrev-code-modes 'web-mode)
   (add-hook 'web-mode-hook (lambda ()
