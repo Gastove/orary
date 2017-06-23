@@ -30,6 +30,17 @@
   :config
   (add-to-list 'company-backends 'company-tern)
   (add-to-list 'company-dabbrev-code-modes 'js2-mode)
+  (defun my/use-eslint-from-node-modules ()
+    (let* ((root (locate-dominating-file
+                  (or (buffer-file-name) default-directory)
+                  "node_modules"))
+           (eslint (and root
+                        (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                          root))))
+      (when (and eslint (file-executable-p eslint))
+        (setq-local flycheck-javascript-eslint-executable eslint))))
+
+  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
   (add-hook 'js2-mode-hook (lambda () (tern-mode +1) (subword-mode +1))))
 
 (provide 'orary-javascript)
