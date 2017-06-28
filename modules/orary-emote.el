@@ -37,7 +37,12 @@
     ("Love (●♡∀♡)" . "(●♡∀♡)")
     ("wut ⊙△⊙" . "⊙△⊙")
     ("Bring it (ง •̀_•́)ง" . "(ง •̀_•́)ง")
-    ("Seriously? (¬_¬)" . "(¬_¬)")))
+    ("Seriously? (¬_¬)" . "(¬_¬)")
+    ("Bear ʕ•ᴥ•ʔ" . "ʕ•ᴥ•ʔ")
+    ("Grumpy Bear ୧ʕ ⇀ ⌂ ↼ ʔ୨" . "୧ʕ ⇀ ⌂ ↼ ʔ୨")
+    ("Gah! Bear ʕ￫ᴥ￩　ʔ" . "ʕ￫ᴥ￩　ʔ")
+    ("Fighty Bear! ʕง•ᴥ•ʔง" . "ʕง•ᴥ•ʔง")
+    ("Bear table flip ʕノ•ᴥ•ʔノ ︵ ┻━┻" . "ʕノ•ᴥ•ʔノ ︵ ┻━┻")))
 
 (defun orary/emote-insert-emote (emotes)
   "Entertains you with messaged emotes, then copies the final
