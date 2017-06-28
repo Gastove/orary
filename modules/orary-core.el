@@ -106,6 +106,12 @@
 (use-package dired+
   :init (setq diredp-hide-details-initially-flag nil))
 
+;; bbatsov's crux, for all manner of handy things
+(use-package crux
+  :demand t
+  :bind (("C-k" . crux-smart-kill-line)
+         ("C-c s" . crux-swap-windows)))
+
 ;;---------------------------------Navigation-----------------------------------
 ;; Go directly to the window you want, by number.
 (use-package ace-window
