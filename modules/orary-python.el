@@ -49,8 +49,19 @@
               ( "C-c q r" . recompile)
               ("M-." . ggtags-find-tag-dwim)))
 
+;; Jupyter Notebooks
+(require 'company)
+(use-package jedi)
+
 (use-package ein
-  :demand t)
+  :demand t
+  :config
+  (defun ein-python-configs ()
+    (jedi:setup)
+    (add-to-list 'company-backends 'ein:company-backend))
+
+  (add-hook 'ein:notebook-python-mode-hook #'orary/programming-defaults)
+  (add-hook 'ein:notebook-python-mode-hook #'ein-python-configs))
 
 (provide 'orary-python)
 ;;; orary-python.el ends here
