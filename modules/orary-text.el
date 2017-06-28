@@ -6,6 +6,10 @@
 
 ;; Er.
 
+(defun orary/text-mode-defaults ()
+  (toggle-word-wrap +1)
+  (toggle-truncate-lines +1))
+
 (use-package markdown-mode
   :config
   (defun orary/markdown-preview-file ()
