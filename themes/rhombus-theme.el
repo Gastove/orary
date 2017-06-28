@@ -474,6 +474,9 @@ Also bind `class' to ((class color) (min-colors 89))."
 
    ;; Ensime
    `(ensime-implicit-highlight ((t (:underline (:color ,rhombus-charcoal) :weight normal))))
+
+   ;; EIN
+   `(ein:cell-input-area ((t (:background ,rhombus-bg+1))))
    ))
 
 ;;; Footer
