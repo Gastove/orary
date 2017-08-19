@@ -145,7 +145,6 @@ so company-mode will work nicely."
         ;; The Agenda
         ;; Show me a 10 day view by default
         org-agenda-span 10)
-  (add-hook 'org-ctrl-c-ctrl-c-hook 'ob-async-org-babel-execute-src-block)
 
   ;; Structural templates
   (add-to-list 'org-structure-template-alist
