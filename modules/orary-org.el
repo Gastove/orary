@@ -124,23 +124,36 @@ so company-mode will work nicely."
         org-default-notes-file (f-expand "~/Dropbox/org-docs/cotidienne.org")
 
         org-capture-templates
-        `(("t" "Todo" entry (file+headline "" "General To-Dos")
+        `(;; General To Do
+          ("t" "To-Dos")
+          ("tp" "Todo -- Personal" entry (file+headline "" "General To-Dos")
            "** TODO %?\n")
-          ("w" "Work Todo" entry (file+headline ,(f-expand "~/Documents/work.org") "General To-Dos")
-           "** TODO %?\nDEADLINE: <%(org-read-date nil nil \"+1d\")>\n%^{trello_ticket}p" :empty-lines 1)
+          ;; Work To Do
+          ("tw" "Todo -- Work" entry (file+headline ,(f-expand "~/Documents/work.org") "General To-Dos")
+           "** TODO %?\nDEADLINE: <%(org-read-date nil nil \"+1d\")>\n%^{trello_ticket}p\n" :empty-lines 1)
+          ;; Work notes
           ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "Captured Notes")
            "** %T %^{PROMPT}\n%?")
+          ;; File To Do
           ("f" "File-Todo" entry (file+headline "" "General To-Dos")
            "** TODO %?\n %i\n %A\n")
-          ("e" "Email" entry (file+headline "" "General To-Dos")
+          ;; Personal Email To Do
+          ("e" "Email")
+          ("ep" "Email" entry (file+headline "" "General To-Dos")
            ,(s-join "\n" '("** TODO Reply to %:from re:%?"
                            "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
                            "\%i"
                            "%a\n")))
-          ("g" "Work Log" entry (file+headline "" "Log")
-           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?""** %T\n%?")
-          ("l" "Personal Log" entry (file+headline "" "Log")
-           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?"))
+          ("ew" "Email" entry (file+headline "" "General To-Dos")
+           ,(s-join "\n" '("** TODO Reply to %:from re:%?"
+                           "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
+                           "\%i"
+                           "%a\n")))
+          ("l" "The Log")
+          ("lw" "Work Log" entry (file+headline ,(f-expand "~/Documents/work.org") "Log")
+           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?""** %T\n%?" :prepend t)
+          ("lp" "Personal Log" entry (file+headline "" "Log")
+           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?" :prepend t))
 
         ;; The Agenda
         ;; Show me a 10 day view by default
