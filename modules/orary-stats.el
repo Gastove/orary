@@ -26,19 +26,32 @@
   :config
   (require 'ess-site)
   (add-to-list 'ess-style-alist
-               '(my-RRR (ess-indent-level . 2)
-                        (ess-first-continued-statement-offset . 2)
-                        ;; (ess-first-continued-statement-offset . 0)
-                        (ess-continued-statement-offset . 0)
-                        ;; (ess-continued-statement-offset . 4)
-                        (ess-brace-offset . 0)
-                        (ess-arg-function-offset . 4)
-                        (ess-arg-function-offset-new-line . '(4))
-                        (ess-expression-offset . 4)
-                        (ess-else-offset . 0)
-                        (ess-close-brace-offset . 0)))
+               '(orary-ESS (ess-indent-offset . 2)
+                           ;; (ess-offset-continued . 2)
+                           ;; (ess-indent-from-lhs . 4)
+                           ;; (ess-offset-arguments-newline . '(4))
+                           ))
 
-  (setq ess-default-style 'my-RRR))
+  (ess-toggle-underscore nil)
+
+  (setq ess-default-style 'orary-ESS
+        ess-S-assign-key (kbd "M--"))
+
+  (defun orary/inferior-R-configs ()
+    (smartparens-mode 1))
+
+  (defun orary/inferior-ess-configs ()
+    (smartparens-mode 1))
+
+  (defun orary/ess-configs ()
+    (ess-toggle-S-assign-key t))
+
+  ;; Smartparens in the interpreter
+  (add-hook 'ess-R-post-run-hook #'orary/inferior-R-configs)
+  (add-hook 'inferior-ess-mode-hook #'orary/inferior-ess-configs)
+
+  ;; Disable conversion of underscores to arrows; map to M-- instead
+  (add-hook 'ess-mode-hook #'orary/ess-configs))
 
 (provide 'orary-stats)
 ;;; orary-stats.el ends here
