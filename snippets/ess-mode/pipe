@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: pipe
+# key: %
+# expand-env: ((yas-indent-line 'auto))
+# --
+%>%
+$0
