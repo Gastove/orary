@@ -46,7 +46,7 @@
   :bind (:map python-mode-map
               ("C-c q i" . orary/python-make-module)
               ("C-c q q" . orary/replace-double-quote-with-single)
-              ( "C-c q r" . recompile)
+              ("C-c q r" . recompile)
               ("M-." . ggtags-find-tag-dwim)))
 
 ;; Jupyter Notebooks
