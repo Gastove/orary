@@ -193,6 +193,55 @@ it."
     (-let [sig (format-time-string " -- RMD %Y-%m-%d" (current-time))]
       (insert sig))))
 
+(defvar-local orary/env-files '(".env.defaults" ".env" ".env.test"))
+
+(defun orary/parse-bash-env-string (s)
+  "Splits a bash-style export string S into a key-value pair."
+  (s-split "=" s))
+
+(defun orary/read-file (file-path)
+  (with-temp-buffer
+    (insert-file file-path)
+    (s-split "\n" (buffer-string))))
+
+(defun orary/read-env-file (file-path)
+  (-let [lines (orary/read-file file-path)]
+    (-filter (lambda (s) (and (not (s-starts-with-p "#" s))
+                              (not (s-blank-p s))))
+             lines)))
+
+(defun orary/parse-bash-env-lines (lines)
+  (-map #'orary/parse-bash-env-string lines))
+
+(defun orary/load-file-to-env (file-path)
+  (-let* ((lines (orary/read-env-file file-path))
+          (parsed-lines (orary/parse-bash-env-lines lines)))
+    (-each parsed-lines
+      (lambda (kv-pair)
+        (-let ((k (car kv-pair))
+               (v (cadr kv-pair)))
+          (message "Setting env value %s to %s" k v)
+          (setenv k v)
+          )))))
+
+(defvar-local orary/env-already-loaded nil)
+
+(defun orary/load-env (&optional reload)
+  "For each of the env file names in orary/env-files, resolve to
+the given project root and attempt to load k/v pairs out of
+each."
+  (interactive "P")
+  (message "Got prefix arg: %s" reload)
+  (if (or reload (not orary/env-already-loaded))
+      (-let [dir (projectile-project-root)]
+        (-each orary/env-files
+          (lambda (file-name)
+            (-let [file-path (f-expand file-name dir)]
+              (if (f-exists-p file-path)
+                  (orary/load-file-to-env file-path)))))
+        (setq-local orary/env-already-loaded t)
+        (message "Env files loaded"))
+    (message "Skipping env load, already loaded")))
 
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
