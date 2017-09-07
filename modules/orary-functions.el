@@ -186,6 +186,13 @@ it."
                                (orary/clone-and-recall (car repo) dir)))
           :buffer "*Git Clone")))
 
+(defun orary/insert-signed-comment ()
+  (interactive)
+  (orary/comment-dwim-line)
+  (save-excursion
+    (-let [sig (format-time-string " -- RMD %Y-%m-%d" (current-time))]
+      (insert sig))))
+
 
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
