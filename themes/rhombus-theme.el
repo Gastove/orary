@@ -477,6 +477,10 @@ Also bind `class' to ((class color) (min-colors 89))."
 
    ;; EIN
    `(ein:cell-input-area ((t (:background ,rhombus-bg+1))))
+
+   ;; Yasnippet
+   `(yas-field-highlight-face ((t (:background ,rhombus-bg+2 :box ,rhombus-bronze))))
+
    ))
 
 ;;; Footer
