@@ -254,7 +254,9 @@ each."
   (interactive)
   (-let ((opening-pairs (s-join "\\|" (-map (-compose #'regexp-quote #'first) orary/rotatable-pairs)))
          (closing-pairs (s-join "\\|" (-map (-compose #'regexp-quote #'cdr) orary/rotatable-pairs)))
-         (opening-bound (or (re-search-backward "^$" (point-min) t) (point-min))))
+         ;; This is taking us way too far back, and resetting point.
+         ;; (opening-bound (or (re-search-backward "^$" (point-min) t) (point-min)))
+         )
     (-if-let* ((end-of-rotation
                 (if (looking-back closing-pairs)
                     ;; If this matches, it matches the *end* of the string instead of the beginning
@@ -262,7 +264,7 @@ each."
                         (+ m 1))
                   (search-forward-regexp closing-pairs nil t)))
 
-               (beginning-of-rotation (search-backward-regexp opening-pairs opening-bound t))
+               (beginning-of-rotation (search-backward-regexp opening-pairs nil t))
                (working-text (buffer-substring beginning-of-rotation end-of-rotation)))
 
         ;; figure out whether we're replacing space with newline, or vice-versa
