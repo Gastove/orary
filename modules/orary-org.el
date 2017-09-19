@@ -61,23 +61,22 @@ so company-mode will work nicely."
                              (org-bullets-mode 1)))
   (require 'ox-confluence)
 
-  ;; TODO Keyword states:
-  ;; > In-Progress states: BACKLOG, TODO, DOING, BLOCKED
-  ;; > Finished states:    DONE, IMPOSSIBLE, CANCELLED
   (setq org-todo-keywords
-        '((sequence "BACKLOG(k)")
-          (sequence "TODO(t)" "DOING(o)" "|" "DONE(d)")
-          (sequence "BLOCKED(b)" "|" "UNBLOCKED (u)" "CANCELLED(c)" "IMPOSSIBLE(i)"))
+        '((sequence "BACKLOG(k)" "TODO(t)" "DOING(o)" "REVIEW(r)" "|" "DONE(d)")
+          (sequence "BLOCKED(b@)" "UNBLOCKED (u)" "|" "CANCELLED(c)" "IMPOSSIBLE(i)" "WONTFIX(w)"))
 
         org-todo-keyword-faces
-        '(("TODO" . org-todo)
-          ("DOING" . org-todo)
-          ("BACKLOG" . org-todo)
-          ("BLOCKED" . org-warning)
-          ("CANCELLED" . org-done)
+        '(("TODO"       . org-todo)
+          ("DOING"      . org-todo)
+          ("BACKLOG"    . org-todo)
+          ("REVIEW"     . org-todo)
+          ("BLOCKED"    . org-warning)
+          ("CANCELLED"  . org-done)
           ("IMPOSSIBLE" . org-done)
-          ("DONE" . org-done))
+          ("WONTFIX"    . org-done)
+          ("DONE"       . org-done))
 
+        org-fontify-done-headline t
         ;; Config org export backends
         org-export-backends `(ascii
                               beamer
@@ -139,12 +138,12 @@ so company-mode will work nicely."
            "** TODO %?\n %i\n %A\n")
           ;; Personal Email To Do
           ("e" "Email")
-          ("ep" "Email" entry (file+headline "" "General To-Dos")
+          ("ep" "Personal Email" entry (file+headline "" "General To-Dos")
            ,(s-join "\n" '("** TODO Reply to %:from re:%?"
                            "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
                            "\%i"
                            "%a\n")))
-          ("ew" "Email" entry (file+headline "" "General To-Dos")
+          ("ew" "Work Email" entry (file+headline "" "General To-Dos")
            ,(s-join "\n" '("** TODO Reply to %:from re:%?"
                            "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
                            "\%i"
