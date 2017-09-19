@@ -35,7 +35,8 @@
 
 ;; Rhombus Color Palette
 (defvar rhombus-colors-alist
-  '(("rhombus-fg"             . "#FFF5EB")
+  '(;; Ordinary text
+    ("rhombus-fg"             . "#FFF5EB")
     ("rhombus-fg+1"           . "#FBF9F3")
     ("rhombus-bg"             . "#000000")
     ("rhombus-bg+1"           . "#171717")
@@ -70,7 +71,6 @@
     ("rhombus-blue"           . "#6495ed")
     ("rhombus-teal"           . "#65A399")
     ("rhombus-sand"           . "#C7B299")
-
 
     ;; Other People's Good Ideas
     ("rhombus-link"           . "#8ACDAA")
@@ -185,18 +185,18 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-document-info-keyword ((t (:foreground ,rhombus-purple))))
    `(org-document-title ((t (:foreground ,rhombus-grey :height 1.50))))
    `(org-archived ((t (:foreground ,rhombus-fg :weight bold))))
-   `(org-checkbox ((t (:foreground ,rhombus-fg+1 :foreground ,rhombus-sand
-                                   :box (:line-width 1 :style released-button)))))
-   `(org-done ((t (:foreground ,rhombus-dark-brown :strike-through t))))
-   `(org-todo ((t (:foreground ,rhombus-light-brown :bolt t))))
+   `(org-checkbox ((t (:foreground ,rhombus-sand :box (:line-width 1 :style released-button)))))
+   `(org-done ((t (:foreground ,rhombus-charcoal))))
+   `(org-headline-done ((t (:strike-through ,rhombus-dark-red :foreground ,rhombus-charcoal :slant oblique))))
+   `(org-todo ((t (:foreground ,rhombus-bronze :bold t))))
    `(org-formula ((t (:foreground ,rhombus-violet))))
-   `(org-headline-done ((t (:strike-through t :foreground ,rhombus-charcoal))))
+
    `(org-hide ((t (:foreground ,rhombus-bg))))
-   `(org-level-1 ((t (:foreground ,rhombus-violet))))
+   `(org-level-1 ((t (:foreground ,rhombus-violet :underline ,rhombus-charcoal :height 1.1))))
    `(org-level-2 ((t (:foreground ,rhombus-violet+1))))
-   `(org-level-3 ((t (:foreground ,rhombus-orange-1))))
-   `(org-level-4 ((t (:foreground ,rhombus-yellow))))
-   `(org-level-5 ((t (:foreground ,rhombus-grey))))
+   `(org-level-3 ((t (:foreground ,rhombus-orange+1))))
+   `(org-level-4 ((t (:foreground ,rhombus-orange))))
+   `(org-level-5 ((t (:foreground ,rhombus-orange-1))))
    `(org-level-6 ((t (:foreground ,rhombus-purple))))
    `(org-level-7 ((t (:foreground ,rhombus-dark-brown))))
    `(org-level-8 ((t (:foreground ,rhombus-teal))))
