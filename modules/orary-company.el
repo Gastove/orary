@@ -27,9 +27,22 @@
   :commands company-mode
   :config
   (global-company-mode)
+
   (setq company-idle-delay .4
-	company-minimum-prefix-length 2
-	company-tooltip-limit 20)
+        company-minimum-prefix-length 2
+        company-tooltip-limit 20
+        company-backends '(company-bbdb
+                           company-nxml
+                           company-css
+                           company-eclim
+                           company-semantic
+                           company-clang
+                           company-xcode
+                           company-cmake
+                           company-files
+                           company-capf
+                           (company-dabbrev-code company-gtags company-etags company-keywords)
+                           company-oddmuse company-dabbrev))
   :diminish company)
 
 (use-package company-tern)
