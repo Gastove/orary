@@ -481,8 +481,20 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; EIN
    `(ein:cell-input-area ((t (:background ,rhombus-bg+1))))
 
-   ;; Yasnippet
+   ;;----------------------------------yasnippet------------------------------------
    `(yas-field-highlight-face ((t (:background ,rhombus-bg+1 :box ,rhombus-bronze))))
+
+   ;;-----------------------------Rainbow Delimiters-------------------------------
+   ;; This is a good idea, but needs more work -- maybe 9 shades of one color, lower contrast.
+   ;; `(rainbow-delimiters-depth-1-face ((t (:foreground ,rhombus-orange))))
+   ;; `(rainbow-delimiters-depth-2-face ((t (:foreground ,rhombus-teal))))
+   ;; `(rainbow-delimiters-depth-3-face ((t (:foreground ,rhombus-red))))
+   ;; `(rainbow-delimiters-depth-4-face ((t (:foreground ,rhombus-blue))))
+   ;; `(rainbow-delimiters-depth-5-face ((t (:foreground ,rhombus-purple))))
+   ;; `(rainbow-delimiters-depth-6-face ((t (:foreground ,rhombus-light-brown))))
+   ;; `(rainbow-delimiters-depth-7-face ((t (:foreground ,rhombus-orange+1))))
+   ;; `(rainbow-delimiters-depth-8-face ((t (:foreground ,rhombus-bronze))))
+   ;; `(rainbow-delimiters-depth-9-face ((t (:foreground ,rhombus-green))))
 
    ))
 
