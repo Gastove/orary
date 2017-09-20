@@ -103,7 +103,8 @@
 
 (setq ispell-program-name "aspell"
       ;; The default mode is too slow, but `ultra' is too imprecise.
-      ispell-extra-args '("--sug-mode=fast"))
+      ispell-extra-args '("--sug-mode=fast")
+      ispell-personal-dictionary "~/Dropbox/emacs/.aspell.en.pws")
 
 (defun orary/flyspell-text ()
   "Enable flyspell for text modes."
