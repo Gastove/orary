@@ -187,6 +187,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-document-title ((t (:foreground ,rhombus-grey :height 1.50))))
    `(org-archived ((t (:foreground ,rhombus-fg :weight bold))))
    `(org-checkbox ((t (:foreground ,rhombus-sand :box (:line-width 1 :style released-button)))))
+   `(org-checkbox-statistics-done ((t :foreground ,rhombus-green)))
+   `(org-checkbox-statistics-todo ((t :foreground ,rhombus-blue)))
    `(org-done ((t (:foreground ,rhombus-charcoal))))
    `(org-headline-done ((t (:strike-through ,rhombus-dark-red :foreground ,rhombus-charcoal :slant oblique))))
    `(org-todo ((t (:foreground ,rhombus-bronze :bold t))))
