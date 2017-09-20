@@ -448,8 +448,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-mu-contacts-name-face ((t (:foreground ,rhombus-fg :background ,rhombus-bg))))
 
    ;; >>>>> Magit
+   `(git-commit-summary ((t (:foreground ,rhombus-orange))))
    `(magit-item-highlight ((t (:background ,rhombus-violet-2))))
-   `(magit-section-title ((t (:foreground ,rhombus-orange :weight bold))))
+   `(magit-section-heading ((t (:foreground ,rhombus-orange :weight bold))))
+   `(magit-section-highlight ((t (:background ,rhombus-bg+1))))
    `(magit-process-ok ((t (:foreground ,rhombus-succ :weight bold))))
    `(magit-process-ng ((t (:foreground ,rhombus-warn :weight bold))))
    `(magit-branch ((t (:foreground ,rhombus-violet :weight bold))))
