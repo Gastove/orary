@@ -191,7 +191,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-checkbox-statistics-todo ((t :foreground ,rhombus-blue)))
    `(org-done ((t (:foreground ,rhombus-charcoal))))
    `(org-headline-done ((t (:strike-through ,rhombus-dark-red :foreground ,rhombus-charcoal :slant oblique))))
-   `(org-todo ((t (:foreground ,rhombus-bronze :bold t))))
+   `(org-todo ((t (:foreground ,rhombus-bronze :weight semi-bold))))
    `(org-formula ((t (:foreground ,rhombus-violet))))
 
    `(org-hide ((t (:foreground ,rhombus-bg))))
@@ -463,7 +463,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(magit-diff-remove ((t (:background ,rhombus-dull-red))))
 
    ;; Perspective
-   `(persp-selected-face ((t (:foreground ,rhombus-light-brown :inherit mode-line))))
+   `(persp-selected-face ((t (:foreground ,rhombus-teal :inherit mode-line))))
 
    ;; >>>>> whitespace-mode
    `(whitespace-space ((t (:background ,rhombus-bg+1 :foreground ,rhombus-bg+1))))
