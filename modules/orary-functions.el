@@ -254,24 +254,22 @@ each."
   (interactive)
   (-let ((opening-pairs (s-join "\\|" (-map (-compose #'regexp-quote #'first) orary/rotatable-pairs)))
          (closing-pairs (s-join "\\|" (-map (-compose #'regexp-quote #'cdr) orary/rotatable-pairs)))
-         ;; This is taking us way too far back, and resetting point.
-         ;; (opening-bound (or (re-search-backward "^$" (point-min) t) (point-min)))
-         )
+         (closing-pair-len (length orary/rotatable-pairs)))
     (-if-let* ((end-of-rotation
-                (if (looking-back closing-pairs)
+                (if (looking-back closing-pairs (- (point) closing-pair-len))
                     ;; If this matches, it matches the *end* of the string instead of the beginning
-                    (-if-let (m (search-backward-regexp closing-pairs (- (point) (length orary/rotatable-pairs))))
-                        (+ m 1))
+                    (-let [m (search-backward-regexp closing-pairs (- (point) closing-pair-len))]
+                      (+ m 1))
                   (search-forward-regexp closing-pairs nil t)))
-
                (beginning-of-rotation (search-backward-regexp opening-pairs nil t))
                (working-text (buffer-substring beginning-of-rotation end-of-rotation)))
 
         ;; figure out whether we're replacing space with newline, or vice-versa
-        (-let* ((going-to-from (if (looking-at "([A-Za-z0-9]+, ") 'space->newline 'newline->space))
+        (-let* ((going-to-from (if (looking-at "([A-Za-z0-9=_]+, ") 'space->newline 'newline->space))
                 (look-for-re (if (eq going-to-from 'space->newline) "\\s-+" "\n\\s-*"))
                 (replace-with-char (if (eq going-to-from 'space->newline) "\n" " "))
                 (replacement-text nil))
+
           (-let ((first-cleanup (replace-regexp-in-string look-for-re replace-with-char working-text)))
             (setq replacement-text
                   (if (eq going-to-from 'space->newline)
@@ -279,12 +277,13 @@ each."
                         (replace-regexp-in-string ")" "\n)" newline-opening))
                     (-let [cleanup-opening-paren (replace-regexp-in-string "( " "(" first-cleanup)]
                       (replace-regexp-in-string " )" ")" cleanup-opening-paren))))
+
             (delete-region beginning-of-rotation end-of-rotation)
             (goto-char beginning-of-rotation)
             (insert replacement-text)
-            (indent-region beginning-of-rotation (point)))))
+            (indent-region beginning-of-rotation (point))))
 
-    (message "Nothing to rotate")
+      (message "Nothing to rotate"))
     ))
 
 (provide 'orary-functions)
