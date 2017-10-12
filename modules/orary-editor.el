@@ -29,6 +29,8 @@
 (require 'dash)
 (require 'f)
 
+(global-prettify-symbols-mode 1)
+
 (use-package anzu
   :diminish anzu-mode
   :config
