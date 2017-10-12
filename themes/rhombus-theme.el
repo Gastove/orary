@@ -68,6 +68,7 @@
     ("rhombus-light-brown"    . "#Fff59f")
 
     ;; Backup-dancing colors
+    ("rhombus-dark-blue"      . "#483d8b")
     ("rhombus-green"          . "#006400")
     ("rhombus-blue"           . "#6495ed")
     ("rhombus-teal"           . "#65A399")
@@ -131,7 +132,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(warning ((t (:foreground ,rhombus-warn :weight bold))))
 
    ;; This face is used for displaying an active region
-   `(region ((t (:background ,rhombus-dull-orange :foreground ,rhombus-dull-red))))
+   `(region ((t (:background ,rhombus-dark-blue :foreground ,rhombus-sand))))
 
    `(show-paren-match-face ((t (:background ,rhombus-orange-1 :foreground ,"black" ))))
 
@@ -153,13 +154,13 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; >>>>> font-lock
    `(font-lock-warning-face ((t (:foreground ,rhombus-warn :weight bold))))
    `(font-lock-function-name-face ((t (:foreground ,rhombus-orange))))
-   `(font-lock-variable-name-face ((t (:foreground ,rhombus-purple))))
+   `(font-lock-variable-name-face ((t (:foreground ,rhombus-red-violet))))
    `(font-lock-keyword-face ((t (:foreground ,rhombus-teal))))
    `(font-lock-comment-face ((t (:foreground ,rhombus-charcoal))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,rhombus-red-violet :weight light :slant oblique))))
    `(font-lock-type-face ((t (:foreground ,rhombus-pink))))
    `(font-lock-constant-face ((t (:foreground ,rhombus-purple))))
-   `(font-lock-builtin-face ((t (:foreground ,rhombus-dark-red))))
+   `(font-lock-builtin-face ((t (:foreground ,rhombus-dull-orange))))
    `(font-lock-preprocessor-face ((t (:foreground ,rhombus-bronze))))
    `(font-lock-string-face ((t (:foreground ,rhombus-sand))))
    `(font-lock-doc-face ((t (:foreground ,rhombus-dark-brown))))
@@ -488,11 +489,11 @@ Also bind `class' to ((class color) (min-colors 89))."
 
    ;;-----------------------------Rainbow Delimiters-------------------------------
    ;; This is a good idea, but needs more work -- maybe 9 shades of one color, lower contrast.
-   ;; `(rainbow-delimiters-depth-1-face ((t (:foreground ,rhombus-orange))))
-   ;; `(rainbow-delimiters-depth-2-face ((t (:foreground ,rhombus-teal))))
-   ;; `(rainbow-delimiters-depth-3-face ((t (:foreground ,rhombus-red))))
-   ;; `(rainbow-delimiters-depth-4-face ((t (:foreground ,rhombus-blue))))
-   ;; `(rainbow-delimiters-depth-5-face ((t (:foreground ,rhombus-purple))))
+   `(rainbow-delimiters-depth-1-face ((t (:foreground ,rhombus-dark-blue))))
+   `(rainbow-delimiters-depth-2-face ((t (:foreground ,(color-lighten-name rhombus-dark-blue 10)))))
+   `(rainbow-delimiters-depth-3-face ((t (:foreground ,(color-lighten-name rhombus-dark-blue 20)))))
+   `(rainbow-delimiters-depth-4-face ((t (:foreground ,(color-lighten-name rhombus-dark-blue 30)))))
+   `(rainbow-delimiters-depth-5-face ((t (:foreground ,(color-lighten-name rhombus-dark-blue 40)))))
    ;; `(rainbow-delimiters-depth-6-face ((t (:foreground ,rhombus-light-brown))))
    ;; `(rainbow-delimiters-depth-7-face ((t (:foreground ,rhombus-orange+1))))
    ;; `(rainbow-delimiters-depth-8-face ((t (:foreground ,rhombus-bronze))))
