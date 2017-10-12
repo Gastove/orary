@@ -286,5 +286,11 @@ each."
       (message "Nothing to rotate"))
     ))
 
+(defun orary/yank-commented ()
+  (interactive)
+  (-let [init (point)]
+    (yank)
+    (comment-region init (point))))
+
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
