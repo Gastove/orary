@@ -89,7 +89,8 @@
           (lambda ()
             (auto-fill-mode -1)
             (whitespace-mode -1)
-            (toggle-word-wrap +1)))
+            (toggle-word-wrap +1)
+            (setq orary/disable-auto-indent t)))
 
 ;; The mu4e interface
 ;; Single-character shortcuts
