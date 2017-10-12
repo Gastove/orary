@@ -15,7 +15,8 @@
   (subword-mode +1)
   (diminish 'subword-mode)
   (rainbow-delimiters-mode +1)
-  (smartparens-strict-mode +1))
+  (smartparens-strict-mode +1)
+  (push '("lambda" . ?λ) prettify-symbols-alist))
 
 (defun orary/interactive-lisp-defaults ()
   (subword-mode +1)
