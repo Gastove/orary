@@ -101,6 +101,7 @@
 (require 'orary-formats)
 (require 'orary-go)
 (require 'orary-javascript)
+(require 'orary-lilypond)
 (require 'orary-org)
 (require 'orary-purescript)
 (require 'orary-python)
