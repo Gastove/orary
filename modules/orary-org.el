@@ -189,5 +189,11 @@ so company-mode will work nicely."
          ("C-c l" . org-store-link)
          ("C-c b" . org-iswitchb)))
 
+;; This is not... ideal, but it'll do for now
+(when (f-exists? "/Users/gastove/Code/org-blorg/")
+  (load (f-join "/Users/gastove/Code/org-blorg/" "org-blorg.el"))
+  (require 'org-blorg)
+  (add-to-list 'auto-mode-alist '("\\.blorg\\'" . org-blorg-mode)))
+
 (provide 'orary-org)
 ;;; orary-org.el ends here
