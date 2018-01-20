@@ -47,6 +47,12 @@ so company-mode will work nicely."
 (require 'cider) ;; for ob-clojure config
 (use-package ob-async)
 
+(defun orary/refile-targets-fn ()
+  (-let* ((base-agenda (org-agenda-files))
+          (expanded (-map (lambda (fname) (f-expand fname)) base-agenda))
+          (current-file (buffer-file-name (current-buffer))))
+    (-uniq (cons current-file expanded))))
+
 (use-package org
   :ensure org-plus-contrib
   :config
@@ -62,7 +68,8 @@ so company-mode will work nicely."
   (require 'ox-confluence)
 
   (setq org-todo-keywords
-        '((sequence "BACKLOG(k)" "TODO(t)" "DOING(o)" "REVIEW(r)" "|" "DONE(d)")
+        '((sequence "BACKLOG(k)")
+          (sequence "TODO(t)" "DOING(o)" "REVIEW(r)" "|" "DONE(d)")
           (sequence "BLOCKED(b@)" "UNBLOCKED (u)" "|" "CANCELLED(c)" "IMPOSSIBLE(i)" "WONTFIX(w)"))
 
         org-todo-keyword-faces
@@ -99,7 +106,7 @@ so company-mode will work nicely."
         org-confirm-babel-evaluate nil
 
         ;; Refiling defaults
-        org-refile-targets '((org-agenda-files . (:maxlevel . 5)))
+        org-refile-targets '((orary/refile-targets-fn . (:maxlevel . 5)))
         org-refile-allow-creating-parent-nodes 'confirm
 
         ;; Let me refile via the full outline path of a header
@@ -122,6 +129,7 @@ so company-mode will work nicely."
 
         org-default-notes-file (f-expand "~/Dropbox/org-docs/cotidienne.org")
 
+        ;; Org Capture
         org-capture-templates
         `(;; General To Do
           ("t" "To-Dos")
@@ -151,12 +159,13 @@ so company-mode will work nicely."
           ("l" "The Log")
           ("lw" "Work Log" entry (file+headline ,(f-expand "~/Documents/work.org") "Log")
            "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?""** %T\n%?" :prepend t)
-          ("lp" "Personal Log" entry (file+headline "" "Log")
-           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?" :prepend t))
+          ("lp" "Personal Log" entry (file+olp+datetree "" "Log")
+           "** %T\n%i\n%?\n" :prepend t))
 
         ;; The Agenda
         ;; Show me a 10 day view by default
-        org-agenda-span 10)
+        org-agenda-span 10
+        )
 
   ;; Structural templates
   (add-to-list 'org-structure-template-alist
