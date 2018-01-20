@@ -200,7 +200,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-level-2 ((t (:foreground ,rhombus-violet+1 :heigth 1.1))))
    `(org-level-3 ((t (:foreground ,rhombus-teal :height 1.05))))
    `(org-level-4 ((t (:foreground ,rhombus-orange+1))))
-   `(org-level-5 ((t (:foreground ,rhombus-green))))
+   `(org-level-5 ((t (:foreground ,rhombus-light-brown))))
    `(org-level-6 ((t (:foreground ,rhombus-purple))))
    `(org-level-7 ((t (:foreground ,rhombus-dark-brown))))
    `(org-level-8 ((t (:foreground ,rhombus-teal))))
