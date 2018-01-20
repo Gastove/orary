@@ -265,9 +265,9 @@ each."
                (working-text (buffer-substring beginning-of-rotation end-of-rotation)))
 
         ;; figure out whether we're replacing space with newline, or vice-versa
-        (-let* ((going-to-from (if (looking-at "([A-Za-z0-9=_]+, ") 'space->newline 'newline->space))
-                (look-for-re (if (eq going-to-from 'space->newline) "\\s-+" "\n\\s-*"))
-                (replace-with-char (if (eq going-to-from 'space->newline) "\n" " "))
+        (-let* ((going-to-from (if (looking-at "([A-Za-z0-9=_]+") 'space->newline 'newline->space))
+                (look-for-re (if (eq going-to-from 'space->newline) ",\\s-+" ",\n\\s-*"))
+                (replace-with-char (if (eq going-to-from 'space->newline) ",\n" ", "))
                 (replacement-text nil))
 
           (-let ((first-cleanup (replace-regexp-in-string look-for-re replace-with-char working-text)))
@@ -275,8 +275,8 @@ each."
                   (if (eq going-to-from 'space->newline)
                       (-let [newline-opening (replace-regexp-in-string "(" "(\n" first-cleanup)]
                         (replace-regexp-in-string ")" "\n)" newline-opening))
-                    (-let [cleanup-opening-paren (replace-regexp-in-string "( " "(" first-cleanup)]
-                      (replace-regexp-in-string " )" ")" cleanup-opening-paren))))
+                    (-let [cleanup-opening-paren (replace-regexp-in-string "(\n\\s-+" "(" first-cleanup)]
+                      (replace-regexp-in-string "\n)" ")" cleanup-opening-paren))))
 
             (delete-region beginning-of-rotation end-of-rotation)
             (goto-char beginning-of-rotation)
