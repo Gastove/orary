@@ -17,11 +17,12 @@
 ;; Misc languages whee
 (use-package haskell-mode)
 (use-package dockerfile-mode)
-(use-package rust-mode)
+(use-package fish-mode)
 (use-package coffee-mode)
 (use-package groovy-mode
   :mode "\\.gradle\\'")
 (use-package php-mode)
+(use-package puppet-mode)
 
 ;; Scheme
 (use-package geiser
