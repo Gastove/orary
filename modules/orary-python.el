@@ -6,6 +6,8 @@
 
 ;; Python
 
+(require 'python-environment)
+
 (use-package elpy
   :demand t
   :config
@@ -16,6 +18,7 @@
   (setq
    ;; python-shell-interpreter-args "--simple-prompt -i"
    python-fill-docstring-style 'django
+   python-environment-directory "~/.python_virtualenvs/"
    elpy-rpc-python-command "python3")
 
   (defun orary/python-mode-settings ()
