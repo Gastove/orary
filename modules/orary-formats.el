@@ -54,7 +54,7 @@
   :mode "\\.proto\\'")
 
 ;; YAML
-(use-package highlight-indentation-mode)
+(require 'highlight-indentation)
 (use-package yaml-mode
   :mode "\\.ya?ml\\'"
   :config
