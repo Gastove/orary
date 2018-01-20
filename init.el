@@ -105,6 +105,7 @@
 (require 'orary-org)
 (require 'orary-purescript)
 (require 'orary-python)
+(require 'orary-rust)
 (require 'orary-scala)
 (require 'orary-stats)
 (require 'orary-web)
