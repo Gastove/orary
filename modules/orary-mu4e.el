@@ -36,7 +36,7 @@
       user-full-name  "Ross Donaldson"
 
       ;; Signature
-      mu4e-compose-signature "Ross Donaldson\nData Engineer, Disqus\nTechnologist, Reed College Software Design Studio\nhttp://csv.rodeo"
+      mu4e-compose-signature "Ross Donaldson\nData Engineer, Disqus\nhttp://csv.rodeo"
 
       ;; ISO date format for headers
       mu4e-headers-date-format "%Y-%m-%d"
