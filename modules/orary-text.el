@@ -7,6 +7,7 @@
 ;; Er.
 
 (defun orary/text-mode-defaults ()
+  (hl-line-mode +1)
   (toggle-word-wrap +1)
   (toggle-truncate-lines +1))
 
