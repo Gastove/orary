@@ -31,7 +31,8 @@
   (add-to-list 'helm-boring-file-regexp-list "\\.py[oc]$")
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
-  (setq projectile-completion-system 'helm)
+  (setq projectile-completion-system 'helm
+        helm-grep-ag-command "rg --smart-case --no-heading --line-number %s %s %s")
   (helm-projectile-on)
   (helm-descbinds-mode)
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
