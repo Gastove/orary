@@ -53,7 +53,9 @@ then clean up white space."
 ;; Fun special case: tabs are required in makefiles
 (defun respect-makefile-tabs ()
   (setq ethan-wspace-errors (remove 'tabs ethan-wspace-errors)))
+
 (add-hook 'makefile-gmake-mode-hook #'respect-makefile-tabs)
+(add-hook 'makefile-bsdmake-mode-hook #'respect-makefile-tabs)
 (add-hook 'makefile-mode-hook #'respect-makefile-tabs)
 
 (defun orary/programming-defaults ()
