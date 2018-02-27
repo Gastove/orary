@@ -34,6 +34,11 @@
          ("\\.jsx\\'" . web-mode)
          ("\\.html\\'" . web-mode))
   :config
+  (setq web-mode-enable-engine-detection t
+        web-mode-enable-auto-pairing t
+        web-mode-enable-auto-closing t
+        web-mode-auto-close-style 2)
+  (add-to-list 'sp-ignore-modes-list 'web-mode)
   (add-to-list 'company-dabbrev-code-modes 'web-mode)
   (add-hook 'web-mode-hook (lambda ()
                              (when (equal web-mode-content-type "jsx")
