@@ -126,6 +126,8 @@ so company-mode will work nicely."
 
         ;; Fontify inside code blocks
         org-src-fontify-natively t
+        ;; ...but don't insert two spaces (it messes up fontification)
+        org-src-preserve-indentation t
 
         org-default-notes-file (f-expand "~/Dropbox/org-docs/cotidienne.org")
 
