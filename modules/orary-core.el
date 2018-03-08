@@ -7,6 +7,9 @@
 (require 'f)
 (require 'dash)
 
+;; I use this sort Generally; it doesn't fit anywhere else better.
+(use-package request)
+
 (add-to-list 'load-path (f-expand "vendor/" orary/orary-root-dir))
 
 (defvar orary/save-root (f-expand "savefile" orary/orary-root-dir))

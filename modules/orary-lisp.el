@@ -1,7 +1,7 @@
 ;;; orary-lisp.el --- Lisp Configs
 ;;
 ;;; Commentary:
-;; Emacs Lisp, Clojure, Et Al
+;; Configurations common across Common Lisp, Emacs Lisp, Clojure, et al.
 ;;; Code:
 
 ;;; Languages
