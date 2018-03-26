@@ -54,13 +54,16 @@
   :mode "\\.proto\\'")
 
 ;; YAML
-(require 'highlight-indentation)
+(use-package highlight-indent-guides
+  :config
+  (setq highlight-indent-guides-method 'column))
+
 (use-package yaml-mode
   :mode "\\.ya?ml\\'"
   :config
   (add-hook 'yaml-mode-hook
             (lambda ()
-              (highlight-indentation-mode 1))))
+              (highlight-indent-guides-mode))))
 
 ;; Thrift
 (use-package thrift)
