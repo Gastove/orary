@@ -56,7 +56,10 @@
 (defvar orary/orary-root-dir (file-name-directory
                               (or (buffer-file-name) (file-chase-links load-file-name))))
 
+;; Stuff I wrote
 (add-to-list 'load-path (f-expand "modules/" orary/orary-root-dir))
+;; Stuff from other people not available on MELPA
+(add-to-list 'load-path (f-expand "vendor/" orary/orary-root-dir))
 
 ;; Load this first in case things need executables from the path.
 (if (eq system-type 'darwin)
