@@ -56,6 +56,9 @@ so company-mode will work nicely."
 (use-package org
   :ensure org-plus-contrib
   :config
+  ;; Disable whitespace cleanup during export -- it borks the bork out of things.
+  (remove-hook 'before-save-hook #'ethan-wspace-clean-before-save-hook)
+  (remove-hook 'before-save-hook #'orary/clean-and-indent-buffer t)
   (add-hook 'org-mode-hook (lambda ()
                              ;; Make sure auto-fill-mode is on. Pretty much always need it.
                              (turn-on-auto-fill)
@@ -205,6 +208,45 @@ so company-mode will work nicely."
   (load (f-join "/Users/gastove/Code/org-blorg/" "org-blorg.el"))
   (require 'org-blorg)
   (add-to-list 'auto-mode-alist '("\\.blorg\\'" . org-blorg-mode)))
+
+(defun orary/src-block-to-html (src-block _contents info)
+  "Transcode a SRC-BLOCK element from Org to HTML. Unlike Org,
+write a damn <pre><code> tag pair, instead of the unparseable
+flim-flam org does."
+  (let* ((lang (org-element-property :language src-block))
+         (code (org-html-format-code src-block info))
+         (label (let ((lbl (and (org-element-property :name src-block)
+                                (org-export-get-reference src-block info))))
+                  (if lbl (format " id=\"%s\"" lbl) ""))))
+    (if (not lang)
+        (format "<pre><code>\n%s\n</code></pre>"code)
+      (format "<div class=\"org-src-container\">\n%s\n</div>"
+              (format "<pre><code class=\"%s\">\n%s</code></pre>" lang code)))))
+
+(org-export-define-derived-backend 'orary/html 'html
+  :translate-alist '((src-block . orary/src-block-to-html)))
+
+(defun orary/html-export-as-html
+    (&optional async subtreep visible-only body-only ext-plist)
+  (interactive)
+  (org-export-to-buffer 'orary/html "*Orary Org HTML Export*"
+    async subtreep visible-only body-only ext-plist
+    (lambda () (set-auto-mode t))))
+
+(defun orary/html-export-to-html
+    (&optional async subtreep visible-only body-only ext-plist)
+  (interactive)
+  (let* ((extension (concat "." (or (plist-get ext-plist :html-extension)
+                                    org-html-extension
+                                    "html")))
+         (file (org-export-output-file-name extension subtreep))
+         (org-export-coding-system org-html-coding-system))
+    (org-export-to-file 'orary/html file
+      async subtreep visible-only body-only ext-plist)))
+
+(defun orary/html-export-body-to-file ()
+  (interactive)
+  (orary/html-export-to-html nil nil nil t))
 
 (provide 'orary-org)
 ;;; orary-org.el ends here
