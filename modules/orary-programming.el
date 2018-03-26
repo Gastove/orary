@@ -28,7 +28,11 @@ Currently catches: FIX(ME)?, TODO, NOTE."
 
 (use-package ethan-wspace
   :commands ethan-wspace-clean-all
-  :diminish ethan-wspace-mode)
+  :diminish ethan-wspace-mode
+  :config
+  ;; (remove-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
+  ;; (remove-hook 'after-save-hook 'ethan-wspace-clean-after-save-hook)
+  )
 
 (use-package ggtags)
 
@@ -66,10 +70,33 @@ then clean up white space."
   (orary/important-comments)
   (when (apply 'derived-mode-p orary/gg-tags-modes)
     (ggtags-mode +1))
-  (add-hook 'before-save-hook 'orary/clean-and-indent-buffer))
+  ;; TODO: this is still not working
+  (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
+  )
 
 (add-hook 'orary/programming-mode-hook 'orary/programming-defaults)
 (add-hook 'prog-mode-hook 'orary/programming-mode)
+
+(defun orary/unhook-whitespace-cleanup (func &rest funcargs)
+  "Removes from function FUNC any hooks which will alter its
+whitepace, calls FUNC with FUNCARGS, then restores the hooks.
+Most useful for org export."
+  (interactive)
+  (-let [func-res nil]
+    (remove-hook 'prog-mode-hook #'orary/programming-mode)
+    (remove-hook 'before-save-hook 'orary/clean-and-indent-buffer)
+    (remove-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
+    (remove-hook 'after-save-hook  'ethan-wspace-clean-after-save-hook)
+    (setq func-res (apply func funcargs))
+    (message "Whether you believe it or not, func returned %s" func-res)
+    (add-hook 'prog-mode-hook 'orary/programming-mode)
+    (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
+    (add-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
+    (add-hook 'after-save-hook  'ethan-wspace-clean-after-save-hook)
+    ;; Return out the function result
+    func-res))
+
+(advice-add 'org-export-to-file :around  #'orary/unhook-whitespace-cleanup)
 
 ;;---------------------------------Compilation-----------------------------------
 
