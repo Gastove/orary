@@ -101,12 +101,14 @@
 ;;; Improve on built-in bookmarks, dired
 ;; Enhance... enhance...
 (use-package bookmark+
+  :load-path (lambda () (f-expand "vendor/bookmark-plus" orary/orary-root-dir))
   :config
   (setq bookmark-default-file "~/Dropbox/emacs/gifs.bmk"
         bmkp-last-as-first-bookmark-file nil))
 
 ;; ...enhance
 (use-package dired+
+  :load-path (lambda () (f-expand "vendor/dired-plus" orary/orary-root-dir))
   :init (setq diredp-hide-details-initially-flag nil))
 
 ;; bbatsov's crux, for all manner of handy things
