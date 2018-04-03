@@ -6,7 +6,7 @@
 
 ;; Python
 
-(require 'python-environment)
+;; (require 'python-environment)
 
 (use-package elpy
   :demand t

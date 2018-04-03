@@ -5,7 +5,7 @@
 ;;; Code:
 
 ;;; mu4e
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e/")
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
 
 (require 'mu4e)
 (require 'mu4e-contrib)
