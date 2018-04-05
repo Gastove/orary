@@ -63,7 +63,8 @@
 
 ;; Load this first in case things need executables from the path.
 (if (eq system-type 'darwin)
-    (require 'orary-osx))
+    (require 'orary-osx)
+  (require 'orary-linux))
 
 ;;------------------------------Let's Load Orary--------------------------------
 ;; Core -- central behaviors and configuration
