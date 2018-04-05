@@ -24,3 +24,5 @@
 .org-id-locations
 /.python-environments
 /fsharp-mode
+/auto-save-list
+/session.*
