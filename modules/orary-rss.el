@@ -24,7 +24,8 @@
 
 (use-package elfeed
   :config
-  (setq elfeed-feeds
+  (setq elfeed-db-directory "~/Dropbox/elfeed"
+        elfeed-feeds
         '(("http://feed43.com/2023102361452841.xml" comics)           ;; Riceboy
           ("http://limbero.org/jl8/rss/" comics)                      ;; JL8
           ("http://sssscomic.com/ssss-feed.xml" comics)               ;; Stand still, stay silent
