@@ -18,7 +18,8 @@
   (persp-mode)
   (helm-projectile-on)
   (projectile-global-mode +1)
-  (setq projectile-completion-system 'helm
+  (setq projectile-enable-caching t
+        projectile-completion-system 'helm
         projectile-switch-project-action 'projectile-dired)
   :bind-keymap ("s-p" . projectile-command-map)
   :bind (:map projectile-mode-map
