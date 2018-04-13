@@ -139,10 +139,10 @@ so company-mode will work nicely."
         `(;; General To Do
           ("t" "To-Dos")
           ("tp" "Todo -- Personal" entry (file+headline "" "General To-Dos")
-           "** TODO %?\n")
+           "** TODO %?\n" :empty-lines 1)
           ;; Work To Do
           ("tw" "Todo -- Work" entry (file+headline ,(f-expand "~/Documents/work.org") "General To-Dos")
-           "** TODO %?\nDEADLINE: <%(org-read-date nil nil \"+1d\")>\n%^{trello_ticket}p\n" :empty-lines 1)
+           "** TODO %?\nDEADLINE: <%(org-read-date nil nil \"+1d\")>\n%^{ticket}p\n" :empty-lines 1)
           ;; Work notes
           ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "Captured Notes")
            "** %T %^{PROMPT}\n%?")
@@ -162,10 +162,12 @@ so company-mode will work nicely."
                            "\%i"
                            "%a\n")))
           ("l" "The Log")
-          ("lw" "Work Log" entry (file+headline ,(f-expand "~/Documents/work.org") "Log")
-           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?""** %T\n%?" :prepend t)
+          ("lw" "Work Log" entry (file+olp+datetree ,(f-expand "~/Documents/work.org") "Log")
+           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?""** %T\n%?"
+           :prepend t :empty-lines 1)
           ("lp" "Personal Log" entry (file+olp+datetree "" "Log")
-           "** %T\n%i\n%?\n" :prepend t))
+           "** %T\n%i\n%?\n"
+           :prepend t :empty-lines 1))
 
         ;; The Agenda
         ;; Show me a 10 day view by default
