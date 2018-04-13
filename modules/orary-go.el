@@ -27,17 +27,29 @@
 (require 'dash)
 
 (use-package company-go)
-(-let* ((go-path (getenv "GOPATH"))
-        (oracle-path (f-expand "src/golang.org/x/tools/cmd/oracle/oracle.el" go-path)))
-  (if (f-exists? oracle-path)
-      (load oracle-path)))
+
+;; Seems like this is fully deprecated? Like: doesn't exist at all on the
+;; internet any more deprecated.
+;;
+;; (-let* ((go-path (getenv "GOPATH"))
+;;         (oracle-path (f-expand "src/golang.org/x/tools/cmd/oracle/oracle.el" go-path)))
+;;   (if (f-exists? oracle-path)
+;;       (load oracle-path)))
+
+(use-package go-guru
+  :demand t)
 
 (use-package go-mode
   :config
   (defun go-mode-config ()
+    (go-guru-hl-identifier-mode)
+    ;; go-fmt
+    (add-hook 'before-save-hook 'gofmt-before-save)
     (add-to-list 'company-backends 'company-go))
 
-  (add-hook 'go-mode-hook 'go-mode-config))
+  (add-hook 'go-mode-hook 'go-mode-config)
+  :bind (:map go-mode-map
+              ("C-c n" . gofmt)))
 
 (provide 'orary-go)
 ;;; orary-go.el ends here
