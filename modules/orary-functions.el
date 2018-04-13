@@ -287,10 +287,20 @@ each."
     ))
 
 (defun orary/yank-commented ()
+  "Yank the current first entry of the kill ring, inserting at
+point and commenting according to the syntax of the current major
+mode."
   (interactive)
   (-let [init (point)]
     (yank)
     (comment-region init (point))))
+
+(defun orary/split-window-to-thirds ()
+  "Split the current window in to even thirds, vertically."
+  (interactive)
+  (split-window-right)
+  (split-window-right)
+  (balance-windows))
 
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
