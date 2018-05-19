@@ -41,6 +41,12 @@ so company-mode will work nicely."
 (use-package ox-gfm)
 (use-package ox-rst)
 (use-package ox-pandoc)
+(use-package ox-reveal
+  :config
+  (setq org-reveal-root (f-expand "~/Code/open-source/reveal.js") ;; Why the hell is this broken? "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0"
+        org-reveal-hlevel 2
+        ;; The exporter ignores most org options unless you ship it all to a single file -__-
+        org-reveal-single-file t))
 ;; Additional org-babel bindings
 (use-package ob-restclient)
 (require 'ob-clojure)
@@ -91,12 +97,12 @@ so company-mode will work nicely."
         org-export-backends `(ascii
                               beamer
                               confluence
-                              deck
                               gfm
                               gnuplot
                               html
                               md
                               pandoc
+                              reveal
                               rst)
 
         ;; Export defaults: no table of contents, no numbered headers, don't convert ^
@@ -144,7 +150,7 @@ so company-mode will work nicely."
           ("tw" "Todo -- Work" entry (file+headline ,(f-expand "~/Documents/work.org") "General To-Dos")
            "** TODO %?\nDEADLINE: <%(org-read-date nil nil \"+1d\")>\n%^{ticket}p\n" :empty-lines 1)
           ;; Work notes
-          ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "Captured Notes")
+          ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "Notes")
            "** %T %^{PROMPT}\n%?")
           ;; File To Do
           ("f" "File-Todo" entry (file+headline "" "General To-Dos")
@@ -170,8 +176,11 @@ so company-mode will work nicely."
            :prepend t :empty-lines 1))
 
         ;; The Agenda
-        ;; Show me a 10 day view by default
-        org-agenda-span 10
+        ;; Show me a 14 day view by default
+        org-agenda-span 14
+
+        ;; Misc
+        org-ditaa-jar-path (f-expand "~/bin/ditaa0_9.jar")
         )
 
   ;; Structural templates
@@ -187,23 +196,28 @@ so company-mode will work nicely."
   ;; Support for Babel Mode code blocks
   ;; NOTE: requires the addition of the org elpa repo!
   (org-babel-do-load-languages 'org-babel-load-languages
-                               '((clojure .t)
+                               '((clojure    . t)
+                                 (ditaa      . t)
                                  (emacs-lisp . t)
-                                 (java . t)
+                                 (java       . t)
                                  (restclient . t)
-                                 (R . t)
-                                 (scala . t)
-                                 (scheme . t)
-                                 (shell . t)
-                                 (sql . t)
-                                 (python . t)))
+                                 (R          . t)
+                                 (scala      . t)
+                                 (scheme     . t)
+                                 (shell      . t)
+                                 (sql        . t)
+                                 (python     . t)))
 
   (setq org-babel-clojure-backend 'cider)
 
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link)
-         ("C-c b" . org-iswitchb)))
+         ("C-c b" . org-iswitchb)
+         :map org-mode-map
+         ("M-<up>"  . org-move-subtree-up)
+         ("M-<down>". org-move-subtree-down ))
+  )
 
 ;; This is not... ideal, but it'll do for now
 (when (f-exists? "/Users/gastove/Code/org-blorg/")
