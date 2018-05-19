@@ -62,6 +62,11 @@
 (add-to-list 'load-path (f-expand "vendor/" orary/orary-root-dir))
 
 ;; Load this first in case things need executables from the path.
+(use-package exec-path-from-shell
+  :demand t
+  :config
+  (exec-path-from-shell-initialize))
+
 (if (eq system-type 'darwin)
     (require 'orary-osx)
   (require 'orary-linux))
