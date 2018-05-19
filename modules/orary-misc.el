@@ -25,6 +25,10 @@
 (use-package lua-mode)
 (use-package php-mode)
 (use-package puppet-mode)
+(use-package systemd)
+
+(add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
+(add-to-list 'auto-mode-alist '("\\.socket\\'" . systemd-mode))
 
 ;; Scheme
 (use-package geiser
