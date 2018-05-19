@@ -192,6 +192,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-checkbox-statistics-todo ((t :foreground ,rhombus-blue)))
    `(org-done ((t (:foreground ,rhombus-charcoal))))
    `(org-headline-done ((t (:strike-through ,rhombus-dark-red :foreground ,rhombus-charcoal :slant oblique))))
+   `(org-agenda-done ((t (:inherit org-headline-done))))
    `(org-todo ((t (:foreground ,rhombus-bronze :weight semi-bold))))
    `(org-formula ((t (:foreground ,rhombus-violet))))
 
