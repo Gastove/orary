@@ -6,8 +6,6 @@
 
 
 ;; The Path
-(use-package exec-path-from-shell)
-(exec-path-from-shell-initialize)
 (exec-path-from-shell-copy-env "WORKON_HOME")
 
 ;; OSX Modifier keys
