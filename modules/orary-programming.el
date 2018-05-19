@@ -29,7 +29,8 @@ Currently catches: FIX(ME)?, TODO, NOTE."
 (use-package ethan-wspace
   :commands ethan-wspace-clean-all
   :diminish ethan-wspace-mode
-  :config
+  :demand t
+  ;; :config
   ;; (remove-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
   ;; (remove-hook 'after-save-hook 'ethan-wspace-clean-after-save-hook)
   )
@@ -40,7 +41,7 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   '(c-mode 'c++-mode java-mode emacs-lisp-mode python-mode))
 
 (defvar orary/indent-sensitive-modes
-  '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode markdown-mode sql-mode ein:notebook-python-mode dockerfile-mode))
+  '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode markdown-mode sql-mode ein:notebook-python-mode dockerfile-mode picture-mode))
 
 (defvar orary/disable-auto-indent nil)
 (make-variable-buffer-local 'orary/disable-auto-indent)
@@ -49,7 +50,8 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   "Clean up the indentation of the current buffer according to its major mode,
 then clean up white space."
   (interactive)
-  (unless (or (-filter #'derived-mode-p orary/indent-sensitive-modes)
+  (unless (or (-contains? orary/indent-sensitive-modes major-mode)
+              (-filter #'derived-mode-p orary/indent-sensitive-modes)
               orary/disable-auto-indent)
     (indent-region (point-min) (point-max)))
   (ethan-wspace-clean-all))
