@@ -16,10 +16,10 @@
 (add-hook 'clojurescript-mode-hook 'cider-mode)
 
 (use-package cider
-  :defer t
   :config
   (setq nrepl-log-messages t
-        cider-repl-display-help-banner nil)
+        cider-repl-display-help-banner nil
+        cider-default-cljs-repl 'figwheel)
   (add-hook 'cider-mode-hook 'eldoc-mode)
   (add-hook 'cider-repl-mode-hook 'orary/interactive-lisp-defaults))
 
