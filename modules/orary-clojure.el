@@ -11,17 +11,18 @@
   :config
   (add-hook 'clojure-mode-hook 'orary/lisp-defaults))
 
-(add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
-(add-hook 'clojurescript-mode-hook 'orary/lisp-defaults)
-(add-hook 'clojurescript-mode-hook 'cider-mode)
-
 (use-package cider
   :config
   (setq nrepl-log-messages t
         cider-repl-display-help-banner nil
         cider-default-cljs-repl 'figwheel)
   (add-hook 'cider-mode-hook 'eldoc-mode)
-  (add-hook 'cider-repl-mode-hook 'orary/interactive-lisp-defaults))
+  (add-hook 'cider-repl-mode-hook 'orary/interactive-lisp-defaults)
+  )
+
+(add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
+(add-hook 'clojurescript-mode-hook 'orary/lisp-defaults)
+(add-hook 'clojurescript-mode-hook 'cider-mode)
 
 (use-package clj-refactor
   :config
