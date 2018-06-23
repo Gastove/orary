@@ -10,7 +10,7 @@
 (use-package nim-mode
   :mode "\\.nim\\'"
   :config
-  (require 'company-nim)
+  ;; (require 'company-nim)
   (require 'flycheck-nim-async)
   (add-to-list 'company-backends '(company-nim :with company-nim-builtin)))
 
@@ -18,6 +18,15 @@
 
 (use-package coffee-mode)
 (use-package dockerfile-mode)
+
+(use-package flycheck-elm
+  :load-path (lambda () (f-expand "vendor/flycheck-elm" orary/orary-root-dir)))
+(use-package elm-mode
+  :config
+  (add-to-list 'company-backends 'company-elm)
+  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+  (add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
+
 (use-package fish-mode)
 (use-package groovy-mode
   :mode "\\.gradle\\'")
