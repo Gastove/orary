@@ -30,7 +30,8 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   :commands ethan-wspace-clean-all
   :diminish ethan-wspace-mode
   :demand t
-  ;; :config
+  :config
+  (global-ethan-wspace-mode 1)
   ;; (remove-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
   ;; (remove-hook 'after-save-hook 'ethan-wspace-clean-after-save-hook)
   )
@@ -41,7 +42,9 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   '(c-mode 'c++-mode java-mode emacs-lisp-mode python-mode))
 
 (defvar orary/indent-sensitive-modes
-  '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode markdown-mode sql-mode ein:notebook-python-mode dockerfile-mode picture-mode))
+  '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode
+              markdown-mode sql-mode ein:notebook-python-mode dockerfile-mode picture-mode
+              elm-mode))
 
 (defvar orary/disable-auto-indent nil)
 (make-variable-buffer-local 'orary/disable-auto-indent)
@@ -67,13 +70,13 @@ then clean up white space."
 (defun orary/programming-defaults ()
   "Set defaults for programming modes."
   ;; Prepare for the coming of ethan-wspace
-  (setq mode-require-final-newline nil)
+  ;; (setq mode-require-final-newline nil)
   (hl-line-mode +1)
   (orary/important-comments)
   (when (apply 'derived-mode-p orary/gg-tags-modes)
     (ggtags-mode +1))
   ;; TODO: this is still not working
-  (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
+  ;; (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
   )
 
 (add-hook 'orary/programming-mode-hook 'orary/programming-defaults)
