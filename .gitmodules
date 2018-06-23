@@ -4,3 +4,6 @@
 [submodule "vendor/bookmark-plus"]
 	path = vendor/bookmark-plus
 	url = https://github.com/emacsmirror/bookmark-plus
+[submodule "vendor/flycheck-elm"]
+	path = vendor/flycheck-elm
+	url = https://github.com/bsermons/flycheck-elm.git
