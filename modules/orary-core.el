@@ -26,6 +26,7 @@
 ;; A good place for abbrevs
 (setq abbrev-file-name (f-expand "abbrev_defs" orary/save-root)
       save-abbrevs 'silently)
+(quietly-read-abbrev-file)
 
 ;; Enable narrow-to-region
 (put 'narrow-to-region 'disabled nil)
