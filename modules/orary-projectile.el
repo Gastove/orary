@@ -4,12 +4,14 @@
 ;; YAS
 ;;; Code:
 
+(setq projectile-keymap-prefix (kbd "C-c p"))
+
 (require 'orary-helm)
 
 (use-package persp-projectile)
 (use-package ag)
+
 (use-package projectile
-  :demand t
   :config
   (require 'persp-projectile)
   (require 'helm-projectile)
@@ -21,9 +23,10 @@
   (setq projectile-enable-caching t
         projectile-completion-system 'helm
         projectile-switch-project-action 'projectile-dired)
-  :bind-keymap ("s-p" . projectile-command-map)
+  ;; :bind-keymap ("C-c p" . projectile-command-map)
   :bind (:map projectile-mode-map
-              ("C-c p p" . projectile-persp-switch-project)))
+              ("C-c p p" . projectile-persp-switch-project))
+  )
 
 (provide 'orary-projectile)
 ;;; orary-projectile.el ends here
