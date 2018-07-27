@@ -52,9 +52,10 @@
 (use-package s)                         ;; String manipulation
 (use-package f)                         ;; File manipulation
 
-;; We're about to use this
+;; A few vars of utility
 (defvar orary/orary-root-dir (file-name-directory
                               (or (buffer-file-name) (file-chase-links load-file-name))))
+(defvar orary/user-home-dir (getenv "HOME"))
 
 ;; Stuff I wrote
 (add-to-list 'load-path (f-expand "modules/" orary/orary-root-dir))
@@ -88,9 +89,9 @@
 
 ;; Minor Modes -- teamwork makes the dream work (●♡∀♡)
 (require 'orary-company)
+(require 'orary-projectile)
 (require 'orary-helm)
 (require 'orary-emote)
-(require 'orary-projectile)
 (require 'orary-smartparens)
 
 ;; Talky -- communicate with others
@@ -120,6 +121,8 @@
 (require 'orary-web)
 (require 'orary-misc)
 
+;; Weird
+(require 'orary-org-blorg)
 ;; Reading
 (require 'orary-rss)
 
