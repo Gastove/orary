@@ -27,15 +27,7 @@
 (require 'dash)
 
 (use-package company-go)
-
-;; Seems like this is fully deprecated? Like: doesn't exist at all on the
-;; internet any more deprecated.
-;;
-;; (-let* ((go-path (getenv "GOPATH"))
-;;         (oracle-path (f-expand "src/golang.org/x/tools/cmd/oracle/oracle.el" go-path)))
-;;   (if (f-exists? oracle-path)
-;;       (load oracle-path)))
-
+(use-package go-eldoc)
 (use-package go-guru
   :demand t)
 
@@ -48,6 +40,7 @@
     (add-to-list 'company-backends 'company-go))
 
   (add-hook 'go-mode-hook 'go-mode-config)
+  (add-hook 'go-mode-hook #'go-eldoc-setup)
   :bind (:map go-mode-map
               ("C-c n" . gofmt)))
 
