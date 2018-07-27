@@ -71,7 +71,8 @@ usability standpoint to do so."
   (add-hook 'fsharp-mode-hook
             (lambda ()
               (subword-mode +1)
-              (setq company-auto-complete nil)))
+              (setq company-auto-complete nil
+                    require-final-newline nil)))
   (sp-with-modes 'fsharp-mode
     (sp-local-pair "<" ">"
                    :when '((orary/sp-close-open-angle-p))
