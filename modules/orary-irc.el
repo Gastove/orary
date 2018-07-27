@@ -31,11 +31,10 @@
     (f-mkdir erc-log-dir))
   (setq erc-autojoin-channels-alist '(("freenode.net"
                                        "#emacs"
-                                       "#clojure"
-                                       "#purescript"
+                                       "#clojure"                                       
                                        "##fsharp")
-                                      ("gimp.net"
-                                       "mono"))
+                                      ("mozilla.org"
+                                       "#rust-beginners"))
 
         erc-nick "gastove"
 
@@ -101,11 +100,17 @@ that can occur between two notifications.  The default is
       (push (cons nick cur-time) erc-notify-nick-alist)
       t)))
 
-(defun start-irc ()
+ (defun start-irc-freenode ()
   "Connect to IRC."
   (interactive)
-  (when (y-or-n-p "Do you want to start IRC? ")
+  (when (y-or-n-p "Do you want to connect to Freenode? ")
     (erc :server "irc.freenode.net" :port 6667 :nick erc-nick)))
+
+(defun start-irc-mozilla ()
+  "Connect to IRC."
+  (interactive)
+  (when (y-or-n-p "Do you want to connect to Mozilla? ")
+    (erc :server "irc.mozilla.org" :port 6667 :nick erc-nick)))
 
 (defun filter-server-buffers ()
   (delq nil
