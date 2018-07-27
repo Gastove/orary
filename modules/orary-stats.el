@@ -25,17 +25,18 @@
 (use-package ess
   :config
   (require 'ess-site)
-  (add-to-list 'ess-style-alist
-               '(orary-ESS (ess-indent-offset . 2)
-                           ;; (ess-offset-continued . 2)
-                           ;; (ess-indent-from-lhs . 4)
-                           ;; (ess-offset-arguments-newline . '(4))
-                           ))
+  ;; (add-to-list 'ess-style-alist
+  ;;              '(orary-ESS (ess-indent-offset . 2)
+  ;;                          ;; (ess-offset-continued . 2)
+  ;;                          ;; (ess-indent-from-lhs . 4)
+  ;;                          ;; (ess-offset-arguments-newline . '(4))
+  ;;                          ))
 
-  (ess-toggle-underscore nil)
+  ;; (ess-toggle-underscore nil)
 
-  (setq ess-default-style 'orary-ESS
-        ess-S-assign-key (kbd "M--"))
+  ;; (setq ess-default-style 'orary-ESS
+  ;;       ;; ess-S-assign-key (kbd "M--")
+  ;;       )
 
   (defun orary/inferior-R-configs ()
     (smartparens-mode 1))
@@ -43,8 +44,8 @@
   (defun orary/inferior-ess-configs ()
     (smartparens-mode 1))
 
-  (defun orary/ess-configs ()
-    (ess-toggle-S-assign-key t))
+  ;; (defun orary/ess-configs ()
+  ;;   (ess-toggle-S-assign-key t))
 
   ;; Smartparens in the interpreter
   (add-hook 'ess-R-post-run-hook #'orary/inferior-R-configs)
