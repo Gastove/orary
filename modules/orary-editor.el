@@ -58,7 +58,9 @@
   :demand t)
 
 (use-package flycheck
-  :config (global-flycheck-mode))
+  :config
+  (global-flycheck-mode)
+  (setq flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
 (use-package gist)
 
