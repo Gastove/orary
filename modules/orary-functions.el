@@ -302,5 +302,28 @@ mode."
   (split-window-right)
   (balance-windows))
 
+
+
+(defun orary/infer-screen-type-from-size ()
+  (cond
+   ((> 400 (display-mm-width)) 'laptop)
+   (t 'monitor)
+   ))
+
+;; (orary/infer-screen-type-from-size)
+;; (split-window nil (/ (display-mm-width) 3) 'right)
+
+(defun orary/init-workspace ()
+  (interactive)
+  (-let [middle-window (split-window-right)]
+    (select-window middle-window)
+    (find-file (f-expand "~/Documents/work.org"))
+    (-let ((right-window (split-window-right))
+           (org-agenda-window-setup 'current-window))
+      (select-window right-window)
+      (org-agenda-list))
+    (balance-windows)
+    (select-window middle-window)))
+
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
