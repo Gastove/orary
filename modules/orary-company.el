@@ -31,6 +31,7 @@
   (setq company-idle-delay .4
         company-minimum-prefix-length 2
         company-tooltip-limit 20
+        company-tooltip-align-annotations t
         company-backends '(company-bbdb
                            company-nxml
                            company-css
