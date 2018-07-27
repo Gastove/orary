@@ -1,7 +1,8 @@
 # -*- mode: snippet -*-
 # name: iferr
 # key: ife
+# expand-env: ((yas-indent-line 'auto))
 # --
 if err != nil {
-$1
+	$1
 }
