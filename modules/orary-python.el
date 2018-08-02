@@ -19,6 +19,9 @@
    ;; python-shell-interpreter-args "--simple-prompt -i"
    python-fill-docstring-style 'django
    python-environment-directory "~/.python_virtualenvs/"
+   ;; There is some indication this might help with the vague weirds I've seen.
+   ;; https://github.com/jorgenschaefer/elpy/issues/985#issuecomment-249113499
+   ;; python-shell-completion-native-enable nil
    elpy-rpc-python-command "python3")
 
   (defun orary/python-mode-settings ()
