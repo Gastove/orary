@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ansible header
+# key: hdr
+# --
+#===( $1 )===#
+$0
