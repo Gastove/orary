@@ -53,6 +53,20 @@ so company-mode will work nicely."
 (require 'cider) ;; for ob-clojure config
 (use-package ob-async)
 
+;; Utility functions
+(defun orary/org-get-prop-name-before-point ()
+  (save-excursion
+    (search-backward-regexp org-property-re (line-beginning-position))
+    (->> (match-string 1)
+         (s-trim)
+         (s-chop-prefix ":")
+         (s-chop-suffix ":"))))
+
+(defun orary/org-complete-prop-before-point ()
+  (interactive)
+  (-let [prop-name (orary/org-get-prop-name-before-point)]
+    (message "%s" (org-property-values prop-name))))
+
 (defun orary/refile-targets-fn ()
   (-let* ((base-agenda (org-agenda-files))
           (expanded (-map (lambda (fname) (f-expand fname)) base-agenda))
@@ -147,8 +161,8 @@ so company-mode will work nicely."
           ("tp" "Todo -- Personal" entry (file+headline "" "General To-Dos")
            "** TODO %?\n" :empty-lines 1)
           ;; Work To Do
-          ("tw" "Todo -- Work" entry (file+headline ,(f-expand "~/Documents/work.org") "General To-Dos")
-           "** TODO %?\nDEADLINE: <%(org-read-date nil nil \"+1d\")>\n%^{ticket}p\n" :empty-lines 1)
+          ("tw" "Todo -- Work" entry (file+olp ,(f-expand "~/Documents/work.org") "General To-Dos" "Incoming")
+           "** TODO %^{title}\n%^{ticket}p\n%^{project}p%?" :empty-lines 1)
           ;; Work notes
           ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "Notes")
            "** %T %^{PROMPT}\n%?")
@@ -169,7 +183,7 @@ so company-mode will work nicely."
                            "%a\n")))
           ("l" "The Log")
           ("lw" "Work Log" entry (file+olp+datetree ,(f-expand "~/Documents/work.org") "Log")
-           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?""** %T\n%?"
+           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?"
            :prepend t :empty-lines 1)
           ("lp" "Personal Log" entry (file+olp+datetree "" "Log")
            "** %T\n%i\n%?\n"
@@ -202,7 +216,7 @@ so company-mode will work nicely."
                                  (java       . t)
                                  (restclient . t)
                                  (R          . t)
-                                 (scala      . t)
+                                 ;; (scala      . t)
                                  (scheme     . t)
                                  (shell      . t)
                                  (sql        . t)
@@ -218,12 +232,6 @@ so company-mode will work nicely."
          ("M-<up>"  . org-move-subtree-up)
          ("M-<down>". org-move-subtree-down ))
   )
-
-;; This is not... ideal, but it'll do for now
-(when (f-exists? "/Users/gastove/Code/org-blorg/")
-  (load (f-join "/Users/gastove/Code/org-blorg/" "org-blorg.el"))
-  (require 'org-blorg)
-  (add-to-list 'auto-mode-alist '("\\.blorg\\'" . org-blorg-mode)))
 
 (defun orary/src-block-to-html (src-block _contents info)
   "Transcode a SRC-BLOCK element from Org to HTML. Unlike Org,
