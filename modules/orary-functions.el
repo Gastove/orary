@@ -313,7 +313,28 @@ mode."
 ;; (orary/infer-screen-type-from-size)
 ;; (split-window nil (/ (display-mm-width) 3) 'right)
 
-(defun orary/init-workspace ()
+(defun orary/three-windows ()
+  (interactive)
+  (-let (left-window middle-window right-window)
+    (setq left-window (frame-selected-window))
+    (setq middle-window (split-window-right))
+    (select-window middle-window)
+    (setq right-window (split-window-right))
+    (balance-windows)
+    (if (called-interactively-p)
+        (message "Split!")
+      (list :left-window left-window :middle-window middle-window :right-window right-window))))
+
+(setq test-windows (orary/three-windows))
+
+(-let ((curr (frame-selected-window))
+       (win (plist-get test-windows :right-window)))
+  (select-window win)
+  (crux-create-scratch-buffer)
+  (select-window curr))
+
+(defun orary/init-main-workspace ()
+  "Open up the org agenda, my notes, a scratch buffer."
   (interactive)
   (-let [middle-window (split-window-right)]
     (select-window middle-window)
