@@ -4,6 +4,15 @@
 ;;
 ;;; Code:
 
+
+;; Duo two-factor login for rdonaldson
+
+;; Enter a passcode or select one of the following options:
+
+;;  1. Duo Push to XXX-XXX-4294
+;;  2. Phone call to XXX-XXX-4294
+;;  3. SMS passcodes to XXX-XXX-4294
+
 (unbind-key "s-m")
 (use-package magit
   :config
@@ -13,6 +22,7 @@
         magit-push-arguments '("--set-upstream")
         magit-push-always-verify nil
         magit-revert-buffers t)
+  ;; (add-to--list 'magit-process-password-prompt-regexps )
   :bind (("s-m m" . magit-status)
          ("C-x g" . magit-status)
          ("s-m l" . magit-log)
