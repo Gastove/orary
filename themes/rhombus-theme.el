@@ -495,13 +495,15 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(rainbow-delimiters-depth-3-face ((t (:foreground ,(color-lighten-name rhombus-dark-blue 20)))))
    `(rainbow-delimiters-depth-4-face ((t (:foreground ,(color-lighten-name rhombus-dark-blue 30)))))
    `(rainbow-delimiters-depth-5-face ((t (:foreground ,(color-lighten-name rhombus-dark-blue 40)))))
-   ;; `(rainbow-delimiters-depth-6-face ((t (:foreground ,rhombus-light-brown))))
+   `(rainbow-delimiters-depth-6-face ((t (:foreground ,(color-lighten-name rhombus-dark-blue 50)))))
    ;; `(rainbow-delimiters-depth-7-face ((t (:foreground ,rhombus-orange+1))))
    ;; `(rainbow-delimiters-depth-8-face ((t (:foreground ,rhombus-bronze))))
    ;; `(rainbow-delimiters-depth-9-face ((t (:foreground ,rhombus-green))))
 
+   ;;--------------------------------ethan-wspace----------------------------------
+   `(ethan-wspace-face ((t (:background ,rhombus-bg :underline (:sytle wave :color ,rhombus-dark-red)))))
    ))
-
+	
 ;;; Footer
 
 ;;;###autoload
