@@ -136,6 +136,8 @@ so company-mode will work nicely."
         org-refile-use-outline-path 't
         org-outline-path-complete-in-steps nil
 
+        ;; Agenda
+        org-agenda-window-setup 'current-window
         org-agenda-text-search-extra-files '(agenda-archives)
 
         ;; Hide org emphasis marks
