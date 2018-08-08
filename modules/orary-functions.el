@@ -295,24 +295,7 @@ mode."
     (yank)
     (comment-region init (point))))
 
-(defun orary/split-window-to-thirds ()
-  "Split the current window in to even thirds, vertically."
-  (interactive)
-  (split-window-right)
-  (split-window-right)
-  (balance-windows))
-
-
-
-(defun orary/infer-screen-type-from-size ()
-  (cond
-   ((> 400 (display-mm-width)) 'laptop)
-   (t 'monitor)
-   ))
-
-;; (orary/infer-screen-type-from-size)
-;; (split-window nil (/ (display-mm-width) 3) 'right)
-
+;;---------------------------Window Splitting Tools-----------------------------
 (defun orary/three-windows ()
   (interactive)
   (-let (left-window middle-window right-window)
@@ -325,13 +308,41 @@ mode."
         (message "Split!")
       (list :left-window left-window :middle-window middle-window :right-window right-window))))
 
-(setq test-windows (orary/three-windows))
 
-(-let ((curr (frame-selected-window))
-       (win (plist-get test-windows :right-window)))
-  (select-window win)
-  (crux-create-scratch-buffer)
-  (select-window curr))
+(defun orary/split-window-unbalanced-thirds ()
+  "Split the current window so the left is 2/3rds of the width,
+1/3rd on the right."
+  (interactive)
+  (-let ((left-window (frame-selected-window))
+         (right-window (split-window nil (/ (display-mm-width) 3) 'right)))
+    (if (called-interactively-p)
+        (message "Split!")
+      (list :left-window left-window :right-window right-window))))
+
+(defun orary/infer-screen-type-from-size ()
+  "Infer the type of the current display, based on its size."
+  (cond
+   ((> 400 (display-mm-width)) 'laptop)
+   ((> 1920 (display-mm-width)) 'gigantic-monitor)
+   (t 'monitor)
+   ))
+
+(defun orary/get-new-workspace-spec (screen-type)
+  (pcase screen-type
+    ('laptop (lambda () (message "The laptop")))
+    ('monitor (lambda () (message "monitor")))
+    ('gigantic-monitor (lambda () (message "gigantic-monitor")))))
+
+;; (orary/infer-screen-type-from-size)
+
+
+;; (setq test-windows (orary/three-windows))
+
+;; (-let ((curr (frame-selected-window))
+;;        (win (plist-get test-windows :right-window)))
+;;   (select-window win)
+;;   (crux-create-scratch-buffer)
+;;   (select-window curr))
 
 (defun orary/init-main-workspace ()
   "Open up the org agenda, my notes, a scratch buffer."
