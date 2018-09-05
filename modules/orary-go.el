@@ -34,6 +34,7 @@
 (use-package go-mode
   :config
   (defun go-mode-config ()
+    (subword-mode +1)
     (go-guru-hl-identifier-mode)
     ;; go-fmt
     (add-hook 'before-save-hook 'gofmt-before-save)
