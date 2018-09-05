@@ -31,6 +31,9 @@
 ;; Enable narrow-to-region
 (put 'narrow-to-region 'disabled nil)
 
+;; The Diary
+(setq diary-file (f-expand "diary" orary/user-home-dir))
+
 ;; Remember where we were in a file
 (require 'saveplace)
 (setq-default save-place t)

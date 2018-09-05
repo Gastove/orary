@@ -139,6 +139,8 @@ so company-mode will work nicely."
         ;; Agenda
         org-agenda-window-setup 'current-window
         org-agenda-text-search-extra-files '(agenda-archives)
+        org-agenda-search-headline-for-time nil
+        org-agenda-include-diary 't
 
         ;; Hide org emphasis marks
         org-hide-emphasis-markers t
