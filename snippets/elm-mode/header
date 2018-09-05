@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: header
+# key: hdr
+# --
+{-${1:$(make-string (- 37 (floor (/ (string-width yas-text) 2))) ?\-)} $1 ${1:$(make-string (- 37 (floor (/ (string-width yas-text) 2))) ?\-)}-}
+$0
