@@ -8,6 +8,8 @@
 
 ;; (require 'python-environment)
 
+(use-package pip-requirements)
+
 (use-package elpy
   :demand t
   :config
