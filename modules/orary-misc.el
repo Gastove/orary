@@ -19,13 +19,17 @@
 (use-package coffee-mode)
 (use-package dockerfile-mode)
 
-(use-package flycheck-elm
-  :load-path (lambda () (f-expand "vendor/flycheck-elm" orary/orary-root-dir)))
+;; (use-package flycheck-elm
+;;   :load-path (lambda () (f-expand "vendor/flycheck-elm" orary/orary-root-dir)))
+
 (use-package elm-mode
   :config
   (add-to-list 'company-backends 'company-elm)
   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
-  (add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
+  ;; (add-hook 'flycheck-mode-hook #'flycheck-elm-setup)
+  :bind (:map elm-mode-map
+              ("C-c r" . recompile))
+  )
 
 (use-package fish-mode)
 (use-package groovy-mode
