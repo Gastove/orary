@@ -18,12 +18,16 @@
   :config
   (defun orary/markdown-preview-file ()
     "Run Marked on the current file and revert the buffer."
-    (interactive)
-    (if (eq system-type 'darwin)
-        (shell-command
-         (format "open -a '/Applications/Marked 2.app' %s"
-                 (shell-quote-argument (buffer-file-name))))
-      (message "Can't preview markdown on non-OSX machines")))
+    (interactive)    
+    (cond ((eq system-type 'darwin)
+           (shell-command
+            (format "open -a '/Applications/Marked 2.app' %s"
+                    (shell-quote-argument (buffer-file-name)))))
+          ((and (eq system-type 'gnu/linux) (executable-find "typora"))
+           (shell-command
+            (format "typora %s"
+                    (shell-quote-argument (buffer-file-name)))))
+          (message "Can't preview markdown on non-OSX machines")))
 
   (add-to-list 'auto-mode-alist '("\\.markdown\\'". gfm-mode))
   (add-to-list 'auto-mode-alist '("\\.mdown\\'". gfm-mode))
