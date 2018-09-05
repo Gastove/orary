@@ -29,9 +29,24 @@
 (setq ring-bell-function #'ignore)
 (setq visible-bell nil ring-bell-function 'orary/visible-bell)
 
+;; Fonts
 (use-package unicode-fonts
   :demand t
   :config (unicode-fonts-setup))
+
+(use-package all-the-icons
+  :ensure t
+  :config
+  ;; Install fonts explicitly if they haven't been already on Linux
+  (if (and
+       (eq system-type 'gnu/linux)
+       (not (f-exists? (f-expand ".local/share/fonts/all-the-icons.ttf" orary/user-home-dir))))
+      (all-the-icons-install-fonts)))
+
+;; Neotree
+(use-package neotree
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 (use-package smart-mode-line
   :config (sml/setup)
