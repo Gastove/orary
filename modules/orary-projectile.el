@@ -22,7 +22,8 @@
   (projectile-global-mode +1)
   (setq projectile-enable-caching t
         projectile-completion-system 'helm
-        projectile-switch-project-action 'projectile-dired)
+        projectile-switch-project-action 'projectile-dired
+        projectile-create-missing-test-files t)
   ;; :bind-keymap ("C-c p" . projectile-command-map)
   :bind (:map projectile-mode-map
               ("C-c p p" . projectile-persp-switch-project))
