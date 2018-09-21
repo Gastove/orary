@@ -295,19 +295,34 @@ mode."
     (yank)
     (comment-region init (point))))
 
+;;--------------------------------New Projects----------------------------------
+
+(defun orary/create-new-project (DIR &optional ARG)
+  (interactive "DDirectory:\nP")
+  (unless (f-exists? DIR)
+    (-let [dirs (s-split "/" DIR)]
+      (apply #'f-mkdir dirs)))
+  (save-excursion
+   (magit-init DIR)
+   (projectile-add-known-project DIR))
+  (unless ARG
+   (projectile-switch-project-by-name DIR)))
+
 ;;---------------------------Window Splitting Tools-----------------------------
-(defun orary/three-windows ()
-  (interactive)
+(defun orary/three-windows ()  
   (-let (left-window middle-window right-window)
     (setq left-window (frame-selected-window))
     (setq middle-window (split-window-right))
     (select-window middle-window)
     (setq right-window (split-window-right))
     (balance-windows)
-    (if (called-interactively-p)
-        (message "Split!")
-      (list :left-window left-window :middle-window middle-window :right-window right-window))))
+    ;; if (called-interactively-p)    
+    (list :left-window left-window :middle-window middle-window :right-window right-window)))
 
+(defun orary/split-into-balanced-thirds ()
+  (interactive)
+  (orary/three-windows)
+  (message "Split!"))
 
 (defun orary/split-window-unbalanced-thirds ()
   "Split the current window so the left is 2/3rds of the width,

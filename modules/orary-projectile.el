@@ -11,6 +11,24 @@
 (use-package persp-projectile)
 (use-package ag)
 
+(defun orary/projectile-switch-project-action ()
+  (let ((proj-name (projectile-project-name))
+        (proj-root (projectile-project-root))
+        (windows (orary/three-windows)))
+    (message "Trying to switch to project %s with root %s" proj-name proj-root)
+    (select-window (plist-get windows :left-window))
+    (switch-to-buffer (format "*scratch* (%s)" proj-name))
+    (select-window (plist-get windows :right-window))
+    (magit-status-internal proj-root)
+    (select-window (plist-get windows :middle-window))
+    (-let ((fully-qualified-md (f-expand "README.md" proj-root))
+           (fully-qualified-org (f-expand "README.org" proj-root)))
+      (cond
+       ((f-exists? fully-qualified-md) (find-file fully-qualified-md))
+       ((f-exists? fully-qualified-org) (find-file fully-qualified-org))
+       (:else (dired proj-root))))
+    ))
+
 (use-package projectile
   :config
   (require 'persp-projectile)
@@ -22,7 +40,9 @@
   (projectile-global-mode +1)
   (setq projectile-enable-caching t
         projectile-completion-system 'helm
-        projectile-switch-project-action 'projectile-dired)
+        ;; projectile-switch-project-action 'projectile-dired
+        projectile-switch-project-action #'orary/projectile-switch-project-action
+        )
   ;; :bind-keymap ("C-c p" . projectile-command-map)
   :bind (:map projectile-mode-map
               ("C-c p p" . projectile-persp-switch-project))
