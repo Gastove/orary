@@ -59,8 +59,10 @@
 
 (use-package flycheck
   :config
-  (global-flycheck-mode)
-  (setq flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  (add-hook 'flycheck-mode-hook
+            (lambda ()
+              (add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc))))
 
 (use-package gist)
 
