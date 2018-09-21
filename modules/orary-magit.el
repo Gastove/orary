@@ -21,7 +21,8 @@
         magit-branch-arguments nil
         magit-push-arguments '("--set-upstream")
         magit-push-always-verify nil
-        magit-revert-buffers t)
+        magit-revert-buffers t
+        magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   ;; (add-to--list 'magit-process-password-prompt-regexps )
   :bind (("s-m m" . magit-status)
          ("C-x g" . magit-status)
