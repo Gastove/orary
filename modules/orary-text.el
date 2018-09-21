@@ -18,7 +18,7 @@
   :config
   (defun orary/markdown-preview-file ()
     "Run Marked on the current file and revert the buffer."
-    (interactive)    
+    (interactive)
     (cond ((eq system-type 'darwin)
            (shell-command
             (format "open -a '/Applications/Marked 2.app' %s"
@@ -34,6 +34,8 @@
   (add-to-list 'auto-mode-alist '("\\.md\\'". gfm-mode))
 
   (setq markdown-command "pandoc")
+
+  (add-hook 'markdown-mode-hook (lambda () (refill-mode +1)))
 
   :bind (:map markdown-mode-map
               ("C-c m" . orary/markdown-preview-file)))
