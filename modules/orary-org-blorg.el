@@ -6,11 +6,12 @@
 ;; while I... figure out... which parts of this idea are a good idea.
 ;;; Code:
 
-(-let [maybe-blorg-path (f-expand "Code/org-blorg/" orary/user-home-dir)]
-  (when (f-exists? maybe-blorg-path)
-   (load (f-join maybe-blorg-path "org-blorg.el"))
-   (require 'org-blorg)
-   (add-to-list 'auto-mode-alist '("\\.blorg\\'" . org-blorg-mode))))
+(setq maybe-blorg-path (f-expand "Code/org-blorg/" orary/user-home-dir))
+
+(use-package org-blorg
+  :if (f-exists? maybe-blorg-path)
+  :load-path maybe-blorg-path
+  :mode ("\\.blorg\\'" . org-blorg-mode))
 
 (provide 'orary-org-blorg)
 ;;; orary-org-blorg.el ends here
