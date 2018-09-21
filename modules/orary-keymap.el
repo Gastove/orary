@@ -23,5 +23,7 @@
 (global-set-key (kbd "C-;") 'flyspell-auto-correct-previous-word)
 (global-set-key (kbd "C-M-?") 'sauron-toggle-hide-show)
 
+(global-set-key (kbd "C-S-y") 'orary/yank-commented)
+
 (provide 'orary-keymap)
 ;;; orary-keymap.el ends here

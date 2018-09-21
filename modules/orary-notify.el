@@ -48,7 +48,7 @@
   (add-hook 'sauron-event-added-functions 'sauron-alert-el-adapter)
 
   ;; Turn on sauron on emacs start
-  (sauron-start-hidden)
+  ;; (sauron-start-hidden)
   ;; (define-key prelude-mode-map (kbd "C-M-?") 'sauron-toggle-hide-show)
   )
 
