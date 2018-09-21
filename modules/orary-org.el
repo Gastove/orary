@@ -142,6 +142,9 @@ so company-mode will work nicely."
         org-agenda-search-headline-for-time nil
         org-agenda-include-diary 't
 
+        ;; Technically unrelated, but this is the only place the diary gets used
+        diary-date-forms diary-iso-date-forms
+
         ;; Hide org emphasis marks
         org-hide-emphasis-markers t
 
