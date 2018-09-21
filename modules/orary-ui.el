@@ -46,7 +46,8 @@
 ;; Neotree
 (use-package neotree
   :config
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)        
+        neo-window-fixed-size nil))
 
 (use-package smart-mode-line
   :config (sml/setup)
