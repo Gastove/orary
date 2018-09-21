@@ -22,7 +22,8 @@
 Currently catches: FIX(ME)?, TODO, NOTE."
   (font-lock-add-keywords
    nil
-   '(("\\<\\(\\(TODO\\|FIX\\(ME\\)?\\|NOTE\\)\\)" 1 font-lock-warning-face t))))
+   '(("\\<\\(\\(TODO\\|FIX\\(ME\\)?\\)\\)" 1 font-lock-warning-face t)
+     ("\\<\\(NOTE\\)" 1 font-lock-string-face t))))
 
 (setq mode-require-final-newline nil)
 
