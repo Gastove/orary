@@ -33,12 +33,15 @@
          ("\\.tmpl\\'"      . web-mode)
          ("\\.jsx\\'"       . web-mode)
          ("\\.html\\'"      . web-mode)
-         ("\\.hbs\\'"       . web-mode))
+         ("\\.hbs\\'"       . web-mode)
+         ("\\.html\\.j2\\'"   . web-mode))
   :config
   (setq web-mode-enable-engine-detection t
         web-mode-enable-auto-pairing t
         web-mode-enable-auto-closing t
         web-mode-auto-close-style 2)
+  (setq web-mode-engines-alist
+        '(("jinja2" . "\\.html\\.j2\\'")))
   (add-to-list 'sp-ignore-modes-list 'web-mode)
   (add-to-list 'company-dabbrev-code-modes 'web-mode)
   (add-hook 'web-mode-hook (lambda ()
