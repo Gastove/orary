@@ -416,7 +416,7 @@ Also bind `class' to ((class color) (min-colors 89))."
                       :box (:line-width -1 :style released-button)
                       :height 1.3
                       :family "Sans Serif"))))
-   `(helm-selection ((t (:background ,rhombus-hl :underline nil))))
+   `(helm-selection ((t (:background ,rhombus-hl :underline ,rhombus-purple))))
    `(helm-selection-line ((t (:background ,rhombus-bg+1))))
    `(helm-visible-mark ((t (:foreground ,rhombus-bg :background ,rhombus-orange-1))))
    `(helm-candidate-number ((t (:foreground ,rhombus-green :background ,rhombus-bg))))
