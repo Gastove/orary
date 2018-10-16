@@ -81,6 +81,7 @@ If no region is selected and current line is not blank
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
 
+
 (defun orary/replace-double-quote-with-single ()
   "This function replaces a thing wrapped in double-quotes with
 the same thing wrapped in single-quotes.  For my next trick:
@@ -303,20 +304,20 @@ mode."
     (-let [dirs (s-split "/" DIR)]
       (apply #'f-mkdir dirs)))
   (save-excursion
-   (magit-init DIR)
-   (projectile-add-known-project DIR))
+    (magit-init DIR)
+    (projectile-add-known-project DIR))
   (unless ARG
-   (projectile-switch-project-by-name DIR)))
+    (projectile-switch-project-by-name DIR)))
 
 ;;---------------------------Window Splitting Tools-----------------------------
-(defun orary/three-windows ()  
+(defun orary/three-windows ()
   (-let (left-window middle-window right-window)
     (setq left-window (frame-selected-window))
     (setq middle-window (split-window-right))
     (select-window middle-window)
     (setq right-window (split-window-right))
     (balance-windows)
-    ;; if (called-interactively-p)    
+    ;; if (called-interactively-p)
     (list :left-window left-window :middle-window middle-window :right-window right-window)))
 
 (defun orary/split-into-balanced-thirds ()

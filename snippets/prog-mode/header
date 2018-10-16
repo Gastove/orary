@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: header
+# key: nhdr
+# expand-env: ((half-fill (- (/ fill-column 2) 3)) (cmnt (s-repeat (+ 1 comment-add) comment-start)))
+# --
+${1:$(concat cmnt (make-string (- half-fill (floor (/ (string-width yas-text) 2))) ?\-))} $1 ${1:$(concat (make-string (- half-fill (floor (/ (string-width yas-text) 2))) ?\-) cmnt)}
+$0
