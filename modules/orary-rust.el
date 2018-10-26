@@ -22,10 +22,14 @@
 ;; The Business
 (use-package rust-mode
   :config
-  (setq racer-cmd "~/.cargo/bin/racer")
+  (setq racer-cmd "~/.cargo/bin/racer")  
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
   (add-hook 'rust-mode-hook #'cargo-minor-mode)
   (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'rust-mode-hook
+            (lambda ()
+              (setq comment-start "//")))
+  
   (add-hook 'racer-mode-hook #'eldoc-mode)
   (add-hook 'racer-mode-hook #'company-mode)
   (rust-enable-format-on-save)
