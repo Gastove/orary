@@ -31,19 +31,37 @@
 (use-package go-guru
   :demand t)
 
+(defun orary/go-open-braces (arg)
+  (interactive "P")
+  (unless (looking-at "}")
+    (sp-insert-pair "{"))
+  (when arg
+    (end-of-line)
+    (insert ",")
+    (backward-char 2))
+  (newline-and-indent)
+  (beginning-of-line)
+  (open-line 1)
+  (indent-according-to-mode))
+
 (use-package go-mode
   :config
   (defun go-mode-config ()
     (subword-mode +1)
     (go-guru-hl-identifier-mode)
-    ;; go-fmt
-    (add-hook 'before-save-hook 'gofmt-before-save)
+    ;; go-fmt This is... in many ways a good idea, but also *so irritating* that
+    ;; it's hard to deal with. (Getting gofmt error buffers any time you wanna
+    ;; save and do something else -- say, change buffers -- is rough.)
+    ;; (add-hook 'before-save-hook 'gofmt-before-save)
     (add-to-list 'company-backends 'company-go))
 
   (add-hook 'go-mode-hook 'go-mode-config)
   (add-hook 'go-mode-hook #'go-eldoc-setup)
   :bind (:map go-mode-map
-              ("C-c n" . gofmt)))
+              ("C-c n" . gofmt)
+              ("C-<return>" . orary/go-open-braces)
+              ("C-c C-i" . company-complete))
+  )
 
 (provide 'orary-go)
 ;;; orary-go.el ends here
