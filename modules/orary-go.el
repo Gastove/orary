@@ -44,9 +44,24 @@
   (open-line 1)
   (indent-according-to-mode))
 
+(defun orary/go-packages-go-list-restricted ()
+  "A modified package listing function which lists only:
+   1. Standard lib
+   2. Packages defined in a given project
+   3. Packages vendored inside the current project. "
+  (-let* ((proj (projectile-project-root))
+          (gopath (getenv "GOPATH"))
+          (go-pkg-root (s-chop-prefix (concat gopath "/src/") proj)))    
+    (-concat
+     (process-lines "go" "list" "-e" "std")
+     (process-lines "go" "list" "-e" (concat go-pkg-root "..."))
+     (process-lines "go" "list" "-e" (concat go-pkg-root "vendor/...")))))
+
 (use-package go-mode
-  :config
+  :config  
+  (setq go-packages-function #'orary/go-packages-go-list-restricted)
   (defun go-mode-config ()
+    (setq-local comment-start "//")
     (subword-mode +1)
     (go-guru-hl-identifier-mode)
     ;; go-fmt This is... in many ways a good idea, but also *so irritating* that
