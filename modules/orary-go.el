@@ -25,6 +25,7 @@
 
 (require 'f)
 (require 'dash)
+(require 'orary-braces)
 
 (use-package company-go)
 (use-package go-eldoc)
@@ -39,10 +40,7 @@
     (end-of-line)
     (insert ",")
     (backward-char 2))
-  (newline-and-indent)
-  (beginning-of-line)
-  (open-line 1)
-  (indent-according-to-mode))
+  (orary/braces-open-pair))
 
 (use-package go-mode
   :config
