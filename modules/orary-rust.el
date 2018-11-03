@@ -16,7 +16,13 @@
   (cond
    ;; We're in a pair of {}, open them
    ((and (looking-at "}")
-         (looking-back "{" (- (point) 2))) (orary/braces-open-pair))
+         (looking-back "{" (- (point) 2)))
+    (orary/braces-open-pair))
+
+   ;; We're defining a function, struct, or trait; insert {}, then open
+   ((looking-back "fn .*\\|impl.*\\|trait.*\\|struct.*" (line-beginning-position))    
+    (sp-insert-pair "{")
+    (orary/braces-open-pair))
 
    ;; We're in a match expression
    ((looking-back "=>.*" (line-beginning-position))
@@ -27,11 +33,11 @@
           (re-search-forward "}")
           (newline-and-indent))
       (progn
-       (unless (looking-back "," (- (point) 1))
-         (insert-char ?,))
-       (newline-and-indent)
-       (yas-expand-snippet "$1 => $0,"))))
-   
+        (unless (looking-back "," (- (point) 1))
+          (insert-char ?,))
+        (newline-and-indent)
+        (yas-expand-snippet "$1 => $0,"))))
+
    ;; Default: try to add a ; and newline
    (t
     (unless (eolp)
