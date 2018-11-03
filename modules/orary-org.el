@@ -140,8 +140,9 @@ so company-mode will work nicely."
         org-agenda-window-setup 'current-window
         org-agenda-text-search-extra-files '(agenda-archives)
         org-agenda-search-headline-for-time nil
-        org-agenda-include-diary 't
-
+        ;; You know what, the diary is slow as *hell*
+        ;; org-agenda-include-diary 't
+        
         ;; Technically unrelated, but this is the only place the diary gets used
         diary-date-forms diary-iso-date-forms
 
@@ -169,7 +170,7 @@ so company-mode will work nicely."
            "** TODO %?\n" :empty-lines 1)
           ;; Work To Do
           ("tw" "Todo -- Work" entry (file+olp ,(f-expand "~/Documents/work.org") "General To-Dos" "Incoming")
-           "** TODO %^{title}\n%^{ticket}p\n%^{project}p%?" :empty-lines 1)
+           "** TODO %^{title}\n%?" :empty-lines 1)
           ;; Work notes
           ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "Notes")
            "** %T %^{PROMPT}\n%?")
