@@ -11,6 +11,8 @@
   (sp-use-paredit-bindings)
   (smartparens-global-mode)
   (show-smartparens-global-mode)
+  (setq sp-ignore-modes-list
+      (delete 'minibuffer-inactive-mode sp-ignore-modes-list))
 
   ;; Org-mode Pairs
   (sp-local-pair 'org-mode "~" "~" :wrap "C-~")
