@@ -19,8 +19,14 @@
          (looking-back "{" (- (point) 2)))
     (orary/braces-open-pair))
 
-   ;; We're defining a function, struct, or trait; insert {}, then open
-   ((looking-back "fn .*\\|impl.*\\|trait.*\\|struct.*" (line-beginning-position))    
+   ;; We're opening a match; insert {}, open, then expand a yasnippet
+   ((looking-back "match.*" (line-beginning-position))
+    (sp-insert-pair "{")
+    (orary/braces-open-pair)
+    (yas-expand-snippet "$1 => $0,"))
+
+   ;; We're defining an if/else, function, struct, enum, or trait; insert {}, then open
+   ((looking-back "if.*\\|else.*\\|fn .*\\|\\<impl\\>.*\\|trait.*\\|struct.*\\|enum.*" (line-beginning-position))
     (sp-insert-pair "{")
     (orary/braces-open-pair))
 
