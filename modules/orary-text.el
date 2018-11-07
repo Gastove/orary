@@ -35,7 +35,7 @@
 
   (setq markdown-command "pandoc")
 
-  (add-hook 'markdown-mode-hook (lambda () (refill-mode +1)))
+  (add-hook 'markdown-mode-hook (lambda () (auto-fill-mode +1)))
 
   :bind (:map markdown-mode-map
               ("C-c m" . orary/markdown-preview-file)))
