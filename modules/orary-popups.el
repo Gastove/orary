@@ -6,7 +6,7 @@
 
 (use-package shackle
   :config
-  (setq shackle-rules '((compilation-mode :noselect t)
+  (setq shackle-rules '((compilation-mode :noselect t)                        
                         ("*Gofmt Errors*" :select t))
         shackle-default-rule '(:select t)))
 
