@@ -50,14 +50,18 @@
    3. Packages vendored inside the current project. "
   (-let* ((proj (projectile-project-root))
           (gopath (getenv "GOPATH"))
-          (go-pkg-root (s-chop-prefix (concat gopath "/src/") proj)))    
-    (-concat
-     (process-lines "go" "list" "-e" "std")
-     (process-lines "go" "list" "-e" (concat go-pkg-root "..."))
-     (process-lines "go" "list" "-e" (concat go-pkg-root "vendor/...")))))
+          (go-pkg-root (s-chop-prefix (concat gopath "/src/") proj))
+          (pkg-vendor-dir (concat go-pkg-root "vendor/"))
+          (std (process-lines "go" "list" "-e" "std"))
+          (pkg (process-lines "go" "list" "-e" (concat go-pkg-root "...")))
+          (vendor (-map
+                   (lambda (line) (s-chop-prefix pkg-vendor-dir line))
+                   (process-lines "go" "list" "-e" (concat pkg-vendor-dir "...")))))
+
+    (-concat std pkg vendor)))
 
 (use-package go-mode
-  :config  
+  :config
   (setq go-packages-function #'orary/go-packages-go-list-restricted)
   (defun go-mode-config ()
     (setq-local comment-start "//")
