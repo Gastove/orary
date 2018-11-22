@@ -6,8 +6,9 @@
 
 (use-package shackle
   :config
-  (setq shackle-rules '((compilation-mode :noselect t)                        
-                        ("*Gofmt Errors*" :select t))
+  (setq shackle-rules '((compilation-mode :noselect t)
+                        ("*Gofmt Errors*" :select t)
+                        ("COMMIT_EDITMSG" :select t))
         shackle-default-rule '(:select t)))
 
 (provide 'orary-popups)
