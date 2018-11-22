@@ -28,20 +28,36 @@
 (require 'orary-braces)
 (require 'projectile)
 
-(use-package company-go)
+(use-package company-go
+  :config
+  (setq company-go-gocode-args '("-fallback-to-source")))
+
 (use-package go-eldoc)
 (use-package go-guru
   :demand t)
 
-(defun orary/go-open-braces (arg)
+(defun orary/go-ret-dwim (arg)
   (interactive "P")
-  (unless (looking-at "}")
-    (sp-insert-pair "{"))
-  (when arg
-    (end-of-line)
-    (insert ",")
-    (backward-char 2))
-  (orary/braces-open-pair))
+
+  (-let [begin-curr-line (line-beginning-position)]
+    (unless (looking-at "}")
+      (sp-insert-pair "{"))
+    (when arg
+      (end-of-line)
+      (insert ",")
+      (backward-char 2))
+    (orary/braces-open-pair)
+    (if (and arg
+             (save-excursion
+               (re-search-backward "\\[\\]\\(.*\\)\\>" begin-curr-line t)))
+        (progn
+          (insert (match-string 1))
+          (sp-insert-pair "{")
+          (end-of-line)
+          (insert ",")
+          (backward-char 2)
+          (orary/braces-open-pair))
+      )))
 
 (defun orary/go-packages-go-list-restricted ()
   "A modified package listing function which lists only:
@@ -78,7 +94,8 @@
   (add-hook 'go-mode-hook #'go-eldoc-setup)
   :bind (:map go-mode-map
               ("C-c n" . gofmt)
-              ("C-<return>" . orary/go-open-braces)
+              ("C-<return>" . orary/go-ret-dwim)
+              ("C-o" . orary/braces-open-newline)
               ("C-c C-i" . company-complete))
   )
 
