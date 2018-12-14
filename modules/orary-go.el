@@ -79,6 +79,7 @@
 (use-package go-mode
   :config
   (setq go-packages-function #'orary/go-packages-go-list-restricted)
+  (setq gofmt-command "goimports")
   (defun go-mode-config ()
     (setq-local comment-start "//")
     (subword-mode +1)
