@@ -129,7 +129,7 @@ so company-mode will work nicely."
         org-confirm-babel-evaluate nil
 
         ;; Refiling defaults
-        org-refile-targets '((orary/refile-targets-fn . (:maxlevel . 5)))
+        org-refile-targets '((orary/refile-targets-fn . (:maxlevel . 6)))
         org-refile-allow-creating-parent-nodes 'confirm
 
         ;; Let me refile via the full outline path of a header
