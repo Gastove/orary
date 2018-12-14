@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: rust-window-setter
+# key: winset
+# --
+pub fn set_$1(&mut self, val: LispObject) {
+    self.$1 = val;
+}
+$0
