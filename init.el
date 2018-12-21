@@ -114,6 +114,7 @@
 (require 'orary-go)
 (require 'orary-javascript)
 (require 'orary-lilypond)
+(require 'orary-ocaml)
 (require 'orary-org)
 (require 'orary-purescript)
 (require 'orary-python)
