@@ -31,9 +31,10 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   :commands ethan-wspace-clean-all
   :diminish ethan-wspace-mode
   :demand t
-  :config
-  (add-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
-  (global-ethan-wspace-mode 1))
+  :init (global-ethan-wspace-mode 1)
+  ;; :config
+  ;; (add-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)  
+  )
 
 (use-package ggtags)
 
@@ -75,7 +76,7 @@ then clean up white space."
   (when (apply 'derived-mode-p orary/gg-tags-modes)
     (ggtags-mode +1))
   ;; TODO: this is still not working
-  ;; (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
+  (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
   )
 
 (add-hook 'orary/programming-mode-hook 'orary/programming-defaults)
@@ -92,7 +93,7 @@ Most useful for org export."
     (remove-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
     (remove-hook 'after-save-hook  'ethan-wspace-clean-after-save-hook)
     (setq func-res (apply func funcargs))
-    (message "Whether you believe it or not, func returned %s" func-res)
+    ;; (message "Whether you believe it or not, func returned %s" func-res)
     (add-hook 'prog-mode-hook 'orary/programming-mode)
     (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
     (add-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
@@ -100,7 +101,7 @@ Most useful for org export."
     ;; Return out the function result
     func-res))
 
-(advice-add 'org-export-to-file :around  #'orary/unhook-whitespace-cleanup)
+;; (advice-add 'org-export-to-file :around  #'orary/unhook-whitespace-cleanup)
 
 ;;---------------------------------Compilation-----------------------------------
 
