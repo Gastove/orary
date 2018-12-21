@@ -182,15 +182,6 @@
 (setq tramp-default-user "gastove")
 (setq tramp-verbose 6)
 
-
-;;-----------------------------------Popups-------------------------------------
-(use-package shackle
-  :demand t
-  :config
-  (setq shackle-rules '((compilation-mode :noselect t))
-        shackle-default-rule '(:select t))
-  (shackle-mode))
-
 ;;--------------------------------------Window Splitting----------------------------------------
 (defun orary/split-window-sensibly (&optional window)
   (let ((window (or window (selected-window))))
