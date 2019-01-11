@@ -41,12 +41,16 @@ so company-mode will work nicely."
 (use-package ox-gfm)
 (use-package ox-rst)
 (use-package ox-pandoc)
-(use-package ox-reveal
-  :config
-  (setq org-reveal-root (f-expand "~/Code/open-source/reveal.js") ;; Why the hell is this broken? "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0"
-        org-reveal-hlevel 2
-        ;; The exporter ignores most org options unless you ship it all to a single file -__-
-        org-reveal-single-file t))
+
+;; NOTE: ox-reveal mutates orgs structural templates alist in a way that breaks
+;;       structural templates entirely. Disable until I can get a fix in place.
+;; (use-package ox-reveal
+;;   :config
+;;   (setq org-reveal-root (f-expand "~/Code/open-source/reveal.js") ;; Why the hell is this broken? "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0"
+;;         org-reveal-hlevel 2
+;;         ;; The exporter ignores most org options unless you ship it all to a single file -__-
+;;         org-reveal-single-file t
+;;         ))
 ;; Additional org-babel bindings
 (use-package ob-restclient)
 (require 'ob-clojure)
@@ -142,7 +146,7 @@ so company-mode will work nicely."
         org-agenda-search-headline-for-time nil
         ;; You know what, the diary is slow as *hell*
         ;; org-agenda-include-diary 't
-        
+
         ;; Technically unrelated, but this is the only place the diary gets used
         diary-date-forms diary-iso-date-forms
 
@@ -206,10 +210,11 @@ so company-mode will work nicely."
         )
 
   ;; Structural templates
-  (add-to-list 'org-structure-template-alist
-               '(("ep" "#+BEGIN_EXAMPLE python\n?\n#+END_EXAMPLE")
-                 ("sp" "#+BEGIN_SRC python\n?\n#+END_SRC")
-                 ("ss" "#+BEGIN_SRC sh\n?\n#+END_SRC")))
+  ;; TODO: this needs updating, the format changed.
+  ;; (add-to-list 'org-structure-template-alist
+  ;;              '(("ep" "#+BEGIN_EXAMPLE python\n?\n#+END_EXAMPLE")
+  ;;                ("sp" "#+BEGIN_SRC python\n?\n#+END_SRC")
+  ;;                ("ss" "#+BEGIN_SRC sh\n?\n#+END_SRC")))
 
   ;; Jump and Sparse-Tree contexts
   (push  '(org-goto . local) org-show-context-detail)
