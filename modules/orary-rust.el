@@ -26,7 +26,7 @@
     (yas-expand-snippet "$1 => $0,"))
 
    ;; We're defining an if/else, function, struct, enum, or trait; insert {}, then open
-   ((looking-back "if.*\\|else.*\\|fn .*\\|\\<impl\\>.*\\|trait.*\\|struct.*\\|enum.*" (line-beginning-position))
+   ((looking-back "if.*\\|else.*\\|fn .*\\|\\<impl\\>.*\\|trait.*\\|struct.*\\|enum.*\\|mod.*\\|for.*" (line-beginning-position))
     (sp-insert-pair "{")
     (orary/braces-open-pair))
 
@@ -61,10 +61,13 @@
   :config
   (setq racer-cmd "~/.cargo/bin/racer")
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-  (add-hook 'rust-mode-hook #'cargo-minor-mode)
-  (add-hook 'rust-mode-hook #'racer-mode)
+  ;; (add-hook 'rust-mode-hook #'cargo-minor-mode)
+  ;; (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'rust-mode-hook
             (lambda ()
+              (cargo-minor-mode +1)
+              (racer-mode +1)
+              (subword-mode +1)
               (setq comment-start "//")))
 
   (add-hook 'racer-mode-hook #'eldoc-mode)
