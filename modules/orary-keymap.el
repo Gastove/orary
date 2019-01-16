@@ -4,25 +4,42 @@
 ;; Global keybindings in orary.
 ;;; Code:
 
+;;-------------------------------- Toggle Map --------------------------------;;
+
+(define-prefix-command 'orary/toggle-map)
+
+(define-key ctl-x-map "t" 'orary/toggle-map)
+
+(define-key 'orary/toggle-map "s" #'toggle-frame-fullscreen)
+(define-key 'orary/toggle-map "l" #'linum-mode)
+(define-key 'orary/toggle-map "i" #'orary/toggle-auto-indent)
+(define-key 'orary/toggle-map "n" #'neotree-toggle)
+(define-key 'orary/toggle-map "t" #'orary/toggle-window-split)
+(define-key 'orary/toggle-map "?" #'sauron-toggle-hide-show)
+
+;;------------------------------- Global Keymap -------------------------------;;
+
+(define-prefix-command 'orary/global-map)
+
+;; Unset compose-mail so we can use this binding for the global map instead
+(global-unset-key (kbd "C-x m"))
+
+(define-key ctl-x-map "m" 'orary/global-map)
+
+(define-key 'orary/global-map "c" #'orary/insert-signed-comment)
+(define-key 'orary/global-map "d" #'orary/insert-iso-date)
+(define-key 'orary/global-map "e" #'orary/insert-emote)
+(define-key 'orary/global-map "j" #'orary/pprint-json-in-new-buffer)
+(define-key 'orary/global-map "w" #'helm-world-time)
+
+;;--------------------------- Other global commands ---------------------------;;
+
 (global-set-key [remap move-beginning-of-line]
                 'orary/prelude-move-beginning-of-line)
 (global-set-key (kbd "s-j") 'orary/join-below)
 (global-set-key (kbd "M-;") 'orary/comment-dwim-line)
 (global-set-key (kbd "C-c n") 'orary/clean-and-indent-buffer)
-
-(global-set-key (kbd "C-c q c") 'orary/insert-signed-comment)
-(global-set-key (kbd "C-c q d") 'orary/insert-iso-date)
-(global-set-key (kbd "C-c q e") 'orary/insert-emote)
-(global-set-key (kbd "C-c q j") 'orary/pprint-json-in-new-buffer)
-(global-set-key (kbd "C-c q m") 'mu4e)
-(global-set-key (kbd "C-c q n") 'neotree-toggle)
-(global-set-key (kbd "C-c q s") 'toggle-frame-fullscreen)
-(global-set-key (kbd "C-c q t") 'orary/toggle-window-split)
-(global-set-key (kbd "C-c q w") 'helm-world-time)
-
 (global-set-key (kbd "C-;") 'flyspell-auto-correct-previous-word)
-(global-set-key (kbd "C-M-?") 'sauron-toggle-hide-show)
-
 (global-set-key (kbd "C-S-y") 'orary/yank-commented)
 
 (provide 'orary-keymap)
