@@ -4,7 +4,7 @@
 ;;
 ;;; Code:
 
-(use-package psc-ide)
+;; (use-package psc-ide)
 
 ;; PureScript
 (use-package purescript-mode
@@ -15,7 +15,7 @@
             (lambda ()
               (push '("->" . ?→) prettify-symbols-alist)
               (push '("=>" . ?⇒) prettify-symbols-alist)
-              (psc-ide-mode)
+              ;; (psc-ide-mode)
               (turn-on-purescript-indentation)
               )))
 
