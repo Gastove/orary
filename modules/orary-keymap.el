@@ -16,6 +16,7 @@
 (define-key 'orary/toggle-map "n" #'neotree-toggle)
 (define-key 'orary/toggle-map "t" #'orary/toggle-window-split)
 (define-key 'orary/toggle-map "?" #'sauron-toggle-hide-show)
+(define-key 'orary/toggle-map "!" #'toggle-debug-on-error)
 
 ;;------------------------------- Global Keymap -------------------------------;;
 
@@ -41,6 +42,7 @@
 (global-set-key (kbd "C-c n") 'orary/clean-and-indent-buffer)
 (global-set-key (kbd "C-;") 'flyspell-auto-correct-previous-word)
 (global-set-key (kbd "C-S-y") 'orary/yank-commented)
+(global-set-key (kbd "C-c C-i") #'company-complete)
 
 (provide 'orary-keymap)
 ;;; orary-keymap.el ends here

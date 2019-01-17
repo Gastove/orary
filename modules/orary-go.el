@@ -96,8 +96,7 @@
   :bind (:map go-mode-map
               ("C-c n" . gofmt)
               ("C-<return>" . orary/go-ret-dwim)
-              ("C-o" . orary/braces-open-newline)
-              ("C-c C-i" . company-complete))
+              ("C-o" . orary/braces-open-newline))
   )
 
 (provide 'orary-go)
