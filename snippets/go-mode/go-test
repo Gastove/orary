@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: go-test
+# key: gotest
+# expand-env: ((yas-indent-line 'fixed))
+# --
+func Test$1(t *testing.T) {
+    $0
+}
