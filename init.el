@@ -100,8 +100,8 @@
 (require 'orary-irc)
 (require 'orary-jabber)
 ;; Only load mu4e if it's there
-(when (f-exists? "/usr/local/share/emacs/site-lisp/mu4e/mu4e.el")
-  (require 'orary-mu4e))
+;; (when (f-exists? "/usr/local/share/emacs/site-lisp/mu4e/mu4e.el")
+;;   (require 'orary-mu4e))
 (require 'orary-notify)
 (require 'orary-twitter)
 (require 'orary-floobits)
