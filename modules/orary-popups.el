@@ -5,6 +5,7 @@
 ;;; Code:
 
 (use-package shackle
+  :demand t
   :config
   (setq shackle-rules '((compilation-mode :noselect t)
                         ("*Gofmt Errors*" :select t)
