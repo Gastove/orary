@@ -36,6 +36,24 @@
 (use-package go-guru
   :demand t)
 
+
+(flycheck-define-checker go-staticcheck
+  "A Go checker that performs static analysis and linting using the `staticcheck'
+command; formerly `megacheck'.
+
+Explicitly compatible with \"the last two versions of go\"; can
+target earlier versions (with limited features) if
+`flycheck-go-version' is set. See URL `https://staticcheck.io/'."
+  :command ("staticcheck"
+            (option-list "-tags=" flycheck-go-build-tags concat)
+            ;; Run in current directory to make megacheck aware of symbols
+            ;; declared in other files.
+            ".")
+  :error-patterns
+  ((warning line-start (file-name) ":" line ":" column ": " (message) line-end))
+  :modes go-mode)
+
+
 (defun orary/go-ret-dwim (arg)
   (interactive "P")
 
@@ -89,7 +107,10 @@
     ;; it's hard to deal with. (Getting gofmt error buffers any time you wanna
     ;; save and do something else -- say, change buffers -- is rough.)
     ;; (add-hook 'before-save-hook 'gofmt-before-save)
-    (add-to-list 'company-backends 'company-go))
+    (setq-local company-dabbrev-downcase nil)
+    (add-to-list 'company-backends 'company-go)
+    (add-to-list 'flycheck-checkers 'go-staticcheck)
+    )
 
   (add-hook 'go-mode-hook 'go-mode-config)
   (add-hook 'go-mode-hook #'go-eldoc-setup)
