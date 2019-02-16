@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: F# Compile Include
+# key: incl
+# --
+<Compile Include="$0"/>

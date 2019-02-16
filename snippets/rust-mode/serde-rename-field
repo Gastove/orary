@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: serde rename field
+# key: sren
+# --
+#[serde(rename = "$1")]$0
