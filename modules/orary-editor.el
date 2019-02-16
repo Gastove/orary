@@ -87,7 +87,9 @@
   (yas-global-mode 1)
   (setq yas-prompt-functions '(yas-completing-prompt))
   (yas-advise-indent-function 'indent-for-tab-command)
-  )
+  (add-hook 'snippet-mode-hook
+            (lambda ()
+              (setq orary/disable-whitespace-cleanup t))))
 
 (use-package wgrep
   :demand t)
