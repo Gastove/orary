@@ -33,7 +33,7 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   :demand t
   :init (global-ethan-wspace-mode 1)
   ;; :config
-  ;; (add-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)  
+  ;; (add-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
   )
 
 (use-package ggtags)
@@ -48,6 +48,8 @@ Currently catches: FIX(ME)?, TODO, NOTE."
 
 (defvar orary/disable-auto-indent nil)
 (make-variable-buffer-local 'orary/disable-auto-indent)
+(defvar orary/disable-whitespace-cleanup nil)
+(make-variable-buffer-local 'orary/disable-whitespace-cleanup)
 
 (defun orary/clean-and-indent-buffer ()
   "Clean up the indentation of the current buffer according to its major mode,
@@ -57,7 +59,8 @@ then clean up white space."
               (-filter #'derived-mode-p orary/indent-sensitive-modes)
               orary/disable-auto-indent)
     (indent-region (point-min) (point-max)))
-  (ethan-wspace-clean-all))
+  (unless orary/disable-whitespace-cleanup
+    (ethan-wspace-clean-all)))
 
 ;; Fun special case: tabs are required in makefiles
 (defun respect-makefile-tabs ()
