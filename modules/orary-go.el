@@ -36,21 +36,60 @@
 (use-package go-guru
   :demand t)
 
+(flycheck-def-option-var flycheck-go-version nil go-staticcheck
+  "The version of go that should be targeted by `staticcheck'.
+
+Should be a string representing a version, like 1.6 or 1.11.4.
+See `https://staticcheck.io/docs/#targeting-go-versions' for
+details."
+  :type 'string
+  :safe #'stringp
+  :package-version '(flycheck . "0.32"))
+
+(defun flycheck-parse-go-staticcheck (output checker buffer)
+  "Parse staticheck warnings from JSON OUTPUT.
+
+CHECKER and BUFFER denote the CHECKER that returned OUTPUT and
+the BUFFER that was checked respectively.
+
+See URL `https://staticcheck.io/docs/formatters' for more
+information about staticheck."
+  (let ((errors nil))
+    (dolist (msg (flycheck-parse-json output))
+      (let-alist msg
+        (push
+         (flycheck-error-new-at
+          .location.line
+          .location.column
+          (pcase .severity
+            (`"error"   'error)
+            (`"warning" 'warning)
+            (`"ignored" 'info)
+            ;; Default to warning for unknown .severity
+            (_          'warning))
+          .message
+          :id .code
+          :checker checker
+          :buffer buffer
+          :filename .location.file)
+         errors)))
+    (nreverse errors)))
 
 (flycheck-define-checker go-staticcheck
-  "A Go checker that performs static analysis and linting using the `staticcheck'
-command; formerly `megacheck'.
+  "A Go checker that performs static analysis and linting using
+the `staticcheck' command. `staticcheck' is the successor to
+`megacheck'; while the latter isn't fully deprecated yet, it's
+recommended to migrate to `staticcheck'.
 
-Explicitly compatible with \"the last two versions of go\"; can
-target earlier versions (with limited features) if
-`flycheck-go-version' is set. See URL `https://staticcheck.io/'."
-  :command ("staticcheck"
-            (option-list "-tags=" flycheck-go-build-tags concat)
-            ;; Run in current directory to make megacheck aware of symbols
-            ;; declared in other files.
-            ".")
-  :error-patterns
-  ((warning line-start (file-name) ":" line ":" column ": " (message) line-end))
+`staticcheck' is explicitly fully compatible with \"the last two
+versions of go\". `staticheck' can target earlier versions (with
+limited features) if `flycheck-go-version' is set. See URL
+`https://staticcheck.io/'."
+  :command ("staticcheck" "-f" "json"
+            (option-list "-tags" flycheck-go-build-tags concat)
+            (option "-go" flycheck-go-version))
+
+  :error-parser flycheck-parse-go-staticcheck
   :modes go-mode)
 
 
@@ -96,8 +135,9 @@ target earlier versions (with limited features) if
 
 (use-package go-mode
   :config
-  (setq go-packages-function #'orary/go-packages-go-list-restricted)
-  (setq gofmt-command "goimports")
+  (setq go-packages-function #'orary/go-packages-go-list-restricted
+        gofmt-command "goimports"
+        flycheck-go-build-install-deps t)
   (defun go-mode-config ()
     (setq-local comment-start "//")
     (subword-mode +1)
