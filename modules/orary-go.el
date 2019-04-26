@@ -36,63 +36,6 @@
 (use-package go-guru
   :demand t)
 
-(flycheck-def-option-var flycheck-go-version nil go-staticcheck
-  "The version of go that should be targeted by `staticcheck'.
-
-Should be a string representing a version, like 1.6 or 1.11.4.
-See `https://staticcheck.io/docs/#targeting-go-versions' for
-details."
-  :type 'string
-  :safe #'stringp
-  :package-version '(flycheck . "0.32"))
-
-(defun flycheck-parse-go-staticcheck (output checker buffer)
-  "Parse staticheck warnings from JSON OUTPUT.
-
-CHECKER and BUFFER denote the CHECKER that returned OUTPUT and
-the BUFFER that was checked respectively.
-
-See URL `https://staticcheck.io/docs/formatters' for more
-information about staticheck."
-  (let ((errors nil))
-    (dolist (msg (flycheck-parse-json output))
-      (let-alist msg
-        (push
-         (flycheck-error-new-at
-          .location.line
-          .location.column
-          (pcase .severity
-            (`"error"   'error)
-            (`"warning" 'warning)
-            (`"ignored" 'info)
-            ;; Default to warning for unknown .severity
-            (_          'warning))
-          .message
-          :id .code
-          :checker checker
-          :buffer buffer
-          :filename .location.file)
-         errors)))
-    (nreverse errors)))
-
-(flycheck-define-checker go-staticcheck
-  "A Go checker that performs static analysis and linting using
-the `staticcheck' command. `staticcheck' is the successor to
-`megacheck'; while the latter isn't fully deprecated yet, it's
-recommended to migrate to `staticcheck'.
-
-`staticcheck' is explicitly fully compatible with \"the last two
-versions of go\". `staticheck' can target earlier versions (with
-limited features) if `flycheck-go-version' is set. See URL
-`https://staticcheck.io/'."
-  :command ("staticcheck" "-f" "json"
-            (option-list "-tags" flycheck-go-build-tags concat)
-            (option "-go" flycheck-go-version))
-
-  :error-parser flycheck-parse-go-staticcheck
-  :modes go-mode)
-
-
 (defun orary/go-ret-dwim (arg)
   (interactive "P")
 
@@ -149,7 +92,6 @@ limited features) if `flycheck-go-version' is set. See URL
     ;; (add-hook 'before-save-hook 'gofmt-before-save)
     (setq-local company-dabbrev-downcase nil)
     (add-to-list 'company-backends 'company-go)
-    (add-to-list 'flycheck-checkers 'go-staticcheck)
     )
 
   (add-hook 'go-mode-hook 'go-mode-config)
