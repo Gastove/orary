@@ -7,12 +7,12 @@
 
 (require 'orary-lisp)
 
-(use-package nim-mode
-  :mode "\\.nim\\'"
-  :config
-  ;; (require 'company-nim)
-  (require 'flycheck-nim-async)
-  (add-to-list 'company-backends '(company-nim :with company-nim-builtin)))
+;; (use-package nim-mode
+;;   :mode "\\.nim\\'"
+;;   :config
+;;   ;; (require 'company-nim)
+;;   (require 'flycheck-nim-async)
+;;   (add-to-list 'company-backends '(company-nim :with company-nim-builtin)))
 
 ;; Misc languages whee
 
