@@ -32,7 +32,8 @@
         company-minimum-prefix-length 2
         company-tooltip-limit 20
         company-tooltip-align-annotations t
-        company-backends '(company-ispell
+        company-backends '(company-capf
+                           company-ispell
                            company-bbdb
                            company-nxml
                            company-css
@@ -42,7 +43,6 @@
                            company-xcode
                            company-cmake
                            company-files
-                           company-capf
                            (company-dabbrev-code company-gtags company-etags company-keywords)
                            company-oddmuse company-dabbrev))
   :diminish company)
