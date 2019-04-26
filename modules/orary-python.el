@@ -55,7 +55,7 @@
               ("C-c q i" . orary/python-make-module)
               ("C-c q q" . orary/replace-double-quote-with-single)
               ("C-c q r" . recompile)
-              ("M-."     . ggtags-find-tag-dwim)
+              ("C-c n"   . elpy-black-fix-code )
               ("<M-RET>" . orary/rotate)))
 
 ;; Jupyter Notebooks
@@ -71,68 +71,6 @@
 
   (add-hook 'ein:notebook-python-mode-hook #'orary/programming-defaults)
   (add-hook 'ein:notebook-python-mode-hook #'ein-python-configs))
-
-;; This is fucking preposterous, but here we are: re-defining this
-;; function to make indentation not suck. - RMD 2017-09-15
-(eval-after-load "python"
-  (defun python-indent--calculate-indentation ()
-    "Internal implementation of `python-indent-calculate-indentation'.
-May return an integer for the maximum possible indentation at
-current context or a list of integers.  The latter case is only
-happening for :at-dedenter-block-start context since the
-possibilities can be narrowed to specific indentation points."
-    (save-restriction
-      (widen)
-      (save-excursion
-        (pcase (python-indent-context)
-          (`(:no-indent . ,_) 0) ; usually 0
-          (`(,(or :after-line
-                  :after-comment
-                  :inside-string
-                  :after-backslash
-                  :inside-paren-at-closing-paren
-                  :inside-paren-at-closing-nested-paren) . ,start)
-           ;; Copy previous indentation.
-           (goto-char start)
-           (current-indentation))
-          (`(:inside-docstring . ,start)
-           (let* ((line-indentation (current-indentation))
-                  (base-indent (progn
-                                 (goto-char start)
-                                 (current-indentation))))
-             (max line-indentation base-indent)))
-          (`(,(or :after-block-start
-                  :after-backslash-first-line
-                  :after-backslash-assignment-continuation
-                  :inside-paren-newline-start) . ,start)
-           ;; Add one indentation level.
-           (goto-char start)
-           (+ (current-indentation) python-indent-offset))
-          (`(,(or :inside-paren
-                  :after-backslash-block-continuation
-                  :after-backslash-dotted-continuation) . ,start)
-           ;; Use the column given by the context.
-           (goto-char start)
-           (current-column))
-          (`(:after-block-end . ,start)
-           ;; Subtract one indentation level.
-           (goto-char start)
-           (- (current-indentation) python-indent-offset))
-          (`(:at-dedenter-block-start . ,_)
-           ;; List all possible indentation levels from opening blocks.
-           (let ((opening-block-start-points
-                  (python-info-dedenter-opening-block-positions)))
-             (if (not opening-block-start-points)
-                 (prog-first-column) ; if not found default to first column
-               (mapcar (lambda (pos)
-                         (save-excursion
-                           (goto-char pos)
-                           (current-indentation)))
-                       opening-block-start-points))))
-          (`(,(or :inside-paren-newline-start-from-block) . ,start)
-           (goto-char start)
-           ;; All this to make this line not double-indent
-           (+ (current-indentation) python-indent-offset)))))))
 
 (provide 'orary-python)
 ;;; orary-python.el ends here
