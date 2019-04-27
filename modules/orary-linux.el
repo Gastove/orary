@@ -7,7 +7,8 @@
 (exec-path-from-shell-copy-envs '("SSH_AUTH_SOCK"
                                   "SSH_AGENT_PID"
                                   "GPG_AGENT_INFO"
-                                  "WORKON_HOME"))
+                                  "WORKON_HOME"
+                                  "GOPATH"))
 
 (provide 'orary-linux)
 ;;; orary-linux.el ends here
