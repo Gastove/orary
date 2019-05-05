@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: modtest
+# key: modtest
+# --
+#[cfg(test)]
+mod ${1:test} {
+
+    ${2:use super::*;}
+
+    $0
+}
