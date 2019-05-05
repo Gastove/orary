@@ -51,16 +51,19 @@ Currently catches: FIX(ME)?, TODO, NOTE."
 (defvar orary/disable-whitespace-cleanup nil)
 (make-variable-buffer-local 'orary/disable-whitespace-cleanup)
 
+(defvar orary/disable-clean-and-indent nil)
+
 (defun orary/clean-and-indent-buffer ()
   "Clean up the indentation of the current buffer according to its major mode,
 then clean up white space."
   (interactive)
-  (unless (or (-contains? orary/indent-sensitive-modes major-mode)
-              (-filter #'derived-mode-p orary/indent-sensitive-modes)
-              orary/disable-auto-indent)
-    (indent-region (point-min) (point-max)))
-  (unless orary/disable-whitespace-cleanup
-    (ethan-wspace-clean-all)))
+  (unless orary/disable-clean-and-indent
+   (unless (or (-contains? orary/indent-sensitive-modes major-mode)
+               (-filter #'derived-mode-p orary/indent-sensitive-modes)
+               orary/disable-auto-indent)
+     (indent-region (point-min) (point-max)))
+   (unless orary/disable-whitespace-cleanup
+     (ethan-wspace-clean-all))))
 
 ;; Fun special case: tabs are required in makefiles
 (defun respect-makefile-tabs ()
@@ -77,8 +80,7 @@ then clean up white space."
   (hl-line-mode +1)
   (orary/important-comments)
   (when (apply 'derived-mode-p orary/gg-tags-modes)
-    (ggtags-mode +1))
-  ;; TODO: this is still not working
+    (ggtags-mode +1)) 
   (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
   )
 
