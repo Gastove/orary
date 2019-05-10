@@ -16,6 +16,7 @@
 (define-key 'orary/toggle-map "l" #'linum-mode)
 (define-key 'orary/toggle-map "i" #'orary/toggle-auto-indent)
 (define-key 'orary/toggle-map "n" #'neotree-toggle)
+(define-key 'orary/toggle-map "w" #'which-function-mode)
 (define-key 'orary/toggle-map "t" #'orary/toggle-window-split)
 (define-key 'orary/toggle-map "?" #'sauron-toggle-hide-show)
 (define-key 'orary/toggle-map "!" #'toggle-debug-on-error)

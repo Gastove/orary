@@ -502,8 +502,11 @@ Also bind `class' to ((class color) (min-colors 89))."
 
    ;;--------------------------------ethan-wspace----------------------------------
    `(ethan-wspace-face ((t (:background ,rhombus-bg :underline (:sytle wave :color ,rhombus-dark-red)))))
+
+   ;;-----------------------------which-function-mode-------------------------------
+   `(which-func ((t (:foreground ,rhombus-teal))))
    ))
-	
+
 ;;; Footer
 
 ;;;###autoload
