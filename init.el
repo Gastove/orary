@@ -95,6 +95,8 @@
 (require 'orary-helm)
 (require 'orary-emote)
 (require 'orary-smartparens)
+(require 'orary-lang-server)
+(require 'orary-tree)
 
 ;; Talky -- communicate with others
 (require 'orary-irc)
