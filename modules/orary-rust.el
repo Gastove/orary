@@ -56,35 +56,17 @@
     (end-of-line)
     (newline-and-indent))))
 
-
-
-
-(use-package lsp-ui :commands lsp-ui-mode)
-(use-package company-lsp
-  :commands company-lsp)
-
-(use-package lsp-mode
-  :commands lsp
-  :config
-  (add-hook 'lsp-mode-hook
-            (lambda ()
-              (require 'company-lsp)
-              (push 'company-lsp company-backends)
-              (add-to-list 'flycheck-checkers 'lsp-ui)
-              (lsp-ui-mode +1))))
-
 ;; The Business
 (use-package rust-mode
   :config
   (setq racer-cmd "~/.cargo/bin/racer")
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-  ;; (add-hook 'rust-mode-hook #'cargo-minor-mode)
-  ;; (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'rust-mode-hook
             (lambda ()
               (cargo-minor-mode +1)
               (racer-mode +1)
               (subword-mode +1)
+              (lsp-mode +1)
               (lsp)
               (setq comment-start "//")))
 
