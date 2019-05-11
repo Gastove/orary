@@ -26,3 +26,7 @@
 /fsharp-mode
 /auto-save-list
 /session.*
+/.cache
+/.lsp-session-*
+/.mc-lists.el
+/transient
