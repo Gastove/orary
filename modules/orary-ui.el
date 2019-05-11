@@ -43,14 +43,6 @@
        (not (f-exists? (f-expand ".local/share/fonts/all-the-icons.ttf" orary/user-home-dir))))
       (all-the-icons-install-fonts)))
 
-;; Neotree
-(use-package neotree
-  :config
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)
-        neo-window-fixed-size t
-        neo-window-width 100
-        neo-window-position 'left))
-
 (use-package smart-mode-line
   :config (sml/setup)
   (setq rm-blacklist '(" MRev"))
