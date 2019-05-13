@@ -24,7 +24,11 @@
    ;; There is some indication this might help with the vague weirds I've seen.
    ;; https://github.com/jorgenschaefer/elpy/issues/985#issuecomment-249113499
    ;; python-shell-completion-native-enable nil
-   elpy-rpc-python-command "python3")
+   elpy-rpc-python-command "python3"
+
+   ;; My proud contribution
+   python-indent-def-block-scale 1
+   )
 
   (defun orary/python-mode-settings ()
     (subword-mode +1)

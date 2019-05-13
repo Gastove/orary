@@ -36,7 +36,8 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   ;; (add-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
   )
 
-(use-package ggtags)
+;; ggtags is *so fiddly* to get working; gonna lean on other tools for now.
+;; (use-package ggtags)
 
 (defvar orary/gg-tags-modes
   '(c-mode 'c++-mode java-mode emacs-lisp-mode python-mode))
@@ -58,12 +59,12 @@ Currently catches: FIX(ME)?, TODO, NOTE."
 then clean up white space."
   (interactive)
   (unless orary/disable-clean-and-indent
-   (unless (or (-contains? orary/indent-sensitive-modes major-mode)
-               (-filter #'derived-mode-p orary/indent-sensitive-modes)
-               orary/disable-auto-indent)
-     (indent-region (point-min) (point-max)))
-   (unless orary/disable-whitespace-cleanup
-     (ethan-wspace-clean-all))))
+    (unless (or (-contains? orary/indent-sensitive-modes major-mode)
+                (-filter #'derived-mode-p orary/indent-sensitive-modes)
+                orary/disable-auto-indent)
+      (indent-region (point-min) (point-max)))
+    (unless orary/disable-whitespace-cleanup
+      (ethan-wspace-clean-all))))
 
 ;; Fun special case: tabs are required in makefiles
 (defun respect-makefile-tabs ()
@@ -79,8 +80,10 @@ then clean up white space."
   ;; (setq mode-require-final-newline nil)
   (hl-line-mode +1)
   (orary/important-comments)
-  (when (apply 'derived-mode-p orary/gg-tags-modes)
-    (ggtags-mode +1)) 
+  ;; Disabling gg-tags-modes entirely for now.
+  ;; (when (apply 'derived-mode-p orary/gg-tags-modes)
+  ;;   (ggtags-mode +1))
+
   (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
   )
 
