@@ -33,6 +33,7 @@
 (define-key 'orary/global-map "c" #'orary/insert-signed-comment)
 (define-key 'orary/global-map "d" #'orary/insert-iso-date)
 (define-key 'orary/global-map "e" #'orary/insert-emote)
+(define-key 'orary/global-map "I" #'lsp-ui-imenu)
 (define-key 'orary/global-map "j" #'orary/pprint-json-in-new-buffer)
 (define-key 'orary/global-map "w" #'helm-world-time)
 
