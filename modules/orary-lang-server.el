@@ -19,7 +19,8 @@
 (use-package lsp-mode
   :commands lsp
   :config
-  (setq lsp-prefer-flymake nil)
+  (setq lsp-prefer-flymake nil
+        lsp-restart 'auto-restart)
   (add-hook 'lsp-mode-hook
             (lambda ()
               (dap-mode 1)
