@@ -24,9 +24,10 @@
             (format "open -a '/Applications/Marked 2.app' %s"
                     (shell-quote-argument (buffer-file-name)))))
           ((and (eq system-type 'gnu/linux) (executable-find "typora"))
-           (shell-command
-            (format "typora %s"
-                    (shell-quote-argument (buffer-file-name)))))
+           ;; TODO: store the process object; name it appropriately; find a way to cancel it.
+           (start-process-shell-command "typora" "*typora*"
+                                        (format "/opt/typora/Typora-linux-x64/Typora %s"
+                                                (shell-quote-argument (buffer-file-name)))))
           (message "Can't preview markdown on non-OSX machines")))
 
   (add-to-list 'auto-mode-alist '("\\.markdown\\'". gfm-mode))
