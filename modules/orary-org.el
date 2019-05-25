@@ -44,14 +44,14 @@ so company-mode will work nicely."
 
 ;; NOTE: ox-reveal mutates orgs structural templates alist in a way that breaks
 ;;       structural templates entirely. Disable until I can get a fix in place.
-(use-package ox-reveal
-  :config
-  (setq org-reveal-root (f-expand "~/Code/open-source/reveal.js") ;; Why the hell is this broken? "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0"
-        org-reveal-hlevel 2
-        ;; The exporter ignores most org options unless you ship it all to a single file -__-
-        org-reveal-single-file t
-        ox-reveal-note-key-char nil
-        ))
+;; (use-package ox-reveal
+;;   :config
+;;   (setq org-reveal-root (f-expand "~/Code/open-source/reveal.js") ;; Why the hell is this broken? "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0"
+;;         org-reveal-hlevel 2
+;;         ;; The exporter ignores most org options unless you ship it all to a single file -__-
+;;         org-reveal-single-file t
+;;         ox-reveal-note-key-char nil
+;;         ))
 ;; Additional org-babel bindings
 (use-package ob-restclient)
 (require 'ob-clojure)
