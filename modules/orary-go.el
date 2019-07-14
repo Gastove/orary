@@ -85,7 +85,8 @@
     (setq-local comment-start "//")
     (subword-mode +1)
     (go-guru-hl-identifier-mode)
-    (lsp)
+    ;; (lsp)
+
     ;; go-fmt on save.
     ;; This is... in many ways a good idea, but also *so irritating* that
     ;; it's hard to deal with. (Getting gofmt error buffers any time you wanna
