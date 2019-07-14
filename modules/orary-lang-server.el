@@ -8,18 +8,24 @@
 (use-package dap-mode)
 
 (use-package lsp-ui
-  :commands
-  lsp-ui-mode)
+  :commands lsp-ui-mode
+  :ensure t
+  :after lsp-mode
+  :config
+  (dap-mode t)
+  (dap-ui-mode t))
 
 (use-package company-lsp
   :commands company-lsp
   :config
+  (setq company-lsp-cache-candidates 'auto)
   (push 'company-lsp company-backends))
 
 (use-package lsp-mode
   :commands lsp
   :config
   (setq lsp-prefer-flymake nil
+        lsp-auto-guess-root t
         lsp-restart 'auto-restart)
   (add-hook 'lsp-mode-hook
             (lambda ()
