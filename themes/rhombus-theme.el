@@ -106,7 +106,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; `(link-visited ((t (:foreground ,rhombus-grey-2 :underline t :weight normal))))
 
    ;; ordinary text. Its background color is used as the frame's background color.
-   `(default ((t (:foreground ,rhombus-fg :background ,rhombus-bg :font "InputMono-14"))))
+   `(default ((t (:foreground ,rhombus-fg :background ,rhombus-bg :font "InputMono-12"))))
 
    ;;The :background attribute of this face specifies the color of the text cursor
    `(cursor ((t (:background ,rhombus-grey))))
