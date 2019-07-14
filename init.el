@@ -30,12 +30,12 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 
-(package-initialize)
-
 ;; Make sure the package index has been loaded at least once before we try to
 ;; do any installing. After, make a note that we don't have to do this again.
 (unless package-archive-contents
-  (package-refresh-contents))
+  (package-initialize)
+  (package-refresh-contents)
+  )
 
 ;; We use use-package absolutely everywhere. Make sure it's there.
 (unless (package-installed-p 'use-package)
@@ -114,6 +114,7 @@
 (require 'orary-fsharp)
 (require 'orary-formats)
 (require 'orary-go)
+(require 'orary-java)
 (require 'orary-javascript)
 (require 'orary-lilypond)
 (require 'orary-ocaml)
