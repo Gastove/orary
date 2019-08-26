@@ -55,7 +55,9 @@
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (use-package editorconfig
-  :demand t)
+  :demand t
+  :config
+  (editorconfig-mode +1))
 
 (use-package flycheck
   :config
