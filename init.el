@@ -30,6 +30,9 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 
+(if (and (version< emacs-version "26.3") (>= libgnutls-version 30604))
+    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+
 ;; Make sure the package index has been loaded at least once before we try to
 ;; do any installing. After, make a note that we don't have to do this again.
 (unless package-archive-contents
@@ -43,7 +46,7 @@
 
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)                ;; if you use :diminish
+(use-package diminish)                ;; if you use :diminish
 (require 'bind-key)                ;; if you use any :bind variant
 
 ;; Package Loading and Configuration
