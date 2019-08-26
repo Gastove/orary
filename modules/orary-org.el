@@ -194,6 +194,11 @@ so company-mode will work nicely."
                            "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
                            "\%i"
                            "%a\n")))
+          ("i" "Incident" entry (file+olp ,(f-expand "~/Documents/work.org") "Incident Command")
+           ,(s-join "\n" '("** COE-%^{COE Number}: %^{Title}"
+                           "- [[http://jira.squarespace.org/browse/COE-%\\1][COE-%\\1 Ticket]]"
+                           "- [[%^{ISD URL}][Incident State Document]]"
+                           "%?")))
           ("l" "The Log")
           ("lw" "Work Log" entry (file+olp+datetree ,(f-expand "~/Documents/work.org") "Log")
            "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?"
