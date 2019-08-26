@@ -85,13 +85,13 @@
     (setq-local comment-start "//")
     (subword-mode +1)
     (go-guru-hl-identifier-mode)
-    ;; (lsp)
+    (lsp)
 
     ;; go-fmt on save.
     ;; This is... in many ways a good idea, but also *so irritating* that
     ;; it's hard to deal with. (Getting gofmt error buffers any time you wanna
     ;; save and do something else -- say, change buffers -- is rough.)
-    ;; (add-hook 'before-save-hook 'gofmt-before-save)
+    (add-hook 'before-save-hook 'gofmt-before-save)
     (setq-local company-dabbrev-downcase nil)
     (add-to-list 'company-backends 'company-go)
     )
