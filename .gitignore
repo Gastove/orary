@@ -30,3 +30,4 @@
 /.lsp-session-*
 /.mc-lists.el
 /transient
+eclipse.jdt.ls/
