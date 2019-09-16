@@ -93,6 +93,7 @@ so company-mode will work nicely."
                              (add-pcomplete-to-capf)
                              (require 'org-bullets)
                              (org-bullets-mode 1)))
+  (require 'org-tempo)
   (require 'ox-confluence)
 
   (setq org-todo-keywords
