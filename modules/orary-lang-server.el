@@ -21,6 +21,8 @@
   (setq company-lsp-cache-candidates 'auto)
   (push 'company-lsp company-backends))
 
+
+
 (use-package lsp-mode
   :commands lsp
   :config
@@ -36,8 +38,8 @@
 
   :bind (:map lsp-mode-map
               ("M-." . #'lsp-ui-peek-find-definitions)
-              ("M-?"  . #'lsp-ui-peek-find-references))
-  )
+              ("M-?"  . #'lsp-ui-peek-find-references)
+              ))
 
 (provide 'orary-lang-server)
 ;;; orary-lang-server.el ends here

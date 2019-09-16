@@ -4,6 +4,12 @@
 ;; Global keybindings in orary.
 ;;; Code:
 
+;;---------------------------------- Unsets ----------------------------------;;
+;; Unset compose-mail so we can use this binding for the global map instead
+(global-unset-key (kbd "C-x m"))
+;; Unset count-lines for LSP
+(global-unset-key (kbd "C-x l"))
+
 ;;-------------------------------- Toggle Map --------------------------------;;
 
 (define-prefix-command 'orary/toggle-map)
@@ -24,10 +30,6 @@
 ;;------------------------------- Global Keymap -------------------------------;;
 
 (define-prefix-command 'orary/global-map)
-
-;; Unset compose-mail so we can use this binding for the global map instead
-(global-unset-key (kbd "C-x m"))
-
 (define-key ctl-x-map "m" 'orary/global-map)
 
 (define-key 'orary/global-map "c" #'orary/insert-signed-comment)
@@ -47,6 +49,10 @@
 (global-set-key (kbd "C-;") 'flyspell-auto-correct-previous-word)
 (global-set-key (kbd "C-S-y") 'orary/yank-commented)
 (global-set-key (kbd "C-c C-i") #'company-complete)
+
+;;------------------------------------ LSP ------------------------------------;;
+(define-prefix-command 'lsp-language-map)
+(define-key ctl-x-map "l" 'lsp-language-map)
 
 (provide 'orary-keymap)
 ;;; orary-keymap.el ends here

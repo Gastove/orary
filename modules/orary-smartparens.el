@@ -12,12 +12,13 @@
   (smartparens-global-mode)
   (show-smartparens-global-mode)
   (setq sp-ignore-modes-list
-      (delete 'minibuffer-inactive-mode sp-ignore-modes-list))
+        (delete 'minibuffer-inactive-mode sp-ignore-modes-list))
 
   ;; Org-mode Pairs
   (sp-local-pair 'org-mode "~" "~" :wrap "C-~")
   (sp-local-pair 'org-mode "*" "*" :wrap "C-*")
   (sp-local-pair 'sql-mode "<" ">")
+  (sp-local-pair 'java-mode "/**" "**/")
   :bind (:map smartparens-mode-map
               ("C-M-f" . sp-forward-sexp)
               ("C-M-b" . sp-backward-sexp)
