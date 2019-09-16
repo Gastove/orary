@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: exception
+# key: ex
+# --
+public class ${1:`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`} extends ${2:Exception} {
+public $1(String message) {
+super(message);
+}
+}
