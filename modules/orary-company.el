@@ -27,7 +27,7 @@
   :commands company-mode
   :config
   (global-company-mode)
-
+  (add-to-list 'company-transformers 'company-sort-prefer-same-case-prefix)
   (setq company-idle-delay .2
         company-minimum-prefix-length 2
         company-tooltip-limit 20
