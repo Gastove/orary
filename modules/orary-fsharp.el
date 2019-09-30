@@ -94,14 +94,31 @@ usability standpoint to do so."
     (message "Couldn't find `fantomas' on your path"))
   )
 
+(defun orary/fsharp-insert-pipe ()
+  (interactive)
+  (cond ((re-search-backward "|>" (- (point) 2) t)
+         (replace-match "<|"))
+        ((re-search-backward "<|" (- (point) 2) t)
+         (replace-match "|"))
+        ((thing-at-point-looking-at "|" 1) (insert ">"))
+        (:else (insert "|")))
+
+  (set-transient-map
+   (let ((map (make-sparse-keymap)))
+     (define-key map (kbd "|") #'orary/fsharp-insert-pipe)
+     map)))
+
 (use-package fsharp-mode
   :mode "\\.fs[iylx]?$"
   :config
   (add-hook 'fsharp-mode-hook
             (lambda ()
               (subword-mode +1)
-              (setq company-auto-complete nil
-                    require-final-newline nil)))
+              (highlight-indentation-mode +1)
+              (lsp)
+              (setq ;; company-auto-complete nil
+               require-final-newline nil
+               fsharp-ac-intellisense-enabled nil)))
   (sp-with-modes 'fsharp-mode
     (sp-local-pair "<" ">"
                    :when '((orary/sp-close-open-angle-p))
@@ -115,7 +132,8 @@ usability standpoint to do so."
     (sp-local-pair "``" "``"))
   (add-hook 'fsharp-mode-hook (lambda () (setq dabbrev-check-all-buffers nil)))
   :bind (:map fsharp-mode-map
-              ("<C-return>" . fsharp-ret-dwim)))
+              ("<C-return>" . fsharp-ret-dwim)
+              ("|" . orary/fsharp-insert-pipe)))
 
 (provide 'orary-fsharp)
 ;;; orary-fsharp.el ends here
