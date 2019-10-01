@@ -28,7 +28,9 @@
   :config
   (setq lsp-prefer-flymake nil
         lsp-auto-guess-root t
-        lsp-restart 'auto-restart)
+        lsp-restart 'auto-restart
+        lsp-session-file (f-expand ".lsp-session-v1" orary/save-root)
+        lsp-enable-semantic-highlighting t)
   (add-hook 'lsp-mode-hook
             (lambda ()
               (dap-mode 1)
