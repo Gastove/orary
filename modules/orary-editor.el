@@ -57,7 +57,8 @@
 (use-package editorconfig
   :demand t
   :config
-  (editorconfig-mode +1))
+  (editorconfig-mode +1)
+  (add-hook 'editorconfig-conf-mode-hook #'orary/programming-defaults))
 
 (use-package flycheck
   :config
