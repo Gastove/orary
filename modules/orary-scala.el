@@ -22,11 +22,59 @@
 ;; Who doesn't like scala? Good news: this one is dead simple. Thx, ensime.
 ;;; Code:
 
-(use-package ensime
-  :ensure t
-  :config
-  (setq ensime-startup-notification nil)
+;; (defun orary/make-fantomas-tmp-buffer ()
+;;   (-let [buf (get-buffer-create "*Fantomas Output*")]
+;;     (with-current-buffer buf
+;;       (fsharp-mode)
+;;       (read-only-mode))
+;;     buf))
+
+(defun orary/scala-format-buffer (arg)
+  "Formats the current buffer with `fantomas' if installed; see
+  https://github.com/fsprojects/fantomas for details. With prefix
+  argument ARG, shows a preview of the output instead of
+  overwriting the current buffer."
+  (interactive "P")
+  (-if-let (scalariform-command (executable-find "scalariform"))
+      (-let [target-buffer (if arg
+                               (orary/make-fantomas-tmp-buffer)
+                             (buffer-name))]
+        (shell-command-on-region
+         (point-min)
+         (point-max)
+         (s-join " "
+                 (list
+                  scalariform-command
+                  "--stdin --stdout"
+                  ))
+         target-buffer))
+    (message "Couldn't find `scalariform' on your path"))
   )
+
+(use-package scala-mode
+  :mode "\\.s\\(cala\\|bt\\)$"
+  :config
+  (add-hook
+   'scala-mode-hook
+   (lambda ()
+     (subword-mode +1)
+     (lsp))))
+
+(use-package sbt-mode
+  :commands sbt-start sbt-command
+  :config
+  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+  ;; allows using SPACE when in the minibuffer
+  (substitute-key-definition
+   'minibuffer-complete-word
+   'self-insert-command
+   minibuffer-local-completion-map))
+
+;; (use-package ensime
+;;   :ensure t
+;;   :config
+;;   (setq ensime-startup-notification nil)
+;;   )
 
 (provide 'orary-scala)
 ;;; orary-scala.el ends here
