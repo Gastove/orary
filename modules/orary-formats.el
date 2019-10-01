@@ -19,7 +19,7 @@
 
 ;; JSON
 (use-package json-mode
-  :mode "\\.json\\'")
+  :mode "\\.avsc\\|\\.json\\'")
 
 ;; nXML
 (require 'hideshow)
