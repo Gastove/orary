@@ -10,6 +10,8 @@
 
 (use-package pip-requirements)
 
+(setq python-shell-interpreter "python3")
+
 (use-package elpy
   :demand t
   :config

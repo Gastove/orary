@@ -242,7 +242,8 @@ so company-mode will work nicely."
                                  (sql        . t)
                                  (python     . t)))
 
-  (setq org-babel-clojure-backend 'cider)
+  (setq org-babel-clojure-backend 'cider
+        org-babel-python-command "python3")
 
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
