@@ -31,3 +31,5 @@
 /.mc-lists.el
 /transient
 eclipse.jdt.ls/
+/.dap-breakpoints
+/fsautocomplete
