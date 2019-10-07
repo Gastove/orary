@@ -43,7 +43,8 @@
 (add-hook 'nxml-mode-hook
           (lambda ()
             (flyspell-mode-off)
-            (setq nxml-sexp-element-flag 't)
+            (setq nxml-sexp-element-flag 't
+                  require-final-newline nil)
             ;; (define-key prelude-mode-map (kbd "C-c C-i") 'nxml-balanced-close-start-tag-inline)
             ))
 
