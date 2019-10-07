@@ -24,8 +24,11 @@
 (load custom-file)
 
 ;; A good place for abbrevs
-(setq abbrev-file-name (f-expand "abbrev_defs" orary/save-root)
-      save-abbrevs 'silently)
+(-let [abbrev-path (f-expand "abbrev_defs" orary/save-root)]
+  (unless (f-exists? abbrev-path)
+    (f-touch abbrev-path))
+  (setq abbrev-file-name abbrev-path
+	save-abbrevs 'silently))
 (quietly-read-abbrev-file)
 
 ;; Enable narrow-to-region
