@@ -128,18 +128,30 @@ usability standpoint to do so."
           ((thing-at-point-looking-at base 1) (insert mod-one))
           (:else (insert base)))))
 
+(defun orary/lsp-fsharp-type-at ()
+  (interactive)
+  (lsp-request-async "fsharp/signature"
+                     (lsp--text-document-position-params)
+                     (lambda (response)
+                       (eldoc-message (fsharp-fontify-string (cdr (assq 'Data (json-read-from-string (ht-get response "content")))))))))
+
+(setq lsp-eldoc-hook 'orary/lsp-fsharp-type-at)
+
 (use-package fsharp-mode
   :mode "\\.fs[iylx]?$"
   :config
+  (setq ;; company-auto-complete nil
+   require-final-newline nil
+   fsharp-ac-intellisense-enabled nil
+   inferior-fsharp-program "dotnet fsi --readline- --noframework")
+
   (add-hook 'fsharp-mode-hook
             (lambda ()
               (subword-mode +1)
               (highlight-indentation-mode +1)
+              (lsp-mode +1)
               (lsp)
-              (setq ;; company-auto-complete nil
-               require-final-newline nil
-               fsharp-ac-intellisense-enabled nil
-               inferior-fsharp-program "dotnet fsi --readline-")))
+              ))
   (sp-with-modes 'fsharp-mode
     (sp-local-pair "<" ">"
                    :when '((orary/sp-close-open-angle-p))
