@@ -85,6 +85,7 @@
 (require 'orary-ui)
 (require 'orary-functions)
 (require 'orary-popups)
+(require 'orary-cli)
 
 ;; Editing - global configs for editing in src and txt
 (require 'orary-editor)
