@@ -28,7 +28,7 @@
   (unless (f-exists? abbrev-path)
     (f-touch abbrev-path))
   (setq abbrev-file-name abbrev-path
-	save-abbrevs 'silently))
+        save-abbrevs 'silently))
 (quietly-read-abbrev-file)
 
 ;; Enable narrow-to-region
@@ -103,6 +103,9 @@
 
 ;; Default line length
 (setq-default fill-column 80)
+
+;; Do not, I repeat _do not_, require final newline.
+(setq require-final-newline nil)
 
 ;;------------------------------Core enhancements--------------------------------
 ;;; Improve on built-in bookmarks, dired
