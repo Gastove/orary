@@ -46,7 +46,6 @@
               ("r i" . #'lsp-java-add-import)
               ("r t" . #'lsp-java-add-throws)
               ("r o" . #'lsp-java-organize-imports)
-              ("r r" . #'lsp-rename)
               ("g o" . #'lsp-java-generate-overrides)
               ("g e" . #'lsp-java-generate-equals-and-hash-code)
               ("g g" . #'lsp-java-generate-getters-and-setters)

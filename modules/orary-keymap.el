@@ -54,5 +54,9 @@
 (define-prefix-command 'lsp-language-map)
 (define-key ctl-x-map "l" 'lsp-language-map)
 
+(define-key 'lsp-language-map "r r" #'lsp-rename)
+(define-key 'lsp-language-map "a" #'lsp-execute-code-action)
+(define-key 'lsp-language-map "d" #'lsp-describe-thing-at-point)
+
 (provide 'orary-keymap)
 ;;; orary-keymap.el ends here
