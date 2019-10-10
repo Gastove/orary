@@ -130,12 +130,11 @@ usability standpoint to do so."
 
 (defun orary/lsp-fsharp-type-at ()
   (interactive)
-  (lsp-request-async "fsharp/signature"
-                     (lsp--text-document-position-params)
-                     (lambda (response)
-                       (eldoc-message (fsharp-fontify-string (cdr (assq 'Data (json-read-from-string (ht-get response "content")))))))))
-
-(setq lsp-eldoc-hook 'orary/lsp-fsharp-type-at)
+  (lsp-request-async
+   "fsharp/signature"
+   (lsp--text-document-position-params)
+   (lambda (response)
+     (eldoc-message (fsharp-fontify-string (cdr (assq 'Data (json-read-from-string (ht-get response "content")))))))))
 
 (use-package fsharp-mode
   :mode "\\.fs[iylx]?$"
@@ -144,7 +143,7 @@ usability standpoint to do so."
    require-final-newline nil
    fsharp-ac-intellisense-enabled nil
    inferior-fsharp-program "dotnet fsi --readline- --noframework")
-
+  (setq-local lsp-eldoc-hook #'orary/lsp-fsharp-type-at)
   (add-hook 'fsharp-mode-hook
             (lambda ()
               (subword-mode +1)
