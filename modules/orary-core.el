@@ -34,6 +34,9 @@
 ;; Enable narrow-to-region
 (put 'narrow-to-region 'disabled nil)
 
+;; Help Window Selection
+(setq help-window-select t)
+
 ;; The Diary
 (setq diary-file (f-expand "diary" orary/user-home-dir))
 
