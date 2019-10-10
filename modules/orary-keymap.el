@@ -57,6 +57,8 @@
 (define-key 'lsp-language-map "r r" #'lsp-rename)
 (define-key 'lsp-language-map "a" #'lsp-execute-code-action)
 (define-key 'lsp-language-map "d" #'lsp-describe-thing-at-point)
+(define-key 'lsp-language-map (kbd "l s") #'lsp-lens-show)
+(define-key 'lsp-language-map (kbd "l h") #'lsp-lens-hide)
 
 (provide 'orary-keymap)
 ;;; orary-keymap.el ends here
