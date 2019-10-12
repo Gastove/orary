@@ -373,5 +373,12 @@ mode."
     (balance-windows)
     (select-window middle-window)))
 
+(defun orary/byte-recompile-everything ()
+  "Byte-recompile every single package and dependency; useful if something gets out of sync and throws incomprehensible errors, like:
+
+smartparens/:catch: Symbol’s value as variable is void: <"
+  (interactive)
+  (byte-recompile-directory (f-expand "~/.emacs.d/elpa") 0 t))
+
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
