@@ -69,5 +69,11 @@
 ;; Thrift
 (use-package thrift)
 
+;; Terraform
+
+(use-package company-terraform)
+(use-package terraform-doc)
+(use-package terraform-mode)
+
 (provide 'orary-formats)
 ;;; orary-formats.el ends here
