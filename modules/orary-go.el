@@ -80,7 +80,10 @@
   :config
   (setq go-packages-function #'orary/go-packages-go-list-restricted
         gofmt-command "goimports"
-        flycheck-go-build-install-deps t)
+        flycheck-go-build-install-deps t
+        lsp-gopls-hover-kind "FullDocumentation"
+        lsp-gopls-experimental-completion-documentation t
+        lsp-gopls-experimental-deep-completion t)
   (defun go-mode-config ()
     (setq-local comment-start "//")
     (subword-mode +1)
