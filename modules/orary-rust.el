@@ -5,6 +5,7 @@
 ;;; Code:
 
 (require 'orary-braces)
+(require 'orary-functions)
 
 (use-package cargo)         ;; Build tool wrapper
 (use-package racer)         ;; Symbol completion, introspection
@@ -56,6 +57,14 @@
     (end-of-line)
     (newline-and-indent))))
 
+(defun orary/rust-insert-arrow ()
+  (interactive)
+  (orary/insert-key-seq "-" ">" "<")
+  (set-transient-map
+   (let ((map (make-sparse-keymap)))
+     (define-key map (kbd "-") #'orary/rust-insert-arrow)
+     map)))
+
 ;; The Business
 (use-package rust-mode
   :config
@@ -76,7 +85,8 @@
   :bind (:map rust-mode-map
               ("C-c C-c" . #'rust-compile)
               ("<C-return>" . #'orary/rust-ret-dwim)
-              ("C-o" . #'orary/braces-open-newline))
+              ("C-o" . #'orary/braces-open-newline)
+              ("-" . #'orary/rust-insert-arrow))
   )
 
 (provide 'orary-rust)

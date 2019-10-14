@@ -7,6 +7,7 @@
 (require 'smartparens)
 (require 'dash)
 (require 'dabbrev)
+(require 'orary-functions)
 
 (defun orary/sp-insert-pipe-p (delim action ctxt)
   (save-excursion
@@ -96,7 +97,7 @@ usability standpoint to do so."
 
 (defun orary/fsharp-insert-pipe (multiplier)
   (interactive "p")
-  (orary/fsharp-insert-key-seq "|" ">" "<" multiplier)
+  (orary/insert-key-seq "|" ">" "<" multiplier)
   (set-transient-map
    (let ((map (make-sparse-keymap)))
      (define-key map (kbd "|") #'orary/fsharp-insert-pipe)
@@ -104,29 +105,11 @@ usability standpoint to do so."
 
 (defun orary/fsharp-insert-arrow ()
   (interactive)
-  (orary/fsharp-insert-key-seq "-" ">" "<")
+  (orary/insert-key-seq "-" ">" "<")
   (set-transient-map
    (let ((map (make-sparse-keymap)))
      (define-key map (kbd "-") #'orary/fsharp-insert-arrow)
      map)))
-
-;; TODO: to make this work, I need to set a local variable -- something that
-;; outlives each given call to the repeating function.
-(defun orary/fsharp-insert-key-seq (base mod-one mod-two &optional multiplier)
-  (-let* ((multi (case nil
-                   (1 1)
-                   (4 2)
-                   (otherwise 1)))
-          (base (s-repeat multi base))
-          (right (s-concat base mod-one))
-          (left (s-concat mod-two base)))
-    (message "Multi is %s, right is %s, left is %s" multi right left)
-    (cond ((re-search-backward right (- (point) (length right)) t)
-           (replace-match left))
-          ((re-search-backward left (- (point) (length left)) t)
-           (replace-match base))
-          ((thing-at-point-looking-at base 1) (insert mod-one))
-          (:else (insert base)))))
 
 (defun orary/lsp-fsharp-type-at ()
   (interactive)
@@ -139,10 +122,10 @@ usability standpoint to do so."
 (use-package fsharp-mode
   :mode "\\.fs[iylx]?$"
   :config
-  (setq ;; company-auto-complete nil
-   require-final-newline nil
-   fsharp-ac-intellisense-enabled nil
-   inferior-fsharp-program "dotnet fsi --readline- --noframework")
+  (setq fill-column 100
+        require-final-newline nil
+        fsharp-ac-intellisense-enabled nil
+        inferior-fsharp-program "dotnet fsi --readline- --noframework")
   (setq-local lsp-eldoc-hook #'orary/lsp-fsharp-type-at)
   (add-hook 'fsharp-mode-hook
             (lambda ()

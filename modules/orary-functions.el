@@ -129,6 +129,14 @@ its notion of what a symbol is."
         (message "No projects found")
       (message (format "Added %s projects" cnt)))))
 
+(defun orary/edit-json-indirect (json-start json-end)
+  (interactive "r")
+  (-let [indirect (clone-indirect-buffer "*JSON Edit*" t t)]
+    (with-current-buffer indirect
+      (json-mode)
+      (narrow-to-region json-start json-end)
+      (json-pretty-print-buffer))))
+
 (defun orary/pprint-json-in-new-buffer (json-start json-end)
   "If the region delimited by JSON-START and JSON-END encompases
 valid JSON, read that JSON in to a new buffer and pretty print
@@ -146,6 +154,8 @@ it."
           (goto-char (point-min)))
         (switch-to-buffer-other-window buf))
     (json-readtable-error (message "Region was not on valid JSON."))))
+
+
 
 (defun orary/toggle-auto-indent ()
   "Toggle the current value of orary/disable-auto-indent."
@@ -373,12 +383,34 @@ mode."
     (balance-windows)
     (select-window middle-window)))
 
-(defun orary/byte-recompile-everything ()
-  "Byte-recompile every single package and dependency; useful if something gets out of sync and throws incomprehensible errors, like:
 
-smartparens/:catch: Symbol’s value as variable is void: <"
+(defun orary/byte-recompile-everything ()
+  "Byte-recompile every single package and dependency; useful if
+  something gets out of sync and throws incomprehensible errors,
+  like:
+
+  smartparens/:catch: Symbol’s value as variable is void: <"
   (interactive)
   (byte-recompile-directory (f-expand "~/.emacs.d/elpa") 0 t))
+
+;;-------------------------------- Repeat Keys --------------------------------;;
+;; TODO: to make this work, I need to set a local variable -- something that
+;; outlives each given call to the repeating function.
+(defun orary/insert-key-seq (base mod-one mod-two &optional multiplier)
+  (-let* ((multi (case nil
+                   (1 1)
+                   (4 2)
+                   (otherwise 1)))
+          (base (s-repeat multi base))
+          (right (s-concat base mod-one))
+          (left (s-concat mod-two base)))
+    (message "Multi is %s, right is %s, left is %s" multi right left)
+    (cond ((re-search-backward right (- (point) (length right)) t)
+           (replace-match left))
+          ((re-search-backward left (- (point) (length left)) t)
+           (replace-match base))
+          ((thing-at-point-looking-at base 1) (insert mod-one))
+          (:else (insert base)))))
 
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
