@@ -35,7 +35,6 @@
 (define-key 'orary/global-map "c" #'orary/insert-signed-comment)
 (define-key 'orary/global-map "d" #'orary/insert-iso-date)
 (define-key 'orary/global-map "e" #'orary/insert-emote)
-(define-key 'orary/global-map "I" #'lsp-ui-imenu)
 (define-key 'orary/global-map "j" #'orary/pprint-json-in-new-buffer)
 (define-key 'orary/global-map "w" #'helm-world-time)
 
@@ -54,7 +53,8 @@
 (define-prefix-command 'lsp-language-map)
 (define-key ctl-x-map "l" 'lsp-language-map)
 
-(define-key 'lsp-language-map "r r" #'lsp-rename)
+(define-key 'lsp-language-map "I" #'lsp-ui-imenu)
+(define-key 'lsp-language-map (kbd "r r") #'lsp-rename)
 (define-key 'lsp-language-map "a" #'lsp-execute-code-action)
 (define-key 'lsp-language-map "d" #'lsp-describe-thing-at-point)
 (define-key 'lsp-language-map (kbd "l s") #'lsp-lens-show)
