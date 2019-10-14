@@ -9,7 +9,7 @@
   :config
   (setq shackle-select-reused-windows t
         shackle-rules '((compilation-mode :noselect t)
-                        (help-mode :select t :inhibit-window-quit t)
+                        (help-mode :select t)
                         ("*Gofmt Errors*" :select t)
                         ("COMMIT_EDITMSG" :select t))
         shackle-default-rule '(:select t))
