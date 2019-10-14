@@ -76,13 +76,9 @@ then clean up white space."
 
 (defun orary/programming-defaults ()
   "Set defaults for programming modes."
-  ;; Prepare for the coming of ethan-wspace
-  ;; (setq mode-require-final-newline nil)
+  (setq mode-require-final-newline nil)
   (hl-line-mode +1)
   (orary/important-comments)
-  ;; Disabling gg-tags-modes entirely for now.
-  ;; (when (apply 'derived-mode-p orary/gg-tags-modes)
-  ;;   (ggtags-mode +1))
 
   (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
   )
@@ -137,6 +133,8 @@ Most useful for org export."
     (remove-hook 'compilation-filter-hook 'orary/filter-compilation)))
 
 (add-hook 'compilation-filter-hook 'orary/fontify-compilation)
+(setq compilation-scroll-output 'first-error)
+
 
 ;;---------------------------------ANSI Colors-----------------------------------
 (require 'ansi-color)
