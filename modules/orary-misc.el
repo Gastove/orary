@@ -44,7 +44,6 @@
 (add-to-list 'auto-mode-alist '("\\.socket\\'" . systemd-mode))
 
 (use-package toml-mode)
-(use-package vlf)
 
 
 ;; Scheme

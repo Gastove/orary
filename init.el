@@ -24,7 +24,8 @@
 
 ;;-----------------------------Package Management-------------------------------
 (require 'package)
-
+(package-initialize)
+(setq package-check-signature nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
@@ -33,16 +34,16 @@
 (if (and (version< emacs-version "26.3") (>= libgnutls-version 30604))
     (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
-;; Make sure the package index has been loaded at least once before we try to
-;; do any installing. After, make a note that we don't have to do this again.
-(unless package-archive-contents
-  (package-initialize)
-  (package-refresh-contents)
-  )
-
 ;; We use use-package absolutely everywhere. Make sure it's there.
 (unless (package-installed-p 'use-package)
+  (package-refresh-contents)
   (package-install 'use-package))
+
+(use-package benchmark-init
+  :ensure t
+  :config
+  ;; To disable collection of benchmark data after init is done.
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 (eval-when-compile
   (require 'use-package))
@@ -107,7 +108,8 @@
 
 ;; Talky -- communicate with others
 (require 'orary-irc)
-(require 'orary-jabber)
+;; I haven't touched this in a year. Hangouts no longers supports it, soooo.
+;; (require 'orary-jabber)
 ;; Only load mu4e if it's there
 ;; (when (f-exists? "/usr/local/share/emacs/site-lisp/mu4e/mu4e.el")
 ;;   (require 'orary-mu4e))

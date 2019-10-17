@@ -47,7 +47,5 @@
                            company-oddmuse company-dabbrev))
   :diminish company)
 
-(use-package company-tern)
-
 (provide 'orary-company)
 ;;; orary-company.el ends here
