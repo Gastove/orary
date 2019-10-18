@@ -32,9 +32,8 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   :diminish ethan-wspace-mode
   :demand t
   :init (global-ethan-wspace-mode 1)
-  ;; :config
-  ;; (add-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
-  )
+  :config
+  (setq ethan-wspace-warned-mode-require-final-newline t))
 
 ;; ggtags is *so fiddly* to get working; gonna lean on other tools for now.
 ;; (use-package ggtags)
