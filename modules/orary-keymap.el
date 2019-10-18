@@ -59,6 +59,7 @@
 (define-key 'lsp-language-map "d" #'lsp-describe-thing-at-point)
 (define-key 'lsp-language-map (kbd "l s") #'lsp-lens-show)
 (define-key 'lsp-language-map (kbd "l h") #'lsp-lens-hide)
+(define-key 'lsp-language-map "f" #'lsp-format-buffer)
 
 (provide 'orary-keymap)
 ;;; orary-keymap.el ends here
