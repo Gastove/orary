@@ -11,7 +11,7 @@
         shackle-rules '((compilation-mode :noselect t)
                         (help-mode :select t)
                         ("*Gofmt Errors*" :select t)
-                        ("COMMIT_EDITMSG" :select t))
+                        (".*/\\.git/COMMIT_EDITMSG$" :regexp t :select t))
         shackle-default-rule '(:select t))
   (add-hook 'orary/programming-mode-hook (lambda () (shackle-mode +1))))
 
