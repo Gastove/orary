@@ -126,11 +126,11 @@ usability standpoint to do so."
         require-final-newline nil
         fsharp-ac-intellisense-enabled nil
         inferior-fsharp-program "dotnet fsi --readline- --noframework")
-  (setq-local lsp-eldoc-hook #'orary/lsp-fsharp-type-at)
   (add-hook 'fsharp-mode-hook
             (lambda ()
               (subword-mode +1)
               (highlight-indentation-mode +1)
+              (setq-local lsp-eldoc-hook #'orary/lsp-fsharp-type-at)
               (lsp-mode +1)
               (lsp)
               ))
