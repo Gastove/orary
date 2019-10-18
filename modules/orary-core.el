@@ -108,7 +108,8 @@
 (setq-default fill-column 80)
 
 ;; Do not, I repeat _do not_, require final newline.
-(setq require-final-newline nil)
+(setq-default require-final-newline nil)
+(setq-default mode-require-final-newline nil)
 
 ;;------------------------------Core enhancements--------------------------------
 ;;; Improve on built-in bookmarks, dired
