@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: chiron-do-write
+# key: cdo
+# --
+do! Json.write "${1:name}" ${2:"$0"}
