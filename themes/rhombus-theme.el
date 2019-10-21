@@ -504,7 +504,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ethan-wspace-face ((t (:background ,rhombus-bg :underline (:sytle wave :color ,rhombus-dark-red)))))
 
    ;;-----------------------------which-function-mode-------------------------------
-   `(which-func ((t (:foreground ,rhombus-teal))))
+   `(which-func ((t (:inherit font-lock-function-name-face))))
    ))
 
 ;;; Footer
