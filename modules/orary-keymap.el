@@ -32,7 +32,8 @@
 (define-prefix-command 'orary/global-map)
 (define-key ctl-x-map "m" 'orary/global-map)
 
-(define-key 'orary/global-map "c" #'orary/insert-signed-comment)
+(define-key 'orary/global-map (kbd "c t") #'orary/insert-signed-todo)
+(define-key 'orary/global-map (kbd "c n") #'orary/insert-signed-note)
 (define-key 'orary/global-map "d" #'orary/insert-iso-date)
 (define-key 'orary/global-map "e" #'orary/insert-emote)
 (define-key 'orary/global-map "j" #'orary/pprint-json-in-new-buffer)

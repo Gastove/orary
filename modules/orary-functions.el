@@ -197,12 +197,22 @@ it."
                                (orary/clone-and-recall (car repo) dir)))
           :buffer "*Git Clone")))
 
-(defun orary/insert-signed-comment ()
-  (interactive)
+(defun orary/insert-signed-comment (&optional extra)
   (orary/comment-dwim-line)
-  (save-excursion
-    (-let [sig (format-time-string " -- RMD %Y-%m-%d" (current-time))]
-      (insert sig))))
+  (-let* ((whoami (user-login-name))
+          (dt (format-time-string "%Y-%m-%d" (current-time)))
+          (also (or extra ""))
+          (sig (format "%s[%s|%s]" also whoami dt)))
+    (insert sig)
+    (end-of-line)))
+
+(defun orary/insert-signed-todo ()
+  (interactive)
+  (orary/insert-signed-comment "TODO"))
+
+(defun orary/insert-signed-note ()
+  (interactive)
+  (orary/insert-signed-comment "NOTE"))
 
 (defvar-local orary/env-files '(".env.defaults" ".env" ".env.test"))
 
@@ -218,7 +228,7 @@ it."
 (defun orary/read-env-file (file-path)
   (-let [lines (orary/read-file file-path)]
     (-filter (lambda (s) (and (not (s-starts-with-p "#" s))
-                              (not (s-blank-p s))))
+                         (not (s-blank-p s))))
              lines)))
 
 (defun orary/parse-bash-env-lines (lines)
