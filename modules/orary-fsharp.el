@@ -121,9 +121,9 @@ usability standpoint to do so."
 
 (use-package fsharp-mode
   :mode "\\.fs[iylx]?$"
+  ;; :load-path (lambda () (f-expand "~/Code/open-source/emacs-fsharp-mode"))
   :config
   (setq fill-column 100
-        require-final-newline nil
         fsharp-ac-intellisense-enabled nil
         inferior-fsharp-program "dotnet fsi --readline- --noframework")
   (add-hook 'fsharp-mode-hook
@@ -131,6 +131,7 @@ usability standpoint to do so."
               (subword-mode +1)
               (highlight-indentation-mode +1)
               (setq-local lsp-eldoc-hook #'orary/lsp-fsharp-type-at)
+              (setq require-final-newline nil)
               (lsp-mode +1)
               (lsp)
               ))
