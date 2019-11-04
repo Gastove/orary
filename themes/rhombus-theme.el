@@ -505,6 +505,9 @@ Also bind `class' to ((class color) (min-colors 89))."
 
    ;;-----------------------------which-function-mode-------------------------------
    `(which-func ((t (:inherit font-lock-function-name-face))))
+
+   ;;----------------------------------- Eldoc -----------------------------------;;
+   `(eldoc-highlight-function-argument ((t (:foreground ,rhombus-teal))))
    ))
 
 ;;; Footer
