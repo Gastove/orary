@@ -43,22 +43,29 @@
        (not (f-exists? (f-expand ".local/share/fonts/all-the-icons.ttf" orary/user-home-dir))))
       (all-the-icons-install-fonts)))
 
-(use-package smart-mode-line
-  :config (sml/setup)
-  (setq rm-blacklist '(" MRev"))
+;; Going to experiment with doom-mode-line!
+;; (use-package smart-mode-line
+;;   :config (sml/setup)
+;;   (setq rm-blacklist '(" MRev"))
 
-  (setq sml/shorten-directory t)
-  (setq sml/shorten-modes t)
+;;   (setq sml/shorten-directory t)
+;;   (setq sml/shorten-modes t)
 
-  ;; Java and scala package names are infinite and terrible; shorten them.
-  (add-to-list 'sml/replacer-regexp-list '("^~/Code/" ":C:") t)
-  (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/main/java/" ":SMJ:") t)
-  (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/test/java/" ":STJ:") t)
-  (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/main/scala/" ":SMS:") t)
-  (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/test/scala/" ":STS:") t)
+;;   ;; Java and scala package names are infinite and terrible; shorten them.
+;;   (add-to-list 'sml/replacer-regexp-list '("^~/Code/" ":C:") t)
+;;   (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/main/java/" ":SMJ:") t)
+;;   (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/test/java/" ":STJ:") t)
+;;   (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/main/scala/" ":SMS:") t)
+;;   (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/test/scala/" ":STS:") t)
 
-  ;; Make sure I notice when I'm in
-  (add-to-list 'rm-text-properties '(" Sp/s" 'face 'font-lock-warning-face)))
+;;   ;; Make sure I notice when I'm in
+;;   (add-to-list 'rm-text-properties '(" Sp/s" 'face 'font-lock-warning-face)))
+
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode)
+  :config
+  (setq doom-modeline-project-detection 'projectile))
 
 (use-package beacon
   :demand t
