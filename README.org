@@ -27,7 +27,7 @@ Or, if you want to do Emacs on double-weird Vim mode, try [[https://github.com/s
 It is as baffling as it can be, for instance, /inside helm-color/.
 ** TODO JavaScript configs
 ** TODO Word Wrapping in text mode configs
-** TODO Hook mu compose mode up to text configs
+** DONE Hook mu compose mode up to text configs
 ** TODO Look in to color-changing the cursor!
 [[https://github.com/ensime/ensime-server/issues/949][Example here]]
 ** DONE Only activate mu4e if it's present
