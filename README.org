@@ -30,6 +30,6 @@ It is as baffling as it can be, for instance, /inside helm-color/.
 ** TODO Hook mu compose mode up to text configs
 ** TODO Look in to color-changing the cursor!
 [[https://github.com/ensime/ensime-server/issues/949][Example here]]
-** TODO Only activate mu4e if it's present
+** DONE Only activate mu4e if it's present
 ** TODO Require modules more carefully
 orary-emote requires orary-helm, etc
