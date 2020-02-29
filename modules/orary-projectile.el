@@ -8,6 +8,10 @@
 
 (require 'orary-helm)
 
+(use-package perspective
+  :config
+  (setq persp-show-modestring nil))
+
 (use-package persp-projectile)
 (use-package ag)
 
