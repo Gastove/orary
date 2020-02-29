@@ -187,6 +187,9 @@
 ;; Clean up old buffers
 (require 'midnight)
 
+;;-------------------------------- Minibuffer --------------------------------;;
+(add-hook 'minibuffer-setup-hook #'subword-mode)
+
 ;;--------------------------------------Tramp----------------------------------------
 (require 'tramp)
 (setq tramp-default-method "ssh")
