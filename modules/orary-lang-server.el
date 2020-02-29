@@ -5,7 +5,8 @@
 ;; there's *already* an orary-lisp, and I just wanna disambiguate this better.
 ;;; Code:
 
-(use-package dap-mode)
+(use-package dap-mode
+  :after lsp-mode)
 
 (use-package lsp-ui
   :commands lsp-ui-mode
@@ -17,11 +18,10 @@
 
 (use-package company-lsp
   :commands company-lsp
+  :after lsp-mode
   :config
   (setq company-lsp-cache-candidates 'auto)
   (push 'company-lsp company-backends))
-
-
 
 (use-package lsp-mode
   :commands lsp
