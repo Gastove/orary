@@ -18,9 +18,10 @@
 
   (elpy-enable)
   (require 'electric)
-  ;; (elpy-use-ipython)
+
   (setq
-   ;; python-shell-interpreter-args "--simple-prompt -i"
+   python-shell-interpreter "ipython"
+   python-shell-interpreter-args "--simple-prompt -i"
    python-fill-docstring-style 'django
    python-environment-directory "~/.python_virtualenvs/"
    ;; There is some indication this might help with the vague weirds I've seen.
