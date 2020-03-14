@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
 # name: go-test
-# key: gotest
+# key: gt
 # expand-env: ((yas-indent-line 'fixed))
 # --
 func Test$1(t *testing.T) {
-    $0
+${2:assert := assert.New(t)$0}
 }
