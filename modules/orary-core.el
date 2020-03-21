@@ -93,7 +93,13 @@
 
 ;;---------Whitespace Management and Cleanup, Tabs, Line Length, et al----------
 ;; Repeat after me: fuck tabs.
-(set-default 'indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
+;; No seriously, fuck tabs. Align with spaces only
+(defadvice align-regexp (around align-regexp-with-spaces)
+  "Never use tabs for alignment."
+  (let ((indent-tabs-mode nil))
+    ad-do-it))
+(ad-activate 'align-regexp)
 
 ;; 8 is a dumb number of spaces for a tab to default to.
 (setq-default tab-width 4)
