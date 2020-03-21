@@ -184,10 +184,10 @@ it."
                    (read-directory-name "Clone in to dir: ")
                  "~/Code"))
           (repos (request "https://api.github.com/user/repos"
-                          :parser 'json-read
-                          :params '(("per_page" . "100"))
-                          :sync 't
-                          :headers `(("Authorization" . ,(concat "token " orary/github-oauth-token)))))
+                   :parser 'json-read
+                   :params '(("per_page" . "100"))
+                   :sync 't
+                   :headers `(("Authorization" . ,(concat "token " orary/github-oauth-token)))))
           (name-repo-mapping (-map (lambda (repo)
                                      (list (alist-get 'name repo) repo))
                                    (request-response-data repos))))
@@ -228,7 +228,7 @@ it."
 (defun orary/read-env-file (file-path)
   (-let [lines (orary/read-file file-path)]
     (-filter (lambda (s) (and (not (s-starts-with-p "#" s))
-                         (not (s-blank-p s))))
+                              (not (s-blank-p s))))
              lines)))
 
 (defun orary/parse-bash-env-lines (lines)
@@ -421,6 +421,11 @@ mode."
            (replace-match base))
           ((thing-at-point-looking-at base 1) (insert mod-one))
           (:else (insert base)))))
+
+(defun orary/base64-encode-region ()
+  "bas64-encode-region with no line breaks."
+  (interactive)
+  (base64-encode-region (mark) (point) t))
 
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
