@@ -44,7 +44,7 @@ Currently catches: FIX(ME)?, TODO, NOTE."
 (defvar orary/indent-sensitive-modes
   '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode
               markdown-mode sql-mode ein:notebook-python-mode dockerfile-mode picture-mode
-              elm-mode))
+              elm-mode snippet-mode))
 
 (defvar orary/disable-auto-indent nil)
 (make-variable-buffer-local 'orary/disable-auto-indent)
