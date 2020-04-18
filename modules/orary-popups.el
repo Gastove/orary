@@ -5,6 +5,7 @@
 ;;; Code:
 
 (use-package shackle
+  :hook orary/programming-mode
   :demand t
   :config
   (setq shackle-select-reused-windows t
@@ -12,9 +13,10 @@
                         (help-mode :select t)
                         ("*Gofmt Errors*" :select t)
                         ("ert" :select nil)
-                        (".*/\\.git/COMMIT_EDITMSG$" :regexp t :select t))
+                        ("magit-diff:.*" :noselect t :regexp t)
+                        (".*[\\.git/]?COMMIT_EDITMSG" :regexp t :select t))
         shackle-default-rule '(:select t))
-  (add-hook 'orary/programming-mode-hook (lambda () (shackle-mode +1))))
+  )
 
 (provide 'orary-popups)
 ;;; orary-popups.el ends here
