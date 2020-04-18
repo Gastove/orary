@@ -23,6 +23,9 @@
   (setq company-lsp-cache-candidates 'auto)
   (push 'company-lsp company-backends))
 
+(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+
+(setq lsp-keymap-prefix "C-x l")
 (use-package lsp-mode
   :commands lsp
   :config
