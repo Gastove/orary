@@ -5,7 +5,7 @@
 ;;; Code:
 
 (use-package shackle
-  :hook orary/programming-mode
+  :hook (orary/programming-mode . shackle-mode)
   :demand t
   :config
   (setq shackle-select-reused-windows t
