@@ -33,9 +33,6 @@ so company-mode will work nicely."
 
 ;; Nice unicode bullet symbols for org
 (use-package org-bullets)
-;; All kinds of add-ons and extensions to org, can't even remember what all is in there :P
-(unless (package-installed-p 'org-plus-contrib)
-  (package-install 'org-plus-contrib))
 
 ;; Additional exporters
 (use-package ox-gfm)
@@ -99,7 +96,7 @@ so company-mode will work nicely."
   (setq org-todo-keywords
         '((sequence "BACKLOG(k)")
           (sequence "TODO(t)" "SCHEDULED(s)" "DOING(o)" "REVIEW(r)" "|" "DONE(d)")
-          (sequence "BLOCKED(b@)" "UNBLOCKED (u)" "|" "CANCELLED(c)" "IMPOSSIBLE(i)" "WONTFIX(w)"))
+          (sequence "BLOCKED(b@/@)" "UNBLOCKED (u)" "|" "CANCELLED(c@)" "IMPOSSIBLE(i@)" "WONTFIX(w@)"))
 
         org-todo-keyword-faces
         '(("TODO"       . org-todo)
@@ -178,7 +175,7 @@ so company-mode will work nicely."
           ("tw" "Todo -- Work" entry (file+olp ,(f-expand "~/Documents/work.org") "General To-Dos" "Incoming")
            "** TODO %^{title}\n%?" :empty-lines 1)
           ;; Work notes
-          ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "Notes")
+          ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "COMMENT Notes")
            "** %T %^{PROMPT}\n%?")
           ;; File To Do
           ("f" "File-Todo" entry (file+headline "" "General To-Dos")
