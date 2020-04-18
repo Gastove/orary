@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: Kubernetes Deployment
+# key: deploy
+# expand-env: ((yas-indent-line 'fixed))
+# --
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+`(make-string tab-width ?\s)`name: $1
+`(make-string tab-width ?\s)`namespace: $2
+`(make-string tab-width ?\s)`labels:
+`(make-string (* 2 tab-width) ?\s)`service: $3    
+`(make-string (* 2 tab-width) ?\s)`serviceOwner: $4
+spec:
+`(make-string tab-width ?\s)`replicas: ${5:1}
+`(make-string tab-width ?\s)`selector:
+`(make-string (* 2 tab-width) ?\s)`matchLabels:
+`(make-string (* 3 tab-width) ?\s)`service: $6
+`(make-string tab-width ?\s)`template:
+`(make-string (* 2 tab-width) ?\s)`metadata:
+`(make-string (* 3 tab-width) ?\s)`labels:
+`(make-string (* 4 tab-width) ?\s)`name: $7
+`(make-string (* 4 tab-width) ?\s)`service: {$6}      
+`(make-string (* 2 tab-width) ?\s)`spec:      
+`(make-string (* 3 tab-width) ?\s)`containers:

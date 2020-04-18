@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: Kubernetes Container
+# key: ctn
+# expand-env: ((yas-indent-line 'fixed))
+# --
+- name: $1
+`(make-string tab-width ?\s)`image: ${2:artifactory.squarespace.net/$3}
+`(make-string tab-width ?\s)`command: ["$4"]
+`(make-string tab-width ?\s)`imagePullPolicy: Always
+`(make-string tab-width ?\s)`ports:
+`(make-string (* 2 tab-width) ?\s)`- containerPort: $5
+`(make-string (* 3 tab-width) ?\s)`name: $6
+`(make-string tab-width ?\s)`resources:
+`(make-string (* 2 tab-width) ?\s)`requests:
+`(make-string (* 3 tab-width) ?\s)`cpu: ${7:50m}
+`(make-string (* 3 tab-width) ?\s)`memory: ${8:64Mi}
+`(make-string (* 2 tab-width) ?\s)`limits:
+`(make-string (* 3 tab-width) ?\s)`cpu: ${9:100m}
+`(make-string (* 3 tab-width) ?\s)`memory: {$10:128Mi}
+$0

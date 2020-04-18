@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: prom alert
+# key: alert
+# expand-env: ((yas-indent-line 'fixed))
+# If I need it: (yas-after-exit-snippet-hook '((lambda () (set-mark yas-snippet-beg) (activate-mark))))
+# --
+- alert: $1
+`(make-string tab-width ?\s)`expr: ${2:FIXME}
+`(make-string tab-width ?\s)`for: $3
+`(make-string tab-width ?\s)`labels:
+`(make-string (* 2 tab-width) ?\s)`severity: $4
+`(make-string (* 2 tab-width) ?\s)`team: ${5:sre-databases}
+`(make-string tab-width ?\s)`annotations:
+`(make-string (* 2 tab-width) ?\s)`summary: "${6:FIXME}"
+`(make-string (* 2 tab-width) ?\s)`runbook: '${7:FIXME}'
+`(make-string (* 2 tab-width) ?\s)`description: "${8:FIXME}"
+$0
