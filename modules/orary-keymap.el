@@ -53,16 +53,16 @@
 (global-set-key (kbd "C-c C-i") #'company-complete)
 
 ;;------------------------------------ LSP ------------------------------------;;
-(define-prefix-command 'lsp-language-map)
-(define-key ctl-x-map "l" 'lsp-language-map)
+;; (define-prefix-command 'lsp-language-map)
+;; (define-key ctl-x-map "l" 'lsp-language-map)
 
-(define-key 'lsp-language-map "I" #'lsp-ui-imenu)
-(define-key 'lsp-language-map (kbd "r r") #'lsp-rename)
-(define-key 'lsp-language-map "a" #'lsp-execute-code-action)
-(define-key 'lsp-language-map "d" #'lsp-describe-thing-at-point)
-(define-key 'lsp-language-map (kbd "l s") #'lsp-lens-show)
-(define-key 'lsp-language-map (kbd "l h") #'lsp-lens-hide)
-(define-key 'lsp-language-map "f" #'lsp-format-buffer)
+;; (define-key 'lsp-language-map "I" #'lsp-ui-imenu)
+;; (define-key 'lsp-language-map (kbd "r r") #'lsp-rename)
+;; (define-key 'lsp-language-map "a" #'lsp-execute-code-action)
+;; (define-key 'lsp-language-map "d" #'lsp-describe-thing-at-point)
+;; (define-key 'lsp-language-map (kbd "l s") #'lsp-lens-show)
+;; (define-key 'lsp-language-map (kbd "l h") #'lsp-lens-hide)
+;; (define-key 'lsp-language-map "f" #'lsp-format-buffer)
 
 (provide 'orary-keymap)
 ;;; orary-keymap.el ends here
