@@ -7,6 +7,7 @@
 ;; Add-ons to Helm
 (use-package helm-descbinds)
 (use-package helm-ag :demand t)
+(use-package helm-rg :demand t)
 (use-package helm-projectile)
 
 (use-package helm
@@ -18,21 +19,22 @@
   (require 'helm-config)
   (require 'helm-projectile)
   (helm-mode 1)
-  (setq helm-split-window-in-side-p            t
-        helm-split-window-default-side         'below
-        helm-move-to-line-cycle-in-source      t
-        helm-ff-search-library-in-sexp         t
-        helm-ff-file-name-history-use-recentf  t
-        ;; Fuzzy Matching
-        helm-buffers-fuzzy-matching            t
-        helm-M-x-fuzzy-match                   t
-        helm-recentf-fuzzy-match               t
-        helm-ff-skip-boring-files              t)
+  (setq
+   ;; helm-split-window-inside-p             t
+   helm-display-function                  'pop-to-buffer
+   ;; helm-split-window-default-side         'below
+   helm-move-to-line-cycle-in-source      t
+   helm-ff-search-library-in-sexp         t
+   helm-ff-file-name-history-use-recentf  t
+   ;; Fuzzy Matching
+   helm-buffers-fuzzy-matching            t
+   helm-M-x-fuzzy-match                   t
+   helm-recentf-fuzzy-match               t
+   helm-ff-skip-boring-files              t)
   (add-to-list 'helm-boring-file-regexp-list "\\.py[oc]$")
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
-  (setq projectile-completion-system 'helm
-        helm-grep-ag-command "rg --smart-case --no-heading --line-number %s %s %s")
+  (setq projectile-completion-system 'helm)
   (helm-projectile-on)
   (helm-descbinds-mode)
   (global-set-key (kbd "C-c h") 'helm-command-prefix)

@@ -25,13 +25,14 @@ Currently catches: FIX(ME)?, TODO, NOTE."
    '(("\\<\\(\\(TODO\\|FIX\\(ME\\)?\\)\\)" 1 font-lock-warning-face t)
      ("\\<\\(NOTE\\)" 1 font-lock-string-face t))))
 
-(setq mode-require-final-newline nil)
-
 (use-package ethan-wspace
   :commands ethan-wspace-clean-all
   :diminish ethan-wspace-mode
   :demand t
-  :init (global-ethan-wspace-mode 1)
+  :init
+  (global-ethan-wspace-mode 1)
+  (setq-default require-final-newline nil)
+  (setq-default mode-require-final-newline nil)
   :config
   (setq ethan-wspace-warned-mode-require-final-newline t))
 
