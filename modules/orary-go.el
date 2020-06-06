@@ -81,20 +81,20 @@
   (setq go-packages-function #'orary/go-packages-go-list-restricted
         gofmt-command "goimports"
         flycheck-go-build-install-deps t
-        lsp-gopls-hover-kind "FullDocumentation"
-        lsp-gopls-experimental-completion-documentation t
-        lsp-gopls-experimental-deep-completion t)
+        lsp-gopls-hover-kind "FullDocumentation")
+
   (defun go-mode-config ()
     (setq-local comment-start "//")
     (subword-mode +1)
     (go-guru-hl-identifier-mode)
+    (setq indent-tabs-mode t)
     (lsp)
 
     ;; go-fmt on save.
     ;; This is... in many ways a good idea, but also *so irritating* that
     ;; it's hard to deal with. (Getting gofmt error buffers any time you wanna
     ;; save and do something else -- say, change buffers -- is rough.)
-    (add-hook 'before-save-hook 'gofmt-before-save)
+    ;; (add-hook 'before-save-hook 'gofmt-before-save)
     (setq-local company-dabbrev-downcase nil)
     (add-to-list 'company-backends 'company-go)
     )
