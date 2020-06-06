@@ -24,10 +24,14 @@
    ((looking-back "match.*" (line-beginning-position))
     (sp-insert-pair "{")
     (orary/braces-open-pair)
-    (yas-expand-snippet "$1 => $0,"))
+    ;; NOTE[rdonaldson|2020-05-31] with LSP mode, it's often more ergonomic to
+    ;; use an lsp action to fill in match arms. Reconsidering this; might gate
+    ;; it behind C-u.
+    ;; (yas-expand-snippet "$1 => $0,")
+    )
 
    ;; We're defining an if/else, while, function, struct, enum, unsafe, or trait; insert {}, then open
-   ((looking-back "if.*\\|else.*\\|while.*\\|fn .*\\|\\<impl\\>.*\\|trait.*\\|struct.*\\|enum.*\\|mod.*\\|for.*\\|unsafe.*" (line-beginning-position))
+   ((looking-back "if.*\\|else.*\\|while.*\\|fn .*\\|\\<impl\\>.*\\|trait.*\\|struct.*\\|enum.*\\|mod.*\\|for.*\\|unsafe.*\\|async.*" (line-beginning-position))
     (sp-insert-pair "{")
     (orary/braces-open-pair))
 
@@ -68,14 +72,15 @@
 ;; The Business
 (use-package rust-mode
   :config
-  (setq racer-cmd "~/.cargo/bin/racer")
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+  ;; (setq racer-cmd "~/.cargo/bin/racer")
+  ;; (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+  (setq lsp-rust-server 'rust-analyzer)
   (add-hook 'rust-mode-hook
             (lambda ()
               (cargo-minor-mode +1)
-              (racer-mode +1)
+              ;; (racer-mode +1)
               (subword-mode +1)
-              (lsp-mode +1)
+              ;; (lsp-mode +1)
               (lsp)
               (setq comment-start "//")))
 
