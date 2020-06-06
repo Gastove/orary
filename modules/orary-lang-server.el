@@ -12,6 +12,8 @@
   :commands lsp-ui-mode
   :ensure t
   :after lsp-mode
+  :init
+  (setq lsp-ui-doc-enable nil)
   :config
   (dap-mode t)
   (dap-ui-mode t))
@@ -28,18 +30,21 @@
 (setq lsp-keymap-prefix "C-x l")
 (use-package lsp-mode
   :commands lsp
-  :config
-  (setq lsp-prefer-flymake nil
-        lsp-auto-guess-root t
-        lsp-restart 'auto-restart
-        lsp-session-file (f-expand ".lsp-session-v1" orary/save-root)
-        lsp-enable-semantic-highlighting t)
+  :init
   (add-hook 'lsp-mode-hook
             (lambda ()
               (dap-mode 1)
               (dap-ui-mode 1)
               (add-to-list 'flycheck-checkers 'lsp-ui)
-              (lsp-ui-mode +1)))
+              (lsp-ui-mode +1)
+              ))
+  :config
+  (setq lsp-prefer-flymake nil
+        lsp-auto-guess-root t
+        lsp-restart 'auto-restart
+        lsp-enable-file-watchers nil
+        lsp-session-file (f-expand ".lsp-session-v1" orary/save-root)
+        lsp-enable-semantic-highlighting t)
 
   :bind (:map lsp-mode-map
               ("M-." . #'lsp-ui-peek-find-definitions)
