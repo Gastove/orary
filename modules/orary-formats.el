@@ -64,16 +64,19 @@
   :config
   (add-hook 'yaml-mode-hook
             (lambda ()
-              (highlight-indent-guides-mode))))
+              (highlight-indent-guides-mode)
+              (setq-local tab-width 2)
+              )))
 
 ;; Thrift
 (use-package thrift)
 
 ;; Terraform
-
 (use-package company-terraform)
 (use-package terraform-doc)
-(use-package terraform-mode)
+(use-package terraform-mode
+  :config
+  (add-hook 'terraform-mode-hook (lambda () (lsp))))
 
 (provide 'orary-formats)
 ;;; orary-formats.el ends here
