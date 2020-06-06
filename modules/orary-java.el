@@ -18,23 +18,22 @@
 (use-package lsp-java
   :ensure t
   :after lsp
-  :config
-  (setq lsp-log-io 't
-        lsp-java-vmargs '("-noverify" "-Xmx4G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"))
-  (require 'dap-java)
-  :bind (:map lsp-language-map
-              ("r i" . #'lsp-java-add-import)
-              ("r t" . #'lsp-java-add-throws)
-              ("r o" . #'lsp-java-organize-imports)
-              ("g o" . #'lsp-java-generate-overrides)
-              ("g e" . #'lsp-java-generate-equals-and-hash-code)
-              ("g g" . #'lsp-java-generate-getters-and-setters)
-              ("g t" . #'lsp-java-generate-to-string)))
+  :config (require 'dap-java)
+  ;; :bind  (:map lsp-language-map
+  ;;       ("r i" . #'lsp-java-add-import)
+  ;;       ("r t" . #'lsp-java-add-throws)
+  ;;       ("r o" . #'lsp-java-organize-imports)
+  ;;       ("g o" . #'lsp-java-generate-overrides)
+  ;;       ("g e" . #'lsp-java-generate-equals-and-hash-code)
+  ;;       ("g g" . #'lsp-java-generate-getters-and-setters)
+  ;;       ("g t" . #'lsp-java-generate-to-string))
+  )
 
 (add-hook 'java-mode-hook
           (lambda ()
             (lsp)
             (subword-mode +1)
+            (setq lsp-java-vmargs '("-noverify" "-Xmx12G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"))
             ))
 
 (provide 'orary-java)
