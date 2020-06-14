@@ -23,12 +23,12 @@
 ;;; Code:
 
 (use-package tern)
-(use-package company-tern)
+;; (use-package company-tern)
 
 (use-package js2-mode
   :mode "\\.js\\'"
   :config
-  (add-to-list 'company-backends 'company-tern)
+  ;; (add-to-list 'company-backends 'company-tern)
   (add-to-list 'company-dabbrev-code-modes 'js2-mode)
   (defun my/use-eslint-from-node-modules ()
     (let* ((root (locate-dominating-file

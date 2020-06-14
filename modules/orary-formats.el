@@ -78,5 +78,8 @@
   :config
   (add-hook 'terraform-mode-hook (lambda () (lsp))))
 
+;; TOML
+(use-package toml-mode)
+
 (provide 'orary-formats)
 ;;; orary-formats.el ends here

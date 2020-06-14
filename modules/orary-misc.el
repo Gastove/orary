@@ -5,8 +5,6 @@
 ;; module. This is for those things.
 ;;; Code:
 
-(require 'orary-lisp)
-
 ;; (use-package nim-mode
 ;;   :mode "\\.nim\\'"
 ;;   :config
@@ -43,23 +41,10 @@
 (add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
 (add-to-list 'auto-mode-alist '("\\.socket\\'" . systemd-mode))
 
-(use-package toml-mode)
-
-
-;; Scheme
-(use-package geiser
-  :config
-  (add-hook 'scheme-mode-hook
-            (lambda ()
-              (push '("lambda" . ?λ) prettify-symbols-alist)))
-  (add-hook 'scheme-mode-hook #'orary/lisp-defaults)
-  (setq geiser-mode-start-repl-p t
-        geiser-repl-history-filename
-        (expand-file-name "geiser-history" orary/save-root)))
-
-
-
 (add-to-list 'auto-mode-alist '("\\.hql\\'" . sql-mode))
+
+;; Extempore?!?
+(use-package extempore-mode)
 
 (provide 'orary-misc)
 ;;; orary-misc.el ends here
