@@ -13,7 +13,9 @@
   (save-excursion
     (and (eq ctxt 'code)
          (not (bolp))
-         (looking-back "[(\\[]|" 2))))
+         (or
+          (sp--looking-back-p "[(\\[]|" 2)
+          (sp--looking-at-p "|[\\])]")))))
 
 (defun orary/sp-insert-at-p (delim action ctxt)
   (save-excursion
@@ -97,11 +99,12 @@ usability standpoint to do so."
 
 (defun orary/fsharp-insert-pipe (multiplier)
   (interactive "p")
-  (orary/insert-key-seq "|" ">" "<" multiplier)
-  (set-transient-map
-   (let ((map (make-sparse-keymap)))
-     (define-key map (kbd "|") #'orary/fsharp-insert-pipe)
-     map)))
+  (unless (looking-back "\\[" 1)
+    (orary/insert-key-seq "|" ">" "<" multiplier)
+    (set-transient-map
+     (let ((map (make-sparse-keymap)))
+       (define-key map (kbd "|") #'orary/fsharp-insert-pipe)
+       map))))
 
 (defun orary/fsharp-insert-arrow ()
   (interactive)
@@ -121,7 +124,7 @@ usability standpoint to do so."
 
 (use-package fsharp-mode
   :mode "\\.fs[iylx]?$"
-  ;; :load-path (lambda () (f-expand "~/Code/open-source/emacs-fsharp-mode"))
+  :load-path (lambda () (f-expand "~/Code/open-source/emacs-fsharp-mode"))
   :config
   (setq fill-column 100
         fsharp-ac-intellisense-enabled nil
@@ -130,9 +133,9 @@ usability standpoint to do so."
             (lambda ()
               (subword-mode +1)
               (highlight-indentation-mode +1)
+              (electric-indent-mode -1)
               (setq-local lsp-eldoc-hook #'orary/lsp-fsharp-type-at)
               (setq require-final-newline nil)
-              (lsp-mode +1)
               (lsp)
               ))
   (sp-with-modes 'fsharp-mode
@@ -142,7 +145,9 @@ usability standpoint to do so."
     (sp-local-pair "@" "@"
                    :actions '(insert wrap navigate)
                    :when '(orary/sp-insert-at-p))
-    (sp-local-pair "|" "|" :when '(orary/sp-insert-pipe-p))
+    (sp-local-pair "|" "|"
+                   :actions '(insert wrap navigate)
+                   :when '(orary/sp-insert-pipe-p))
     (sp-local-pair "\"\"\"" "\"\"\"")
     (sp-local-pair "`" "`" :actions :rem)
     (sp-local-pair "``" "``"))
