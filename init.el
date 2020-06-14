@@ -39,11 +39,12 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(use-package benchmark-init
-  :ensure t
-  :config
-  ;; To disable collection of benchmark data after init is done.
-  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+;; Sometimes you want emacs to load faster. This is for those times.
+;; (use-package benchmark-init
+;;   :ensure t
+;;   :config
+;;   ;; To disable collection of benchmark data after init is done.
+;;   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 (eval-when-compile
   (require 'use-package))
