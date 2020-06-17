@@ -1,4 +1,7 @@
 * Oh my goodness!
+:PROPERTIES:
+:ORDERED:  t
+:END:
 What, you ask, is this?
 
 An ~orary~ is a contraption that describes the motions of astral bodies. It's a
