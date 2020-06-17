@@ -13,17 +13,11 @@
   :ensure t
   :after lsp-mode
   :init
-  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-doc-enable nil
+        lsp-log-io t)
   :config
   (dap-mode t)
   (dap-ui-mode t))
-
-(use-package company-lsp
-  :commands company-lsp
-  :after lsp-mode
-  :config
-  (setq company-lsp-cache-candidates 'auto)
-  (push 'company-lsp company-backends))
 
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 
@@ -40,6 +34,7 @@
               ))
   :config
   (setq lsp-prefer-flymake nil
+        lsp-prefer-capf t
         lsp-auto-guess-root t
         lsp-restart 'auto-restart
         lsp-enable-file-watchers nil
