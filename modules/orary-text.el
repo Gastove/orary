@@ -36,7 +36,8 @@
 
   (setq markdown-command "pandoc")
 
-  (add-hook 'markdown-mode-hook (lambda () (auto-fill-mode +1)))
+  ;; Honestly, auto-fill-mode is annoying the heck out of me.
+  ;; (add-hook 'markdown-mode-hook (lambda () (auto-fill-mode +1)))
 
   :bind (:map markdown-mode-map
               ("C-c m" . orary/markdown-preview-file)))
