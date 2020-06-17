@@ -61,6 +61,11 @@ then clean up white space."
   (unless orary/disable-clean-and-indent
     (unless (or (-contains? orary/indent-sensitive-modes major-mode)
                 (-filter #'derived-mode-p orary/indent-sensitive-modes)
+                ;; NOTE[rdonaldson|2020-06-09] _Most_ LSP implementations
+                ;; feature code formatting as a first class value, and it's much
+                ;; better than Emacs' inference. In the normal case, I think, if
+                ;; lsp-mode is on, we can skip indentation.
+                (boundp 'lsp-mode)
                 orary/disable-auto-indent)
       (indent-region (point-min) (point-max)))
     (unless orary/disable-whitespace-cleanup
