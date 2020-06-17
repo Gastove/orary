@@ -226,5 +226,11 @@
 
 (setq split-window-preferred-function 'orary/split-window-sensibly)
 
+;; Deep Emacs Tunings
+;; LSP does a *lot* of GC; the default value is far too low.
+(setq gc-cons-threshold 100000000)
+;; Read more than 4k bytes at a time, especially good for LSP.
+(setq read-process-output-max (* 1024 1024))
+
 (provide 'orary-core)
 ;;; orary-core.el ends here
