@@ -18,7 +18,8 @@
                         ("*Warnings*" :noselect t)
                         ("\\`\\*helm.*?\\*\\'" :regexp t :align t :size 0.4)
                         ("\\`\\*magit-.*-popup\\*\\'" :regexp t :align t :size 0.3))
-        shackle-default-rule '(:select t :same t))
+        ;; shackle-default-rule '(:select t :same t)
+        )
   )
 
 (provide 'orary-popups)
