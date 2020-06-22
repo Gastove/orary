@@ -134,7 +134,6 @@ usability standpoint to do so."
               (subword-mode +1)
               (highlight-indentation-mode +1)
               (electric-indent-mode -1)
-              (setq-local lsp-eldoc-hook #'orary/lsp-fsharp-type-at)
               (setq require-final-newline nil)
               (lsp)
               ))
