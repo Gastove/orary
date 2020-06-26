@@ -6,9 +6,25 @@
 
 ;; Add-ons to Helm
 (use-package helm-descbinds)
-(use-package helm-ag :demand t)
+(use-package helm-ag :demand t
+  :init
+  (custom-set-variables
+   '(helm-ag-base-command "rg --no-heading")
+   `(helm-ag-success-exit-status '(0 2))
+   ))
+
 (use-package helm-rg :demand t)
 (use-package helm-projectile)
+
+(defun orary/helm-do-rg-in-project ()
+  "`helm-projectile-ag' tries to compute an extra set of file
+extensions to ignore, which it will pass with --ignore=ext.*.
+Unfortunately, this breaks helm-ag if you're using ripgrep.
+Fortunately, the function isn't hard to redefine; the below is
+all it's actually doing, in the normative case, once you strip
+out the extra ignore flim-flam."
+  (interactive)
+  (helm-do-ag (projectile-project-root) nil))
 
 (use-package helm
   :demand t

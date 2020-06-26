@@ -4,7 +4,7 @@
 ;; YAS
 ;;; Code:
 
-(setq projectile-keymap-prefix (kbd "C-c p"))
+;;(setq projectile-keymap-prefix (kbd "C-c p"))
 
 (require 'orary-helm)
 
@@ -46,10 +46,10 @@
         projectile-completion-system 'helm
         projectile-switch-project-action #'orary/projectile-switch-project-action
         projectile-create-missing-test-files t)
-  ;; :bind-keymap ("C-c p" . projectile-command-map)
-  :bind (:map projectile-mode-map
-              ("C-c p p" . projectile-persp-switch-project))
-  )
+  :bind-keymap ("C-c p" . projectile-command-map)
+  :bind (:map projectile-command-map
+              ("p" . projectile-persp-switch-project)
+              ("s s" . orary/helm-do-rg-in-project)))
 
 (provide 'orary-projectile)
 ;;; orary-projectile.el ends here
