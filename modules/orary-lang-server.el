@@ -13,8 +13,7 @@
   :ensure t
   :after lsp-mode
   :init
-  (setq lsp-ui-doc-enable nil
-        lsp-log-io t)
+  (setq lsp-ui-doc-enable nil)
   :config
   (dap-mode t)
   (dap-ui-mode t))
@@ -22,6 +21,7 @@
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 
 (setq lsp-keymap-prefix "C-x l")
+
 (use-package lsp-mode
   :commands lsp
   :init
