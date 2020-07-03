@@ -199,7 +199,6 @@
 ;;--------------------------------------Tramp----------------------------------------
 (require 'tramp)
 (setq tramp-default-method "ssh")
-(setq tramp-default-user "gastove")
 (setq tramp-verbose 6)
 
 ;;--------------------------------------Window Splitting----------------------------------------
