@@ -4,15 +4,6 @@
 ;;
 ;;; Code:
 
-
-;; Duo two-factor login for rdonaldson
-
-;; Enter a passcode or select one of the following options:
-
-;;  1. Duo Push to XXX-XXX-4294
-;;  2. Phone call to XXX-XXX-4294
-;;  3. SMS passcodes to XXX-XXX-4294
-
 (unbind-key "s-m")
 (use-package magit
   :pin melpa-stable
