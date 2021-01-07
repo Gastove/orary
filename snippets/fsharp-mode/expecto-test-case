@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Expecto testCase
+# key: tc
+# --
+testCase "$1" <| fun _ ->
+    $0

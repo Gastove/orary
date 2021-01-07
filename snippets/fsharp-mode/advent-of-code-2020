@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: Advent of Code Solution
+# key: aoc
+# expand-env: ((yas-indent-line 'fixed))
+# --
+module Day${1:$(capitalize yas-text)}
+
+open FSharp.Core.Operators.Checked
+
+type Solution() =
+    let name = "$1"
+    interface Common.ISolution with
+        member __.Name() = name |> Common.titleCase
+        member __.LoadData(): Common.Input option = Common.loadData name
+        member __.PartOne(input: Common.Input): string = ${0:failwith "Not Implemented"}
+        member __.PartTwo(input: Common.Input): string = failwith "Not Implemented"
+
+        
