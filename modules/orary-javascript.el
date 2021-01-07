@@ -41,7 +41,7 @@
         (setq-local flycheck-javascript-eslint-executable eslint))))
 
   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
-  (add-hook 'js2-mode-hook (lambda () (tern-mode +1) (subword-mode +1))))
+  (add-hook 'js2-mode-hook (lambda () (subword-mode +1))))
 
 (use-package tide
   :config
