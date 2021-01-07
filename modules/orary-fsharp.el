@@ -99,7 +99,8 @@ usability standpoint to do so."
 
 (defun orary/fsharp-insert-pipe (multiplier)
   (interactive "p")
-  (unless (looking-back "\\[" 1)
+  (if (looking-back "\\[" 1)
+      (sp-insert-pair "|")
     (orary/insert-key-seq "|" ">" "<" multiplier)
     (set-transient-map
      (let ((map (make-sparse-keymap)))
@@ -132,7 +133,7 @@ usability standpoint to do so."
   (add-hook 'fsharp-mode-hook
             (lambda ()
               (subword-mode +1)
-              (highlight-indentation-mode +1)
+              (highlight-indent-guides-mode +1)
               (electric-indent-mode -1)
               (setq require-final-newline nil)
               (lsp)
@@ -150,7 +151,9 @@ usability standpoint to do so."
     (sp-local-pair "\"\"\"" "\"\"\"")
     (sp-local-pair "`" "`" :actions :rem)
     (sp-local-pair "``" "``"))
-  (add-hook 'fsharp-mode-hook (lambda () (setq dabbrev-check-all-buffers nil)))
+  (add-hook 'fsharp-mode-hook (lambda ()
+                                (setq dabbrev-check-all-buffers nil)
+                                (lsp)))
   :bind (:map fsharp-mode-map
               ("<C-return>" . fsharp-ret-dwim)
               ("|" . orary/fsharp-insert-pipe)
