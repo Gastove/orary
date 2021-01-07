@@ -22,6 +22,9 @@
 
 (setq lsp-keymap-prefix "C-x l")
 
+(use-package origami)
+(use-package lsp-origami)
+
 (use-package lsp-mode
   :commands lsp
   :init
@@ -32,6 +35,8 @@
               (add-to-list 'flycheck-checkers 'lsp-ui)
               (lsp-ui-mode +1)
               ))
+
+  (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable)
   :config
   (setq lsp-prefer-flymake nil
         lsp-prefer-capf t
