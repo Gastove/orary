@@ -8,6 +8,8 @@
 
 ;; (require 'python-environment)
 
+(use-package virtualenvwrapper)
+
 (use-package pip-requirements)
 
 (setq python-shell-interpreter "python3")

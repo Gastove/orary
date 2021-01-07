@@ -28,10 +28,6 @@
 (require 'orary-braces)
 (require 'projectile)
 
-(use-package company-go
-  :config
-  (setq company-go-gocode-args '("-fallback-to-source")))
-
 (use-package go-eldoc)
 (use-package go-guru
   :demand t)
@@ -81,7 +77,8 @@
   (setq go-packages-function #'orary/go-packages-go-list-restricted
         gofmt-command "goimports"
         flycheck-go-build-install-deps t
-        lsp-gopls-hover-kind "FullDocumentation")
+        lsp-gopls-use-placeholders t
+        )
 
   (defun go-mode-config ()
     (setq-local comment-start "//")
@@ -96,7 +93,6 @@
     ;; save and do something else -- say, change buffers -- is rough.)
     ;; (add-hook 'before-save-hook 'gofmt-before-save)
     (setq-local company-dabbrev-downcase nil)
-    (add-to-list 'company-backends 'company-go)
     )
 
   (add-hook 'go-mode-hook 'go-mode-config)

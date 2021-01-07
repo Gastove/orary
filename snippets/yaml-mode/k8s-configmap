@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: Kubernetes ConfigMap
+# key: cm
+# expand-env: ((yas-indent-line 'fixed))
+# --
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+`(make-string tab-width ?\s)`name: $1
+`(make-string tab-width ?\s)`namespace: $2
+`(make-string tab-width ?\s)`labels:
+`(make-string (* 2 tab-width) ?\s)`TODO: FIXME
+data:
+`(make-string tab-width ?\s)`$0
