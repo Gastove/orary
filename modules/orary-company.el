@@ -33,6 +33,7 @@
         company-tooltip-limit 20
         company-tooltip-align-annotations t
         company-backends '(company-capf
+                           company-yasnippet
                            company-ispell
                            company-bbdb
                            company-nxml
@@ -43,7 +44,9 @@
                            company-xcode
                            company-cmake
                            company-files
-                           (company-dabbrev-code company-gtags company-etags company-keywords)
+                           (;; I am not convinced dabbrev-code does me any good
+                            ;; company-dabbrev-code
+                            company-gtags company-etags company-keywords)
                            company-oddmuse company-dabbrev))
   :diminish company)
 
