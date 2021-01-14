@@ -508,6 +508,9 @@ Also bind `class' to ((class color) (min-colors 89))."
 
    ;;----------------------------------- Eldoc -----------------------------------;;
    `(eldoc-highlight-function-argument ((t (:foreground ,rhombus-teal))))
+
+   ;;------------------------------------- LSP -------------------------------------;;
+   `(lsp-ui-sideline-code-action ((t (:foreground ,rhombus-teal))))
    ))
 
 ;;; Footer
