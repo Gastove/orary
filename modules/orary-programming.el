@@ -65,7 +65,7 @@ then clean up white space."
                 ;; feature code formatting as a first class value, and it's much
                 ;; better than Emacs' inference. In the normal case, I think, if
                 ;; lsp-mode is on, we can skip indentation.
-                (boundp 'lsp-mode)
+                (bound-and-true-p lsp-mode)
                 orary/disable-auto-indent)
       (indent-region (point-min) (point-max)))
     (unless orary/disable-whitespace-cleanup
