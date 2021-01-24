@@ -7,6 +7,7 @@
 ;;(setq projectile-keymap-prefix (kbd "C-c p"))
 
 (require 'orary-helm)
+(require 'magit)
 
 (use-package perspective
   :config
@@ -19,17 +20,23 @@
   (let ((proj-name (projectile-project-name))
         (proj-root (projectile-project-root))
         (windows (orary/three-windows)))
-    (message "Trying to switch to project %s with root %s" proj-name proj-root)
+
     (select-window (plist-get windows :left-window))
     (switch-to-buffer (format "*scratch* (%s)" proj-name))
     (select-window (plist-get windows :right-window))
-    (magit-status-internal proj-root)
+    (if (magit-git-repo-p proj-root)
+        (magit-status-internal proj-root)
+      (dired proj-root))
     (select-window (plist-get windows :middle-window))
     (-let ((fully-qualified-md (f-expand "README.md" proj-root))
-           (fully-qualified-org (f-expand "README.org" proj-root)))
+           (fully-qualified-org (f-expand "README.org" proj-root))
+           (blog-file (f-expand "blog.blorg" proj-root))
+           (the-daily (f-expand "cotidienne.org" proj-root)))
       (cond
        ((f-exists? fully-qualified-md) (find-file fully-qualified-md))
        ((f-exists? fully-qualified-org) (find-file fully-qualified-org))
+       ((f-exists? blog-file (find-file blog-file)))
+       ((f-exitst? the-daily (find-file the-daily)))
        (:else (dired proj-root))))
     ))
 
