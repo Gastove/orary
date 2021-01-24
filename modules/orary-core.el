@@ -116,7 +116,8 @@
 ;; Do not, I repeat _do not_, require final newline.
 (setq-default require-final-newline nil)
 (setq-default mode-require-final-newline nil)
-
+(custom-set-variables
+ '(mode-require-final-newline nil))
 ;;------------------------------Core enhancements--------------------------------
 ;;; Improve on built-in bookmarks, dired
 ;; ...there are some indications that these two both load HELLA slow.
