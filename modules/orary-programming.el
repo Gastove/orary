@@ -112,6 +112,9 @@ Most useful for org export."
 
 ;; (advice-add 'org-export-to-file :around  #'orary/unhook-whitespace-cleanup)
 
+;;----------------------- Programming-Specific UI tools -----------------------;;
+(use-package highlight-indentation)
+
 ;;---------------------------------Compilation-----------------------------------
 
 (defvar orary/compilation-key-words-regexp

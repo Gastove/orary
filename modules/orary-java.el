@@ -18,7 +18,8 @@
 (use-package lsp-java
   :ensure t
   :after lsp
-  :config (require 'dap-java)
+  :config
+  (require 'dap-java)
   ;; :bind  (:map lsp-language-map
   ;;       ("r i" . #'lsp-java-add-import)
   ;;       ("r t" . #'lsp-java-add-throws)
@@ -33,7 +34,14 @@
           (lambda ()
             (lsp)
             (subword-mode +1)
-            (setq lsp-java-vmargs '("-noverify" "-Xmx12G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"))
+            (setq lsp-java-vmargs '("-noverify" "-Xmx16G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication")
+                  lsp-java-configuration-runtimes '[(:name "OpenJDK-8"
+                                                           :path "/usr/lib/jvm/java-1.8.0-openjdk/"
+                                                           :default t)
+                                                    (:name "OpenJDK-11"
+                                                           :path "/usr/lib/jvm/java-11-openjdk/"
+                                                           )]
+                  )
             ))
 
 (provide 'orary-java)
