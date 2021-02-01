@@ -34,6 +34,7 @@
               (dap-ui-mode 1)
               (add-to-list 'flycheck-checkers 'lsp-ui)
               (lsp-ui-mode +1)
+              (lsp-semantic-tokens-mode +1)
               ))
 
   (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable)
