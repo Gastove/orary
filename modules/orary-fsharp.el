@@ -134,7 +134,7 @@ usability standpoint to do so."
             (lambda ()
               (subword-mode +1)
               (highlight-indent-guides-mode +1)
-              (electric-indent-mode -1)
+              (electric-indent-local-mode -1)
               (setq require-final-newline nil)
               (lsp)
               ))
