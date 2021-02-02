@@ -511,6 +511,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 
    ;;------------------------------------- LSP -------------------------------------;;
    `(lsp-ui-sideline-code-action ((t (:foreground ,rhombus-teal))))
+   `(lsp-face-semhl-operator ((t (:foreground ,rhombus-teal))))
    ))
 
 ;;; Footer
