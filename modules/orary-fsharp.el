@@ -129,7 +129,7 @@ usability standpoint to do so."
   :config
   (setq fill-column 100
         fsharp-ac-intellisense-enabled nil
-        inferior-fsharp-program "dotnet fsi --readline- --noframework")
+        inferior-fsharp-program "dotnet fsi --readline-")
   (add-hook 'fsharp-mode-hook
             (lambda ()
               (subword-mode +1)
