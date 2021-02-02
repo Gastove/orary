@@ -52,7 +52,8 @@
   (setq projectile-enable-caching t
         projectile-completion-system 'helm
         projectile-switch-project-action #'orary/projectile-switch-project-action
-        projectile-create-missing-test-files t)
+        projectile-create-missing-test-files t
+        projectile-sort-order 'access-time)
   :bind-keymap ("C-c p" . projectile-command-map)
   :bind (:map projectile-command-map
               ("p" . projectile-persp-switch-project)
