@@ -19,6 +19,7 @@
 (define-key 'orary/toggle-map "a" #'auto-fill-mode)
 (define-key 'orary/toggle-map "f" #'toggle-frame-fullscreen)
 (define-key 'orary/toggle-map "F" #'follow-mode)
+(define-key 'orary/toggle-map "h" #'hl-line-mode)
 (define-key 'orary/toggle-map "l" #'linum-mode)
 (define-key 'orary/toggle-map "i" #'orary/toggle-auto-indent)
 (define-key 'orary/toggle-map "n" #'treemacs-select-window)
