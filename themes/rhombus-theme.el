@@ -153,9 +153,9 @@ Also bind `class' to ((class color) (min-colors 89))."
 
    ;; >>>>> font-lock
    `(font-lock-warning-face ((t (:foreground ,rhombus-warn :weight bold))))
-   `(font-lock-function-name-face ((t (:foreground ,rhombus-orange))))
-   `(font-lock-variable-name-face ((t (:foreground ,rhombus-red-violet))))
-   `(font-lock-keyword-face ((t (:foreground ,rhombus-teal))))
+   `(font-lock-function-name-face ((t (:foreground ,rhombus-teal))))
+   `(font-lock-variable-name-face ((t (:foreground ,rhombus-off-white))))
+   `(font-lock-keyword-face ((t (:foreground ,rhombus-orange))))
    `(font-lock-comment-face ((t (:foreground ,rhombus-charcoal))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,rhombus-red-violet :weight light :slant oblique))))
    `(font-lock-type-face ((t (:foreground ,rhombus-dull-orange))))
