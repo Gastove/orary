@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: Kubernetes Service
+# key: service
+# expand-env: ((yas-indent-line 'fixed))
+# --
+---
+apiVersion: v1
+kind: Service
+metadata:
+`(make-string tab-width ?\s)`name: $1
+`(make-string tab-width ?\s)`namespace: ${$1}
+`(make-string tab-width ?\s)`labels:
+`(make-string (* 2 tab-width) ?\s)`service: ${2:$1}
+`(make-string (* 2 tab-width) ?\s)`serviceOwner: $3
+spec:
+`(make-string tab-width ?\s)`selector:
+`(make-string (* 2 tab-width) ?\s)`service: ${$1}
+`(make-string tab-width ?\s)`ports:
+`(make-string tab-width ?\s)`$0    

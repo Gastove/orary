@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Kubernetes Port
+# key: port
+# expand-env: ((yas-indent-line 'fixed))
+# --
+- name: $1
+`(make-string tab-width ?\s)`port: $2
+`(make-string tab-width ?\s)`targetPort: ${3:$2}
+`(make-string tab-width ?\s)`protocol: TCP
+$0
