@@ -158,7 +158,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-keyword-face ((t (:foreground ,rhombus-orange))))
    `(font-lock-comment-face ((t (:foreground ,rhombus-charcoal))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,rhombus-red-violet :weight light :slant oblique))))
-   `(font-lock-type-face ((t (:foreground ,rhombus-dull-orange))))
+   `(font-lock-type-face ((t (:foreground ,rhombus-blue))))
    `(font-lock-constant-face ((t (:foreground ,rhombus-purple))))
    `(font-lock-builtin-face ((t (:foreground ,rhombus-dull-orange))))
    `(font-lock-preprocessor-face ((t (:foreground ,rhombus-pink))))
@@ -512,7 +512,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;;------------------------------------- LSP -------------------------------------;;
    `(lsp-ui-sideline-code-action ((t (:foreground ,rhombus-teal))))
    `(lsp-face-semhl-operator ((t (:foreground ,rhombus-bronze))))
-   `(lsp-face-semhl-namespace ((t (:foreground ,rhombus-blue))))
+   `(lsp-face-semhl-namespace ((t (:foreground ,rhombus-dull-orange))))
    ))
 
 ;;; Footer
