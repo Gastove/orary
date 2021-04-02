@@ -55,10 +55,6 @@
   :mode "\\.proto\\'")
 
 ;; YAML
-(use-package highlight-indent-guides
-  :config
-  (setq highlight-indent-guides-method 'column))
-
 (use-package yaml-mode
   :mode "\\.ya?ml\\'"
   :config

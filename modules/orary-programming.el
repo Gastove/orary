@@ -113,7 +113,10 @@ Most useful for org export."
 ;; (advice-add 'org-export-to-file :around  #'orary/unhook-whitespace-cleanup)
 
 ;;----------------------- Programming-Specific UI tools -----------------------;;
-(use-package highlight-indentation)
+(use-package highlight-indent-guides
+  :config
+  (setq highlight-indent-guides-method 'column
+        highlight-indent-guides-responsive 'top))
 
 ;;---------------------------------Compilation-----------------------------------
 
