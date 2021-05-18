@@ -17,8 +17,18 @@
 (use-package lsp-pyright
   :ensure t
   :hook (python-mode . (lambda ()
+                         (setq python-fill-docstring-style 'django)
+                         (subword-mode +1)
                          (require 'lsp-pyright)
-                         (lsp))))  ; or lsp-deferred
+                         (lsp)
+                         (flycheck-add-next-checker 'lsp 'python-mypy)))
+  :bind (:map python-mode-map
+              ("C-c q i" . orary/python-make-module)
+              ("C-c q q" . orary/replace-double-quote-with-single)
+              ("C-c q r" . recompile)
+              ("C-c n"   . python-black-buffer)
+              ("<M-RET>" . orary/rotate))
+  )  ; or lsp-deferred
 
 
 ;; (use-package lsp-python-ms
@@ -31,7 +41,7 @@
 ;;   (setq
 ;;    python-shell-interpreter "ipython"
 ;;    python-shell-interpreter-args "--simple-prompt -i"
-;;    python-fill-docstring-style 'django
+
 ;;    python-environment-directory "~/.python_virtualenvs/"
 
 ;;    ;; My proud contribution
