@@ -120,6 +120,7 @@
 
 ;; Languages
 (require 'orary-clojure)
+(require 'orary-elixir)
 (require 'orary-emacs-lisp)
 (require 'orary-fsharp)
 (require 'orary-formats)

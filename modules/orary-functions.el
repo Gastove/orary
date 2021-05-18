@@ -414,7 +414,7 @@ mode."
           (base (s-repeat multi base))
           (right (s-concat base mod-one))
           (left (s-concat mod-two base)))
-    (message "Multi is %s, right is %s, left is %s" multi right left)
+    ;; (message "Multi is %s, right is %s, left is %s" multi right left)
     (cond ((re-search-backward right (- (point) (length right)) t)
            (replace-match left))
           ((re-search-backward left (- (point) (length left)) t)
