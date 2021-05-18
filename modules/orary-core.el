@@ -50,7 +50,7 @@
 (require 'recentf)
 (setq recentf-save-file (f-expand "recentf" orary/save-root)
       recentf-max-menu-items 50
-      recentf-max-saved-items 100
+      recentf-max-saved-items 500
       recentf-auto-cleanup 'never)
 
 ;; Lifted with gratitude from Prelude

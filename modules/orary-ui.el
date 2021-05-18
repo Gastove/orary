@@ -30,6 +30,7 @@
 (setq visible-bell nil ring-bell-function 'orary/visible-bell)
 
 ;; Fonts
+(use-package persistent-soft)
 (use-package unicode-fonts
   :demand t
   :config (unicode-fonts-setup))

@@ -72,12 +72,18 @@
 
     (-concat std pkg vendor)))
 
+;; NOTE[rdonaldson|2021-03-31] This is a good idea for Eventually; right now it
+;; doesn't appear to work properly, so we'll use checker-chaining instead.
+;; (defvar orary/lsp-go-enable-staticcheck t)
+;; (lsp-register-custom-settings
+;;  '(("gopls.staticcheck" orary/lsp-go-enable-staticcheck t)))
+
 (use-package go-mode
   :config
   (setq go-packages-function #'orary/go-packages-go-list-restricted
         gofmt-command "goimports"
         flycheck-go-build-install-deps t
-        lsp-gopls-use-placeholders t
+        lsp-go-use-placeholders t
         )
 
   (defun go-mode-config ()
@@ -85,6 +91,7 @@
     (subword-mode +1)
     (go-guru-hl-identifier-mode)
     (setq indent-tabs-mode t)
+    (flycheck-add-next-checker 'lsp 'go-staticcheck)
     (lsp)
 
     ;; go-fmt on save.

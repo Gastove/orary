@@ -41,14 +41,16 @@ so company-mode will work nicely."
 
 ;; NOTE: ox-reveal mutates orgs structural templates alist in a way that breaks
 ;;       structural templates entirely. Disable until I can get a fix in place.
-;; (use-package ox-reveal
-;;   :config
-;;   (setq org-reveal-root (f-expand "~/Code/open-source/reveal.js") ;; Why the hell is this broken? "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0"
-;;         org-reveal-hlevel 2
-;;         ;; The exporter ignores most org options unless you ship it all to a single file -__-
-;;         org-reveal-single-file t
-;;         ox-reveal-note-key-char nil
-;;         ))
+(use-package ox-reveal
+  :config
+  (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js";; (f-expand "~/Code/open-source/reveal.js")
+        ;; Why the hell is this broken? "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0"
+        org-reveal-hlevel 2
+        ;; The exporter ignores most org options unless you ship it all to a single file -__-
+        ;; org-reveal-single-file t
+        ox-reveal-note-key-char nil
+        )
+  )
 ;; Additional org-babel bindings
 (use-package ob-restclient)
 (require 'ob-clojure)
@@ -60,9 +62,9 @@ so company-mode will work nicely."
   (save-excursion
     (search-backward-regexp org-property-re (line-beginning-position))
     (->> (match-string 1)
-         (s-trim)
-         (s-chop-prefix ":")
-         (s-chop-suffix ":"))))
+      (s-trim)
+      (s-chop-prefix ":")
+      (s-chop-suffix ":"))))
 
 (defun orary/org-complete-prop-before-point ()
   (interactive)
@@ -121,6 +123,8 @@ so company-mode will work nicely."
                               pandoc
                               reveal
                               rst)
+
+        org-html-indent nil             ;; Don't indent during HTML export
 
         ;; Export defaults: no table of contents, no numbered headers, don't convert ^
         ;; or _ to superscripts

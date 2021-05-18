@@ -32,6 +32,7 @@
          ("\\.djhtml\\'"    . web-mode)
          ("\\.tmpl\\'"      . web-mode)
          ("\\.jsx\\'"       . web-mode)
+         ("\\.tsx\\'"       . web-mode)
          ("\\.html\\'"      . web-mode)
          ("\\.hbs\\'"       . web-mode)
          ("\\.html\\.j2\\'"   . web-mode))
@@ -46,7 +47,9 @@
   (add-to-list 'company-dabbrev-code-modes 'web-mode)
   (add-hook 'web-mode-hook (lambda ()
                              (when (equal web-mode-content-type "jsx")
-                               (flycheck-mode +1)))))
+                               (flycheck-mode +1)
+                               (lsp))
+                             )))
 
 (use-package company-restclient)
 (use-package restclient

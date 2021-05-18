@@ -55,12 +55,18 @@
   :mode "\\.proto\\'")
 
 ;; YAML
+
+(use-package highlight-indent-guides
+  :config
+  (setq highlight-indent-guides-method 'column))
+
 (use-package yaml-mode
   :mode "\\.ya?ml\\'"
   :config
   (add-hook 'yaml-mode-hook
             (lambda ()
               (highlight-indent-guides-mode)
+              (add-to-list 'flycheck-checkers 'ansible-ansiblelint)
               (setq-local tab-width 2)
               )))
 
