@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ToString
+# key: ots
+# --
+override this.ToString() = $0
