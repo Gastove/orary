@@ -16,6 +16,7 @@
 
 (use-package elixir-mode
   :hook (elixir-mode . (lambda ()
+                         (subword-mode +1)
                          (lsp)))
   :init (add-to-list 'exec-path "/opt/elixir/1.11/lsp")
 
