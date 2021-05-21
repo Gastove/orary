@@ -50,5 +50,8 @@
                            company-oddmuse company-dabbrev))
   :diminish company)
 
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
 (provide 'orary-company)
 ;;; orary-company.el ends here

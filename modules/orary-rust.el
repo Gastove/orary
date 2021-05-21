@@ -72,15 +72,10 @@
 ;; The Business
 (use-package rust-mode
   :config
-  ;; (setq racer-cmd "~/.cargo/bin/racer")
-  ;; (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-  (setq lsp-rust-server 'rust-analyzer)
   (add-hook 'rust-mode-hook
             (lambda ()
               (cargo-minor-mode +1)
-              ;; (racer-mode +1)
               (subword-mode +1)
-              ;; (lsp-mode +1)
               (lsp)
               (setq comment-start "//")))
 
