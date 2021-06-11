@@ -26,9 +26,9 @@
           ((and (eq system-type 'gnu/linux) (executable-find "typora"))
            ;; TODO: store the process object; name it appropriately; find a way to cancel it.
            (start-process-shell-command "typora" "*typora*"
-                                        (format "/opt/typora/Typora-linux-x64/Typora %s"
+                                        (format "typora %s"
                                                 (shell-quote-argument (buffer-file-name)))))
-          (message "Can't preview markdown on non-OSX machines")))
+          ('t (message "Can't preview markdown on non-OSX machines"))))
 
   (add-to-list 'auto-mode-alist '("\\.markdown\\'". gfm-mode))
   (add-to-list 'auto-mode-alist '("\\.mdown\\'". gfm-mode))
