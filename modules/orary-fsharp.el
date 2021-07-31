@@ -128,7 +128,7 @@ usability standpoint to do so."
   :load-path (lambda () (f-expand "~/Code/open-source/emacs-fsharp-mode"))
   :config
   (setq fill-column 100
-        fsharp-ac-intellisense-enabled nil
+        ;; fsharp-ac-intellisense-enabled nil
         inferior-fsharp-program "dotnet fsi --readline-")
   (add-hook 'fsharp-mode-hook
             (lambda ()
@@ -136,6 +136,7 @@ usability standpoint to do so."
               (highlight-indent-guides-mode +1)
               (electric-indent-local-mode -1)
               (setq require-final-newline nil)
+              (setq dabbrev-check-all-buffers nil)
               (lsp)
               ))
   (sp-with-modes 'fsharp-mode
@@ -151,9 +152,7 @@ usability standpoint to do so."
     (sp-local-pair "\"\"\"" "\"\"\"")
     (sp-local-pair "`" "`" :actions :rem)
     (sp-local-pair "``" "``"))
-  (add-hook 'fsharp-mode-hook (lambda ()
-                                (setq dabbrev-check-all-buffers nil)
-                                (lsp)))
+
   :bind (:map fsharp-mode-map
               ("<C-return>" . fsharp-ret-dwim)
               ("|" . orary/fsharp-insert-pipe)

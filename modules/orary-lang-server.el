@@ -57,12 +57,11 @@
   (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable)
   :config
   (setq lsp-prefer-flymake nil
-        lsp-prefer-capf t
         lsp-auto-guess-root t
         lsp-restart 'auto-restart
         lsp-enable-file-watchers nil
         lsp-session-file (f-expand ".lsp-session-v1" orary/save-root)
-        lsp-enable-semantic-highlighting t)
+        lsp-semantic-tokens-enable t)
 
   :bind (:map lsp-mode-map
               ("M-." . #'lsp-ui-peek-find-definitions)
