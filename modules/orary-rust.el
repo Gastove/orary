@@ -81,7 +81,7 @@
 
   (add-hook 'racer-mode-hook #'eldoc-mode)
   (add-hook 'racer-mode-hook #'company-mode)
-  (rust-enable-format-on-save)
+
   :bind (:map rust-mode-map
               ("C-c C-c" . #'rust-compile)
               ("<C-return>" . #'orary/rust-ret-dwim)
