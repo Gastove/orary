@@ -48,10 +48,11 @@
 
 (eval-when-compile
   (require 'use-package))
-(use-package diminish)                ;; if you use :diminish
+(use-package diminish)             ;; if you use :diminish
 (require 'bind-key)                ;; if you use any :bind variant
 
 ;; Package Loading and Configuration
+(require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
 ;; New Core
@@ -100,8 +101,8 @@
 
 ;; Minor Modes -- teamwork makes the dream work (●♡∀♡)
 (require 'orary-company)
-(require 'orary-projectile)
 (require 'orary-helm)
+(require 'orary-projectile)
 (require 'orary-emote)
 (require 'orary-smartparens)
 (require 'orary-lang-server)
@@ -134,7 +135,8 @@
 (require 'orary-python)
 (require 'orary-rust)
 (require 'orary-scala)
-(require 'orary-stats)
+;; Possibly ESS is fucking with emacsclient and the server? Unclear. Investigate.
+;; (require 'orary-stats)
 (require 'orary-web)
 (require 'orary-misc)
 
