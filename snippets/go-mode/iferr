@@ -4,5 +4,5 @@
 # expand-env: ((yas-indent-line 'auto))
 # --
 if err != nil {
-	$1
+	${1:return err}
 }

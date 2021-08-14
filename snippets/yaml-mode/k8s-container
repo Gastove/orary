@@ -16,5 +16,5 @@
 `(make-string (* 3 tab-width) ?\s)`memory: ${8:64Mi}
 `(make-string (* 2 tab-width) ?\s)`limits:
 `(make-string (* 3 tab-width) ?\s)`cpu: ${9:100m}
-`(make-string (* 3 tab-width) ?\s)`memory: {$10:128Mi}
+`(make-string (* 3 tab-width) ?\s)`memory: ${10:128Mi}
 $0
