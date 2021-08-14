@@ -40,7 +40,11 @@
        (:else (dired proj-root))))
     ))
 
+
+(use-package helm-projectile)
+
 (use-package projectile
+  :after helm
   :config
   (require 'persp-projectile)
   (require 'helm-projectile)

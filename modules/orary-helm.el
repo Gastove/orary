@@ -6,15 +6,12 @@
 
 ;; Add-ons to Helm
 (use-package helm-descbinds)
-(use-package helm-ag :demand t
+(use-package helm-ag
   :init
   (custom-set-variables
    '(helm-ag-base-command "rg --no-heading")
    `(helm-ag-success-exit-status '(0 2))
    ))
-
-(use-package helm-rg :demand t)
-(use-package helm-projectile)
 
 (defun orary/helm-do-rg-in-project ()
   "`helm-projectile-ag' tries to compute an extra set of file
@@ -26,35 +23,30 @@ out the extra ignore flim-flam."
   (interactive)
   (helm-do-ag (projectile-project-root) nil))
 
+(global-unset-key (kbd "C-x c"))
+
 (use-package helm
   :demand t
-  :commands helm
+  :defines helm-command-prefix
   :diminish helm-mode
   :config
-  (require 'helm)
   (require 'helm-config)
   (require 'helm-projectile)
   (helm-mode 1)
-  (setq
-   ;; helm-split-window-inside-p             t
-   helm-display-function                  'pop-to-buffer
-   ;; helm-split-window-default-side         'below
-   helm-move-to-line-cycle-in-source      t
-   helm-ff-search-library-in-sexp         t
-   helm-ff-file-name-history-use-recentf  t
-   ;; Fuzzy Matching
-   helm-buffers-fuzzy-matching            t
-   helm-M-x-fuzzy-match                   t
-   helm-recentf-fuzzy-match               t
-   helm-ff-skip-boring-files              t)
+  (setq  helm-display-function                  'pop-to-buffer
+         helm-move-to-line-cycle-in-source      t
+         helm-ff-search-library-in-sexp         t
+         helm-ff-file-name-history-use-recentf  t
+         ;; Fuzzy Matching
+         helm-buffers-fuzzy-matching            t
+         helm-M-x-fuzzy-match                   t
+         helm-recentf-fuzzy-match               t
+         helm-ff-skip-boring-files              t)
   (add-to-list 'helm-boring-file-regexp-list "\\.py[oc]$")
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
-  (setq projectile-completion-system 'helm)
-  (helm-projectile-on)
   (helm-descbinds-mode)
-  (global-set-key (kbd "C-c h") 'helm-command-prefix)
-  (global-unset-key (kbd "C-x c"))
+  :bind-keymap ("C-c h" . helm-command-prefix)
   :bind (("M-x"      . helm-M-x)
          ("M-y"      . helm-show-kill-ring)
          ("C-x b"    . helm-mini)
@@ -69,6 +61,8 @@ out the extra ignore flim-flam."
          ("o"        . helm-occur)
          ("g"        . helm-do-grep)
          ("SPC"      . helm-all-mark-rings)))
+
+;; (global-set-key (kbd "C-c h") 'helm-command-prefix)
 
 (provide 'orary-helm)
 ;;; orary-helm.el ends here
