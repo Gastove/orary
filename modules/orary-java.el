@@ -34,13 +34,15 @@
           (lambda ()
             (lsp)
             (subword-mode +1)
+            (setq-local lsp-semantic-tokens-enable nil)
+            (setq lsp-java-jdt-download-url "https://download.eclipse.org/jdtls/milestones/1.2.0/jdt-language-server-1.2.0-202106301459.tar.gz")
             (setq lsp-java-vmargs '("-noverify" "-Xmx16G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication")
-                  lsp-java-configuration-runtimes '[(:name "OpenJDK-8"
+                  lsp-java-configuration-runtimes '[(:name "JavaSE-1.8"
                                                            :path "/usr/lib/jvm/java-1.8.0-openjdk/"
-                                                           :default t)
+                                                           )
                                                     (:name "OpenJDK-11"
                                                            :path "/usr/lib/jvm/java-11-openjdk/"
-                                                           )]
+                                                           :default t)]
                   )
             ))
 
