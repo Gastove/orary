@@ -16,10 +16,10 @@
                          (-third-item groups)
                        (car groups)))
           (sig (--> sig_group
-                 (--drop-while (s-equals? "```rust" it) it)
-                 (--take-while (not (s-equals? "```" it)) it)
-                 (--map (s-trim it) it)
-                 (s-join " " it))))
+                    (--drop-while (s-equals? "```rust" it) it)
+                    (--take-while (not (s-equals? "```" it)) it)
+                    (--map (s-trim it) it)
+                    (s-join " " it))))
     (lsp--render-element (concat "```rust\n" sig "\n```"))))
 
 (use-package dap-mode
@@ -50,9 +50,7 @@
               (dap-mode 1)
               (dap-ui-mode 1)
               (add-to-list 'flycheck-checkers 'lsp-ui)
-              (lsp-ui-mode +1)
-              (lsp-semantic-tokens-mode +1)
-              ))
+              (lsp-ui-mode +1)))
 
   (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable)
   :config
