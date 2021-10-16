@@ -1,4 +1,4 @@
-;;; orary-go.el --- Go Programming in Orary
+;;; orary-golang.el --- Go Programming in Orary
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 
@@ -110,5 +110,5 @@
               ("C-o" . orary/braces-open-newline))
   )
 
-(provide 'orary-go)
+(provide 'orary-golang)
 ;;; orary-go.el ends here
