@@ -125,7 +125,7 @@
 (require 'orary-emacs-lisp)
 (require 'orary-fsharp)
 (require 'orary-formats)
-(require 'orary-go)
+(require 'orary-golang)
 (require 'orary-java)
 (require 'orary-javascript)
 (require 'orary-lilypond)
