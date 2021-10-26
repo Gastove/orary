@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Expecto Test Module
+# key: expect
+# --
+module `(s-chop-suffix ".fs" (buffer-name))`
+
+open Expecto
+
+[<Tests>]
+let $0

@@ -72,11 +72,13 @@
 ;; The Business
 (use-package rust-mode
   :config
+  (setq cargo-process--command-clippy "clippy")
   (add-hook 'rust-mode-hook
             (lambda ()
               (cargo-minor-mode +1)
               (subword-mode +1)
               (lsp)
+              (flycheck-add-next-checker 'lsp 'rust-clippy)
               (setq comment-start "//")))
 
   (add-hook 'racer-mode-hook #'eldoc-mode)
