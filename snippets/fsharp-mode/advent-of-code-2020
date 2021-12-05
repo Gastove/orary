@@ -11,7 +11,7 @@ type Solution() =
     let name = "$1"
     interface Common.ISolution with
         member __.Name() = name |> Common.titleCase
-        member __.LoadData(): Common.Input option = Common.loadData name
+        member __.LoadData(year): Common.Input option = Common.loadData name year
         member __.PartOne(input: Common.Input): string = ${0:failwith "Not Implemented"}
         member __.PartTwo(input: Common.Input): string = failwith "Not Implemented"
 
