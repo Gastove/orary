@@ -6,13 +6,16 @@
 module Day${1:$(capitalize yas-text)}
 
 open FSharp.Core.Operators.Checked
+$0
+let partOne (input: Common.Input) = "Not implemented!"
+
+let partTwo (input: Common.Input) = "Not implemented!"
 
 type Solution() =
     let name = "$1"
     interface Common.ISolution with
         member __.Name() = name |> Common.titleCase
         member __.LoadData(year): Common.Input option = Common.loadData name year
-        member __.PartOne(input: Common.Input): string = ${0:failwith "Not Implemented"}
-        member __.PartTwo(input: Common.Input): string = failwith "Not Implemented"
-
-        
+        member __.PartOne(input: Common.Input): string = input |> partOne
+        member __.PartTwo(input: Common.Input): string = input || partTwo
+       
