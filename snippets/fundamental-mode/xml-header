@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: XML Header
+# key: xml
+# --
+<?xml version="1.0" encoding="utf-8"?>
