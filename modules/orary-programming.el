@@ -8,7 +8,12 @@
 
 ;; Auto-wrap comments. Like an adult.
 (require 'newcomment)
-(auto-fill-mode +1)
+;; NOTE[rdonaldson|2022-07-15] To my profound bewilderment, auto-fill-mode is
+;; causing a whole bunch of extraneous whitespace cleanup because it's forcing
+;; buffers to save if I stop typing for a moment. I... wish I had any other
+;; better explanation for what's going on here.
+;;
+;; (auto-fill-mode +1)
 (setq comment-auto-fill-only-comments 1)
 (setq auto-fill-function #'do-auto-fill)
 
@@ -39,8 +44,8 @@ Currently catches: FIX(ME)?, TODO, NOTE."
 ;; ggtags is *so fiddly* to get working; gonna lean on other tools for now.
 ;; (use-package ggtags)
 
-(defvar orary/gg-tags-modes
-  '(c-mode 'c++-mode java-mode emacs-lisp-mode python-mode))
+;; (defvar orary/gg-tags-modes
+;; '(c-mode 'c++-mode java-mode emacs-lisp-mode python-mode))
 
 (defvar orary/indent-sensitive-modes
   '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode

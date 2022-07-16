@@ -62,9 +62,9 @@ so company-mode will work nicely."
   (save-excursion
     (search-backward-regexp org-property-re (line-beginning-position))
     (->> (match-string 1)
-      (s-trim)
-      (s-chop-prefix ":")
-      (s-chop-suffix ":"))))
+         (s-trim)
+         (s-chop-prefix ":")
+         (s-chop-suffix ":"))))
 
 (defun orary/org-complete-prop-before-point ()
   (interactive)
@@ -78,7 +78,6 @@ so company-mode will work nicely."
     (-uniq (cons current-file expanded))))
 
 (use-package org
-  :ensure org-plus-contrib
   :config
   ;; Disable whitespace cleanup during export -- it borks the bork out of things.
   (remove-hook 'before-save-hook #'ethan-wspace-clean-before-save-hook)
@@ -93,7 +92,7 @@ so company-mode will work nicely."
                              (require 'org-bullets)
                              (org-bullets-mode 1)))
   (require 'org-tempo)
-  (require 'ox-confluence)
+  ;; (require 'ox-confluence)
 
   (setq org-todo-keywords
         '((sequence "BACKLOG(k)")

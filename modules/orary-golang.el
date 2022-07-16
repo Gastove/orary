@@ -1,4 +1,4 @@
-;;; orary-golang.el --- Go Programming in Orary
+;;; orary-golang.el --- Golang Programming in Orary
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 
@@ -75,8 +75,8 @@
 ;; NOTE[rdonaldson|2021-03-31] This is a good idea for Eventually; right now it
 ;; doesn't appear to work properly, so we'll use checker-chaining instead.
 ;; (defvar orary/lsp-go-enable-staticcheck t)
-;; (lsp-register-custom-settings
-;;  '(("gopls.staticcheck" orary/lsp-go-enable-staticcheck t)))
+(lsp-register-custom-settings
+ '(("gopls.staticcheck" t t)))
 
 (use-package go-mode
   :config
@@ -91,8 +91,9 @@
     (subword-mode +1)
     (go-guru-hl-identifier-mode)
     (setq indent-tabs-mode t)
-    (flycheck-add-next-checker 'lsp 'go-staticcheck)
     (lsp)
+    ;; (flycheck-add-next-checker 'lsp 'go-staticcheck)
+
 
     ;; go-fmt on save.
     ;; This is... in many ways a good idea, but also *so irritating* that
