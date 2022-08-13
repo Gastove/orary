@@ -11,7 +11,11 @@
 
 (use-package perspective
   :config
-  (setq persp-show-modestring nil))
+  (setq persp-show-modestring nil)
+  :custom
+  (persp-mode-prefix-key (kbd "C-x m p"))
+  :bind (:map perspective-map
+              ("p" . projectile-persp-switch-project)))
 
 (use-package persp-projectile)
 (use-package ag)

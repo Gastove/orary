@@ -23,6 +23,7 @@
 (define-key 'orary/toggle-map "l" #'linum-mode)
 (define-key 'orary/toggle-map "i" #'orary/toggle-auto-indent)
 (define-key 'orary/toggle-map "n" #'treemacs-select-window)
+(define-key 'orary/toggle-map "p" #'persp-mode)
 (define-key 'orary/toggle-map "w" #'which-function-mode)
 (define-key 'orary/toggle-map "t" #'orary/toggle-window-split)
 (define-key 'orary/toggle-map "?" #'sauron-toggle-hide-show)
