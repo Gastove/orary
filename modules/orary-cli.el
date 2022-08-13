@@ -13,10 +13,5 @@ a project."
     (unless (-contains? projectile-known-projects dir)
       (projectile-add-known-project dir))))
 
-
-(defun orary/list-projects ()
-  (s-join " " projectile-known-projects)
-  )
-
 (provide 'orary-cli)
 ;;; orary-cli.el ends here
