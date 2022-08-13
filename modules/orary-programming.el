@@ -8,12 +8,7 @@
 
 ;; Auto-wrap comments. Like an adult.
 (require 'newcomment)
-;; NOTE[rdonaldson|2022-07-15] To my profound bewilderment, auto-fill-mode is
-;; causing a whole bunch of extraneous whitespace cleanup because it's forcing
-;; buffers to save if I stop typing for a moment. I... wish I had any other
-;; better explanation for what's going on here.
-;;
-;; (auto-fill-mode +1)
+(auto-fill-mode +1)
 (setq comment-auto-fill-only-comments 1)
 (setq auto-fill-function #'do-auto-fill)
 
@@ -41,11 +36,11 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   :config
   (setq ethan-wspace-warned-mode-require-final-newline t))
 
-;; ggtags is *so fiddly* to get working; gonna lean on other tools for now.
-;; (use-package ggtags)
+;; ;; ggtags is *so fiddly* to get working; gonna lean on other tools for now.
+;; ;; (use-package ggtags)
 
-;; (defvar orary/gg-tags-modes
-;; '(c-mode 'c++-mode java-mode emacs-lisp-mode python-mode))
+;; ;; (defvar orary/gg-tags-modes
+;; ;; '(c-mode 'c++-mode java-mode emacs-lisp-mode python-mode))
 
 (defvar orary/indent-sensitive-modes
   '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode
@@ -96,26 +91,26 @@ then clean up white space."
 (add-hook 'orary/programming-mode-hook 'orary/programming-defaults)
 (add-hook 'prog-mode-hook 'orary/programming-mode)
 
-(defun orary/unhook-whitespace-cleanup (func &rest funcargs)
-  "Removes from function FUNC any hooks which will alter its
-whitepace, calls FUNC with FUNCARGS, then restores the hooks.
-Most useful for org export."
-  (interactive)
-  (-let [func-res nil]
-    (remove-hook 'prog-mode-hook #'orary/programming-mode)
-    (remove-hook 'before-save-hook 'orary/clean-and-indent-buffer)
-    (remove-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
-    (remove-hook 'after-save-hook  'ethan-wspace-clean-after-save-hook)
-    (setq func-res (apply func funcargs))
-    ;; (message "Whether you believe it or not, func returned %s" func-res)
-    (add-hook 'prog-mode-hook 'orary/programming-mode)
-    (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
-    (add-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
-    (add-hook 'after-save-hook  'ethan-wspace-clean-after-save-hook)
-    ;; Return out the function result
-    func-res))
+;; (defun orary/unhook-whitespace-cleanup (func &rest funcargs)
+;;   "Removes from function FUNC any hooks which will alter its
+;; whitepace, calls FUNC with FUNCARGS, then restores the hooks.
+;; Most useful for org export."
+;;   (interactive)
+;;   (-let [func-res nil]
+;;     (remove-hook 'prog-mode-hook #'orary/programming-mode)
+;;     (remove-hook 'before-save-hook 'orary/clean-and-indent-buffer)
+;;     (remove-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
+;;     (remove-hook 'after-save-hook  'ethan-wspace-clean-after-save-hook)
+;;     (setq func-res (apply func funcargs))
+;;     ;; (message "Whether you believe it or not, func returned %s" func-res)
+;;     (add-hook 'prog-mode-hook 'orary/programming-mode)
+;;     (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
+;;     (add-hook 'before-save-hook 'ethan-wspace-clean-before-save-hook)
+;;     (add-hook 'after-save-hook  'ethan-wspace-clean-after-save-hook)
+;;     ;; Return out the function result
+;;     func-res))
 
-;; (advice-add 'org-export-to-file :around  #'orary/unhook-whitespace-cleanup)
+;; ;; (advice-add 'org-export-to-file :around  #'orary/unhook-whitespace-cleanup)
 
 ;;----------------------- Programming-Specific UI tools -----------------------;;
 (use-package highlight-indent-guides
