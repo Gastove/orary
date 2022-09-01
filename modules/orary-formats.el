@@ -78,5 +78,8 @@
 ;; TOML
 (use-package toml-mode)
 
+;; jsonnet
+(use-package jsonnet-mode)
+
 (provide 'orary-formats)
 ;;; orary-formats.el ends here

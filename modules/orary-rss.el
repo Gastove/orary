@@ -26,20 +26,21 @@
   :config
   (setq elfeed-db-directory "~/Dropbox/elfeed"
         elfeed-feeds
-        '(("http://feed43.com/2023102361452841.xml" comics)           ;; Riceboy
-          ("http://limbero.org/jl8/rss/" comics)                      ;; JL8
-          ("http://sssscomic.com/ssss-feed.xml" comics)               ;; Stand still, stay silent
-          ("http://www.girlgeniusonline.com/ggmain.rss" comics)       ;; Girl Genius
-          ("http://deadwinter.cc/dwrss.xml" comics)                   ;; Dead Winter
-          ("http://www.giantitp.com/comics/oots.rss" comics)          ;; OOTS
-          ("http://www.threepanelsoul.com/rss.php" comics)            ;; Three-Panel Soul
-          ("http://www.lutherlevy.com/?feed=rss2" comics)             ;; Family man
-          ("https://jvns.ca/atom.xml" blog programming ops)           ;; b0rk's blog
-          ("http://oglaf.com/feeds/rss/" comics)                      ;; Oglaf
-          ("http://ohumanstar.com/feed/" comics)                      ;; O Human Star
-          ("http://www.smbc-comics.com/rss.php" comics)               ;; Saturday Morning Breakfast Cereal
-          ("http://dtrace.org/blogs/feed/" blog programming ops perf) ;; Brendan Gregg's dtrace blog
-          ("http://www.c.urvy.org/curvy_rss2.xml" comics)             ;; Curvy
+        '(("http://feed43.com/2023102361452841.xml" comics evan-dahm)       ;; Riceboy
+          ("http://limbero.org/jl8/rss/" comics jl8)                        ;; JL8
+          ("http://sssscomic.com/ssss-feed.xml" comics ssss)                ;; Stand still, stay silent
+          ("http://www.girlgeniusonline.com/ggmain.rss" comics girl-genius) ;; Girl Genius
+          ("http://deadwinter.cc/dwrss.xml" comics deadwinter)              ;; Dead Winter
+          ("http://www.giantitp.com/comics/oots.rss" comics oots)           ;; OOTS
+          ("http://www.threepanelsoul.com/rss.php" comics tps)              ;; Three-Panel Soul
+          ("http://www.lutherlevy.com/?feed=rss2" comics family-man)        ;; Family man
+          ("https://jvns.ca/atom.xml" blog programming sre)                 ;; b0rk's blog
+          ("http://oglaf.com/feeds/rss/" comics oglaf)                      ;; Oglaf
+          ("http://ohumanstar.com/feed/" comics o-human-star)               ;; O Human Star
+          ("http://www.smbc-comics.com/rss.php" comics smbc)                ;; Saturday Morning Breakfast Cereal
+          ("http://dtrace.org/blogs/feed/" blog programming sre perf)       ;; Brendan Gregg's dtrace blog
+          ("http://www.c.urvy.org/curvy_rss2.xml" comics curvy)             ;; Curvy
+          ("https://gastove.com/blog/feed/atom.xml" blog programming self)  ;; moi
           ))
   :bind ("C-c q f" . elfeed))
 
