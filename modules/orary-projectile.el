@@ -39,8 +39,8 @@
       (cond
        ((f-exists? fully-qualified-md) (find-file fully-qualified-md))
        ((f-exists? fully-qualified-org) (find-file fully-qualified-org))
-       ((f-exists? blog-file (find-file blog-file)))
-       ((f-exitst? the-daily (find-file the-daily)))
+       ((f-exists? blog-file) (find-file blog-file))
+       ((f-exitst? the-daily) (find-file the-daily))
        (:else (dired proj-root))))
     ))
 
