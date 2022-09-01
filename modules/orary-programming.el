@@ -85,7 +85,7 @@ then clean up white space."
   (hl-line-mode +1)
   (orary/important-comments)
 
-  (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
+  ;; (add-hook 'before-save-hook 'orary/clean-and-indent-buffer)
   )
 
 (add-hook 'orary/programming-mode-hook 'orary/programming-defaults)
@@ -111,6 +111,11 @@ then clean up white space."
 ;;     func-res))
 
 ;; ;; (advice-add 'org-export-to-file :around  #'orary/unhook-whitespace-cleanup)
+
+;;--------------------------------- Env Vars ---------------------------------;;
+(use-package direnv
+  :config
+  (direnv-mode))
 
 ;;----------------------- Programming-Specific UI tools -----------------------;;
 (use-package highlight-indent-guides

@@ -23,17 +23,16 @@
     (lsp--render-element (concat "```rust\n" sig "\n```"))))
 
 (use-package dap-mode
-  :after lsp-mode)
+  :after lsp-mode
+  (use-package dap-java))
 
 (use-package lsp-ui
   :commands lsp-ui-mode
   :ensure t
   :after lsp-mode
   :init
-  (setq lsp-ui-doc-enable nil)
-  :config
-  (dap-mode t)
-  (dap-ui-mode t))
+  ;; (setq lsp-ui-doc-enable nil)
+  )
 
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 
@@ -47,8 +46,6 @@
   :init
   (add-hook 'lsp-mode-hook
             (lambda ()
-              (dap-mode 1)
-              (dap-ui-mode 1)
               (add-to-list 'flycheck-checkers 'lsp-ui)
               (lsp-ui-mode +1)))
 

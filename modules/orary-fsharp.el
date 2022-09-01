@@ -110,10 +110,11 @@ usability standpoint to do so."
 (defun orary/fsharp-insert-arrow ()
   (interactive)
   (orary/insert-key-seq "-" ">" "<")
-  (set-transient-map
-   (let ((map (make-sparse-keymap)))
-     (define-key map (kbd "-") #'orary/fsharp-insert-arrow)
-     map)))
+  (when (eq nil (nth 4 (syntax-ppss)))
+    (set-transient-map
+     (let ((map (make-sparse-keymap)))
+       (define-key map (kbd "-") #'orary/fsharp-insert-arrow)
+       map))))
 
 (defun orary/lsp-fsharp-type-at ()
   (interactive)
@@ -127,7 +128,7 @@ usability standpoint to do so."
   :mode "\\.fs[iylx]?$"
   :load-path (lambda () (f-expand "~/Code/open-source/emacs-fsharp-mode"))
   :config
-  (setq fill-column 100
+  (setq fill-column 120
         ;; fsharp-ac-intellisense-enabled nil
         inferior-fsharp-program "dotnet fsi --readline-")
   (add-hook 'fsharp-mode-hook

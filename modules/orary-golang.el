@@ -28,9 +28,9 @@
 (require 'orary-braces)
 (require 'projectile)
 
-(use-package go-eldoc)
-(use-package go-guru
-  :demand t)
+;; (use-package go-eldoc)
+;; (use-package go-guru
+;;   :demand t)
 
 (defun orary/go-ret-dwim (arg)
   (interactive "P")

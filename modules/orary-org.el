@@ -114,7 +114,7 @@ so company-mode will work nicely."
         ;; Config org export backends
         org-export-backends `(ascii
                               beamer
-                              confluence
+                              ;; confluence
                               gfm
                               gnuplot
                               html

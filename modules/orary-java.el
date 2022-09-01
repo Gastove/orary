@@ -18,8 +18,6 @@
 (use-package lsp-java
   :ensure t
   :after lsp
-  :config
-  (require 'dap-java)
   ;; :bind  (:map lsp-language-map
   ;;       ("r i" . #'lsp-java-add-import)
   ;;       ("r t" . #'lsp-java-add-throws)
