@@ -58,8 +58,10 @@
 (use-package dash                      ;; Modern FP, combiners
   :config
   (dash-enable-font-lock))
-(use-package s)                         ;; String manipulation
-(use-package f)                         ;; File manipulation
+(use-package s
+  :demand t)                         ;; String manipulation
+(use-package f
+  :demand t)                         ;; File manipulation
 
 ;; A few vars of utility
 (defvar orary/orary-root-dir (file-name-directory
