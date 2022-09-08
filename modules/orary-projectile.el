@@ -8,6 +8,7 @@
 
 (require 'orary-helm)
 (require 'magit)
+(require 'f)
 
 (use-package perspective
   :config
@@ -40,7 +41,7 @@
        ((f-exists? fully-qualified-md) (find-file fully-qualified-md))
        ((f-exists? fully-qualified-org) (find-file fully-qualified-org))
        ((f-exists? blog-file) (find-file blog-file))
-       ((f-exitst? the-daily) (find-file the-daily))
+       ((f-exists? the-daily) (find-file the-daily))
        (:else (dired proj-root))))
     ))
 
