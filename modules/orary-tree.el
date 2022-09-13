@@ -33,5 +33,8 @@
   :after treemacs magit
   :ensure t)
 
+(use-package treemacs-all-the-icons
+  :after treemacs)
+
 (provide 'orary-tree)
 ;;; orary-tree.el ends here
