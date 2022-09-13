@@ -41,15 +41,10 @@
         (setq-local flycheck-javascript-eslint-executable eslint))))
 
   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
-  (add-hook 'js2-mode-hook (lambda () (subword-mode +1)))
+  (add-hook 'js2-mode-hook (lambda ()
+                             (subword-mode +1)
+                             (lsp)))
   (add-hook 'typescript-mode-hook (lambda () (lsp))))
-
-;; (use-package tide
-;;   :config
-;;   (defun tide-configs ()
-;;     (tide-setup)
-;;     (tide-hl-identifier-mode +1))
-;;   (add-hook 'typescript-mode-hook #'tide-configs))
 
 (provide 'orary-javascript)
 ;;; orary-javascript.el ends here
