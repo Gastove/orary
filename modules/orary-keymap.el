@@ -4,6 +4,8 @@
 ;; Global keybindings in orary.
 ;;; Code:
 
+(require 'orary-functions)
+
 ;;---------------------------------- Unsets ----------------------------------;;
 ;; Unset compose-mail so we can use this binding for the global map instead
 (global-unset-key (kbd "C-x m"))
@@ -40,6 +42,7 @@
 (define-key 'orary/global-map "e" #'orary/insert-emote)
 (define-key 'orary/global-map "f" #'make-frame-command)
 (define-key 'orary/global-map "j" #'orary/pprint-json-in-new-buffer)
+(define-key 'orary/global-map "n" #'orary/yank-visited-file-path)
 (define-key 'orary/global-map "t" #'treemacs-select-window)
 (define-key 'orary/global-map "w" #'helm-world-time)
 

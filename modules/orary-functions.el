@@ -422,10 +422,33 @@ mode."
           ((thing-at-point-looking-at base 1) (insert mod-one))
           (:else (insert base)))))
 
+;;---------------------- Misc utilities of various kinds ----------------------;;
+
 (defun orary/base64-encode-region ()
   "bas64-encode-region with no line breaks."
   (interactive)
   (base64-encode-region (mark) (point) t))
+
+(defun orary/base64-decode-region ()
+  "bas64-encode-region with no line breaks."
+  (interactive)
+  (base64-decode-region (mark) (point)))
+
+(defun orary/yank-visited-file-path (prefix)
+  "Put the absolute path of the currently visited file in the kill
+ring. With prefix ARG, only put the relative path in the kill
+ring. With a double ARG, only put the name of the file."
+  (interactive "p")  
+  (-let* ((full-path (buffer-file-name))
+          (to-kill (pcase prefix
+                     (1 full-path)
+                     (4 (f-relative full-path (projectile-project-root)))
+                     (16 (f-relative full-path default-directory))
+                     (_ full-path))))
+
+    (message to-kill)
+    (kill-new to-kill)
+    ))
 
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
