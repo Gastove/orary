@@ -59,9 +59,11 @@
         lsp-semantic-tokens-enable t)
 
   :bind (:map lsp-mode-map
-              ("M-." . #'lsp-ui-peek-find-definitions)
-              ("M-?"  . #'lsp-ui-peek-find-references)
-              ))
+         ("M-." . #'lsp-ui-peek-find-definitions)
+         ("M-?"  . #'lsp-ui-peek-find-references)
+         :map lsp-command-map
+         ("d" . lsp-ui-doc-focus-frame))
+  )
 
 (provide 'orary-lang-server)
 ;;; orary-lang-server.el ends here
