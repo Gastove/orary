@@ -62,6 +62,15 @@
 
 (use-package flycheck
   :config
+  ;; NOTE[rdonaldson|2022-10-21] Gotta override this until this PR merges:
+  ;; https://github.com/flycheck/flycheck/pull/1917
+  (defun flycheck-rust-cargo-has-command-p (command)
+    "Whether Cargo has COMMAND in its list of commands. Replacement versions to patch flycheck until fixes land in main.
+
+Execute `cargo --list' to find out whether COMMAND is present."
+    (let ((cargo (funcall flycheck-executable-find "cargo")))
+      (member command (mapcar (lambda (line) (first (split-string (string-trim-left line))))
+                              (ignore-errors (process-lines cargo "--list"))))))
   (add-hook 'after-init-hook #'global-flycheck-mode)
   (add-hook 'flycheck-mode-hook
             (lambda ()
