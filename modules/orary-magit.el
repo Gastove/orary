@@ -24,5 +24,9 @@
 (use-package git-timemachine
   :bind ("s-m t" . git-timemachine))
 
+(use-package forge
+  :pin melpa-stable
+  :after magit)
+
 (provide 'orary-magit)
 ;;; orary-magit.el ends here
