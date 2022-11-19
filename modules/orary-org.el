@@ -200,6 +200,9 @@ so company-mode will work nicely."
                            "- [[http://jira.squarespace.org/browse/COE-%\\1][COE-%\\1 Ticket]]"
                            "- [[%^{ISD URL}][Incident State Document]]"
                            "%?")))
+          ("o" "On-call" entry (file+olp+datetree ,(f-expand "~/Documents/work.org") "Oncall")
+           "** %T %^{PROMPT}\n%?"
+           :prepend t :empty-lines 1)
           ("l" "The Log")
           ("lw" "Work Log" entry (file+olp+datetree ,(f-expand "~/Documents/work.org") "Log")
            "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?"
