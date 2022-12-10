@@ -17,5 +17,5 @@ type Solution() =
         member __.Name() = name |> Common.titleCase
         member __.LoadData(year): Common.Input option = Common.loadData name year
         member __.PartOne(input: Common.Input): string = input |> partOne
-        member __.PartTwo(input: Common.Input): string = input || partTwo
+        member __.PartTwo(input: Common.Input): string = input |> partTwo
        
