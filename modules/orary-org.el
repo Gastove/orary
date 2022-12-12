@@ -171,45 +171,46 @@ so company-mode will work nicely."
         ;; Org Capture
         org-capture-templates
         `(;; General To Do
-          ("t" "To-Dos")
-          ("tp" "Todo -- Personal" entry (file+headline "" "General To-Dos")
+          ("p" "Personal Stuff -- Tasks, Journal, Etc")
+          ("pt" "Todo -- Personal" entry (file+headline "" "General To-Dos")
+           ("pl" "Log" entry (file+olp+datetree "" "Log")
+           "** %T\n%i\n%?\n"
+           :prepend t :empty-lines 1)
            "** TODO %?\n" :empty-lines 1)
           ;; Work To Do
-          ("tw" "Todo -- Work" entry (file+olp ,(f-expand "~/Documents/work.org") "General To-Dos" "Incoming")
-           "** TODO %^{title}\n%?" :empty-lines 1)
+          ;; ("tw" "Todo -- Work" entry (file+olp ,(f-expand "~/Documents/work.org") "General To-Dos" "Incoming")
+          ;;  "** TODO %^{title}\n%?" :empty-lines 1)
           ;; Work notes
-          ("n" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "COMMENT Notes")
+          ("wn" "Work Notes" entry (file+headline ,(f-expand "~/Documents/work.org") "COMMENT Notes")
            "** %T %^{PROMPT}\n%?")
           ;; File To Do
           ("f" "File-Todo" entry (file+headline "" "General To-Dos")
            "** TODO %?\n %i\n %A\n")
           ;; Personal Email To Do
-          ("e" "Email")
-          ("ep" "Personal Email" entry (file+headline "" "General To-Dos")
-           ,(s-join "\n" '("** TODO Reply to %:from re:%?"
-                           "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
-                           "\%i"
-                           "%a\n")))
-          ("ew" "Work Email" entry (file+headline "" "General To-Dos")
-           ,(s-join "\n" '("** TODO Reply to %:from re:%?"
-                           "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
-                           "\%i"
-                           "%a\n")))
-          ("i" "Incident" entry (file+olp ,(f-expand "~/Documents/work.org") "Incident Command")
-           ,(s-join "\n" '("** COE-%^{COE Number}: %^{Title}"
-                           "- [[http://jira.squarespace.org/browse/COE-%\\1][COE-%\\1 Ticket]]"
-                           "- [[%^{ISD URL}][Incident State Document]]"
-                           "%?")))
-          ("o" "On-call" entry (file+olp+datetree ,(f-expand "~/Documents/work.org") "Oncall")
-           "** %T %^{PROMPT}\n%?"
-           :prepend t :empty-lines 1)
-          ("l" "The Log")
-          ("lw" "Work Log" entry (file+olp+datetree ,(f-expand "~/Documents/work.org") "Log")
-           "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?"
-           :prepend t :empty-lines 1)
-          ("lp" "Personal Log" entry (file+olp+datetree "" "Log")
-           "** %T\n%i\n%?\n"
-           :prepend t :empty-lines 1))
+          ;; ("e" "Email")
+          ;; ("ep" "Personal Email" entry (file+headline "" "General To-Dos")
+          ;;  ,(s-join "\n" '("** TODO Reply to %:from re:%?"
+          ;;                  "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
+          ;;                  "\%i"
+          ;;                  "%a\n")))
+          ;; ("ew" "Work Email" entry (file+headline "" "General To-Dos")
+          ;;  ,(s-join "\n" '("** TODO Reply to %:from re:%?"
+          ;;                  "DEADLINE: <%(org-read-date nil nil \"+1d\")>"
+          ;;                  "\%i"
+          ;;                  "%a\n")))
+          ;; ("i" "Incident" entry (file+olp ,(f-expand "~/Documents/work.org") "Incident Command")
+          ;;  ,(s-join "\n" '("** COE-%^{COE Number}: %^{Title}"
+          ;;                  "- [[http://jira.squarespace.org/browse/COE-%\\1][COE-%\\1 Ticket]]"
+          ;;                  "- [[%^{ISD URL}][Incident State Document]]"
+          ;;                  "%?")))
+          ;; ("o" "On-call" entry (file+olp+datetree ,(f-expand "~/Documents/work.org") "Oncall")
+          ;;  "** %T %^{PROMPT}\n%?"
+          ;;  :prepend t :empty-lines 1)
+          ;; ("l" "The Log")
+          ;; ("lw" "Work Log" entry (file+olp+datetree ,(f-expand "~/Documents/work.org") "Log")
+          ;;  "** %T\n:PROPERTY:\n:capture_location: %a\n:END:\n%?"
+          ;;  :prepend t :empty-lines 1)
+          )
 
         ;; The Agenda
         ;; Show me a 14 day view by default
