@@ -117,6 +117,7 @@
 (require 'orary-elixir)
 (require 'orary-emacs-lisp)
 (require 'orary-fsharp)
+(require 'orary-csharp)
 (require 'orary-formats)
 (require 'orary-golang)
 (require 'orary-java)

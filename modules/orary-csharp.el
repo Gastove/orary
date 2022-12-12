@@ -1,12 +1,15 @@
 ;;; orary-csharp.el --- C# Configuration for Orary
 ;;
 ;;; Commentary:
-;; 
+;;
 ;;; Code:
 
 (use-package csharp-mode
   :config
-  (add-hook 'csharp-mode-hook (lambda () (lsp))))
+  (add-hook 'csharp-mode-hook (lambda ()
+                                (lsp)
+                                (subword-mode +1)
+                                )))
 
 
 (provide 'orary-csharp)
