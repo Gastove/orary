@@ -38,9 +38,9 @@
 (use-package puppet-mode)
 (use-package nix-mode)
 
-(use-package systemd)
-(add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
-(add-to-list 'auto-mode-alist '("\\.socket\\'" . systemd-mode))
+;; (use-package systemd)
+;; (add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
+;; (add-to-list 'auto-mode-alist '("\\.socket\\'" . systemd-mode))
 
 (add-to-list 'auto-mode-alist '("\\.hql\\'" . sql-mode))
 
