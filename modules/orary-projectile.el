@@ -48,6 +48,13 @@
 
 (use-package helm-projectile)
 
+(defvar orary/projectile-ignore-prefixes
+  '("~/.cargo/registry"))
+
+(defun orary/should-ignore-project (truename)
+  (-any? (lambda (maybe-parent)           
+           (f-ancestor-of? maybe-parent truename)) orary/projectile-ignore-prefixes))
+
 (use-package projectile
   :after helm
   :config
@@ -63,7 +70,8 @@
         projectile-switch-project-action #'orary/projectile-switch-project-action
         projectile-create-missing-test-files t
         projectile-sort-order 'recent-active
-        projectile-indexing-method 'alien)
+        projectile-indexing-method 'alien
+        projectile-ignored-project-function #'orary/should-ignore-project)
   :bind-keymap ("C-c p" . projectile-command-map)
   :bind (:map projectile-command-map
               ("p" . projectile-persp-switch-project)
