@@ -28,9 +28,9 @@
   :config
   (global-company-mode)
   (add-to-list 'company-transformers 'company-sort-prefer-same-case-prefix)
-  (setq company-idle-delay .2
+  (setq company-idle-delay .15
         company-minimum-prefix-length 2
-        company-tooltip-limit 20
+        company-tooltip-limit 24
         company-tooltip-align-annotations t
         company-backends '(company-capf
                            company-yasnippet
