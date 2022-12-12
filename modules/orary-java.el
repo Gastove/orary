@@ -35,13 +35,13 @@
             (setq-local lsp-semantic-tokens-enable nil)
             (setq lsp-java-jdt-download-url "https://download.eclipse.org/jdtls/milestones/1.2.0/jdt-language-server-1.2.0-202106301459.tar.gz")
             (setq lsp-java-vmargs '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4" "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true" "-Xmx16G" "-Xms100m" ) ;; "-noverify" "-Xmx16G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"
-                  lsp-java-configuration-runtimes '[(:name "JavaSE-1.8"
-                                                           :path "/usr/lib/jvm/java-1.8.0-openjdk/"
-                                                           ;; :path "/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.332.b09-1.fc36.x86_64/"
-                                                           )
-                                                    (:name "OpenJDK-11"
-                                                           :path "/usr/lib/jvm/java-11-openjdk/"
-                                                           :default t)]
+                  ;; lsp-java-configuration-runtimes '[;; (:name "JavaSE-1.8" ;; Should be dead to me. Sure hope that's true.
+                  ;;                                   ;;        :path "/usr/lib/jvm/java-1.8.0-openjdk/"
+                  ;;                                   ;;        ;; :path "/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.332.b09-1.fc36.x86_64/"
+                  ;;                                   ;;        )
+                  ;;                                   (:name "OpenJDK-11"
+                  ;;                                          :path "/usr/lib/jvm/java-11-openjdk/"
+                  ;;                                          :default t)]
                   )
             ))
 
