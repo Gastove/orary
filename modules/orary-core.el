@@ -151,9 +151,12 @@
                 avy-style 'at-full)
   :bind ("C-c j" . avy-goto-word-or-subword-1))
 
+;; NOTE[rdonaldson|2022-12-10] I don't actually do this anymore, but it sure
+;; messes with Org pretty hard. Gonna just... sit on this, see what do.
+;;
 ;; Window movement by arrow key
-(require 'windmove)
-(windmove-default-keybindings)
+;; (require 'windmove)
+;; (windmove-default-keybindings)
 
 ;; Zopping is like zapping, but much more flexible and neat.
 (use-package zop-to-char
