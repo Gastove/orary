@@ -438,7 +438,7 @@ mode."
   "Put the absolute path of the currently visited file in the kill
 ring. With prefix ARG, only put the relative path in the kill
 ring. With a double ARG, only put the name of the file."
-  (interactive "p")  
+  (interactive "p")
   (-let* ((full-path (buffer-file-name))
           (to-kill (pcase prefix
                      (1 full-path)
@@ -449,6 +449,18 @@ ring. With a double ARG, only put the name of the file."
     (message to-kill)
     (kill-new to-kill)
     ))
+
+(defun orary/find-fsharp-test-dir (impl-dir-abs-path)
+  (-let* ((impl-dir-name (s-chop-suffix "/" (-last-item (f-split impl-dir-abs-path))))
+          (src-dir-name (f-parent impl-dir-abs-path))
+          (test-dir (-first (lambda (dir)
+                               (and (s-contains? impl-dir-name dir)
+                                    (or (s-ends-with? "Test" dir)
+                                        (s-ends-with? "Tests" dir))))
+                             (f-directories src-dir-name))))
+    test-dir))
+
+;; (orary/find-fsharp-test-dir "/home/gastove/Code/cookbook/src/Fluhg")
 
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
