@@ -35,8 +35,7 @@
   :demand t
   :config (unicode-fonts-setup))
 
-(use-package all-the-icons
-  :ensure t
+(use-package all-the-icons  
   :config
   ;; Install fonts explicitly if they haven't been already on Linux
   (if (and
@@ -81,7 +80,6 @@
 ;; until I sort that... ugh. Off.
 ;;
 (use-package doom-modeline
-  :ensure t
   :init
   (doom-modeline-mode 1)
   :config

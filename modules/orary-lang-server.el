@@ -27,8 +27,7 @@
   (use-package dap-java))
 
 (use-package lsp-ui
-  :commands lsp-ui-mode
-  :ensure t
+  :commands lsp-ui-mode  
   :after lsp-mode
   :init
   ;; (setq lsp-ui-doc-enable nil)

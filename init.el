@@ -23,20 +23,44 @@
 ;;; Code:
 
 ;;-----------------------------Package Management-------------------------------
-(require 'package)
-(package-initialize)
-(setq package-check-signature nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+;; NOTE[Donaldson|2022-12-12] As of now, it looks like I get to convert to
+;; straight.el. I don't actually want to do this, so that's fun, but it _does_
+;; seem to be good stuff. Unfortunately, installing Helm from melpa is
+;; exploding, so. Cool.
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+(straight-use-package 'org)		
+
+(setq package-enable-at-startup nil)
+(straight-use-package 'use-package)
+
+(setq straight-use-package-by-default t)
+
+;; (require 'package)
+;; (package-initialize)
+;; (setq package-check-signature nil)
+;; (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 
 (if (and (version< emacs-version "26.3") (>= libgnutls-version 30604))
     (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;; We use use-package absolutely everywhere. Make sure it's there.
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+;; (unless (package-installed-p 'use-package)
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
 
 ;; Sometimes you want emacs to load faster. This is for those times.
 ;; (use-package benchmark-init
@@ -51,17 +75,19 @@
 (require 'bind-key)                ;; if you use any :bind variant
 
 ;; Package Loading and Configuration
-(require 'use-package-ensure)
-(setq use-package-always-ensure t)
+;; (require 'use-package-ensure)
+;; (setq use-package-always-ensure t)
 
 ;; New Core
 (use-package dash                      ;; Modern FP, combiners
+  :straight t
   :config
   (dash-enable-font-lock))
-(use-package s
-  :demand t)                         ;; String manipulation
-(use-package f
-  :demand t)                         ;; File manipulation
+(use-package s                         ;; String manipulation
+  :straight t  
+  ) 
+(use-package f                         ;; File manipulation
+  :straight t)
 
 ;; A few vars of utility
 (defvar orary/orary-root-dir (file-name-directory
@@ -75,7 +101,6 @@
 
 ;; Load this first in case things need executables from the path.
 (use-package exec-path-from-shell
-  :demand t
   :config
   (exec-path-from-shell-initialize))
 
@@ -135,7 +160,8 @@
 (require 'orary-misc)
 
 ;; Weird
-(require 'orary-org-blorg)
+;; Have to figure out how to tell straight to load this locally
+;; (require 'orary-org-blorg)
 ;; Reading
 (require 'orary-rss)
 

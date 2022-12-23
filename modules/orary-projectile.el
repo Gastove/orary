@@ -11,6 +11,7 @@
 (require 'f)
 
 (use-package perspective
+  :straight t
   :config
   (setq persp-show-modestring nil)
   :custom
@@ -46,7 +47,9 @@
     ))
 
 
-(use-package helm-projectile)
+(use-package helm-projectile
+  :after helm
+  :straight t)
 
 (defvar orary/projectile-ignore-prefixes
   '("~/.cargo/registry"))
@@ -56,6 +59,7 @@
            (f-ancestor-of? maybe-parent truename)) orary/projectile-ignore-prefixes))
 
 (use-package projectile
+  :straight t
   :after helm
   :config
   (require 'persp-projectile)

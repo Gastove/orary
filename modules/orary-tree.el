@@ -13,25 +13,21 @@
 ;;         neo-window-width 100
 ;;         neo-window-position 'left))
 
-(use-package treemacs
-  :ensure t
+(use-package treemacs  
   :defer t
   :init
   (with-eval-after-load 'winum
     (define-key winum-keymap (kbd "M-0") #'treemacs-select-window)))
 
 (use-package treemacs-projectile
-  :after treemacs projectile
-  :ensure t)
+  :after treemacs projectile)
 
 (use-package treemacs-icons-dired
-  :after treemacs dired
-  :ensure t
+  :after treemacs dired  
   :config (treemacs-icons-dired-mode))
 
 (use-package treemacs-magit
-  :after treemacs magit
-  :ensure t)
+  :after treemacs magit)
 
 (use-package treemacs-all-the-icons
   :after treemacs)

@@ -104,10 +104,10 @@ Execute `cargo --list' to find out whether COMMAND is present."
               (setq orary/disable-whitespace-cleanup t))))
 
 (use-package wgrep
-  :demand t)
+  :straight t)
 
 (use-package wgrep-helm
-  :demand t)
+  :straight t)
 
 (use-package wgrep-ag
   :demand t

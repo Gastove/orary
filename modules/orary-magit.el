@@ -6,7 +6,6 @@
 
 (unbind-key "s-m")
 (use-package magit
-  :pin melpa-stable
   :config
   (setq magit-last-seen-setup-instructions "1.4.0"
         magit-branch-read-upstream-first t
@@ -25,7 +24,6 @@
   :bind ("s-m t" . git-timemachine))
 
 (use-package forge
-  :pin melpa-stable
   :after magit)
 
 (provide 'orary-magit)

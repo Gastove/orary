@@ -14,7 +14,6 @@
 ;; LaTeX
 (use-package company-auctex)
 (use-package auctex
-  :ensure t
   :commands (latex-mode LaTeX-mode plain-tex-mode))
 
 ;; JSON

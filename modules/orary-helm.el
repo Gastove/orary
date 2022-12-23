@@ -5,8 +5,13 @@
 ;;; Code:
 
 ;; Add-ons to Helm
-(use-package helm-descbinds)
+(use-package helm-descbinds
+  :straight t
+  :after helm)
+
 (use-package helm-ag
+  :after helm
+  :straight t
   :init
   (custom-set-variables
    '(helm-ag-base-command "rg --no-heading")
@@ -26,11 +31,11 @@ out the extra ignore flim-flam."
 (global-unset-key (kbd "C-x c"))
 
 (use-package helm
-  :demand t
+  :straight t
   :defines helm-command-prefix
   :diminish helm-mode
   :config
-  (require 'helm-config)
+  (require 'helm-autoloads)
   (require 'helm-projectile)
   (helm-mode 1)
   (setq  helm-display-function                  'pop-to-buffer

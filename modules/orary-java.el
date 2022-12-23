@@ -15,8 +15,7 @@
                      #'orary/write-javadoc
                      :error-handler #'message))
 
-(use-package lsp-java
-  :ensure t
+(use-package lsp-java 
   :after lsp
   ;; :bind  (:map lsp-language-map
   ;;       ("r i" . #'lsp-java-add-import)

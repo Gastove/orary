@@ -14,8 +14,7 @@
 
 (setq python-shell-interpreter "python3")
 
-(use-package lsp-pyright
-  :ensure t
+(use-package lsp-pyright  
   :hook (python-mode . (lambda ()
                          (setq python-fill-docstring-style 'django)
                          (subword-mode +1)
