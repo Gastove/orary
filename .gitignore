@@ -34,3 +34,11 @@ eclipse.jdt.ls/
 /.dap-breakpoints
 /fsautocomplete
 /forge-database.sqlite
+/workspace/
+/straight/
+/eln-cache/
+/elpy/
+/.extension/
+/bookmarks
+/*.sql
+/projects
