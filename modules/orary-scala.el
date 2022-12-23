@@ -70,11 +70,5 @@
    'self-insert-command
    minibuffer-local-completion-map))
 
-;; (use-package ensime
-;;   :ensure t
-;;   :config
-;;   (setq ensime-startup-notification nil)
-;;   )
-
 (provide 'orary-scala)
 ;;; orary-scala.el ends here
