@@ -28,10 +28,6 @@
 (require 'orary-braces)
 (require 'projectile)
 
-;; (use-package go-eldoc)
-;; (use-package go-guru
-;;   :demand t)
-
 (defun orary/go-ret-dwim (arg)
   (interactive "P")
 
@@ -89,11 +85,8 @@
   (defun go-mode-config ()
     (setq-local comment-start "//")
     (subword-mode +1)
-    (go-guru-hl-identifier-mode)
     (setq indent-tabs-mode t)
-    (lsp)
-    ;; (flycheck-add-next-checker 'lsp 'go-staticcheck)
-
+    (lsp)    
 
     ;; go-fmt on save.
     ;; This is... in many ways a good idea, but also *so irritating* that
@@ -104,7 +97,7 @@
     )
 
   (add-hook 'go-mode-hook 'go-mode-config)
-  (add-hook 'go-mode-hook #'go-eldoc-setup)
+  ;; (add-hook 'go-mode-hook #'go-eldoc-setup)
   :bind (:map go-mode-map
               ("C-c n" . gofmt)
               ("C-<return>" . orary/go-ret-dwim)
