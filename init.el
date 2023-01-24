@@ -160,8 +160,7 @@
 (require 'orary-misc)
 
 ;; Weird
-;; Have to figure out how to tell straight to load this locally
-;; (require 'orary-org-blorg)
+(require 'orary-org-blorg)
 ;; Reading
 (require 'orary-rss)
 

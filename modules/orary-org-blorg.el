@@ -6,12 +6,12 @@
 ;; while I... figure out... which parts of this idea are a good idea.
 ;;; Code:
 
-(setq maybe-blorg-path (f-expand "Code/org-blorg/" orary/user-home-dir))
+;; (setq maybe-blorg-path (f-expand "Code/org-blorg/" orary/user-home-dir))
 
 (use-package org-blorg
-  :if (f-exists? maybe-blorg-path)
-  :load-path maybe-blorg-path
-  :mode ("\\.blorg\\'" . org-blorg-mode))
+  :straight (org-blorg :type git :host gitlab :repo "gastove/org-blorg")
+  :mode ("\\.blorg\\'" . org-blorg-mode)
+  )
 
 (provide 'orary-org-blorg)
 ;;; orary-org-blorg.el ends here
