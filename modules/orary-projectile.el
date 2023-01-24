@@ -54,9 +54,18 @@
 (defvar orary/projectile-ignore-prefixes
   '("~/.cargo/registry"))
 
-(defun orary/should-ignore-project (truename)
-  (-any? (lambda (maybe-parent)           
+(defun orary/ignore-project? (truename)
+  (-any? (lambda (maybe-parent)
            (f-ancestor-of? maybe-parent truename)) orary/projectile-ignore-prefixes))
+
+;; NOTE[gastove|2022-12-24] A handy little utility doodah for cleaning up the project list.
+(defun orary/clean-project-list ()
+  (interactive)
+  (-map
+   (lambda (project)
+     (when (orary/ignore-project? project)
+       (projectile-remove-known-project project)))
+   projectile-known-projects))
 
 (use-package projectile
   :straight t
@@ -75,7 +84,12 @@
         projectile-create-missing-test-files t
         projectile-sort-order 'recent-active
         projectile-indexing-method 'alien
-        projectile-ignored-project-function #'orary/should-ignore-project)
+        projectile-ignored-project-function #'orary/ignore-project?)
+  (projectile-update-project-type
+   'dotnet-sln
+   :test-dir #'orary/find-fsharp-test-dir
+   :test-suffix "Tests")
+
   :bind-keymap ("C-c p" . projectile-command-map)
   :bind (:map projectile-command-map
               ("p" . projectile-persp-switch-project)
