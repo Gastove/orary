@@ -55,12 +55,10 @@
         lsp-restart 'auto-restart
         lsp-enable-file-watchers nil
         lsp-session-file (f-expand ".lsp-session-v1" orary/save-root)
-        lsp-semantic-tokens-enable t)
+        lsp-semantic-tokens-enable t
+        lsp-enable-xref t)
 
-  :bind (:map lsp-mode-map
-         ("M-." . #'lsp-ui-peek-find-definitions)
-         ("M-?"  . #'lsp-ui-peek-find-references)
-         :map lsp-command-map
+  :bind (:map lsp-command-map
          ("d" . lsp-ui-doc-focus-frame))
   )
 
