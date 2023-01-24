@@ -177,6 +177,8 @@ so company-mode will work nicely."
           ("pl" "Log" entry (file+olp+datetree "" "Log")
            "** %T\n%i\n%?\n"
            :prepend t :empty-lines 1)
+          ("pn" "Task Note" (clock)
+           "%a ::\n%?\n")
           ;; Work To Do
           ;; ("tw" "Todo -- Work" entry (file+olp ,(f-expand "~/Documents/work.org") "General To-Dos" "Incoming")
           ;;  "** TODO %^{title}\n%?" :empty-lines 1)
