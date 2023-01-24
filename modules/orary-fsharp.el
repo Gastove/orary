@@ -108,13 +108,15 @@ usability standpoint to do so."
        map))))
 
 (defun orary/fsharp-insert-arrow ()
-  (interactive)
-  (orary/insert-key-seq "-" ">" "<")
-  (when (eq nil (nth 4 (syntax-ppss)))
-    (set-transient-map
-     (let ((map (make-sparse-keymap)))
-       (define-key map (kbd "-") #'orary/fsharp-insert-arrow)
-       map))))
+  (interactive)  
+  (if (not (nth 4 (syntax-ppss)))
+      (progn 
+        (orary/insert-key-seq "-" ">" "<")
+        (set-transient-map
+         (let ((map (make-sparse-keymap)))
+           (define-key map (kbd "-") #'orary/fsharp-insert-arrow)
+           map)))
+    (insert "-")))
 
 (defun orary/lsp-fsharp-type-at ()
   (interactive)
