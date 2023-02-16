@@ -8,7 +8,7 @@
   :demand t
   :config
   (require 'smartparens-config)
-  (sp-use-paredit-bindings)
+  ;; (sp-use-paredit-bindings)
   (smartparens-global-mode)
   (show-smartparens-global-mode)
   (setq sp-ignore-modes-list
@@ -50,7 +50,8 @@
               ("C-]" . sp-select-next-thing-exchange)
               ("C-M-]" . sp-select-next-thing)
               ("M-F" . sp-forward-symbol)
-              ("M-B" . sp-backward-symbol)))
+              ("M-B" . sp-backward-symbol)
+              ))
 
 (provide 'orary-smartparens)
 ;;; orary-smartparens.el ends here

@@ -4,7 +4,9 @@
 ;; Sometimes, your company decides to switch to Kotlin over Groovy for Gradle.
 ;;; Code:
 
-(use-package kotlin-mode)
+(use-package kotlin-mode
+  :config
+  (lsp))
 
 (provide 'orary-kotlin)
 ;;; orary-kotlin.el ends here

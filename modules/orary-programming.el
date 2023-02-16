@@ -123,6 +123,9 @@ then clean up white space."
   (setq highlight-indent-guides-method 'column
         highlight-indent-guides-responsive 'top))
 
+;;----------------------- Programming-Specific UI tools -----------------------;;
+(use-package highlight-indentation)
+
 ;;---------------------------------Compilation-----------------------------------
 
 (defvar orary/compilation-key-words-regexp

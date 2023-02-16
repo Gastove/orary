@@ -43,6 +43,7 @@
        (not (f-exists? (f-expand ".local/share/fonts/all-the-icons.ttf" orary/user-home-dir))))
       (all-the-icons-install-fonts)))
 
+
 (eval
  (rhombus/with-color-variables
    `(defun orary/set-cursor-by-state ()
@@ -59,27 +60,10 @@
 
 (add-hook 'post-command-hook #'orary/set-cursor-by-state)
 
-;; (use-package smart-mode-line
-;;   :config (sml/setup)
-;;   (setq rm-blacklist '(" MRev"))
+(setq inhibit-compacting-font-caches t)
 
-;;   (setq sml/shorten-directory t)
-;;   (setq sml/shorten-modes t)
-
-;;   ;; Java and scala package names are infinite and terrible; shorten them.
-;;   (add-to-list 'sml/replacer-regexp-list '("^~/Code/" ":C:") t)
-;;   (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/main/java/" ":SMJ:") t)
-;;   (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/test/java/" ":STJ:") t)
-;;   (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/main/scala/" ":SMS:") t)
-;;   (add-to-list 'sml/replacer-regexp-list '("^:C:\\(?:.*\\)\\{1,2\\}/src/test/scala/" ":STS:") t)
-
-;;   ;; Make sure I notice when I'm in
-;;   (add-to-list 'rm-text-properties '(" Sp/s" 'face 'font-lock-warning-face)))
-
-;; NOTE[gastove|2020-06-17] I really like the look of doom-modeline, but for some reason, it's specifically fucking... F#?!
-;; until I sort that... ugh. Off.
-;;
 (use-package doom-modeline
+  :ensure t
   :init
   (doom-modeline-mode 1)
   :config

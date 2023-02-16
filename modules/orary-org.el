@@ -37,7 +37,7 @@ so company-mode will work nicely."
 ;; Additional exporters
 (use-package ox-gfm)
 (use-package ox-rst)
-(use-package ox-pandoc)
+;; (use-package ox-pandoc)
 
 ;; NOTE: ox-reveal mutates orgs structural templates alist in a way that breaks
 ;;       structural templates entirely. Disable until I can get a fix in place.

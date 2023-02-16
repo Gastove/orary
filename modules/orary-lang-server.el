@@ -27,10 +27,14 @@
   (use-package dap-java))
 
 (use-package lsp-ui
-  :commands lsp-ui-mode  
+  :commands lsp-ui-mode
   :after lsp-mode
   :init
   ;; (setq lsp-ui-doc-enable nil)
+  :bind (;; ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+         ;; ("M-." . lsp-ui-peek-find-definitions)         
+         ([remap xref-find-references] . lsp-ui-peek-find-references)
+         ("M-?" . lsp-ui-peek-find-references))
   )
 
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
@@ -59,7 +63,7 @@
         lsp-enable-xref t)
 
   :bind (:map lsp-command-map
-         ("d" . lsp-ui-doc-focus-frame))
+              ("d" . lsp-ui-doc-focus-frame))
   )
 
 (provide 'orary-lang-server)

@@ -147,6 +147,7 @@
 (require 'orary-golang)
 (require 'orary-java)
 (require 'orary-javascript)
+(require 'orary-kotlin)
 (require 'orary-lilypond)
 (require 'orary-ocaml)
 (require 'orary-org)
