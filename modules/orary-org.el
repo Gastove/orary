@@ -54,7 +54,7 @@ so company-mode will work nicely."
 ;; Additional org-babel bindings
 (use-package ob-restclient)
 (require 'ob-clojure)
-(require 'cider) ;; for ob-clojure config
+;; (require 'cider) ;; for ob-clojure config
 (use-package ob-async)
 
 ;; Utility functions
@@ -236,7 +236,7 @@ so company-mode will work nicely."
                                  (sql        . t)
                                  (python     . t)))
 
-  (setq org-babel-clojure-backend 'cider
+  (setq ;; org-babel-clojure-backend 'cider
         org-babel-python-command "python3")
 
   :bind (("C-c a" . org-agenda)
