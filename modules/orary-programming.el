@@ -36,12 +36,6 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   :config
   (setq ethan-wspace-warned-mode-require-final-newline t))
 
-;; ;; ggtags is *so fiddly* to get working; gonna lean on other tools for now.
-;; ;; (use-package ggtags)
-
-;; ;; (defvar orary/gg-tags-modes
-;; ;; '(c-mode 'c++-mode java-mode emacs-lisp-mode python-mode))
-
 (defvar orary/indent-sensitive-modes
   '(conf-mode yaml-mode scala-mode purescript-mode org-mode makefile-gmake-mode
               markdown-mode sql-mode ein:notebook-python-mode dockerfile-mode picture-mode
@@ -166,6 +160,12 @@ then clean up white space."
 (add-hook 'compilation-filter-hook 'orary/colorize-compilation-buffer)
 (add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
 (setq compilation-scroll-output 'first-error)
+
+;;---------------------------- Code Space Support ----------------------------;;
+(use-package codespaces
+  :config (codespaces-setup)
+  ;; :bind ("C-c S" . #'codespaces-connect)
+  )
 
 (provide 'orary-programming)
 ;;; orary-programming.el ends here
