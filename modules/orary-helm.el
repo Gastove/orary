@@ -36,7 +36,6 @@ out the extra ignore flim-flam."
   :diminish helm-mode
   :config
   (require 'helm-autoloads)
-  (require 'helm-projectile)
   (helm-mode 1)
   (setq  helm-display-function                  'pop-to-buffer
          helm-move-to-line-cycle-in-source      t
