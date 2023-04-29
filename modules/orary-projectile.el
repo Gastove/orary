@@ -31,7 +31,7 @@
     (switch-to-buffer (format "*scratch* (%s)" proj-name))
     (select-window (plist-get windows :right-window))
     (if (magit-git-repo-p proj-root)
-        (magit-status-internal proj-root)
+        (magit-status proj-root)
       (dired proj-root))
     (select-window (plist-get windows :middle-window))
     (-let ((fully-qualified-md (f-expand "README.md" proj-root))
@@ -52,7 +52,7 @@
   :straight t)
 
 (defvar orary/projectile-ignore-prefixes
-  '("~/.cargo/registry"))
+  '("~/.cargo/registry" "~/.rustup/toolchains"))
 
 (defun orary/ignore-project? (truename)
   (-any? (lambda (maybe-parent)
