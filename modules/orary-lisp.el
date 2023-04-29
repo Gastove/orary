@@ -24,7 +24,9 @@
   (rainbow-delimiters-mode +1)
   (smartparens-strict-mode +1))
 
-;; Scheme
+;; NOTE[rdonaldson|2023-04-29] I had a thought Geiser was fucking up xref in LSP
+;; mode, but I *think* it was actually lisp hooks for smartparens. Remember this
+;; is here in case something else breaks! Scheme
 (use-package geiser
   :config
   (add-hook 'scheme-mode-hook

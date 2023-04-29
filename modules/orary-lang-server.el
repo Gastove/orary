@@ -30,11 +30,13 @@
   :commands lsp-ui-mode
   :after lsp-mode
   :init
+  (setq orary/disable-clean-and-indent t) ;; disable whitespace management in LSP
   ;; (setq lsp-ui-doc-enable nil)
-  :bind (;; ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-         ;; ("M-." . lsp-ui-peek-find-definitions)         
+  :bind (( [remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+         ;; ("M-." . lsp-ui-peek-find-definitions)
          ([remap xref-find-references] . lsp-ui-peek-find-references)
-         ("M-?" . lsp-ui-peek-find-references))
+         ;; ("M-?" . lsp-ui-peek-find-references)
+         )
   )
 
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
