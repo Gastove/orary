@@ -8,7 +8,9 @@
 (require 'orary-functions)
 
 (use-package cargo)         ;; Build tool wrapper
-(use-package racer)         ;; Symbol completion, introspection
+;; NOTE[rdonaldson|2023-04-29] I *think* LSP fully replaces racer.
+;;
+;; (use-package racer)         ;; Symbol completion, introspection
 (use-package flycheck-rust) ;; Syntax checking
 
 (defun orary/rust-ret-dwim (arg)
@@ -63,16 +65,27 @@
 
 (defun orary/rust-insert-arrow ()
   (interactive)
-  (orary/insert-key-seq "-" ">" "<")
-  (set-transient-map
-   (let ((map (make-sparse-keymap)))
-     (define-key map (kbd "-") #'orary/rust-insert-arrow)
-     map)))
+  (if (not (nth 4 (syntax-ppss)))
+      (progn
+       (orary/insert-key-seq "-" ">" "<")
+       (set-transient-map
+        (let ((map (make-sparse-keymap)))
+          (define-key map (kbd "-") #'orary/rust-insert-arrow)
+          map)))
+    (insert "-")))
 
 ;; The Business
 (use-package rust-mode
   :config
-  (setq cargo-process--command-clippy "clippy")
+  (setq cargo-process--command-clippy "clippy"
+        ;; NOTE[rdonaldson|2023-04-23] Dear future Ross: you are gonna think
+        ;; this is a good idea, but you are wrong. With LSP, there's some
+        ;; interaction between LSP and rust-analyzer and format on save that
+        ;; ruins *everything*. Don't turn this back on until you get that sorted
+        ;; out.
+        ;;
+        ;; rust-format-on-save t
+        )
   (add-hook 'rust-mode-hook
             (lambda ()
               (cargo-minor-mode +1)
@@ -81,9 +94,11 @@
               (flycheck-add-next-checker 'lsp 'rust-clippy)
               (setq comment-start "//")))
 
-  (add-hook 'racer-mode-hook #'eldoc-mode)
-  (add-hook 'racer-mode-hook #'company-mode)
-
+  ;; NOTE[rdonaldson|2023-04-29] I think LSP fully replaces racer.
+  ;;
+  ;; (add-hook 'racer-mode-hook #'eldoc-mode)
+  ;; (add-hook 'racer-mode-hook #'company-mode) 
+  
   :bind (:map rust-mode-map
               ("C-c C-c" . #'rust-compile)
               ("<C-return>" . #'orary/rust-ret-dwim)
