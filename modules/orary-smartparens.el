@@ -20,6 +20,7 @@
   (sp-local-pair 'sql-mode "<" ">")
   (sp-local-pair 'java-mode "/**" "**/")
   :bind (:map smartparens-mode-map
+              ;; () "beep"
               ("C-M-f" . sp-forward-sexp)
               ("C-M-b" . sp-backward-sexp)
 
@@ -51,6 +52,15 @@
               ("C-M-]" . sp-select-next-thing)
               ("M-F" . sp-forward-symbol)
               ("M-B" . sp-backward-symbol)
+              ("C-<right>" . sp-forward-slurp-sexp)
+              ("C-<left>" . sp-forward-barf-sexp)
+              ("C-M-<right>" . sp-backward-barf-sexp)
+              ("C-M-<left>" . sp-backward-slurp-sexp)
+              ("M-S" . sp-split-sexp)
+              ("M-j" . sp-join-sexp)
+              ;; NOTE[rdonaldson|2023-04-26] I barely use this one, and it conflict with xref
+              ;;
+              ;; ("M-?" . sp-convolute-sexp)
               ))
 
 (provide 'orary-smartparens)
