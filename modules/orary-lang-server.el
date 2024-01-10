@@ -32,7 +32,8 @@
   :init
   (setq orary/disable-clean-and-indent t) ;; disable whitespace management in LSP
   ;; (setq lsp-ui-doc-enable nil)
-  :bind (( [remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+  :bind (
+         ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
          ;; ("M-." . lsp-ui-peek-find-definitions)
          ([remap xref-find-references] . lsp-ui-peek-find-references)
          ;; ("M-?" . lsp-ui-peek-find-references)
@@ -46,6 +47,14 @@
 (use-package origami)
 (use-package lsp-origami)
 
+(defvar-local orary/flycheck-local-cache nil)
+
+(defun orary/flycheck-checker-get (fn checker property)
+  (or (alist-get property (alist-get checker orary/flycheck-local-cache))
+      (funcall fn checker property))) 
+
+(advice-add 'flycheck-checker-get :around 'orary/flycheck-checker-get)
+
 (use-package lsp-mode
   :commands lsp
   :init
@@ -55,6 +64,15 @@
               (lsp-ui-mode +1)))
 
   (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable)
+  (add-hook 'lsp-managed-mode-hook
+          (lambda ()
+            (cond
+             ((derived-mode-p 'sh-mode)
+              (setq orary/flycheck-local-cache '((lsp . ((next-checkers . (sh-posix-bash)))))))
+             ((derived-mode-p 'go-mode)
+              (setq orary/flycheck-local-cache '((lsp . ((next-checkers . (go-staticcheck)))))))
+             )))
+
   :config
   (setq lsp-prefer-flymake nil
         lsp-auto-guess-root t
@@ -64,6 +82,8 @@
         lsp-semantic-tokens-enable t
         lsp-enable-xref t)
 
+
+  
   :bind (:map lsp-command-map
               ("d" . lsp-ui-doc-focus-frame))
   )
