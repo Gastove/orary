@@ -74,6 +74,12 @@
 (lsp-register-custom-settings
  '(("gopls.staticcheck" t t)))
 
+(use-package go-tag
+  :config
+  (setq go-tag-args (list "-transform" "camelCase")))
+
+(use-package go-impl)
+
 (use-package go-mode
   :config
   (setq go-packages-function #'orary/go-packages-go-list-restricted
