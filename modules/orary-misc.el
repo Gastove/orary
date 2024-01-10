@@ -47,5 +47,13 @@
 ;; Extempore?!?
 (use-package extempore-mode)
 
+;; Just -- like make, but less bad
+(use-package just-mode)
+
+;; SQL management
+(use-package sqlformat
+  :config
+  (setq sqlformat-command 'pgformatter))
+
 (provide 'orary-misc)
 ;;; orary-misc.el ends here
