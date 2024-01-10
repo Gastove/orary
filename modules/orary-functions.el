@@ -462,5 +462,14 @@ ring. With a double ARG, only put the name of the file."
 
 ;; (orary/find-fsharp-test-dir "/home/gastove/Code/cookbook/src/Fluhg")
 
+(defun orary/bare-file-name ()
+  "Extract the filename, without extension, from the current
+buffer. E.g., if the buffer is visiting
+/home/gastove/beep/boop/bonk/Flarb.fs, return Flarb."
+  (interactive)
+  (->> (buffer-file-name)
+       (file-name-nondirectory)
+       (file-name-sans-extension)))
+
 (provide 'orary-functions)
 ;;; orary-functions.el ends here
