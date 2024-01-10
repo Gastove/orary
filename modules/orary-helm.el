@@ -50,7 +50,7 @@ out the extra ignore flim-flam."
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
   (helm-descbinds-mode)
-  :bind-keymap ("C-c h" . helm-command-prefix)
+  :bind-keymap ("C-c h" . helm-command-map)
   :bind (("M-x"      . helm-M-x)
          ("M-y"      . helm-show-kill-ring)
          ("C-x b"    . helm-mini)
