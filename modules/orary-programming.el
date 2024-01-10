@@ -41,12 +41,9 @@ Currently catches: FIX(ME)?, TODO, NOTE."
               markdown-mode sql-mode ein:notebook-python-mode dockerfile-mode picture-mode
               elm-mode snippet-mode fsharp-mode))
 
-(defvar orary/disable-auto-indent nil)
-(make-variable-buffer-local 'orary/disable-auto-indent)
-(defvar orary/disable-whitespace-cleanup nil)
-(make-variable-buffer-local 'orary/disable-whitespace-cleanup)
-
-(defvar orary/disable-clean-and-indent nil)
+(defvar-local orary/disable-auto-indent nil)
+(defvar-local orary/disable-whitespace-cleanup nil)
+(defvar-local orary/disable-clean-and-indent nil)
 
 (defun orary/clean-and-indent-buffer ()
   "Clean up the indentation of the current buffer according to its major mode,
