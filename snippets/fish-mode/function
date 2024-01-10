@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: function
+# key: fun
+# --
+function `(orary/bare-file-name)`
+    $0
+end

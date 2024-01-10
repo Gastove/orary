@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Backstage Doc Metadata
+# key: bsmeta
+# --
+---
+title: `(->> (buffer-file-name) (file-name-base) (s-replace "_" " ") (s-titleize))`
+description: $1
+status: ${2:new}
+---
+$0

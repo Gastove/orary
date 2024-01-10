@@ -1,0 +1,20 @@
+# key: ttest
+# name: table-test
+# --
+func Test$1(t *testing.T) {
+	assert := assert.New(t)
+
+	testSpecs := []struct{
+		name string
+        expected $2
+        msg string
+	}{
+		
+	}
+
+	for _, spec := range testSpecs {
+		t.Run(fmt.Sprintf("Test%s", spec.name), func (t *testing.T) {
+			
+		})
+	}
+}
