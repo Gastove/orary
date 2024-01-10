@@ -75,7 +75,7 @@
     (insert "-")))
 
 ;; The Business
-(use-package rust-mode
+(use-package rustic
   :config
   (setq cargo-process--command-clippy "clippy"
         ;; NOTE[rdonaldson|2023-04-23] Dear future Ross: you are gonna think
@@ -85,6 +85,7 @@
         ;; out.
         ;;
         ;; rust-format-on-save t
+        lsp-rust-analyzer-cargo-watch-command "clippy"
         )
   (add-hook 'rust-mode-hook
             (lambda ()
