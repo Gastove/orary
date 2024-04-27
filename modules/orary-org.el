@@ -243,6 +243,7 @@ so company-mode will work nicely."
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link)
          ("C-c b" . org-iswitchb)
+         ("C-c <SPC>" . org-table-blank-field)
          :map org-mode-map
          ("M-<up>"  . org-move-subtree-up)
          ("M-<down>". org-move-subtree-down ))

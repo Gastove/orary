@@ -3,14 +3,12 @@
 ;;; Commentary:
 ;;
 ;;; Code:
+(setq lsp-csharp-csharpls-use-dotnet-tool t
+      lsp-csharp-csharpls-use-local-tool t)
 
-(use-package csharp-mode
-  :config
-  (add-hook 'csharp-mode-hook (lambda ()
-                                (lsp)
-                                (subword-mode +1)
-                                )))
-
-
+(add-hook 'csharp-mode-hook (lambda ()
+                              (lsp)
+                              (subword-mode +1)
+                              ))
 (provide 'orary-csharp)
 ;;; orary-csharp.el ends here

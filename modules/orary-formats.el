@@ -12,9 +12,11 @@
 (require 'smartparens)
 
 ;; LaTeX
-(use-package company-auctex)
-(use-package auctex
+(use-package tex
+  :straight auctex
   :commands (latex-mode LaTeX-mode plain-tex-mode))
+(use-package company-auctex
+  :after 'tex)
 
 ;; JSON
 (use-package json-mode

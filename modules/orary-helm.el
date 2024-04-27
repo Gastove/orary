@@ -45,7 +45,9 @@ out the extra ignore flim-flam."
          helm-buffers-fuzzy-matching            t
          helm-M-x-fuzzy-match                   t
          helm-recentf-fuzzy-match               t
-         helm-ff-skip-boring-files              t)
+         helm-ff-skip-boring-files              t
+         completion-styles                      '(flex)
+         helm-command-prefix-key (kbd "C-c h"))
   (add-to-list 'helm-boring-file-regexp-list "\\.py[oc]$")
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
