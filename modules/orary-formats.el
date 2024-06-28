@@ -12,6 +12,7 @@
 (require 'smartparens)
 
 ;; LaTeX
+
 (use-package tex
   :straight auctex
   :commands (latex-mode LaTeX-mode plain-tex-mode))

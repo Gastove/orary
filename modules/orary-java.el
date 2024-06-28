@@ -18,7 +18,8 @@
 (use-package lsp-java
   :after lsp
   :config
-  (require 'dap-java))
+  (require 'dap-java)
+  (setq lsp-java-compile-null-analysis-mode "automatic"))
 
 (add-hook 'java-mode-hook
           (lambda ()

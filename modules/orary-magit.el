@@ -4,8 +4,15 @@
 ;;
 ;;; Code:
 
+(use-package transient)
+
+(defun seq-keep (function sequence)
+  "Apply FUNCTION to SEQUENCE and return the list of all the non-nil results."
+  (delq nil (seq-map function sequence)))
+
 (unbind-key "s-m")
 (use-package magit
+  :after transient 
   :config
   (setq magit-last-seen-setup-instructions "1.4.0"
         magit-branch-read-upstream-first t

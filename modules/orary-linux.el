@@ -8,7 +8,8 @@
                                   "SSH_AGENT_PID"
                                   "GPG_AGENT_INFO"
                                   "WORKON_HOME"
-                                  "GOPATH"))
+                                  "GOPATH"
+                                  "LSP_USE_PLISTS"))
 
 (provide 'orary-linux)
 ;;; orary-linux.el ends here

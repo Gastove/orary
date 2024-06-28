@@ -40,7 +40,7 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'org)		
+(straight-use-package 'org)
 
 (setq package-enable-at-startup nil)
 (straight-use-package 'use-package)
@@ -84,8 +84,8 @@
   :config
   (dash-enable-font-lock))
 (use-package s                         ;; String manipulation
-  :straight t  
-  ) 
+  :straight t
+  )
 (use-package f                         ;; File manipulation
   :straight t)
 

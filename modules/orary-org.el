@@ -54,6 +54,12 @@ so company-mode will work nicely."
 ;; Additional org-babel bindings
 (use-package ob-restclient)
 (require 'ob-clojure)
+;; (use-package el-patch
+;;   :straight (el-patch :type git :host github :repo "radian-software/el-patch"
+;;                       :fork (:host github
+;;                              :repo "your-name/el-patch")))
+(use-package ob-fsharp
+  :straight (ob-fsharp :type git :host gitlab :repo "gastove/ob-fsharp"))
 ;; (require 'cider) ;; for ob-clojure config
 (use-package ob-async)
 
@@ -219,25 +225,25 @@ so company-mode will work nicely."
 
   ;; Jump and Sparse-Tree contexts
   (push  '(org-goto . local) org-show-context-detail)
-  (push '(tags-tree . local) org-show-context-detail)
-
-  ;; Support for Babel Mode code blocks
-  ;; NOTE: requires the addition of the org elpa repo!
-  (org-babel-do-load-languages 'org-babel-load-languages
-                               '((clojure    . t)
-                                 (ditaa      . t)
-                                 (emacs-lisp . t)
-                                 (java       . t)
-                                 (restclient . t)
-                                 (R          . t)
-                                 ;; (scala      . t)
-                                 (scheme     . t)
-                                 (shell      . t)
-                                 (sql        . t)
-                                 (python     . t)))
+  (push '(tags-tree . local) org-show-context-detail)  
 
   (setq ;; org-babel-clojure-backend 'cider
-        org-babel-python-command "python3")
+   org-babel-python-command "python3"
+   ;; Support for Babel Mode code blocks
+  ;; NOTE: requires the addition of the org elpa repo!
+   org-babel-load-languages
+   '((clojure    . t)
+     (ditaa      . t)
+     (emacs-lisp . t)
+     (java       . t)
+     (restclient . t)
+     (R          . t)
+     ;; (scala      . t)
+     (scheme     . t)
+     (shell      . t)
+     (sql        . t)
+     (python     . t)
+     (fsharp     . t)))
 
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
