@@ -7,7 +7,8 @@
 (require 'orary-braces)
 (require 'orary-functions)
 
-(use-package cargo)         ;; Build tool wrapper
+;; (use-package cargo)
+;; Build tool wrapper
 ;; NOTE[rdonaldson|2023-04-29] I *think* LSP fully replaces racer.
 ;;
 ;; (use-package racer)         ;; Symbol completion, introspection
@@ -77,8 +78,7 @@
 ;; The Business
 (use-package rustic
   :config
-  (setq cargo-process--command-clippy "clippy"
-        ;; NOTE[rdonaldson|2023-04-23] Dear future Ross: you are gonna think
+  (setq ;; NOTE[rdonaldson|2023-04-23] Dear future Ross: you are gonna think
         ;; this is a good idea, but you are wrong. With LSP, there's some
         ;; interaction between LSP and rust-analyzer and format on save that
         ;; ruins *everything*. Don't turn this back on until you get that sorted
@@ -87,21 +87,15 @@
         ;; rust-format-on-save t
         lsp-rust-analyzer-cargo-watch-command "clippy"
         )
-  (add-hook 'rust-mode-hook
+  (add-hook 'rustic-mode-hook
             (lambda ()
               (cargo-minor-mode +1)
               (subword-mode +1)
-              (lsp)
+              (lsp-deferred)
               (flycheck-add-next-checker 'lsp 'rust-clippy)
               (setq comment-start "//")))
-
-  ;; NOTE[rdonaldson|2023-04-29] I think LSP fully replaces racer.
-  ;;
-  ;; (add-hook 'racer-mode-hook #'eldoc-mode)
-  ;; (add-hook 'racer-mode-hook #'company-mode) 
   
-  :bind (:map rust-mode-map
-              ("C-c C-c" . #'rust-compile)
+  :bind (:map rustic-mode-map
               ("<C-return>" . #'orary/rust-ret-dwim)
               ("C-o" . #'orary/braces-open-newline)
               ("-" . #'orary/rust-insert-arrow))

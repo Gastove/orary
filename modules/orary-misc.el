@@ -36,7 +36,12 @@
 (use-package lua-mode)
 (use-package php-mode)
 (use-package puppet-mode)
-(use-package nix-mode)
+
+(use-package nix-mode
+  :hook (nix-mode . lsp-deferred)
+  :ensure t
+  :custom
+  (lsp-nix-nil-formatter ["nixpkgs-fmt"]))
 
 ;; (use-package systemd)
 ;; (add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))

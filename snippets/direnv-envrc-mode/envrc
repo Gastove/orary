@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: envrc
+# key: envrc
+# --
+#!/usr/bin/env bash
+
+use flake
