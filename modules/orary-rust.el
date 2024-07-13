@@ -68,33 +68,32 @@
   (interactive)
   (if (not (nth 4 (syntax-ppss)))
       (progn
-       (orary/insert-key-seq "-" ">" "<")
-       (set-transient-map
-        (let ((map (make-sparse-keymap)))
-          (define-key map (kbd "-") #'orary/rust-insert-arrow)
-          map)))
+        (orary/insert-key-seq "-" ">" "<")
+        (set-transient-map
+         (let ((map (make-sparse-keymap)))
+           (define-key map (kbd "-") #'orary/rust-insert-arrow)
+           map)))
     (insert "-")))
 
 ;; The Business
 (use-package rustic
+  :hook (rustic-mode . lsp-deferred)
   :config
   (setq ;; NOTE[rdonaldson|2023-04-23] Dear future Ross: you are gonna think
-        ;; this is a good idea, but you are wrong. With LSP, there's some
-        ;; interaction between LSP and rust-analyzer and format on save that
-        ;; ruins *everything*. Don't turn this back on until you get that sorted
-        ;; out.
-        ;;
-        ;; rust-format-on-save t
-        lsp-rust-analyzer-cargo-watch-command "clippy"
-        )
+   ;; this is a good idea, but you are wrong. With LSP, there's some
+   ;; interaction between LSP and rust-analyzer and format on save that
+   ;; ruins *everything*. Don't turn this back on until you get that sorted
+   ;; out.
+   ;;
+   ;; rust-format-on-save t
+   lsp-rust-analyzer-cargo-watch-command "clippy"
+   )
   (add-hook 'rustic-mode-hook
             (lambda ()
-              (cargo-minor-mode +1)
               (subword-mode +1)
-              (lsp-deferred)
-              (flycheck-add-next-checker 'lsp 'rust-clippy)
+              ;; (flycheck-add-next-checker 'lsp 'rust-clippy)
               (setq comment-start "//")))
-  
+
   :bind (:map rustic-mode-map
               ("<C-return>" . #'orary/rust-ret-dwim)
               ("C-o" . #'orary/braces-open-newline)

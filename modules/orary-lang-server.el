@@ -56,7 +56,7 @@
 (advice-add 'flycheck-checker-get :around 'orary/flycheck-checker-get)
 
 (use-package lsp-mode
-  :commands lsp
+  :commands (lsp lsp-deferred)
   :init
   (add-hook 'lsp-mode-hook
             (lambda ()
