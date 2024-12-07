@@ -41,7 +41,13 @@
   :hook (nix-mode . lsp-deferred)
   :ensure t
   :custom
-  (lsp-nix-nil-formatter ["nixpkgs-fmt"]))
+  (lsp-nix-nil-formatter ["nixpkgs-fmt"])
+  :config
+  (add-hook 'nix-mode-hook (lambda () (subword-mode +1))))
+
+(use-package nushell-mode
+    :hook (nushell-mode . lsp-deferred)
+    )
 
 ;; (use-package systemd)
 ;; (add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
