@@ -39,13 +39,10 @@ so company-mode will work nicely."
 (use-package ox-rst)
 ;; (use-package ox-pandoc)
 
-;; NOTE: ox-reveal mutates orgs structural templates alist in a way that breaks
-;;       structural templates entirely. Disable until I can get a fix in place.
 (use-package ox-reveal
+  :after org
   :config
   (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js";; (f-expand "~/Code/open-source/reveal.js")
-        ;; Why the hell is this broken? "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0"
-        org-reveal-hlevel 2
         ;; The exporter ignores most org options unless you ship it all to a single file -__-
         ;; org-reveal-single-file t
         ox-reveal-note-key-char nil
@@ -91,12 +88,14 @@ so company-mode will work nicely."
   (add-hook 'org-mode-hook (lambda ()
                              ;; Make sure auto-fill-mode is on. Pretty much always need it.
                              (turn-on-auto-fill)
-                                        ;
                              ;; Dramatically improve company completion in org Org uses the `pcomplete'
                              ;; system; wire it up
                              (add-pcomplete-to-capf)
                              (require 'org-bullets)
-                             (org-bullets-mode 1)))
+                             (org-bullets-mode 1)
+                             (setq-local tab-width 8)))
+  ;; (require 'org-re-reveal)
+  ;; (require 'ox-re-reveal)
   (require 'org-tempo)
   ;; (require 'ox-confluence)
 
@@ -225,13 +224,15 @@ so company-mode will work nicely."
 
   ;; Jump and Sparse-Tree contexts
   (push  '(org-goto . local) org-show-context-detail)
-  (push '(tags-tree . local) org-show-context-detail)  
+  (push '(tags-tree . local) org-show-context-detail)
 
   (setq ;; org-babel-clojure-backend 'cider
-   org-babel-python-command "python3"
-   ;; Support for Babel Mode code blocks
+   org-babel-python-command "python3")
+
+  ;; Support for Babel Mode code blocks
   ;; NOTE: requires the addition of the org elpa repo!
-   org-babel-load-languages
+  (org-babel-do-load-languages
+   'org-babel-load-languages
    '((clojure    . t)
      (ditaa      . t)
      (emacs-lisp . t)
