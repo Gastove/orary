@@ -54,11 +54,15 @@
 (require 'ediff)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-(use-package editorconfig
-  :demand t
-  :config
-  (editorconfig-mode +1)
-  (add-hook 'editorconfig-conf-mode-hook #'orary/programming-defaults))
+(use-package multiple-cursors)
+
+;; NOTE[rdonaldson|2024-12-06] Editorconfig is breaking org? Frixing wild.
+;; (use-package editorconfig
+;;   :demand t
+;;   :config
+;;   (setq editorconfig-exclude-modes '(org-mode))
+;;   (editorconfig-mode +1)
+;;   (add-hook 'editorconfig-conf-mode-hook #'orary/programming-defaults))
 
 (use-package flycheck
   :config
