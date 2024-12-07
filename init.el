@@ -101,8 +101,7 @@
 
 ;; Load this first in case things need executables from the path.
 (use-package exec-path-from-shell
-  :config
-  (exec-path-from-shell-initialize))
+  :ensure t)
 
 (if (eq system-type 'darwin)
     (require 'orary-osx)
