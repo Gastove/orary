@@ -80,7 +80,8 @@
         lsp-enable-file-watchers nil
         lsp-session-file (f-expand ".lsp-session-v1" orary/save-root)
         lsp-semantic-tokens-enable t
-        lsp-enable-xref t)
+        lsp-enable-xref t
+        lsp-enable-suggest-server-download nil)
 
 
   
