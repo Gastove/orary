@@ -52,7 +52,7 @@
   :straight t)
 
 (defvar orary/projectile-ignore-prefixes
-  '("~/.cargo/registry" "~/.rustup/toolchains"))
+  '("~/.cargo/registry" "~/.rustup/toolchains" "/nix"))
 
 (defun orary/ignore-project? (truename)
   (-any? (lambda (maybe-parent)
