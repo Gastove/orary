@@ -215,6 +215,8 @@ so company-mode will work nicely."
         org-ditaa-jar-path (f-expand "~/bin/ditaa0_9.jar")
         )
 
+  (add-to-list 'org-latex-classes '("letter" "\\documentclass{letter}"))
+
   ;; Structural templates
   ;; TODO: this needs updating, the format changed.
   ;; (add-to-list 'org-structure-template-alist
