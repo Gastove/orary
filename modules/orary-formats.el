@@ -52,6 +52,9 @@
 
 (setq-default nxml-child-indent 4)
 
+;; FlatBuffers
+(use-package flatbuffers-mode)
+
 ;; Protocol Buffers
 (use-package protobuf-mode
   :mode "\\.proto\\'")
