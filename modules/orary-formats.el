@@ -57,7 +57,8 @@
 
 ;; Protocol Buffers
 (use-package protobuf-mode
-  :mode "\\.proto\\'")
+  :mode "\\.proto\\'"
+  :hook (protobuf-mode . (lambda () (subword-mode +1))))
 
 ;; YAML
 (use-package yaml-mode
