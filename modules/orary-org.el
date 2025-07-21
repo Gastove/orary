@@ -179,7 +179,14 @@ so company-mode will work nicely."
           ("p" "Personal Stuff -- Tasks, Journal, Etc")
           ("pt" "Todo -- Personal" entry (file+headline "" "General To-Dos")
            "** TODO %?\n" :empty-lines 1)
-          ("pl" "Log" entry (file+olp+datetree "" "Log")
+          ;; ("pl" "Log" entry (file+olp+datetree "" "Log")
+          ;;  "** %T\n%i\n%?\n"
+          ;;  :prepend t :empty-lines 1)
+          ("pl" "The Personal Log")
+          ("pll" "Log" entry (file+olp+datetree "" "Log")
+           "** %T\n%i\n%?\n"
+           :prepend t :empty-lines 1)
+          ("plt" "Log" entry (file+olp+datetree "" "Log" "Blog" "Slog")
            "** %T\n%i\n%?\n"
            :prepend t :empty-lines 1)
           ("pn" "Task Note" (clock)
@@ -217,13 +224,6 @@ so company-mode will work nicely."
 
   (add-to-list 'org-latex-classes '("letter" "\\documentclass{letter}"))
 
-  ;; Structural templates
-  ;; TODO: this needs updating, the format changed.
-  ;; (add-to-list 'org-structure-template-alist
-  ;;              '(("ep" "#+BEGIN_EXAMPLE python\n?\n#+END_EXAMPLE")
-  ;;                ("sp" "#+BEGIN_SRC python\n?\n#+END_SRC")
-  ;;                ("ss" "#+BEGIN_SRC sh\n?\n#+END_SRC")))
-
   ;; Jump and Sparse-Tree contexts
   (push  '(org-goto . local) org-show-context-detail)
   (push '(tags-tree . local) org-show-context-detail)
@@ -241,7 +241,6 @@ so company-mode will work nicely."
      (java       . t)
      (restclient . t)
      (R          . t)
-     ;; (scala      . t)
      (scheme     . t)
      (shell      . t)
      (sql        . t)
