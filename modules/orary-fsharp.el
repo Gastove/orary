@@ -133,10 +133,11 @@ usability standpoint to do so."
   (setq fill-column 120
         ;; fsharp-ac-intellisense-enabled nil
         inferior-fsharp-program "dotnet fsi --readline-"
-        lsp-fsharp-server-args '("--verbose")
+        ;; lsp-fsharp-server-args '("--verbose")
         lsp-fsharp-generate-binlog 't
-        lsp-fsharp-use-dotnet-tool-for-fsac 't
-        lsp-fsharp-use-dotnet-local-tool 't)
+        lsp-fsharp-use-dotnet-tool-for-fsac nil
+        ;; lsp-fsharp-use-dotnet-local-tool 't
+        )
   (add-hook 'fsharp-mode-hook
             (lambda ()
               (subword-mode +1)

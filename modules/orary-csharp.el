@@ -3,8 +3,9 @@
 ;;; Commentary:
 ;;
 ;;; Code:
-(setq lsp-csharp-csharpls-use-dotnet-tool t
-      lsp-csharp-csharpls-use-local-tool t)
+
+(setq lsp-csharp-csharpls-use-dotnet-tool nil
+      lsp-csharp-csharpls-use-local-tool nil)
 
 (add-hook 'csharp-mode-hook (lambda ()
                                 (lsp)
