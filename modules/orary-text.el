@@ -1,4 +1,4 @@
-;;; orary-text.el --- Text configuration for Orary
+;;; orary-text.el --- Text configuration for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Does what it says on the tin.

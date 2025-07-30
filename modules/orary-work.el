@@ -1,4 +1,4 @@
-;;; orary-work.el ---
+;;; orary-work.el ---  -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

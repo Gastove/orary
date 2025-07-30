@@ -1,4 +1,4 @@
-;;; orary-lilypond.el --- Lilypond Music Programming in Orary
+;;; orary-lilypond.el --- Lilypond Music Programming in Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; If available, load and configure lilypond <3

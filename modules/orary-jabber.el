@@ -1,4 +1,4 @@
-;;; orary-jabber.el --- Jabber wiring-up for Orary
+;;; orary-jabber.el --- Jabber wiring-up for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Get you on a GCHAT!

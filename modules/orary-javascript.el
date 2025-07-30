@@ -1,4 +1,4 @@
-;;; orary-javascript.el --- JavaScript configs for Orary
+;;; orary-javascript.el --- JavaScript configs for Orary -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 

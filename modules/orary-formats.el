@@ -1,4 +1,4 @@
-;;; orary-formats.el --- Serialization and Configuration Format... Configurations
+;;; orary-formats.el --- Serialization and Configuration Format... Configurations -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; There's a whole pile of ways data can be represented in a file -- YAML,

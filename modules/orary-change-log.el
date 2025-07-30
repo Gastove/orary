@@ -1,4 +1,4 @@
-;;; orary-change-log.el --- Change Log Editing in Orary
+;;; orary-change-log.el --- Change Log Editing in Orary -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 

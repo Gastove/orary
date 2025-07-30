@@ -1,4 +1,4 @@
-;;; orary-org.el --- Configuration for org-mode in Orary
+;;; orary-org.el --- Configuration for org-mode in Orary -*- lexical-binding: t; -*-
                                         ;
 ;; Copyright (C) 2016 Ross Donaldson
 
@@ -57,7 +57,6 @@ so company-mode will work nicely."
 ;;                              :repo "your-name/el-patch")))
 (use-package ob-fsharp
   :straight (ob-fsharp :type git :host gitlab :repo "gastove/ob-fsharp"))
-;; (require 'cider) ;; for ob-clojure config
 (use-package ob-async)
 
 ;; Utility functions

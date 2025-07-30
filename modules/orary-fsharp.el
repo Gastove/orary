@@ -1,4 +1,4 @@
-;;; orary-fsharp.el --- F# language configs for orary
+;;; orary-fsharp.el --- F# language configs for orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; F# mode configuration, smartparens pairs.

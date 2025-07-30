@@ -1,4 +1,4 @@
-;;; orary-java.el --- Java language configurations for Orary
+;;; orary-java.el --- Java language configurations for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

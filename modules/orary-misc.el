@@ -1,4 +1,4 @@
-;;; orary-misc.el --- Small language configs
+;;; orary-misc.el --- Small language configs -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Sometimes I try out a language. Sometimes I don't know if it needs its own

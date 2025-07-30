@@ -1,4 +1,4 @@
-;;; orary-keymap.el --- Global keybindings for Orary
+;;; orary-keymap.el --- Global keybindings for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Global keybindings in orary.
@@ -56,6 +56,18 @@
 (global-set-key (kbd "C-;") 'flyspell-auto-correct-previous-word)
 (global-set-key (kbd "C-S-y") 'orary/yank-commented)
 (global-set-key (kbd "C-c C-i") #'company-complete)
+
+(define-prefix-command 'orary/multi-cursor-map)
+(global-set-key (kbd "C->") 'orary/multi-cursor-map)
+
+(define-key 'orary/multi-cursor-map "l" #'mc/edit-lines)
+(define-key 'orary/multi-cursor-map ">" #'mc/mark-next-like-this)
+(define-key 'orary/multi-cursor-map "<" #'mc/mark-previous-like-this)
+(define-key 'orary/multi-cursor-map "b" #'mc/edit-beginnings-of-lines)
+(define-key 'orary/multi-cursor-map "e" #'mc/edit-ends-of-lines)
+(define-key 'orary/multi-cursor-map "a" #'mc/mark-all-like-this)
+
+
 
 ;;------------------------------------ LSP ------------------------------------;;
 ;; (define-prefix-command 'lsp-language-map)

@@ -1,4 +1,4 @@
-;;; orary-tree.el --- Tree-based browsing, editing, file management, etc
+;;; orary-tree.el --- Tree-based browsing, editing, file management, etc -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

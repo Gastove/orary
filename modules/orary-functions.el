@@ -1,4 +1,4 @@
-;;; orary-functions.el --- What is Life Without Functions?
+;;; orary-functions.el --- What is Life Without Functions? -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Utility functions and custom behaviors that don't live gracefully anywhere else.
@@ -454,10 +454,10 @@ ring. With a double ARG, only put the name of the file."
   (-let* ((impl-dir-name (s-chop-suffix "/" (-last-item (f-split impl-dir-abs-path))))
           (src-dir-name (f-parent impl-dir-abs-path))
           (test-dir (-first (lambda (dir)
-                               (and (s-contains? impl-dir-name dir)
-                                    (or (s-ends-with? "Test" dir)
-                                        (s-ends-with? "Tests" dir))))
-                             (f-directories src-dir-name))))
+                              (and (s-contains? impl-dir-name dir)
+                                   (or (s-ends-with? "Test" dir)
+                                       (s-ends-with? "Tests" dir))))
+                            (f-directories src-dir-name))))
     test-dir))
 
 ;; (orary/find-fsharp-test-dir "/home/gastove/Code/cookbook/src/Fluhg")
@@ -477,23 +477,30 @@ buffer. E.g., if the buffer is visiting
 ;; End:       '';
 (defun lsp-nix--get-script-bounds ()
   (save-excursion
-   (-let ((begin (search-backward "testScript = ''"))
-          (end (search-forward "'';")))
-     (list begin end))))
+    (-let ((begin (save-excursion
+                    (search-backward "testScript = ''")
+                    ;; (forward-line 1)
+                    ;; (beginning-of-line)
+                    (point)))
+           (end (save-excursion
+                  (search-forward "'';")
+                  ;; (forward-line -1)
+                  ;; (end-of-line)
+                  (point))))
+      (list begin end))))
 
 (defun lsp-nix-edit-python-code-block ()
   "Edit a NixOS integration test python script in an indirect buffer."
   (interactive)
   (save-excursion
     (if (fboundp 'edit-indirect-region)
-        (let* ((bounds (markdown-get-enclosing-fenced-block-construct))
+        (let* ((bounds (lsp-nix--get-script-bounds))
                (begin (and bounds (not (null (nth 0 bounds))) (goto-char (nth 0 bounds)) (line-beginning-position 2)))
                (end (and bounds(not (null (nth 1 bounds)))  (goto-char (nth 1 bounds)) (line-beginning-position 1))))
           (if (and begin end)
               (let* ((indentation (and (goto-char (nth 0 bounds)) (current-indentation)))
-                     (lang (markdown-code-block-lang))
-                     (mode (or (and lang (markdown-get-lang-mode lang))
-                               markdown-edit-code-block-default-mode))
+                     (lang "python")
+                     (mode 'python-mode)
                      (edit-indirect-guess-mode-function
                       (lambda (_parent-buffer _beg _end)
                         (funcall mode)))
@@ -510,11 +517,11 @@ buffer. E.g., if the buffer is visiting
                 (when (> indentation 0) ;; un-indent in edit-indirect buffer
                   (with-current-buffer indirect-buf
                     (indent-rigidly (point-min) (point-max) (- indentation)))))
-            (user-error "Not inside a GFM or tilde fenced code block")))
+            (user-error "Not inside a Nix unit test block!")))
       (when (y-or-n-p "Package edit-indirect needed to edit code blocks. Install it now? ")
         (progn (package-refresh-contents)
                (package-install 'edit-indirect)
-               (markdown-edit-code-block))))))
+               (lsp-nix-edit-python-code-block))))))
 
 (provide 'orary-functions)
 ;;; orary-functions.el ends here

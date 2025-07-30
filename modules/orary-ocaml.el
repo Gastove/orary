@@ -1,4 +1,4 @@
-;;; orary-ocaml.el --- OCaml configuration for Orary
+;;; orary-ocaml.el --- OCaml configuration for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

@@ -1,4 +1,4 @@
-;;; orary-irc.el --- IRC Configuration for Orary
+;;; orary-irc.el --- IRC Configuration for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; How does this even

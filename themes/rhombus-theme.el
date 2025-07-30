@@ -1,4 +1,4 @@
-;;; rhombus-theme.el --- A black theme for Emacs 24+
+;;; rhombus-theme.el --- A black theme for Emacs 24+  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2015 Ross Donaldson
 

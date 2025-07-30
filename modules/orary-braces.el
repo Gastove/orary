@@ -1,4 +1,4 @@
-;;; orary-braces.el --- Tweaks for managing pairs of curlys
+;;; orary-braces.el --- Tweaks for managing pairs of curlys -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

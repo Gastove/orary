@@ -1,4 +1,4 @@
-;;; orary-emote.el --- Emotes!
+;;; orary-emote.el --- Emotes! -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 

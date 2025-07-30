@@ -1,4 +1,4 @@
-;;; orary-common-lisp.el --- Common Lisp configs for Orary
+;;; orary-common-lisp.el --- Common Lisp configs for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Does what it says on the tin.

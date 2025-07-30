@@ -1,4 +1,4 @@
-;;; orary-lisp.el --- Lisp Configs
+;;; orary-lisp.el --- Lisp Configs -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Configurations common across Common Lisp, Emacs Lisp, Clojure, et al.

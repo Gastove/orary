@@ -1,4 +1,4 @@
-;;; orary-elixir.el --- Elixir configs in Orary
+;;; orary-elixir.el --- Elixir configs in Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

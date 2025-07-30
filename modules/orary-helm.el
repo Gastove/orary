@@ -1,4 +1,4 @@
-;;; orary-helm.el --- Prevasive Helm in Orary
+;;; orary-helm.el --- Prevasive Helm in Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

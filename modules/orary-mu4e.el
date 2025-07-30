@@ -1,4 +1,4 @@
-;;; orary-mu4e.el --- mu4e integration
+;;; orary-mu4e.el --- mu4e integration -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

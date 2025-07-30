@@ -1,4 +1,4 @@
-;;; orary-stats.el --- Statistical Programming in Orary
+;;; orary-stats.el --- Statistical Programming in Orary -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 

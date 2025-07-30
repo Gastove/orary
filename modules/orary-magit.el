@@ -1,4 +1,4 @@
-;;; orary-magit.el --- Who doesn't love Magit?
+;;; orary-magit.el --- Who doesn't love Magit? -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

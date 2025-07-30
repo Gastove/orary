@@ -1,4 +1,4 @@
-;;; orary-programming.el --- Defaults for Programming Language Modes
+;;; orary-programming.el --- Defaults for Programming Language Modes -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Tools like smartparens, flycheck, etc.

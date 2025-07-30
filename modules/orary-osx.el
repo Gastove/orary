@@ -1,4 +1,4 @@
-;;; orary-osx.el --- When We're On OSX, Some Settings Need Set
+;;; orary-osx.el --- When We're On OSX, Some Settings Need Set -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Modifiers and the path, mostly.

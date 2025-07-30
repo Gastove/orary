@@ -1,4 +1,4 @@
-;;; orary-org-blorg.el --- Configs as I get org-blorg together
+;;; orary-org-blorg.el --- Configs as I get org-blorg together -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; `org-blorg' is my dear sweet blogging framework. It is very nice, and also

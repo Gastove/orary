@@ -1,4 +1,4 @@
-;;; orary-projectile.el --- Projectile errwhrr
+;;; orary-projectile.el --- Projectile errwhrr -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; YAS

@@ -1,4 +1,4 @@
-;;; orary-golang.el --- Golang Programming in Orary
+;;; orary-golang.el --- Golang Programming in Orary -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 

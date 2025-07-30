@@ -1,4 +1,4 @@
-;;; orary-rust.el --- Rust support for Orary
+;;; orary-rust.el --- Rust support for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Maybe rust is nice? I'm unlikely to be able to tell if my editor isn't set up for it ;P

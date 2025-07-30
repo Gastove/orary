@@ -1,4 +1,4 @@
-;;; orary-rss.el --- RSS Reading with Elfeed
+;;; orary-rss.el --- RSS Reading with Elfeed -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 

@@ -1,4 +1,4 @@
-;;; orary-notify.el --- Notifications and Tracking in Orary
+;;; orary-notify.el --- Notifications and Tracking in Orary -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 

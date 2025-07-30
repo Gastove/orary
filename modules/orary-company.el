@@ -1,4 +1,4 @@
-;;; orary-company.el --- company-mode in Orary
+;;; orary-company.el --- company-mode in Orary -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 

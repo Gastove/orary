@@ -1,4 +1,4 @@
-;;; orary-clojure.el --- Clojure programming in Orary
+;;; orary-clojure.el --- Clojure programming in Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; love2clojure.  This gets us Clojure mode and Cider.

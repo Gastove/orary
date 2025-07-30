@@ -1,4 +1,4 @@
-;;; orary-core.el --- Core behaviors for Orary
+;;; orary-core.el --- Core behaviors for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Primary configuration for `orary' -- save files, libs we want everywhere.

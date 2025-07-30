@@ -1,4 +1,4 @@
-;;; orary-lang-server.el --- LSP Mode integration and global configs
+;;; orary-lang-server.el --- LSP Mode integration and global configs -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; This would normally be named orary-lsp under my general conventions, but

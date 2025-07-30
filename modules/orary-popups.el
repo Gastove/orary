@@ -1,4 +1,4 @@
-;;; orary-popups.el --- Maybe I wanna use Shackle?
+;;; orary-popups.el --- Maybe I wanna use Shackle? -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

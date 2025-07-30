@@ -1,4 +1,4 @@
-;;; orary-emacs-lisp.el --- Specifics for Emacs-Lisp
+;;; orary-emacs-lisp.el --- Specifics for Emacs-Lisp -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

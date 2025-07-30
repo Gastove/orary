@@ -1,4 +1,4 @@
-;;; orary-cli.el --- Functions from the Terminal
+;;; orary-cli.el --- Functions from the Terminal -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; I still use my terminal a great deal; being able to hook in to Emacs more

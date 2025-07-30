@@ -1,4 +1,4 @@
-;;; orary-twitter.el --- Twitter in Orary
+;;; orary-twitter.el --- Twitter in Orary -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2016 Ross Donaldson
 

@@ -1,4 +1,4 @@
-;;; orary-editor.el --- Configuring editor behaviors for src + txt
+;;; orary-editor.el --- Configuring editor behaviors for src + txt -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 
@@ -54,7 +54,7 @@
 (require 'ediff)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-(use-package multiple-cursors)
+;; (use-package multiple-cursors)
 
 ;; NOTE[rdonaldson|2024-12-06] Editorconfig is breaking org? Frixing wild.
 ;; (use-package editorconfig

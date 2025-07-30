@@ -1,4 +1,4 @@
-;;; orary-kotlin.el --- Kotlin configs for Orary
+;;; orary-kotlin.el --- Kotlin configs for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;; Sometimes, your company decides to switch to Kotlin over Groovy for Gradle.

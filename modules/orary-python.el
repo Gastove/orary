@@ -1,4 +1,4 @@
-;;; orary-python.el --- Python configs
+;;; orary-python.el --- Python configs -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

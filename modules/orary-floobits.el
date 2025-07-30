@@ -1,4 +1,4 @@
-;;; orary-floobits.el --- Floobits integration in Orary
+;;; orary-floobits.el --- Floobits integration in Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

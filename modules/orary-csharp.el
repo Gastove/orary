@@ -1,4 +1,4 @@
-;;; orary-csharp.el --- C# Configuration for Orary
+;;; orary-csharp.el --- C# Configuration for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

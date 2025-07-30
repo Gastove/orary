@@ -1,4 +1,4 @@
-;;; orary-scala.el --- Scala configuration for Orary
+;;; orary-scala.el --- Scala configuration for Orary -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2016 Ross Donaldson
 

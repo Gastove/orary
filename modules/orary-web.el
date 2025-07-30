@@ -1,4 +1,4 @@
-;;; orary-web.el --- Web-Mode integration for Orary
+;;; orary-web.el --- Web-Mode integration for Orary -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2016 Ross Donaldson
 

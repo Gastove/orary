@@ -1,4 +1,4 @@
-;;; orary-smartparens.el --- Smartparens
+;;; orary-smartparens.el --- Smartparens -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

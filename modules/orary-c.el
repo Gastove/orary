@@ -1,4 +1,4 @@
-;;; orary-c.el --- C/++ Configs for Orary
+;;; orary-c.el --- C/++ Configs for Orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

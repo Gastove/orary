@@ -1,4 +1,4 @@
-;;; init.el --- Init file to bootstrap Orary!
+;;; init.el --- Init file to bootstrap Orary!  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2016 Ross Donaldson
 

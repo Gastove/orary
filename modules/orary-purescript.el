@@ -1,4 +1,4 @@
-;;; orary-purescript.el ---
+;;; orary-purescript.el --- -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;

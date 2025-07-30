@@ -1,4 +1,4 @@
-;;; orary-ui.el --- Core UI configuration for orary
+;;; orary-ui.el --- Core UI configuration for orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;
@@ -35,7 +35,7 @@
   :demand t
   :config (unicode-fonts-setup))
 
-(use-package all-the-icons  
+(use-package all-the-icons
   :config
   ;; Install fonts explicitly if they haven't been already on Linux
   (if (and

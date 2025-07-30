@@ -1,4 +1,4 @@
-;;; orary-linux.el --- Linux configs for orary
+;;; orary-linux.el --- Linux configs for orary -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;
