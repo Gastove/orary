@@ -14,20 +14,29 @@
 
 (setq python-shell-interpreter "python3")
 
-(use-package lsp-pyright  
-  :hook (python-mode . (lambda ()
-                         (setq python-fill-docstring-style 'django)
-                         (subword-mode +1)
-                         (require 'lsp-pyright)
-                         (lsp)
-                         (flycheck-add-next-checker 'lsp 'python-mypy)))
-  :bind (:map python-mode-map
-              ("C-c q i" . orary/python-make-module)
-              ("C-c q q" . orary/replace-double-quote-with-single)
-              ("C-c q r" . recompile)
-              ("C-c n"   . python-black-buffer)
-              ("<M-RET>" . orary/rotate))
-  )  ; or lsp-deferred
+(use-package uv-mode
+  :hook (python-mode . uv-mode-auto-activate-hook))
+
+(defun orary/python-mode-hook ()
+  "Defaults for python-mode"
+  (lambda ()
+    (setq python-fill-docstring-style 'django)
+    (subword-mode +1)
+    (lsp)
+    (flycheck-add-next-checker 'lsp 'python-mypy)))
+
+(add-hook 'python-mode-hook #'orary/python-mode-hook)
+
+;; (use-package lsp-pyright
+;;   :hook (python-mode . )
+;;   :bind (:map python-mode-map
+;;               ("C-c q i" . orary/python-make-module)
+;;               ("C-c q q" . orary/replace-double-quote-with-single)
+;;               ("C-c q r" . recompile)
+;;               ("C-c n"   . python-black-buffer)
+;;               ("<M-RET>" . orary/rotate))
+;;   )
+                                        ; or lsp-deferred
 
 
 ;; (use-package lsp-python-ms
@@ -129,7 +138,7 @@
 
 ;; Jupyter Notebooks
 (require 'company)
-(use-package jedi)
+;; (use-package jedi)
 
 ;; The authors of this package have made some *awful* choices about how they
 ;; implement hooks. Disable for now.
