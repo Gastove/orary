@@ -59,7 +59,8 @@
 (use-package extempore-mode)
 
 ;; Just -- like make, but less bad
-(use-package just-mode)
+(use-package just-mode
+  :hook (just-mode . (lambda () (subword-mode +1))))
 
 ;; SQL management
 (use-package sqlformat
