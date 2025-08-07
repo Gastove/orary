@@ -30,7 +30,6 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   :diminish ethan-wspace-mode
   :demand t
   :init
-  (global-ethan-wspace-mode 1)
   (setq-default require-final-newline nil)
   (setq-default mode-require-final-newline nil)
   :config
@@ -49,18 +48,8 @@ Currently catches: FIX(ME)?, TODO, NOTE."
   "Clean up the indentation of the current buffer according to its major mode,
 then clean up white space."
   (interactive)
-  (unless orary/disable-clean-and-indent
-    (unless (or (-contains? orary/indent-sensitive-modes major-mode)
-                (-filter #'derived-mode-p orary/indent-sensitive-modes)
-                ;; NOTE[rdonaldson|2020-06-09] _Most_ LSP implementations
-                ;; feature code formatting as a first class value, and it's much
-                ;; better than Emacs' inference. In the normal case, I think, if
-                ;; lsp-mode is on, we can skip indentation.
-                (bound-and-true-p lsp-mode)
-                orary/disable-auto-indent)
-      (indent-region (point-min) (point-max)))
-    (unless orary/disable-whitespace-cleanup
-      (ethan-wspace-clean-all))))
+  (unless (or orary/disable-clean-and-indent orary/disable-whitespace-cleanup)
+    (ethan-wspace-clean-all)))
 
 ;; Fun special case: tabs are required in makefiles
 (defun respect-makefile-tabs ()
